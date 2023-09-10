@@ -1,14 +1,13 @@
 package ru.nsu.shadrina;
 
-import org.junit.jupiter.api.Test;
-
 import java.lang.reflect.Array;
 import java.util.Arrays;
+import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class SampleTest {
-    
+
     @Test
     void firstTest() {
         int []arr;
@@ -18,6 +17,7 @@ class SampleTest {
         Sample.heapsort(arr);
         assertArrayEquals(arr, ans);
     }
+
     @Test
     void testWithoutElements() {
         int []arr;
