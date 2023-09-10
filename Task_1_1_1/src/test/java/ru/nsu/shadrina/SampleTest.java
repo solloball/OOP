@@ -8,6 +8,7 @@ import java.util.Arrays;
 import static org.junit.jupiter.api.Assertions.*;
 
 class SampleTest {
+    
     @Test
     void firstTest() {
         int []arr;
@@ -36,6 +37,7 @@ class SampleTest {
         Sample.heapsort(arr);
         assertArrayEquals(arr, ans);
     }
+
     @Test
     void testWithMaxAvailableValue() {
         int []arr;
@@ -45,6 +47,7 @@ class SampleTest {
         Sample.heapsort(arr);
         assertArrayEquals(arr, ans);
     }
+
     @Test
     void testMain() {
         Sample.main(new String[] {});
@@ -59,6 +62,7 @@ class SampleTest {
         assertEquals(2, arr[0]);
         assertEquals(5, arr[3]);
     }
+
     @Test
     void testheapify() {
         int []arr;
