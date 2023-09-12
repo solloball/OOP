@@ -3,7 +3,7 @@ plugins {
     id 'jacoco'
 }
 
-group = 'ru.nsu.shadrina'
+group = 'ru.nsu.romanov.heapsort'
 version = '1.0-SNAPSHOT'
 
 repositories {
@@ -34,4 +34,8 @@ jacocoTestCoverageVerification {
             }
         }
     }
+}
+
+javadoc {
+    destinationDir = file("${buildDir}/docs/javadoc")
 }

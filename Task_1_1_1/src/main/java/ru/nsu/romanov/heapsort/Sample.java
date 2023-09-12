@@ -1,17 +1,17 @@
-package ru.nsu.shadrina;
+package ru.nsu.romanov.heapsort;
 
 /**
  * Sample class to simulate 1.1 task functionality
  */
 public class Sample {
 
-    public static void swap (int []arr, int i, int j) {
+    public static void swap (int[] arr, int i, int j) {  // swap 2 elements in arr
         int tmp = arr[i];
         arr[i] = arr[j];
         arr[j] = tmp;
     }
 
-    public static void heapsort(int[] arr) {
+    public static void heapsort (int[] arr) {
         int n = arr.length;
 
         for (int i = n / 2 - 1; i >= 0; i--) {  // make heap
