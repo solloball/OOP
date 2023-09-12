@@ -5,13 +5,13 @@ package ru.nsu.romanov.heapsort;
  */
 public class Sample {
 
-    public static void swap (int[] arr, int i, int j) {  // swap 2 elements in arr
+    public static void swap(int[] arr, int i, int j) {  // swap 2 elements in arr
         int tmp = arr[i];
         arr[i] = arr[j];
         arr[j] = tmp;
     }
 
-    public static void heapsort (int[] arr) {
+    public static void heapsort(int[] arr) {
         int n = arr.length;
 
         for (int i = n / 2 - 1; i >= 0; i--) {  // make heap
@@ -25,7 +25,7 @@ public class Sample {
         }
     }
 
-    public static void heapify (int []arr, int n, int idx) {   // make
+    public static void heapify(int []arr, int n, int idx) {   // make
         int idxLargest = idx; // the larges index is root index
         int idxLeft = (idx * 2) + 1; // index of left son
         int idxRight = (idx * 2) + 2;  // index of right son
@@ -47,7 +47,7 @@ public class Sample {
         }
     }
 
-    public static void main (String []args) {
+    public static void main(String []args) {
 
     }
 }

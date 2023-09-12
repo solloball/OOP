@@ -1,9 +1,8 @@
 package ru.nsu.romanov.heapsort;
 
-import org.junit.jupiter.api.Test;
-
 import java.util.Arrays;
 import java.util.stream.IntStream;
+import org.junit.jupiter.api.Test;
 import java.util.Random;
 import static org.junit.jupiter.api.Assertions.*;
 
