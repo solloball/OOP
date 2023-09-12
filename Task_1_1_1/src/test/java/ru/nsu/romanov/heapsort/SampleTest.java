@@ -2,8 +2,9 @@ package ru.nsu.romanov.heapsort;
 
 import java.util.Arrays;
 import java.util.stream.IntStream;
-import org.junit.jupiter.api.Test;
 import java.util.Random;
+import org.junit.jupiter.api.Test;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 
@@ -54,7 +55,7 @@ class SampleTest {
         Random rd = new Random(); // creating Random object
         int[] sortArr;
         int[] arr = new int[100];
-        for (int elem: arr) {
+        for (int elem : arr) {
             elem = rd.nextInt(); // storing random integers in an array
         }
         sortArr = arr;

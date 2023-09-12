@@ -35,7 +35,8 @@ jacocoTestCoverageVerification {
         }
     }
 }
-
-javadoc {
-    destinationDir = file("${buildDir}/docs/javadoc")
+tasks.withType(Javadoc) {
+options.addStringOption('Xdoclint:none', '-quiet')
+options.addStringOption('encoding', 'UTF-8')
+options.addStringOption('charSet', 'UTF-8')
 }
