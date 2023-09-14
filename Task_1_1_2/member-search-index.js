@@ -1,0 +1,1 @@
+memberSearchIndex = [{"p":"ru.nsu.romanov.polynomial","c":"Main","l":"Main()","url":"%3Cinit%3E()"}]
