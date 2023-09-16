@@ -196,10 +196,14 @@ public class Main {
                     }
                     res.append(Math.abs(arr[i]));
                     switch (degree) {
-                        case 0 -> {
-                        }
-                        case 1 -> res.append("x");
-                        default -> res.append("x^").append(degree);
+                        case 0:
+                            break;
+                        case 1:
+                            res.append("x");
+                            break;
+                        default:
+                            res.append("x^").append(degree);
+                            break;
                     }
                 }
 
