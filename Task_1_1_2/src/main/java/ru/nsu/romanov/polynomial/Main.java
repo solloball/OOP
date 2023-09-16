@@ -73,7 +73,9 @@ public class Main {
 
             if (n1 < n2) {
                 Polynomial p = polynomial.sub(this);
-                for (int i = 0; i < p.arr.length; i++) p.arr[i] *= -1;
+                for (int i = 0; i < p.arr.length; i++) {
+                    p.arr[i] *= -1;
+                }
                 return p;
             }
 
@@ -142,7 +144,7 @@ public class Main {
             int value = 1;
             int res = 0;
 
-            for(int i = arr.length - 1; i >= 0; i--) {
+            for (int i = arr.length - 1; i >= 0; i--) {
                 res += value * arr[i];
                 value *= point;
             }
@@ -154,7 +156,8 @@ public class Main {
          * return true if two Polynomial are equal and return false otherwise.
          */
         public boolean isEqual(Polynomial polynomial) {
-            int i, j;
+            int i;
+            int j;
             for (i = arr.length - 1, j = polynomial.arr.length - 1; i >= 0 && j >= 0; i--, j--) {
                 if (arr[i] != polynomial.arr[j]) {
                     return false;
@@ -175,14 +178,15 @@ public class Main {
         }
 
         /**
-         * convert Polynomial to String. String looks like "a1x^n (+/-) a2x^(n-1) (+/-) ... (+/-) a(m-1)x (+/-) am".
+         * convert Polynomial to String. String looks like
+         * "a1x^n (+/-) a2x^(n-1) (+/-) ... (+/-) a(m-1)x (+/-) am".
          */
         @Override
         public String toString() {
             int degree = arr.length - 1;
             StringBuilder res = new StringBuilder();
 
-            for(int i = 0; i < arr.length; i++, degree--) {
+            for (int i = 0; i < arr.length; i++, degree--) {
 
                 // program doesn't write coefficients = 0.
                 if (arr[i] == 0) {
@@ -191,10 +195,10 @@ public class Main {
 
                 if (arr[i] < 0) {
                     res.append(" - ");
-                }
-                else if (i != 0) {  // program doesn't write "+" ahead of polynomial.
+                } else if (i != 0) {  // program doesn't write "+" ahead of polynomial.
                     res.append(" + ");
                 }
+
                 res.append(Math.abs(arr[i]));
                 switch (degree) {
                     case 0:
