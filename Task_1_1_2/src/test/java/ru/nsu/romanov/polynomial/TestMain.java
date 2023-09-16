@@ -48,7 +48,8 @@ class TestMain {
         Arrays.fill(arr, 0);
         Main.Polynomial p1 = new Main.Polynomial(new int[] {});
         Main.Polynomial p2 = new Main.Polynomial(arr);
-        assertTrue(p1.isEqual(p2)); // one of them is empty and other has arr in which every coefficient = 0.
+        assertTrue(p1.isEqual(p2));
+        // one of them is empty and other has arr in which every coefficient = 0.
 
         System.arraycopy(arr2, 0, arr, arr.length - arr2.length - 1, arr2.length);
         p1.setArr(arr);
@@ -96,19 +97,19 @@ class TestMain {
         Main.Polynomial p2 = new Main.Polynomial(new int[] {0, 0, -7, 10, -25});
         assertEquals(4 + 5 + 7 + 8, p1.evaluate(1));
         assertEquals(4 * (-8) + 4 * 5 - 14 + 8, p1.evaluate(-2));
-        assertEquals(-7 * 9 + 3 * 10 -25, p2.evaluate(3));
+        assertEquals(- 7 * 9 + 3 * 10 - 25, p2.evaluate(3));
     }
 
     @Test
     void checkToString() {
         int[] arr = new int[100];
-        int[] arr2 = new int[] {4, -5, 0, 6};
-        int[] arr3 = new int[] {0, 0, 0, -5, 4, 0};
         Arrays.fill(arr, 0);
         Main.Polynomial p = new Main.Polynomial(arr);
         assertEquals("", p.toString());
+        int[] arr2 = new int[] {4, -5, 0, 6};
         p.setArr(arr2);
         assertEquals("4x^3 - 5x^2 + 6", p.toString());
+        int[] arr3 = new int[] {0, 0, 0, -5, 4, 0};
         p.setArr(arr3);
         assertEquals(" - 5x^2 + 4x", p.toString());
     }
