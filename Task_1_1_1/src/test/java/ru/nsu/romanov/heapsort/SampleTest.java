@@ -54,7 +54,7 @@ class SampleTest {
     void testWithRandArr() {
         Random rd = new Random(); // creating Random object
         int[] sortArr;
-        int[] arr = new int[100];
+        int[] arr = new int[1000000];
         for (int elem : arr) {
             elem = rd.nextInt(); // storing random integers in an array
         }
@@ -62,7 +62,12 @@ class SampleTest {
         Arrays.sort(sortArr);
         Sample.heapsort(arr);
         assertArrayEquals(arr, sortArr);
+
+        Arrays.sort(arr);
+        Sample.heapsort(arr);
+        assertArrayEquals(arr, sortArr);
     }
+
 
     @Test
     void testMain() {
