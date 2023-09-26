@@ -67,31 +67,4 @@ class HeapsortTest {
         Heapsort.heapsort(arr);
         Assertions.assertArrayEquals(sortArr, arr);
     }
-
-
-    @Test
-    void testMain() {
-        Heapsort.main(new String[] {});
-        Assertions.assertTrue(true);
-    }
-
-    @Test
-    void testSwap() {
-        int []arr;
-        arr = new int[] {5, 4, 3, 2, 1};
-        Heapsort.swap(arr, 0, 3);
-        Assertions.assertEquals(2, arr[0]);
-        Assertions.assertEquals(5, arr[3]);
-    }
-
-    @Test
-    void testHeapify() {
-        int []arr;
-        arr = new int[] {4, 7, 3, 5, 1};
-        Heapsort.heapify(arr, 0, 0);
-        Assertions.assertArrayEquals(new int[] {4, 7, 3, 5, 1}, arr);
-
-        Heapsort.heapify(arr, 3, 0);
-        Assertions.assertArrayEquals(new int[] {7, 4, 3, 5, 1}, arr);
-    }
 }

@@ -9,7 +9,7 @@ public class Heapsort {  /* main class in task 1 */
     /**
      * swap 2 elements in arr.
      */
-    public static void swap(int[] arr, int i, int j) {
+    private static void swap(int[] arr, int i, int j) {
         int tmp = arr[i];
         arr[i] = arr[j];
         arr[j] = tmp;
@@ -35,7 +35,7 @@ public class Heapsort {  /* main class in task 1 */
     /**
      * make heap.
      */
-    public static void heapify(int []arr, int n, int idx) {
+    private static void heapify(int []arr, int n, int idx) {
         int idxLargest = idx; /* the larges index is root index */
         int idxLeft = (idx * 2) + 1; /* index of left son */
         int idxRight = (idx * 2) + 2;  /* index of right son */
@@ -52,13 +52,9 @@ public class Heapsort {  /* main class in task 1 */
             swap(arr, idx, idxLargest);
             /* swap arr[idx] and arr[idx_largest] if they don't similar. */
 
-            heapify(arr, n, idxLargest);
+            heapify(arr, n, idxLargest);    
             /* we call recursively heapify. */
         }
-    }
-
-    public static void main(String []args) {
-
     }
 }
 
