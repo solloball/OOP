@@ -52,7 +52,7 @@ public class Heapsort {  /* main class in task 1 */
             swap(arr, idx, idxLargest);
             /* swap arr[idx] and arr[idx_largest] if they don't similar. */
 
-            heapify(arr, n, idxLargest);    
+            heapify(arr, n, idxLargest);
             /* we call recursively heapify. */
         }
     }

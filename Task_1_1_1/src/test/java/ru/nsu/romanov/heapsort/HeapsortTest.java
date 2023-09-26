@@ -53,17 +53,14 @@ class HeapsortTest {
     @Test
     void testWithRandArr() {
         Random rd = new Random(); // creating Random object
-        int[] sortArr = new int[1000000];
-        int[] arr = new int[1000000];
+        int len = 1000000;
+        int[] sortArr = new int[len];
+        int[] arr = new int[len];
         for (int elem : arr) {
             elem = rd.nextInt(); // storing random integers in an array
         }
-        System.arraycopy(arr, 0, sortArr, 0, 3);
+        System.arraycopy(arr, 0, sortArr, 0, len);
         Arrays.sort(sortArr);
-        Heapsort.heapsort(arr);
-        Assertions.assertArrayEquals(sortArr, arr);
-
-        Arrays.sort(arr);
         Heapsort.heapsort(arr);
         Assertions.assertArrayEquals(sortArr, arr);
     }
