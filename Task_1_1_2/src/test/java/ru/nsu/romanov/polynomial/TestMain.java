@@ -24,7 +24,7 @@ class TestMain {
         Random rd = new Random();
         int[] arr = getMadeRandomArr(1000000);
         Main.Polynomial p = new Main.Polynomial(arr);
-        assertArrayEquals(p.getArr(), arr);
+        assertArrayEquals(arr, p.getArr());
     }
 
     @Test
