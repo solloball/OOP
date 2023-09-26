@@ -4,7 +4,7 @@ package ru.nsu.romanov.heapsort;
  * Sample class to simulate 1.1 task functionality.
  */
 
-public class Sample {  /* main class in task 1 */
+public class Heapsort {  /* main class in task 1 */
 
     /**
      * swap 2 elements in arr.
