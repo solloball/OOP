@@ -37,7 +37,7 @@ class SampleTest {
         arr = new int[] {1};
         ans = new int[] {1};
         Sample.heapsort(arr);
-        assertArrayEquals(arr, ans);
+        assertArrayEquals(ans, arr);
     }
 
     @Test
@@ -47,7 +47,7 @@ class SampleTest {
         arr = new int[] {Integer.MAX_VALUE, 5, 6, 4, Integer.MIN_VALUE, 6, -56, 0, 43, -5};
         ans = new int[] {Integer.MIN_VALUE, -56, -5, 0, 4, 5, 6, 6, 43, Integer.MAX_VALUE};
         Sample.heapsort(arr);
-        assertArrayEquals(arr, ans);
+        assertArrayEquals(ans, arr);
     }
 
     @Test
@@ -61,11 +61,11 @@ class SampleTest {
         sortArr = arr;
         Arrays.sort(sortArr);
         Sample.heapsort(arr);
-        assertArrayEquals(arr, sortArr);
+        assertArrayEquals(sortArr, arr);
 
         Arrays.sort(arr);
         Sample.heapsort(arr);
-        assertArrayEquals(arr, sortArr);
+        assertArrayEquals(sortArr, arr);
     }
 
 
@@ -89,9 +89,9 @@ class SampleTest {
         int []arr;
         arr = new int[] {4, 7, 3, 5, 1};
         Sample.heapify(arr, 0, 0);
-        assertArrayEquals(arr, new int[] {4, 7, 3, 5, 1});
+        assertArrayEquals(new int[] {4, 7, 3, 5, 1}, arr);
 
         Sample.heapify(arr, 3, 0);
-        assertArrayEquals(arr, new int[] {7, 4, 3, 5, 1});
+        assertArrayEquals(new int[] {7, 4, 3, 5, 1}, arr);
     }
 }
