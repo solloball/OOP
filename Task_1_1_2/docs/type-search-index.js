@@ -1,1 +1,1 @@
-typeSearchIndex = [{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"ru.nsu.romanov.polynomial","l":"Main"},{"p":"ru.nsu.romanov.polynomial","l":"Main.Polynomial"}];updateSearchResults();
+typeSearchIndex = [{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"ru.nsu.romanov.polynomial","l":"Polynomial"}];updateSearchResults();
