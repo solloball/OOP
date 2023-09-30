@@ -2,7 +2,9 @@ package ru.nsu.romanov.polynomial;
 
 import java.util.Arrays;
 
-
+/**
+ * Class Polynomial which store arr of arrOfCoefficients and provide some methods.
+ */
 public class Polynomial {
 
     /**
@@ -48,9 +50,10 @@ public class Polynomial {
         Polynomial newPolynomial = new Polynomial(arr);
         int n1 = arr.length;
         int n2 = polynomial.arr.length;
-        int i, j;
+        int i;
+        int j;
 
-        for(j = n2 - 1, i = n1 - 1; j >= 0 && i >= 0; i--, j--) {
+        for (j = n2 - 1, i = n1 - 1; j >= 0 && i >= 0; i--, j--) {
             switch (flag) {
                 case 'a':
                     newPolynomial.arr[i] += polynomial.arr[j];
@@ -61,11 +64,15 @@ public class Polynomial {
                 case 's':
                     newPolynomial.arr[i] -= polynomial.arr[j];
                     break;
+                default:
+                    break;
             }
         }
 
         if (flag == 'm') {
-            for ( ; i >= 0; i--) newPolynomial.arr[i] = 0;
+            for ( ; i >= 0; i--) {
+                newPolynomial.arr[i] = 0;
+            }
         }
 
         return newPolynomial;

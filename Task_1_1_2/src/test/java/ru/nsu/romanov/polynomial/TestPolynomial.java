@@ -128,12 +128,12 @@ class TestPolynomial {
     void checkFunMltWithOneEmptyArr() {
         int size = 10000;
         int[] arr = getMadeRandomArr(size);
-        int[] ZeroArr = new int[size];
-        Arrays.fill(ZeroArr, 0);
+        int[] zeroArr = new int[size];
+        Arrays.fill(zeroArr, 0);
         Polynomial p1 = new Polynomial(new int[] {});
         Polynomial p2 = new Polynomial(arr);
-        Assertions.assertArrayEquals(ZeroArr, p1.mlt(p2).getArr());
-        Assertions.assertArrayEquals(ZeroArr, p2.mlt(p1).getArr());
+        Assertions.assertArrayEquals(zeroArr, p1.mlt(p2).getArr());
+        Assertions.assertArrayEquals(zeroArr, p2.mlt(p1).getArr());
     }
 
     @Test
