@@ -58,8 +58,8 @@ class TestPolynomial {
 
     @Test
     void checkEqualsWithDifferentPolynomial() {
-        int[] arr1 = new int[] {1,2,3,4,5,6};
-        int[] arr2 = new int[] {1,2,3,4,5};
+        int[] arr1 = new int[] {1, 2, 3, 4, 5, 6};
+        int[] arr2 = new int[] {1, 2, 3, 4, 5};
         Polynomial p1 = new Polynomial(arr1);
         Polynomial p2 = new Polynomial(arr2);
         Assertions.assertNotEquals(p1, p2);
@@ -76,8 +76,8 @@ class TestPolynomial {
 
     @Test
     void checkHashcodeWithDifferentArr() {
-        int[] arr1 = new int[] {1,2,3,4,5,6};
-        int[] arr2 = new int[] {1,2,3,4,5};
+        int[] arr1 = new int[] {1, 2, 3, 4, 5, 6};
+        int[] arr2 = new int[] {1, 2, 3, 4, 5};
         Polynomial p1 = new Polynomial(arr1);
         Polynomial p2 = new Polynomial(arr2);
         Assertions.assertNotEquals(p1.hashCode(), p2.hashCode());
