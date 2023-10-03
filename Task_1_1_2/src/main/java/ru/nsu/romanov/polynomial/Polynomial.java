@@ -54,9 +54,15 @@ public class Polynomial {
 
         for (j = n2 - 1, i = n1 - 1; j >= 0 && i >= 0; i--, j--) {
             switch (operationType) {
-                case ADD -> newPolynomial.arr[i] += polynomial.arr[j];
-                case SUBTRACT -> newPolynomial.arr[i] -= polynomial.arr[j];
-                case MULT ->  newPolynomial.arr[i] *= polynomial.arr[j];
+                case ADD -> {
+                    newPolynomial.arr[i] += polynomial.arr[j];
+                }
+                case SUBTRACT -> {
+                    newPolynomial.arr[i] -= polynomial.arr[j];
+                }
+                case MULT ->  {
+                    newPolynomial.arr[i] *= polynomial.arr[j];
+                }
             }
         }
 
@@ -218,7 +224,5 @@ public class Polynomial {
 
         return res.toString();
     }
-
-    public static void main(String[] args) {}
 }
 
