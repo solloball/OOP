@@ -1,8 +1,12 @@
 package ru.nsu.romanov.polynomial;
 
-import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
+import java.util.Arrays;
+import ru.nsu.romanov.polynomial.OperationType;
 
+import static ru.nsu.romanov.polynomial.OperationType.MULT;
+import static ru.nsu.romanov.polynomial.OperationType.ADD;
+import static ru.nsu.romanov.polynomial.OperationType.SUBTRACT;
 
 /**
  * Class Polynomial which store arr of arrOfCoefficients and provide some methods.
@@ -42,7 +46,7 @@ public class Polynomial {
 
     /**
      * auxiliary function for performing operations on polynomials,
-     * in this method we assume that n1 >= n2,
+     * in this method we assume that n1 >= n2.
      */
     private Polynomial operationWithPolynomial(Polynomial polynomial, OperationType operationType) {
 
@@ -52,21 +56,16 @@ public class Polynomial {
         int i;
         int j;
 
-        for (j = n2 - 1, i = n1 - 1; j >= 0 && i >= 0; i--, j--) {
+        for (j = n2 - 1, i = n1 - 1; (j >= 0) && (i >= 0); i--, j--) {
             switch (operationType) {
-                case ADD -> {
-                    newPolynomial.arr[i] += polynomial.arr[j];
-                }
-                case SUBTRACT -> {
-                    newPolynomial.arr[i] -= polynomial.arr[j];
-                }
-                case MULT ->  {
-                    newPolynomial.arr[i] *= polynomial.arr[j];
-                }
+                case ADD -> newPolynomial.arr[i] += polynomial.arr[j];
+                case MULT -> newPolynomial.arr[i] *= polynomial.arr[j];
+                case SUBTRACT -> newPolynomial.arr[i] -= polynomial.arr[j];
+                default -> throw new IllegalStateException("Unexpected value: " + operationType);
             }
-        }
+    }
 
-        if (operationType == OperationType.MULT) {
+        if (operationType == MULT) {
             for ( ; i >= 0; i--) {
                 newPolynomial.arr[i] = 0;
             }
@@ -85,7 +84,7 @@ public class Polynomial {
         if (arr.length < polynomial.arr.length) {
             return polynomial.add(this);
         }
-        return operationWithPolynomial(polynomial, OperationType.ADD);
+        return operationWithPolynomial(polynomial, ADD);
     }
 
     /**
@@ -101,7 +100,7 @@ public class Polynomial {
             p.setArr(newArr);
             return p;
         }
-        return operationWithPolynomial(polynomial, OperationType.SUBTRACT);
+        return operationWithPolynomial(polynomial, SUBTRACT);
     }
 
     /**
@@ -115,7 +114,7 @@ public class Polynomial {
             return polynomial.mlt(this);
         }
 
-        return operationWithPolynomial(polynomial, OperationType.MULT);
+        return operationWithPolynomial(polynomial, MULT);
     }
 
     /**
