@@ -56,8 +56,8 @@ class HeapsortTest {
         int len = 1000000;
         int[] sortArr = new int[len];
         int[] arr = new int[len];
-        for (int elem : arr) {
-            elem = rd.nextInt(); // storing random integers in an array
+        for (int i = 0; i < arr.length; i++) {
+            arr[i] = rd.nextInt(); // storing random integers in an array
         }
         System.arraycopy(arr, 0, sortArr, 0, len);
         Arrays.sort(sortArr);
