@@ -1,1 +1,1 @@
-typeSearchIndex = [{"l":"All Classes","url":"allclasses-index.html"},{"p":"ru.nsu.romanov.polynomial","l":"Polynomial"}]
+typeSearchIndex = [{"l":"All Classes","url":"allclasses-index.html"},{"p":"ru.nsu.romanov.polynomial","l":"OperationType"},{"p":"ru.nsu.romanov.polynomial","l":"Polynomial"}]
