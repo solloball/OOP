@@ -1,12 +1,11 @@
 package ru.nsu.romanov.polynomial;
 
-import org.jetbrains.annotations.NotNull;
-import java.util.Arrays;
-import ru.nsu.romanov.polynomial.OperationType;
-
 import static ru.nsu.romanov.polynomial.OperationType.MULT;
 import static ru.nsu.romanov.polynomial.OperationType.ADD;
 import static ru.nsu.romanov.polynomial.OperationType.SUBTRACT;
+
+import java.util.Arrays;
+import org.jetbrains.annotations.NotNull;
 
 /**
  * Class Polynomial which store arr of arrOfCoefficients and provide some methods.
@@ -70,7 +69,7 @@ public class Polynomial {
                 default:
                     throw new IllegalStateException("Unexpected value: " + operationType);
             }
-    }
+        }
 
         if (operationType == MULT) {
             for ( ; i >= 0; i--) {
