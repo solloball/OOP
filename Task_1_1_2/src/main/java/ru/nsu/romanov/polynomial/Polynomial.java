@@ -58,10 +58,17 @@ public class Polynomial {
 
         for (j = n2 - 1, i = n1 - 1; (j >= 0) && (i >= 0); i--, j--) {
             switch (operationType) {
-                case ADD -> newPolynomial.arr[i] += polynomial.arr[j];
-                case MULT -> newPolynomial.arr[i] *= polynomial.arr[j];
-                case SUBTRACT -> newPolynomial.arr[i] -= polynomial.arr[j];
-                default -> throw new IllegalStateException("Unexpected value: " + operationType);
+                case ADD:
+                    newPolynomial.arr[i] += polynomial.arr[j];
+                    break;
+                case MULT:
+                    newPolynomial.arr[i] *= polynomial.arr[j];
+                    break;
+                case SUBTRACT:
+                    newPolynomial.arr[i] -= polynomial.arr[j];
+                    break;
+                default:
+                    throw new IllegalStateException("Unexpected value: " + operationType);
             }
     }
 
