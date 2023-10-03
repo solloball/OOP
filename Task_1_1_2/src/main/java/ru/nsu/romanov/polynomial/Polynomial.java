@@ -1,6 +1,8 @@
 package ru.nsu.romanov.polynomial;
 
 import java.util.Arrays;
+import org.jetbrains.annotations.NotNull;
+
 
 /**
  * Class Polynomial which store arr of arrOfCoefficients and provide some methods.
@@ -17,7 +19,7 @@ public class Polynomial {
      * constructor which make arr with arrOfCoefficients length
      * and set arrOfCoefficients to arr.
      */
-    public Polynomial(int[] arrOfCoefficients) {
+    public Polynomial(int @NotNull [] arrOfCoefficients) {
         arr = new int[arrOfCoefficients.length];
 
         setArr(arrOfCoefficients);
@@ -26,7 +28,7 @@ public class Polynomial {
     /**
      * setter which set new arr.
      */
-    public void setArr(int[] arrOfCoefficients) {
+    public void setArr(int @NotNull [] arrOfCoefficients) {
         this.arr = new int[arrOfCoefficients.length];
         System.arraycopy(arrOfCoefficients, 0, arr, 0, arrOfCoefficients.length);
     }
@@ -46,7 +48,8 @@ public class Polynomial {
      *  flag == 'm' => perform multiplication,
      *  flag == 's' => perform subtraction.
      */
-    private Polynomial operationWithPolynomial(Polynomial polynomial, char flag) {
+    private Polynomial operationWithPolynomial(Polynomial polynomial, OperationType operationType) {
+
         Polynomial newPolynomial = new Polynomial(arr);
         int n1 = arr.length;
         int n2 = polynomial.arr.length;
@@ -54,22 +57,14 @@ public class Polynomial {
         int j;
 
         for (j = n2 - 1, i = n1 - 1; j >= 0 && i >= 0; i--, j--) {
-            switch (flag) {
-                case 'a':
-                    newPolynomial.arr[i] += polynomial.arr[j];
-                    break;
-                case 'm':
-                    newPolynomial.arr[i] *= polynomial.arr[j];
-                    break;
-                case 's':
-                    newPolynomial.arr[i] -= polynomial.arr[j];
-                    break;
-                default:
-                    break;
+            switch (operationType) {
+                case ADD -> newPolynomial.arr[i] += polynomial.arr[j];
+                case SUBTRACT -> newPolynomial.arr[i] -= polynomial.arr[j];
+                case MULT ->  newPolynomial.arr[i] *= polynomial.arr[j];
             }
         }
 
-        if (flag == 'm') {
+        if (operationType == OperationType.MULT) {
             for ( ; i >= 0; i--) {
                 newPolynomial.arr[i] = 0;
             }
@@ -82,16 +77,22 @@ public class Polynomial {
      * add two polynomial, store value to newPolynomial and return it.
      */
     public Polynomial add(Polynomial polynomial) {
+        if (polynomial == null) {
+            return null;
+        }
         if (arr.length < polynomial.arr.length) {
             return polynomial.add(this);
         }
-        return operationWithPolynomial(polynomial, 'a');
+        return operationWithPolynomial(polynomial, OperationType.ADD);
     }
 
     /**
      * subtract from this element polynomial, store value to newPolynomial and return it.
      */
     public Polynomial sub(Polynomial polynomial) {
+        if (polynomial == null) {
+            return null;
+        }
         if (arr.length < polynomial.arr.length) {
             Polynomial p = polynomial.sub(this);
             int[] newArr = p.getArr();
@@ -101,18 +102,21 @@ public class Polynomial {
             p.setArr(newArr);
             return p;
         }
-        return operationWithPolynomial(polynomial, 's');
+        return operationWithPolynomial(polynomial, OperationType.SUBTRACT);
     }
 
     /**
      * mlt two polynomial, store value to newPolynomial and return it.
      */
     public Polynomial mlt(Polynomial polynomial) {
+        if (polynomial == null) {
+            return null;
+        }
         if (arr.length < polynomial.arr.length) {
             return polynomial.mlt(this);
         }
 
-        return operationWithPolynomial(polynomial, 'm');
+        return operationWithPolynomial(polynomial, OperationType.MULT);
     }
 
     /**

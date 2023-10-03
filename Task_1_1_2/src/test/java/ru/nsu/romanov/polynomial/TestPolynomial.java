@@ -20,6 +20,14 @@ class TestPolynomial {
     }
 
     @Test
+    void checkGetterAndSetter() {
+        int[] arr = getMadeRandomArr(1000000);
+        Polynomial p = new Polynomial(new int[] {});
+        p.setArr(arr);
+        Assertions.assertArrayEquals(arr, p.getArr());
+    }
+
+    @Test
     void checkConstructorWithArr() {
         int[] arr = getMadeRandomArr(1000000);
         Polynomial p = new Polynomial(arr);
@@ -109,6 +117,12 @@ class TestPolynomial {
     }
 
     @Test
+    void checkFunAddWithNull() {
+        Polynomial p = new Polynomial(new int[] {});
+        Assertions.assertNull(p.add(null));
+    }
+
+    @Test
     void checkFunMltWithArrDifferentLength() {
         Polynomial p1 = new Polynomial(new int[] {3, 5, 4, 5, 7, 8});
         Polynomial p2 = new Polynomial(new int[] {-5, 10, 8});
@@ -137,7 +151,13 @@ class TestPolynomial {
     }
 
     @Test
-    void checkSubAddWithArrDifferentLength() {
+    void checkMltAddWithNull() {
+        Polynomial p = new Polynomial(new int[] {});
+        Assertions.assertNull(p.mlt(null));
+    }
+
+    @Test
+    void checkSubWithArrDifferentLength() {
         Polynomial p1 = new Polynomial(new int[] {5, 6, 4, 5, 7, 8});
         Polynomial p2 = new Polynomial(new int[] {-5, 10, 8});
         Assertions.assertArrayEquals(new int[] {5, 6, 4, 10, -3, 0}, p1.sub(p2).getArr());
@@ -163,6 +183,12 @@ class TestPolynomial {
             arr[i] = -arr[i];
         }
         Assertions.assertArrayEquals(arr, p2.sub(p1).getArr());
+    }
+
+    @Test
+    void checkSubAddWithNull() {
+        Polynomial p = new Polynomial(new int[] {});
+        Assertions.assertNull(p.sub(null));
     }
 
     @Test
