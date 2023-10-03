@@ -43,10 +43,6 @@ public class Polynomial {
     /**
      * auxiliary function for performing operations on polynomials,
      * in this method we assume that n1 >= n2,
-     * meaning of flag:
-     *  flag == 'a' => perform addition,
-     *  flag == 'm' => perform multiplication,
-     *  flag == 's' => perform subtraction.
      */
     private Polynomial operationWithPolynomial(Polynomial polynomial, OperationType operationType) {
 
@@ -95,10 +91,7 @@ public class Polynomial {
         }
         if (arr.length < polynomial.arr.length) {
             Polynomial p = polynomial.sub(this);
-            int[] newArr = p.getArr();
-            for (int i = 0; i < newArr.length; i++) {
-                newArr[i] = -newArr[i];
-            }
+            int[] newArr = Arrays.stream(p.getArr()).map(i -> -i).toArray();
             p.setArr(newArr);
             return p;
         }
