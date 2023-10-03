@@ -1,7 +1,7 @@
 package ru.nsu.romanov.polynomial;
 
-import static ru.nsu.romanov.polynomial.OperationType.MULT;
 import static ru.nsu.romanov.polynomial.OperationType.ADD;
+import static ru.nsu.romanov.polynomial.OperationType.MULT;
 import static ru.nsu.romanov.polynomial.OperationType.SUBTRACT;
 
 import java.util.Arrays;
