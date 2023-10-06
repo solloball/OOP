@@ -13,7 +13,6 @@ build/
 *.iml
 *.ipr
 out/
-.idea/*
 !**/src/main/**/out/
 !**/src/test/**/out/
 
@@ -198,4 +197,3 @@ fabric.properties
 !.idea/runConfigurations
 
 # End of https://www.toptal.com/developers/gitignore/api/intellij+all
-
