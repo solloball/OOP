@@ -1,9 +1,9 @@
-package ru.nsu.romanov.polynomial;
+package ru.nsu.shadrina;
 
 /**
- * Sample class to simulate 1.1 task functionality
+ * Sample class to simulate 2.1 task functionality
  */
-public class Main {
+public class Sample {
     public static void printHelloWorld() {
         System.out.println("Hello world!");
     }

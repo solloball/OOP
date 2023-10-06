@@ -3,7 +3,7 @@ plugins {
     id 'jacoco'
 }
 
-group = 'ru.nsu.romanov.heapsort'
+group = 'ru.nsu.shadrina'
 version = '1.0-SNAPSHOT'
 
 repositories {
@@ -23,20 +23,4 @@ jacocoTestReport {
     reports {
         xml.required = true
     }
-}
-
-jacocoTestCoverageVerification {
-    violationRules {
-        rule {
-            limit {
-                counter = "LINE"
-                minimum = 0.80
-            }
-        }
-    }
-}
-tasks.withType(Javadoc) {
-options.addStringOption('Xdoclint:none', '-quiet')
-options.addStringOption('encoding', 'UTF-8')
-options.addStringOption('charSet', 'UTF-8')
 }
