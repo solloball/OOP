@@ -7,6 +7,128 @@ import static org.junit.jupiter.api.Assertions.*;
 class SampleTest {
 
     @Test
-    void doINeedToCheckDefaultConstructor() {
+    void checkConstructor() {
+        Tree<String> tree = new Tree<>("hello");
+        assertEquals("hello", tree.getVal());
+        Tree<Integer> tree2 = new Tree<>(3);
+        assertEquals(3, tree2.getVal());
     }
+
+    @Test
+    void checkSetter() {
+        Tree<String> tree = new Tree<>("hello");
+        assertEquals("hello", tree.getVal());;
+        tree.setVal("goodbye");
+        assertEquals("goodbye", tree.getVal());
+    }
+
+    @Test
+    void checkEqualsReflexivity() {
+        String[] arr = new String[] {};
+        Tree<String> tree1 = new Tree<>("A");
+        assertEquals(tree1, tree1);
+        assertEquals(tree1.hashCode(),tree1.hashCode());
+    }
+
+    @Test
+    void checkEqualsWithTreeWithChild() {
+        Tree<String> parent1 = new Tree<>("A");
+        Tree<String> parent2 = new Tree<>("A");
+        Tree<String> child1 = new Tree<>("B");
+        Tree<String> child2 = new Tree<>("B");
+        Tree<String> child11 = new Tree<>("C");
+        Tree<String> child22 = new Tree<>("C");
+        parent1.add(child1);
+        parent2.add(child2);
+        child1.add(child11);
+        child2.add(child22);
+        assertEquals(parent1.hashCode(), parent2.hashCode());
+        assertEquals(parent1, parent2);
+    }
+
+    @Test
+    void checkEqualsWithTreeWithDifChild() {
+        Tree<String> parent1 = new Tree<>("A");
+        Tree<String> parent2 = new Tree<>("A");
+        Tree<String> child1 = new Tree<>("B");
+        Tree<String> child2 = new Tree<>("B");
+        Tree<String> child11 = new Tree<>("C");
+        Tree<String> child22 = new Tree<>("C");
+        parent1.add(child1);
+        parent2.add(child2);
+        child1.add(child11);
+        parent2.add(child22);
+        assertNotEquals(parent1.hashCode(), parent2.hashCode());
+        assertNotEquals(parent1, parent2);
+    }
+
+    @Test
+    void checkEqualsWithTreeDifferentDepth() {
+        Tree<String> parent1 = new Tree<>("A");
+        Tree<String> parent2 = new Tree<>("A");
+        Tree<String> child1 = new Tree<>("B");
+        Tree<String> child11 = new Tree<>("C");
+        parent1.add(child1);
+        child1.add(child11);
+        assertNotEquals(parent1.hashCode(), parent2.hashCode());
+        assertNotEquals(parent1, parent2);
+    }
+
+    @Test
+    void checkEqualsWithSingleNode() {
+        Tree<String> tree1 = new Tree<>("A");
+        Tree<String> tree2 = new Tree<>("A");
+        assertEquals(tree2.hashCode(), tree1.hashCode());
+        assertEquals(tree2, tree1);
+    }
+
+    @Test
+    void checkEqualsWithNull() {
+        Tree<String> tree = new Tree<>("A");
+        assertNotEquals(tree, null);
+    }
+
+    @Test
+    void checkRemove() {
+        Tree<String> parent1 = new Tree<>("A");
+        Tree<String> parent2 = new Tree<>("A");
+        Tree<String> child1 = new Tree<>("B");
+        Tree<String> child2 = new Tree<>("B");
+        Tree<String> child11 = new Tree<>("C");
+        Tree<String> child22 = new Tree<>("C");
+        parent1.add(child1);
+        parent2.add(child2);
+        child1.add(child11);
+        child2.add(child22);
+        assertEquals(parent1, parent2);
+        child1.remove();
+        assertNotEquals(parent1, parent2);
+    }
+
+    @Test
+    void checkRemoveToEqTree() {
+        Tree<String> parent1 = new Tree<>("A");
+        Tree<String> parent2 = new Tree<>("A");
+        Tree<String> child1 = new Tree<>("B");
+        Tree<String> child11 = new Tree<>("C");
+        parent1.add(child1);
+        child1.add(child11);
+        assertNotEquals(parent1, parent2);
+        child1.remove();
+        assertEquals(parent1,parent2);
+    }
+
+    @Test
+    void checkIteration() {
+        String[] arr = new String[3];
+        Tree<String> parent = new Tree<>("1");
+        parent.add("2");
+        parent.add("3");
+        int idx = 0;
+        for (var it : parent) {
+            arr[idx++] = it.getVal();
+        }
+        assertArrayEquals(new String[] {"1", "3", "2"}, arr);
+    }
+
 }
