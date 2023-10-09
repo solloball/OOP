@@ -169,7 +169,14 @@ public class Polynomial {
 
     @Override
     public int hashCode() {
-        return  Arrays.hashCode(this.arr);
+        final int prime = 31;
+        int hash = 7;
+        for (var elem : arr) {
+            if (elem != 0) {
+                hash = prime * hash + elem;
+            }
+        }
+        return hash;
     }
 
     /**
@@ -189,7 +196,27 @@ public class Polynomial {
 
         Polynomial otherPol = (Polynomial) other;
 
-        return Arrays.equals(this.arr, otherPol.arr);
+        int i = arr.length - 1;
+        int j = otherPol.arr.length - 1;
+        for ( ; i >= 0 && j >= 0; i--, j-- ) {
+            if (arr[i] != otherPol.arr[j]) {
+                return  false;
+            }
+        }
+        while(i >= 0) {
+            if (arr[i] != 0) {
+                return false;
+            }
+            i--;
+        }
+        while(j >= 0) {
+            if (otherPol.arr[j] != 0) {
+                return false;
+            }
+            j--;
+        }
+
+        return true;
     }
 
     /**
