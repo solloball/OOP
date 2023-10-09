@@ -116,7 +116,7 @@ public class Tree<T> implements Iterable<Tree<T>> {
 
         private TreeIterator() {
             if (!hasNext()) {
-                nodesToVisit.add(Tree.this);
+                nodesToVisit.addFirst(Tree.this);
             }
         }
 
