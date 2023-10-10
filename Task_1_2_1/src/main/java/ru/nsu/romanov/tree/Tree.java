@@ -2,19 +2,20 @@ package ru.nsu.romanov.tree;
 
 import org.jetbrains.annotations.NotNull;
 
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.NoSuchElementException;
+import java.util.*;
 
 /**
  * Class tree
  */
 public class Tree<T> implements Iterable<Tree<T>> {
-    private final LinkedList<Tree<T>> child = new LinkedList<Tree<T>>();
+    private List<Tree<T>> child = new ArrayList<Tree<T>>();
     private T val = null;
     private Tree<T> parent = null;
 
     private void setParent(Tree<T> parent) {
+        if (this == iterator()) {
+            throw new ConcurrentModificationException("undefined behaviour with setVal");
+        }
         this.parent = parent;
     }
 
@@ -32,65 +33,44 @@ public class Tree<T> implements Iterable<Tree<T>> {
     }
 
     public void setVal(T val) {
+        if (this == iterator()) {
+            throw new ConcurrentModificationException("undefined behaviour with setVal");
+        }
         this.val = val;
     }
 
     public void add(@NotNull T childVal) {
+        if (this == iterator()) {
+            throw new ConcurrentModificationException("undefined behaviour with add");
+        }
         Tree<T> child = new Tree<>(childVal, this);
-        this.child.addFirst(child);
+        this.child.add(child);
     }
 
     public void add(@NotNull Tree<T> child) {
         child.setParent(this);
-        this.child.addFirst(child);
+        this.child.add(child);
     }
 
     public void remove() {
         if (parent != null) {
             parent.child.remove(this);
+            parent.child.addAll(this.child);
         }
-        removeChild();
-    }
-
-    private void removeChild() {
-        for (var it : child) {
-            it.remove();
-        }
+        child = null;
         parent = null;
-        child.clear();
     }
 
     @Override
-    public boolean equals(Object other) {
-        if (other == null) {
-            return false;
-        }
-        if (this == other) {
+    public boolean equals(Object o) {
+        if (this == o) {
             return true;
         }
-        if (other.getClass() != this.getClass()) {
+        if (o == null || getClass() != o.getClass()) {
             return false;
         }
-
-        Tree<T> tree = (Tree<T>) other;
-
-        if (!val.equals(tree.val)) {
-            return  false;
-        }
-
-        if (child.size() != tree.child.size()) {
-            return false;
-        }
-
-        var it1 = child.listIterator();
-        var it2 = tree.child.listIterator();
-        while (it1.hasNext() && it2.hasNext()) {
-            if (!it1.next().equals(it2.next())) {
-                return false;
-            }
-        }
-
-        return true;
+        Tree<?> tree = (Tree<?>) o;
+        return Objects.equals(child, tree.child) && Objects.equals(val, tree.val);
     }
 
     @Override
@@ -99,15 +79,15 @@ public class Tree<T> implements Iterable<Tree<T>> {
         int result = 1;
         result = prime * result + val.hashCode();
 
-        for (var it = child.listIterator(); it.hasNext(); ) {
-            result = prime * result + it.next().hashCode();
+        for (Tree<T> tTree : child) {
+            result = prime * result + tTree.hashCode();
         }
 
         return result;
     }
 
     @Override
-    public Iterator<Tree<T>> iterator() {
+    public @NotNull Iterator<Tree<T>> iterator() {
         return new TreeIterator();
     }
 
@@ -115,9 +95,7 @@ public class Tree<T> implements Iterable<Tree<T>> {
         private final LinkedList<Tree<T>> nodesToVisit = new LinkedList<>();
 
         private TreeIterator() {
-            if (!hasNext()) {
-                nodesToVisit.addFirst(Tree.this);
-            }
+            nodesToVisit.add(Tree.this);
         }
 
         @Override
@@ -133,6 +111,11 @@ public class Tree<T> implements Iterable<Tree<T>> {
             Tree<T> nextNode = nodesToVisit.remove();
             nodesToVisit.addAll(nextNode.child);
             return nextNode;
+        }
+
+        @Override
+        public void remove() {
+            throw new ConcurrentModificationException("undefined behavior with remove iterator");
         }
     }
 }

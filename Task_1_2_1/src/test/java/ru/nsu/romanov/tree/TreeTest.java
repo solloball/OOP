@@ -2,6 +2,8 @@ package ru.nsu.romanov.tree;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.ConcurrentModificationException;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class SampleTest {
@@ -77,6 +79,8 @@ class SampleTest {
     @Test
     void checkEqualsWithSingleNode() {
         Tree<String> tree1 = new Tree<>("A");
+        Tree<String> parent = new Tree<>("Par");
+        parent.add(tree1);
         Tree<String> tree2 = new Tree<>("A");
         assertEquals(tree2.hashCode(), tree1.hashCode());
         assertEquals(tree2, tree1);
@@ -111,8 +115,14 @@ class SampleTest {
         Tree<String> parent2 = new Tree<>("A");
         Tree<String> child1 = new Tree<>("B");
         Tree<String> child11 = new Tree<>("C");
+        Tree<String> child12 = new Tree<>("D");
+        Tree<String> child21 = new Tree<>("C");
+        Tree<String> child22 = new Tree<>("D");
         parent1.add(child1);
         child1.add(child11);
+        child1.add(child12);
+        parent2.add(child21);
+        parent2.add(child22);
         assertNotEquals(parent1, parent2);
         child1.remove();
         assertEquals(parent1,parent2);
@@ -120,15 +130,17 @@ class SampleTest {
 
     @Test
     void checkIteration() {
-        String[] arr = new String[3];
+        String[] arr = new String[4];
         Tree<String> parent = new Tree<>("1");
+        Tree<String> child = new Tree<>("3");
         parent.add("2");
-        parent.add("3");
+        parent.add(child);
+        child.add("4");
+
         int idx = 0;
         for (var it : parent) {
             arr[idx++] = it.getVal();
         }
-        assertArrayEquals(new String[] {"1", "3", "2"}, arr);
+        assertArrayEquals(new String[] {"1", "2", "3", "4"}, arr);
     }
-
 }
