@@ -127,7 +127,7 @@ public class Tree<T> implements Iterable<Tree<T>> {
      * @return true if deleted a node, false if failed to delete a node.
      */
     public boolean removeChild(T node) {
-        boolean res = child.removeIf(tTree -> tTree.getVal() == node);
+        boolean res = child.removeIf(tree -> tree.getVal() == node);
         modified = res;
         return res;
     }
@@ -161,8 +161,8 @@ public class Tree<T> implements Iterable<Tree<T>> {
         int result = 1;
         result = prime * result + val.hashCode();
 
-        for (Tree<T> tTree : child) {
-            result = prime * result + tTree.hashCode();
+        for (Tree<T> it : child) {
+            result = prime * result + it.hashCode();
         }
 
         return result;

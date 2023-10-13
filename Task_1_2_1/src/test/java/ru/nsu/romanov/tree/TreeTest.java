@@ -13,7 +13,7 @@ import java.util.Random;
 import org.junit.jupiter.api.Test;
 
 
-class SampleTest {
+class TreeTest {
 
     @Test
     void checkConstructor() {
@@ -198,42 +198,6 @@ class SampleTest {
     }
 
     @Test
-    void checkRemove() {
-        Tree<String> parent1 = new Tree<>("A");
-        Tree<String> parent2 = new Tree<>("A");
-        Tree<String> child1 = new Tree<>("B");
-        Tree<String> child2 = new Tree<>("B");
-        Tree<String> child11 = new Tree<>("C");
-        Tree<String> child22 = new Tree<>("C");
-        parent1.add(child1);
-        parent2.add(child2);
-        child1.add(child11);
-        child2.add(child22);
-        assertEquals(parent1, parent2);
-        child1.remove();
-        assertNotEquals(parent1, parent2);
-    }
-
-    @Test
-    void checkRemoveToEqualsTree() {
-        Tree<String> parent1 = new Tree<>("A");
-        Tree<String> parent2 = new Tree<>("A");
-        Tree<String> child1 = new Tree<>("B");
-        Tree<String> child11 = new Tree<>("C");
-        Tree<String> child12 = new Tree<>("D");
-        Tree<String> child21 = new Tree<>("C");
-        Tree<String> child22 = new Tree<>("D");
-        parent1.add(child1);
-        child1.add(child11);
-        child1.add(child12);
-        parent2.add(child21);
-        parent2.add(child22);
-        assertNotEquals(parent1, parent2);
-        child1.remove();
-        assertEquals(parent1,parent2);
-    }
-
-    @Test
     void checkRemoveNonexistentChild() {
         Tree<String> parent = new Tree<>("1");
         Tree<String> child = parent.add("3");
@@ -257,6 +221,24 @@ class SampleTest {
         List<Tree<String>> list = parent.getChildren();
         assertEquals(0, list.size());
         assertTrue(res);
+    }
+
+    @Test
+    void checkRemoveChild() {
+        Tree<Integer> root = new Tree<>(0);
+        Tree<Integer> child = root.add(1);
+        int size = 100;
+        for (int i = 2; i < size; i++) {
+            child.add(i);
+        }
+        assertEquals(1, root.getChildren().size());
+        child.remove();
+        List<Tree<Integer>> arr = root.getChildren();
+        int idx = 2;
+        for (var it : arr) {
+            assertEquals(idx, it.getVal());
+            idx++;
+        }
     }
 
     @Test
