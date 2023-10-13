@@ -1,15 +1,22 @@
 package ru.nsu.romanov.tree;
 
+import java.util.ArrayDeque;
+import java.util.ArrayList;
+import java.util.ConcurrentModificationException;
+import java.util.Deque;
+import java.util.Iterator;
+import java.util.List;
+import java.util.NoSuchElementException;
+import java.util.Objects;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.*;
 
 /**
  * Class tree.x`
  */
 public class Tree<T> implements Iterable<Tree<T>> {
-    private final List<Tree<T>> child = new ArrayList<Tree<T>>();
-    private T val = null;
+    private final List<Tree<T>> child = new ArrayList<>();
+    private T val;
     private Tree<T> parent = null;
     private boolean modified = false;
 
