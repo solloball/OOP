@@ -2,7 +2,10 @@ package ru.nsu.romanov.tree;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
 import java.util.ConcurrentModificationException;
+import java.util.List;
+import java.util.Random;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -25,43 +28,141 @@ class SampleTest {
     }
 
     @Test
+    void checkAdd() {
+        Tree<Integer> root = new Tree<>(0);
+        Tree<Integer> child1 = root.add(1);
+        Tree<Integer> child2 = new Tree<> (3);
+        root.add(child2);
+        Integer[] arr = new Integer[3];
+        int idx = 0;
+        for (var it : root) {
+            arr[idx++] = it.getVal();
+        }
+        assertArrayEquals(new Integer[] {0, 1, 3}, arr);
+     }
+
+    @Test
     void checkEqualsReflexivity() {
-        String[] arr = new String[] {};
-        Tree<String> tree1 = new Tree<>("A");
-        assertEquals(tree1, tree1);
-        assertEquals(tree1.hashCode(),tree1.hashCode());
+        final int size = 10000;
+        Tree<Integer> root = new Tree<>(0);
+        Random rd = new Random();
+        for (int i = 0; i < size; i++) {
+            root.add(rd.nextInt());
+        }
+        assertEquals(root, root);
+        assertEquals(root.hashCode(), root.hashCode());
     }
 
     @Test
-    void checkEqualsWithTreeWithChild() {
-        Tree<String> parent1 = new Tree<>("A");
-        Tree<String> parent2 = new Tree<>("A");
-        Tree<String> child1 = new Tree<>("B");
-        Tree<String> child2 = new Tree<>("B");
-        Tree<String> child11 = new Tree<>("C");
-        Tree<String> child22 = new Tree<>("C");
-        parent1.add(child1);
-        parent2.add(child2);
-        child1.add(child11);
-        child2.add(child22);
-        assertEquals(parent1.hashCode(), parent2.hashCode());
-        assertEquals(parent1, parent2);
+    void checkEqualsSymmetry() {
+        final int size = 10000;
+        Random rd = new Random();
+        Tree<Integer> root = new Tree<>(0);
+        Tree<Integer> anotherRoot = new Tree<>(0);
+        for (int i = 0; i < size; i++) {
+            int val = rd.nextInt();
+            root.add(val);
+            anotherRoot.add(val);
+        }
+        assertEquals(root, anotherRoot);
+        assertEquals(anotherRoot, root);
+        assertEquals(root.hashCode(), anotherRoot.hashCode());
     }
 
     @Test
-    void checkEqualsWithTreeWithDifChild() {
-        Tree<String> parent1 = new Tree<>("A");
-        Tree<String> parent2 = new Tree<>("A");
-        Tree<String> child1 = new Tree<>("B");
-        Tree<String> child2 = new Tree<>("B");
-        Tree<String> child11 = new Tree<>("C");
-        Tree<String> child22 = new Tree<>("C");
-        parent1.add(child1);
-        parent2.add(child2);
-        child1.add(child11);
-        parent2.add(child22);
-        assertNotEquals(parent1.hashCode(), parent2.hashCode());
-        assertNotEquals(parent1, parent2);
+    void checkEqualsTransitivity() {
+        final int size = 10000;
+        Random rd = new Random();
+        Tree<Integer> root = new Tree<>(0);
+        Tree<Integer> anotherRoot = new Tree<>(0);
+        Tree<Integer> thirdRoot = new Tree<>(0);
+        for (int i = 0; i < size; i++) {
+            int val = rd.nextInt();
+            root.add(val);
+            anotherRoot.add(val);
+            thirdRoot.add(val);
+        }
+        assertEquals(root, anotherRoot);
+        assertEquals(anotherRoot, thirdRoot);
+        assertEquals(root, thirdRoot);
+        assertEquals(root.hashCode(), thirdRoot.hashCode());
+    }
+
+    @Test
+    void checkEqualsWithDepthTrees() {
+        int depth = 10;
+        int size = 1000;
+        Random rd = new Random();
+        Tree<Integer> root = new Tree<>(0);
+        Tree<Integer> anotherRoot = new Tree<>(0);
+        for (int i = 0; i < depth; i++) {
+            for (int j = 0; j < size; j++) {
+                int val = rd.nextInt();
+                root.add(val);
+                anotherRoot.add(val);
+            }
+        }
+        assertEquals(root, anotherRoot);
+        assertEquals(root.hashCode(), anotherRoot.hashCode());
+    }
+
+    @Test
+    void checkEqualsWithTreeWithDifferentRoot() {
+        final int size = 10000;
+        Random rd = new Random();
+        Tree<Integer> root = new Tree<>(0);
+        Tree<Integer> anotherRoot = new Tree<>(1);
+        for (int i = 0; i < size; i++) {
+            int val = rd.nextInt();
+            root.add(val);
+            anotherRoot.add(val);
+        }
+        assertNotEquals(root, anotherRoot);
+        assertNotEquals(root.hashCode(), anotherRoot.hashCode());
+    }
+
+    @Test
+    void checkEqualsWithDifferentLeaf() {
+        int depth = 10;
+        int size = 1000;
+        Random rd = new Random();
+        Tree<Integer> root = new Tree<>(0);
+        Tree<Integer> anotherRoot = new Tree<>(0);
+        for (int i = 0; i < depth; i++) {
+            for (int j = 0; j < size; j++) {
+                int val = rd.nextInt();
+                if (i == 9 && j == 950) {
+                    root.add(val);
+                    anotherRoot.add(2 * val);
+                }
+                root.add(val);
+                anotherRoot.add(val);
+            }
+        }
+        assertNotEquals(root, anotherRoot);
+        assertNotEquals(root.hashCode(), anotherRoot.hashCode());
+    }
+
+    @Test
+    void checkEqualsWithDifferentInternalNode() {
+        int depth = 10;
+        int size = 1000;
+        Random rd = new Random();
+        Tree<Integer> root = new Tree<>(0);
+        Tree<Integer> anotherRoot = new Tree<>(0);
+        for (int i = 0; i < depth; i++) {
+            for (int j = 0; j < size; j++) {
+                int val = rd.nextInt();
+                if (i == 4 && j == 435) {
+                    root.add(val);
+                    anotherRoot.add(2 * val);
+                }
+                root.add(val);
+                anotherRoot.add(val);
+            }
+        }
+        assertNotEquals(root, anotherRoot);
+        assertNotEquals(root.hashCode(), anotherRoot.hashCode());
     }
 
     @Test
@@ -110,7 +211,7 @@ class SampleTest {
     }
 
     @Test
-    void checkRemoveToEqTree() {
+    void checkRemoveToEqualsTree() {
         Tree<String> parent1 = new Tree<>("A");
         Tree<String> parent2 = new Tree<>("A");
         Tree<String> child1 = new Tree<>("B");
@@ -129,6 +230,43 @@ class SampleTest {
     }
 
     @Test
+    void checkRemoveNonexistentChild() {
+        Tree<String> parent = new Tree<>("1");
+        Tree<String> child = parent.add("3");
+        boolean res  = parent.removeChild("5");
+        assertFalse(res);
+    }
+
+    @Test
+    void checkRemoveNonexistentChildArgAsTree() {
+        Tree<String> parent = new Tree<>("1");
+        Tree<String> child = parent.add("3");
+        Tree<String> anotherChild = new Tree<>("1");
+        boolean res  = parent.removeChild(anotherChild);
+        assertFalse(res);
+    }
+
+    @Test
+    void checkBasicRemove() {
+        Tree<String> parent = new Tree<>("1");
+        Tree<String> child = parent.add("3");
+        boolean res  = parent.removeChild("3");
+        List<Tree<String>> list = parent.getChildren();
+        assertEquals(0, list.size());
+        assertTrue(res);
+    }
+
+    @Test
+    void checkBasicRemoveWithTreeArgument() {
+        Tree<String> parent = new Tree<>("1");
+        Tree<String> child = parent.add("3");
+        boolean res  = parent.removeChild(child);
+        List<Tree<String>> list = parent.getChildren();
+        assertEquals(0, list.size());
+        assertTrue(res);
+    }
+
+    @Test
     void checkIteration() {
         String[] arr = new String[4];
         Tree<String> parent = new Tree<>("1");
@@ -142,5 +280,35 @@ class SampleTest {
             arr[idx++] = it.getVal();
         }
         assertArrayEquals(new String[] {"1", "2", "3", "4"}, arr);
+    }
+
+    @Test
+    void checkIteratorWithAdd_shouldThrowException() throws InterruptedException {
+        Tree<String> parent = new Tree<>("parent");
+        parent.add("child1");
+        parent.add("child2");
+        assertThrows(
+            ConcurrentModificationException.class,
+            () -> {
+                for (var it : parent) {
+                    it.add("newChild");
+                }
+            }
+        );
+    }
+
+    @Test
+    void checkIteratorWithRemove_shouldThrowException() throws InterruptedException {
+        Tree<String> parent = new Tree<>("parent");
+        parent.add("child1");
+        parent.add("child2");
+        assertThrows(
+                ConcurrentModificationException.class,
+                () -> {
+                    for (var it : parent) {
+                        it.remove();
+                    }
+                }
+        );
     }
 }
