@@ -27,7 +27,7 @@
     catch(err) {
     }
 //-->
-var data = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10};
+var data = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10,"i9":10,"i10":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -137,7 +137,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <pre>public class <span class="typeNameLabel">Tree&lt;T&gt;</span>
 extends java.lang.Object
 implements java.lang.Iterable&lt;<a href="Tree.html" title="class in ru.nsu.romanov.tree">Tree</a>&lt;T&gt;&gt;</pre>
-<div class="block">Class tree</div>
+<div class="block">Class tree.x`</div>
 </li>
 </ul>
 </div>
@@ -159,7 +159,9 @@ implements java.lang.Iterable&lt;<a href="Tree.html" title="class in ru.nsu.roma
 </tr>
 <tr class="altColor">
 <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(T)">Tree</a></span>&#8203;(<a href="Tree.html" title="type parameter in Tree">T</a>&nbsp;val)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Constructor of class.</div>
+</td>
 </tr>
 </table>
 </li>
@@ -182,42 +184,79 @@ implements java.lang.Iterable&lt;<a href="Tree.html" title="class in ru.nsu.roma
 <tr id="i0" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#add(ru.nsu.romanov.tree.Tree)">add</a></span>&#8203;(@NotNull <a href="Tree.html" title="class in ru.nsu.romanov.tree">Tree</a>&lt;<a href="Tree.html" title="type parameter in Tree">T</a>&gt;&nbsp;child)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Added to this Tree child.</div>
+</td>
 </tr>
 <tr id="i1" class="rowColor">
-<td class="colFirst"><code>void</code></td>
+<td class="colFirst"><code><a href="Tree.html" title="class in ru.nsu.romanov.tree">Tree</a>&lt;<a href="Tree.html" title="type parameter in Tree">T</a>&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#add(T)">add</a></span>&#8203;(<a href="Tree.html" title="type parameter in Tree">T</a>&nbsp;childVal)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Added to this Tree new child.</div>
+</td>
 </tr>
 <tr id="i2" class="altColor">
 <td class="colFirst"><code>boolean</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#equals(java.lang.Object)">equals</a></span>&#8203;(java.lang.Object&nbsp;other)</code></th>
-<td class="colLast">&nbsp;</td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#equals(java.lang.Object)">equals</a></span>&#8203;(java.lang.Object&nbsp;o)</code></th>
+<td class="colLast">
+<div class="block">Override std equals.</div>
+</td>
 </tr>
 <tr id="i3" class="rowColor">
-<td class="colFirst"><code><a href="Tree.html" title="type parameter in Tree">T</a></code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getVal()">getVal</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colFirst"><code>java.util.List&lt;<a href="Tree.html" title="class in ru.nsu.romanov.tree">Tree</a>&lt;<a href="Tree.html" title="type parameter in Tree">T</a>&gt;&gt;</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getChildren()">getChildren</a></span>()</code></th>
+<td class="colLast">
+<div class="block">Getter of child.</div>
+</td>
 </tr>
 <tr id="i4" class="altColor">
-<td class="colFirst"><code>int</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#hashCode()">hashCode</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colFirst"><code><a href="Tree.html" title="type parameter in Tree">T</a></code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getVal()">getVal</a></span>()</code></th>
+<td class="colLast">
+<div class="block">Getter of val.</div>
+</td>
 </tr>
 <tr id="i5" class="rowColor">
-<td class="colFirst"><code>java.util.Iterator&lt;<a href="Tree.html" title="class in ru.nsu.romanov.tree">Tree</a>&lt;<a href="Tree.html" title="type parameter in Tree">T</a>&gt;&gt;</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#iterator()">iterator</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colFirst"><code>int</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#hashCode()">hashCode</a></span>()</code></th>
+<td class="colLast">
+<div class="block">Override std hashcode.</div>
+</td>
 </tr>
 <tr id="i6" class="altColor">
-<td class="colFirst"><code>void</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#remove()">remove</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colFirst"><code>@NotNull java.util.Iterator&lt;<a href="Tree.html" title="class in ru.nsu.romanov.tree">Tree</a>&lt;<a href="Tree.html" title="type parameter in Tree">T</a>&gt;&gt;</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#iterator()">iterator</a></span>()</code></th>
+<td class="colLast">
+<div class="block">Std Iterator.</div>
+</td>
 </tr>
 <tr id="i7" class="rowColor">
 <td class="colFirst"><code>void</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#remove()">remove</a></span>()</code></th>
+<td class="colLast">
+<div class="block">Remove this node and add all child to parent child.</div>
+</td>
+</tr>
+<tr id="i8" class="altColor">
+<td class="colFirst"><code>boolean</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#removeChild(ru.nsu.romanov.tree.Tree)">removeChild</a></span>&#8203;(<a href="Tree.html" title="class in ru.nsu.romanov.tree">Tree</a>&lt;<a href="Tree.html" title="type parameter in Tree">T</a>&gt;&nbsp;node)</code></th>
+<td class="colLast">
+<div class="block">Remove child from this root.</div>
+</td>
+</tr>
+<tr id="i9" class="rowColor">
+<td class="colFirst"><code>boolean</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#removeChild(T)">removeChild</a></span>&#8203;(<a href="Tree.html" title="type parameter in Tree">T</a>&nbsp;node)</code></th>
+<td class="colLast">
+<div class="block">Remove child from this root.</div>
+</td>
+</tr>
+<tr id="i10" class="altColor">
+<td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setVal(T)">setVal</a></span>&#8203;(<a href="Tree.html" title="type parameter in Tree">T</a>&nbsp;val)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Setter of value.</div>
+</td>
 </tr>
 </table>
 <ul class="blockList">
@@ -259,6 +298,11 @@ implements java.lang.Iterable&lt;<a href="Tree.html" title="class in ru.nsu.roma
 <li class="blockList">
 <h4>Tree</h4>
 <pre>public&nbsp;Tree&#8203;(<a href="Tree.html" title="type parameter in Tree">T</a>&nbsp;val)</pre>
+<div class="block">Constructor of class.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>val</code> - set val.</dd>
+</dl>
 </li>
 </ul>
 </li>
@@ -278,6 +322,11 @@ implements java.lang.Iterable&lt;<a href="Tree.html" title="class in ru.nsu.roma
 <li class="blockList">
 <h4>getVal</h4>
 <pre class="methodSignature">public&nbsp;<a href="Tree.html" title="type parameter in Tree">T</a>&nbsp;getVal()</pre>
+<div class="block">Getter of val.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>val</dd>
+</dl>
 </li>
 </ul>
 <a id="setVal(java.lang.Object)">
@@ -289,6 +338,25 @@ implements java.lang.Iterable&lt;<a href="Tree.html" title="class in ru.nsu.roma
 <li class="blockList">
 <h4>setVal</h4>
 <pre class="methodSignature">public&nbsp;void&nbsp;setVal&#8203;(<a href="Tree.html" title="type parameter in Tree">T</a>&nbsp;val)</pre>
+<div class="block">Setter of value.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>val</code> - set val.</dd>
+</dl>
+</li>
+</ul>
+<a id="getChildren()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getChildren</h4>
+<pre class="methodSignature">public&nbsp;java.util.List&lt;<a href="Tree.html" title="class in ru.nsu.romanov.tree">Tree</a>&lt;<a href="Tree.html" title="type parameter in Tree">T</a>&gt;&gt;&nbsp;getChildren()</pre>
+<div class="block">Getter of child.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>list child.</dd>
+</dl>
 </li>
 </ul>
 <a id="add(java.lang.Object)">
@@ -299,8 +367,15 @@ implements java.lang.Iterable&lt;<a href="Tree.html" title="class in ru.nsu.roma
 <ul class="blockList">
 <li class="blockList">
 <h4>add</h4>
-<pre class="methodSignature">public&nbsp;void&nbsp;add&#8203;(@NotNull
-                <a href="Tree.html" title="type parameter in Tree">T</a>&nbsp;childVal)</pre>
+<pre class="methodSignature">public&nbsp;<a href="Tree.html" title="class in ru.nsu.romanov.tree">Tree</a>&lt;<a href="Tree.html" title="type parameter in Tree">T</a>&gt;&nbsp;add&#8203;(@NotNull
+                   <a href="Tree.html" title="type parameter in Tree">T</a>&nbsp;childVal)</pre>
+<div class="block">Added to this Tree new child.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>childVal</code> - value of child.</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>child.</dd>
+</dl>
 </li>
 </ul>
 <a id="add(ru.nsu.romanov.tree.Tree)">
@@ -311,6 +386,11 @@ implements java.lang.Iterable&lt;<a href="Tree.html" title="class in ru.nsu.roma
 <h4>add</h4>
 <pre class="methodSignature">public&nbsp;void&nbsp;add&#8203;(@NotNull
                 @NotNull <a href="Tree.html" title="class in ru.nsu.romanov.tree">Tree</a>&lt;<a href="Tree.html" title="type parameter in Tree">T</a>&gt;&nbsp;child)</pre>
+<div class="block">Added to this Tree child.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>child</code> - subtree we added to this tree.</dd>
+</dl>
 </li>
 </ul>
 <a id="remove()">
@@ -320,6 +400,41 @@ implements java.lang.Iterable&lt;<a href="Tree.html" title="class in ru.nsu.roma
 <li class="blockList">
 <h4>remove</h4>
 <pre class="methodSignature">public&nbsp;void&nbsp;remove()</pre>
+<div class="block">Remove this node and add all child to parent child.</div>
+</li>
+</ul>
+<a id="removeChild(ru.nsu.romanov.tree.Tree)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>removeChild</h4>
+<pre class="methodSignature">public&nbsp;boolean&nbsp;removeChild&#8203;(<a href="Tree.html" title="class in ru.nsu.romanov.tree">Tree</a>&lt;<a href="Tree.html" title="type parameter in Tree">T</a>&gt;&nbsp;node)</pre>
+<div class="block">Remove child from this root.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>node</code> - subtree we need to delete from root.</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>true if deleted a node, false if failed to delete a node.</dd>
+</dl>
+</li>
+</ul>
+<a id="removeChild(java.lang.Object)">
+<!--   -->
+</a><a id="removeChild(T)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>removeChild</h4>
+<pre class="methodSignature">public&nbsp;boolean&nbsp;removeChild&#8203;(<a href="Tree.html" title="type parameter in Tree">T</a>&nbsp;node)</pre>
+<div class="block">Remove child from this root.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>node</code> - value of subtree we need to delete from root.</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>true if deleted a node, false if failed to delete a node.</dd>
+</dl>
 </li>
 </ul>
 <a id="equals(java.lang.Object)">
@@ -328,10 +443,15 @@ implements java.lang.Iterable&lt;<a href="Tree.html" title="class in ru.nsu.roma
 <ul class="blockList">
 <li class="blockList">
 <h4>equals</h4>
-<pre class="methodSignature">public&nbsp;boolean&nbsp;equals&#8203;(java.lang.Object&nbsp;other)</pre>
+<pre class="methodSignature">public&nbsp;boolean&nbsp;equals&#8203;(java.lang.Object&nbsp;o)</pre>
+<div class="block">Override std equals.</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Overrides:</span></dt>
 <dd><code>equals</code>&nbsp;in class&nbsp;<code>java.lang.Object</code></dd>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>o</code> - Object with which we compare.</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>true if o equal to this Tree, false if not equal to Tree.</dd>
 </dl>
 </li>
 </ul>
@@ -342,9 +462,12 @@ implements java.lang.Iterable&lt;<a href="Tree.html" title="class in ru.nsu.roma
 <li class="blockList">
 <h4>hashCode</h4>
 <pre class="methodSignature">public&nbsp;int&nbsp;hashCode()</pre>
+<div class="block">Override std hashcode.</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Overrides:</span></dt>
 <dd><code>hashCode</code>&nbsp;in class&nbsp;<code>java.lang.Object</code></dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>hash of this Tree.</dd>
 </dl>
 </li>
 </ul>
@@ -354,10 +477,14 @@ implements java.lang.Iterable&lt;<a href="Tree.html" title="class in ru.nsu.roma
 <ul class="blockListLast">
 <li class="blockList">
 <h4>iterator</h4>
-<pre class="methodSignature">public&nbsp;java.util.Iterator&lt;<a href="Tree.html" title="class in ru.nsu.romanov.tree">Tree</a>&lt;<a href="Tree.html" title="type parameter in Tree">T</a>&gt;&gt;&nbsp;iterator()</pre>
+<pre class="methodSignature">@NotNull
+public&nbsp;@NotNull java.util.Iterator&lt;<a href="Tree.html" title="class in ru.nsu.romanov.tree">Tree</a>&lt;<a href="Tree.html" title="type parameter in Tree">T</a>&gt;&gt;&nbsp;iterator()</pre>
+<div class="block">Std Iterator.</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code>iterator</code>&nbsp;in interface&nbsp;<code>java.lang.Iterable&lt;<a href="Tree.html" title="type parameter in Tree">T</a>&gt;</code></dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>Iterator.</dd>
 </dl>
 </li>
 </ul>
