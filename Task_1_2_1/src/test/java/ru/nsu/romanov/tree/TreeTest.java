@@ -1,13 +1,17 @@
 package ru.nsu.romanov.tree;
 
-import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import java.util.ArrayList;
 import java.util.ConcurrentModificationException;
 import java.util.List;
 import java.util.Random;
+import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
 
 class SampleTest {
 
@@ -22,7 +26,7 @@ class SampleTest {
     @Test
     void checkSetter() {
         Tree<String> tree = new Tree<>("hello");
-        assertEquals("hello", tree.getVal());;
+        assertEquals("hello", tree.getVal());
         tree.setVal("goodbye");
         assertEquals("goodbye", tree.getVal());
     }
@@ -31,7 +35,7 @@ class SampleTest {
     void checkAdd() {
         Tree<Integer> root = new Tree<>(0);
         Tree<Integer> child1 = root.add(1);
-        Tree<Integer> child2 = new Tree<> (3);
+        Tree<Integer> child2 = new Tree<>(3);
         root.add(child2);
         Integer[] arr = new Integer[3];
         int idx = 0;
@@ -39,7 +43,7 @@ class SampleTest {
             arr[idx++] = it.getVal();
         }
         assertArrayEquals(new Integer[] {0, 1, 3}, arr);
-     }
+    }
 
     @Test
     void checkEqualsReflexivity() {
@@ -240,7 +244,6 @@ class SampleTest {
     @Test
     void checkRemoveNonexistentChildArgAsTree() {
         Tree<String> parent = new Tree<>("1");
-        Tree<String> child = parent.add("3");
         Tree<String> anotherChild = new Tree<>("1");
         boolean res  = parent.removeChild(anotherChild);
         assertFalse(res);
@@ -283,7 +286,7 @@ class SampleTest {
     }
 
     @Test
-    void checkIteratorWithAdd_shouldThrowException() throws InterruptedException {
+    void checkIteratorWithAdd_shouldThrowException() {
         Tree<String> parent = new Tree<>("parent");
         parent.add("child1");
         parent.add("child2");
@@ -298,7 +301,7 @@ class SampleTest {
     }
 
     @Test
-    void checkIteratorWithRemove_shouldThrowException() throws InterruptedException {
+    void checkIteratorWithRemove_shouldThrowException() {
         Tree<String> parent = new Tree<>("parent");
         parent.add("child1");
         parent.add("child2");
