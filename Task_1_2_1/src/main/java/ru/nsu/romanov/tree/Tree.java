@@ -180,10 +180,10 @@ public class Tree<T> implements Iterable<Tree<T>> {
     @Override
     public @NotNull Iterator<Tree<T>> iterator() {
         if (iteratorType == BFS) {
-            return new BFSIterator();
+            return new BfsIterator();
         }
         else {
-            return new DFSIterator();
+            return new DfsIterator();
         }
     }
 
@@ -199,13 +199,13 @@ public class Tree<T> implements Iterable<Tree<T>> {
     /**
      * Describing of std iterator DFS.
      */
-    private class BFSIterator implements Iterator<Tree<T>> {
+    private class BfsIterator implements Iterator<Tree<T>> {
         private final Deque<Tree<T>> nodesToVisit = new ArrayDeque<>();
 
         /**
          * Constructor of DFS iterator.
          */
-        private BFSIterator() {
+        private BfsIterator() {
             modified = false;
             nodesToVisit.add(Tree.this);
         }
@@ -245,10 +245,10 @@ public class Tree<T> implements Iterable<Tree<T>> {
     /**
      * Describing of std iterator DFS.
      */
-    private @NotNull class DFSIterator implements Iterator<Tree<T>> {
+    private class DfsIterator implements Iterator<Tree<T>> {
         private final Stack<Tree<T>> st = new Stack<>();
 
-        private DFSIterator() {
+        private DfsIterator() {
             modified = false;
             st.push(Tree.this);
         }

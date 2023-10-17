@@ -254,7 +254,7 @@ class TreeTest {
     }
 
     @Test
-    void checkBFSIteration() {
+    void checkBfsIteration() {
         String[] arr = new String[4];
         Tree<String> parent = new Tree<>("1");
         Tree<String> child = new Tree<>("3");
@@ -271,7 +271,7 @@ class TreeTest {
     }
 
     @Test
-    void checkBFSIteratorWithAdd_shouldThrowException() {
+    void checkBfsIteratorWithAdd_shouldThrowException() {
         Tree<String> parent = new Tree<>("parent");
         parent.add("child1");
         parent.add("child2");
@@ -287,7 +287,7 @@ class TreeTest {
     }
 
     @Test
-    void checkBFSIteratorWithRemove_shouldThrowException() {
+    void checkBfsIteratorWithRemove_shouldThrowException() {
         Tree<String> parent = new Tree<>("parent");
         parent.add("child1");
         parent.add("child2");
@@ -303,7 +303,7 @@ class TreeTest {
     }
 
     @Test
-    void checkDFSIteration() {
+    void checkDfsIteration() {
         String[] arr = new String[4];
         Tree<String> parent = new Tree<>("1");
         Tree<String> child = new Tree<>("3");
@@ -320,7 +320,7 @@ class TreeTest {
     }
 
     @Test
-    void checkDFSIteratorWithAdd_shouldThrowException() {
+    void checkDfsIteratorWithAdd_shouldThrowException() {
         Tree<String> parent = new Tree<>("parent");
         parent.add("child1");
         parent.add("child2");
@@ -336,7 +336,7 @@ class TreeTest {
     }
 
     @Test
-    void checkDFSIteratorWithRemove_shouldThrowException() {
+    void checkDfsIteratorWithRemove_shouldThrowException() {
         Tree<String> parent = new Tree<>("parent");
         parent.add("child1");
         parent.add("child2");
