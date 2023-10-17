@@ -201,7 +201,7 @@ public class Tree<T> implements Iterable<Tree<T>> {
      */
     private class BfsIterator implements Iterator<Tree<T>> {
         private final Deque<Tree<T>> nodesToVisit = new ArrayDeque<>();
-        private int expectedCount;
+        private final int expectedCount;
 
         /**
          * Constructor of DFS iterator.
@@ -248,7 +248,7 @@ public class Tree<T> implements Iterable<Tree<T>> {
      */
     private class DfsIterator implements Iterator<Tree<T>> {
         private final Stack<Tree<T>> st = new Stack<>();
-        private int expectedCount;
+        private final int expectedCount;
 
         private DfsIterator() {
             expectedCount = count;
