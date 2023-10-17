@@ -350,4 +350,38 @@ class TreeTest {
                 }
         );
     }
+
+    @Test
+    void checkSubIteratorDfs() {
+        Tree<String> parent = new Tree<>("parent");
+        parent.add("child1");
+        parent.add("child2");
+        parent.setIteratorType(DFS);
+        assertThrows(
+                ConcurrentModificationException.class,
+                () -> {
+                    for (var it : parent) {
+                        it.add("hello");
+                        it.iterator();
+                    }
+                }
+        );
+    }
+
+    @Test
+    void checkSubIteratorBfs() {
+        Tree<String> parent = new Tree<>("parent");
+        parent.add("child1");
+        parent.add("child2");
+        parent.setIteratorType(BFS);
+        assertThrows(
+                ConcurrentModificationException.class,
+                () -> {
+                    for (var it : parent) {
+                        it.add("hello");
+                        it.iterator();
+                    }
+                }
+        );
+    }
 }

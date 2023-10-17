@@ -21,8 +21,8 @@ public class Tree<T> implements Iterable<Tree<T>> {
     private final @NotNull List<Tree<T>> child = new ArrayList<>();
     private @NotNull T val;
     private Tree<T> parent = null;
-    private boolean modified = false;
     private IteratorType iteratorType = BFS;
+    private int count = 0;
 
 
     private void setParent(Tree<T> parent) {
@@ -85,7 +85,7 @@ public class Tree<T> implements Iterable<Tree<T>> {
     public Tree<T> add(@NotNull T childVal) {
         Tree<T> child = new Tree<>(childVal, this);
         this.child.add(child);
-        modified = true;
+        count++;
         return child;
     }
 
@@ -96,7 +96,7 @@ public class Tree<T> implements Iterable<Tree<T>> {
      */
     public void add(@NotNull Tree<T> child) {
         child.setParent(this);
-        modified = true;
+        count++;
         this.child.add(child);
     }
 
@@ -104,7 +104,7 @@ public class Tree<T> implements Iterable<Tree<T>> {
      * Remove this node and add all child to parent child.
      */
     public void remove() {
-        modified = true;
+        count++;
         if (parent != null) {
             parent.child.remove(this);
             parent.child.addAll(this.child);
@@ -120,7 +120,9 @@ public class Tree<T> implements Iterable<Tree<T>> {
      */
     public boolean removeChild(Tree<T> node) {
         boolean res = child.remove(node);
-        modified = res;
+        if (res) {
+            count++;
+        }
         return res;
     }
 
@@ -132,7 +134,7 @@ public class Tree<T> implements Iterable<Tree<T>> {
      */
     public boolean removeChild(T node) {
         boolean res = child.removeIf(tree -> tree.getVal() == node);
-        modified = res;
+        count++;
         return res;
     }
 
@@ -182,9 +184,7 @@ public class Tree<T> implements Iterable<Tree<T>> {
         if (iteratorType == BFS) {
             return new BfsIterator();
         }
-        else {
-            return new DfsIterator();
-        }
+        return new DfsIterator();
     }
 
     /**
@@ -201,12 +201,13 @@ public class Tree<T> implements Iterable<Tree<T>> {
      */
     private class BfsIterator implements Iterator<Tree<T>> {
         private final Deque<Tree<T>> nodesToVisit = new ArrayDeque<>();
+        private int expectedCount;
 
         /**
          * Constructor of DFS iterator.
          */
         private BfsIterator() {
-            modified = false;
+            expectedCount = count;
             nodesToVisit.add(Tree.this);
         }
 
@@ -217,7 +218,7 @@ public class Tree<T> implements Iterable<Tree<T>> {
          */
         @Override
         public boolean hasNext() {
-            if (modified) {
+            if (count != expectedCount) {
                 throw new ConcurrentModificationException();
             }
             return !nodesToVisit.isEmpty();
@@ -233,7 +234,7 @@ public class Tree<T> implements Iterable<Tree<T>> {
             if (!hasNext()) {
                 throw new NoSuchElementException();
             }
-            if (modified) {
+            if (expectedCount != count) {
                 throw new ConcurrentModificationException();
             }
             Tree<T> nextNode = nodesToVisit.remove();
@@ -247,9 +248,10 @@ public class Tree<T> implements Iterable<Tree<T>> {
      */
     private class DfsIterator implements Iterator<Tree<T>> {
         private final Stack<Tree<T>> st = new Stack<>();
+        private int expectedCount;
 
         private DfsIterator() {
-            modified = false;
+            expectedCount = count;
             st.push(Tree.this);
         }
 
@@ -260,7 +262,7 @@ public class Tree<T> implements Iterable<Tree<T>> {
          */
         @Override
         public boolean hasNext() {
-            if (modified) {
+            if (count != expectedCount) {
                 throw  new ConcurrentModificationException();
             }
             return !st.isEmpty();
@@ -276,11 +278,11 @@ public class Tree<T> implements Iterable<Tree<T>> {
             if (!hasNext()) {
                 throw new NoSuchElementException();
             }
-            if (modified) {
+            if (count != expectedCount) {
                 throw new ConcurrentModificationException();
             }
             Tree<T> nextNode = st.pop();
-            for (var it: nextNode.child) {
+            for (var it : nextNode.child) {
                 st.push(it);
             }
             return nextNode;
