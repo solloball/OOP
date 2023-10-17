@@ -6,6 +6,8 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static ru.nsu.romanov.tree.IteratorType.BFS;
+import static ru.nsu.romanov.tree.IteratorType.DFS;
 
 import java.util.ConcurrentModificationException;
 import java.util.List;
@@ -252,13 +254,14 @@ class TreeTest {
     }
 
     @Test
-    void checkIteration() {
+    void checkBFSIteration() {
         String[] arr = new String[4];
         Tree<String> parent = new Tree<>("1");
         Tree<String> child = new Tree<>("3");
         parent.add("2");
         parent.add(child);
         child.add("4");
+        parent.setIteratorType(BFS);
 
         int idx = 0;
         for (var it : parent) {
@@ -268,10 +271,11 @@ class TreeTest {
     }
 
     @Test
-    void checkIteratorWithAdd_shouldThrowException() {
+    void checkBFSIteratorWithAdd_shouldThrowException() {
         Tree<String> parent = new Tree<>("parent");
         parent.add("child1");
         parent.add("child2");
+        parent.setIteratorType(BFS);
         assertThrows(
             ConcurrentModificationException.class,
             () -> {
@@ -283,10 +287,60 @@ class TreeTest {
     }
 
     @Test
-    void checkIteratorWithRemove_shouldThrowException() {
+    void checkBFSIteratorWithRemove_shouldThrowException() {
         Tree<String> parent = new Tree<>("parent");
         parent.add("child1");
         parent.add("child2");
+        parent.setIteratorType(BFS);
+        assertThrows(
+                ConcurrentModificationException.class,
+                () -> {
+                    for (var it : parent) {
+                        it.remove();
+                    }
+                }
+        );
+    }
+
+    @Test
+    void checkDFSIteration() {
+        String[] arr = new String[4];
+        Tree<String> parent = new Tree<>("1");
+        Tree<String> child = new Tree<>("3");
+        parent.add("2");
+        parent.add(child);
+        child.add("4");
+        parent.setIteratorType(DFS);
+
+        int idx = 0;
+        for (var it : parent) {
+            arr[idx++] = it.getVal();
+        }
+        assertArrayEquals(new String[] {"1", "3", "4", "2"}, arr);
+    }
+
+    @Test
+    void checkDFSIteratorWithAdd_shouldThrowException() {
+        Tree<String> parent = new Tree<>("parent");
+        parent.add("child1");
+        parent.add("child2");
+        parent.setIteratorType(DFS);
+        assertThrows(
+                ConcurrentModificationException.class,
+                () -> {
+                    for (var it : parent) {
+                        it.add("newChild");
+                    }
+                }
+        );
+    }
+
+    @Test
+    void checkDFSIteratorWithRemove_shouldThrowException() {
+        Tree<String> parent = new Tree<>("parent");
+        parent.add("child1");
+        parent.add("child2");
+        parent.setIteratorType(DFS);
         assertThrows(
                 ConcurrentModificationException.class,
                 () -> {

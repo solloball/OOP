@@ -1,5 +1,8 @@
 package ru.nsu.romanov.tree;
 
+import static ru.nsu.romanov.tree.IteratorType.BFS;
+import static ru.nsu.romanov.tree.IteratorType.DFS;
+
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.ConcurrentModificationException;
@@ -8,17 +11,18 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Objects;
+import java.util.Stack;
 import org.jetbrains.annotations.NotNull;
-
 
 /**
  * Class tree.x`
  */
 public class Tree<T> implements Iterable<Tree<T>> {
-    private final List<Tree<T>> child = new ArrayList<>();
-    private T val;
+    private final @NotNull List<Tree<T>> child = new ArrayList<>();
+    private @NotNull T val;
     private Tree<T> parent = null;
     private boolean modified = false;
+    private IteratorType iteratorType = BFS;
 
 
     private void setParent(Tree<T> parent) {
@@ -31,7 +35,7 @@ public class Tree<T> implements Iterable<Tree<T>> {
      * @param val set val.
      * @param parent set parent.
      */
-    private Tree(T val, Tree<T> parent) {
+    private Tree(@NotNull T val, @NotNull Tree<T> parent) {
         this.val = val;
         setParent(parent);
     }
@@ -41,7 +45,7 @@ public class Tree<T> implements Iterable<Tree<T>> {
      *
      * @param val set val.
      */
-    public Tree(T val) {
+    public Tree(@NotNull T val) {
         this.val = val;
     }
 
@@ -50,7 +54,7 @@ public class Tree<T> implements Iterable<Tree<T>> {
      *
      * @return val
      */
-    public T getVal() {
+    public @NotNull T getVal() {
         return val;
     }
 
@@ -59,7 +63,7 @@ public class Tree<T> implements Iterable<Tree<T>> {
      *
      * @param val set val.
      */
-    public void setVal(T val) {
+    public void setVal(@NotNull T val) {
         this.val = val;
     }
 
@@ -68,7 +72,7 @@ public class Tree<T> implements Iterable<Tree<T>> {
      *
      * @return list child.
      */
-    public List<Tree<T>> getChildren() {
+    public @NotNull List<Tree<T>> getChildren() {
         return child;
     }
 
@@ -175,25 +179,39 @@ public class Tree<T> implements Iterable<Tree<T>> {
      */
     @Override
     public @NotNull Iterator<Tree<T>> iterator() {
-        return new TreeIterator();
+        if (iteratorType == BFS) {
+            return new BFSIterator();
+        }
+        else {
+            return new DFSIterator();
+        }
     }
 
     /**
-     * Describing of std iterator.
+     * Setter for IteratorType.
+     *
+     * @param iteratorType value we set to this iteratorType.
      */
-    private class TreeIterator implements Iterator<Tree<T>> {
+    public void setIteratorType(@NotNull IteratorType iteratorType) {
+        this.iteratorType = iteratorType;
+    }
+
+    /**
+     * Describing of std iterator DFS.
+     */
+    private class BFSIterator implements Iterator<Tree<T>> {
         private final Deque<Tree<T>> nodesToVisit = new ArrayDeque<>();
 
         /**
-         * Constructor if iterator.
+         * Constructor of DFS iterator.
          */
-        private TreeIterator() {
+        private BFSIterator() {
             modified = false;
             nodesToVisit.add(Tree.this);
         }
 
         /**
-         * override std hasNext.
+         * override std hasNext for BFS iterator.
          *
          * @return true if there is next iterator,  false otherwise.
          */
@@ -220,6 +238,51 @@ public class Tree<T> implements Iterable<Tree<T>> {
             }
             Tree<T> nextNode = nodesToVisit.remove();
             nodesToVisit.addAll(nextNode.child);
+            return nextNode;
+        }
+    }
+
+    /**
+     * Describing of std iterator DFS.
+     */
+    private @NotNull class DFSIterator implements Iterator<Tree<T>> {
+        private final Stack<Tree<T>> st = new Stack<>();
+
+        private DFSIterator() {
+            modified = false;
+            st.push(Tree.this);
+        }
+
+        /**
+         * override std hasNext for DFS iterator.
+         *
+         * @return true if there is next iterator,  false otherwise.
+         */
+        @Override
+        public boolean hasNext() {
+            if (modified) {
+                throw  new ConcurrentModificationException();
+            }
+            return !st.isEmpty();
+        }
+
+        /**
+         * override std next.
+         *
+         * @return next iterator.
+         */
+        @Override
+        public Tree<T> next() {
+            if (!hasNext()) {
+                throw new NoSuchElementException();
+            }
+            if (modified) {
+                throw new ConcurrentModificationException();
+            }
+            Tree<T> nextNode = st.pop();
+            for (var it: nextNode.child) {
+                st.push(it);
+            }
             return nextNode;
         }
     }
