@@ -27,7 +27,7 @@
     catch(err) {
     }
 //-->
-var data = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10,"i9":10,"i10":10};
+var data = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10,"i9":10,"i10":10,"i11":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -203,7 +203,7 @@ implements java.lang.Iterable&lt;<a href="Tree.html" title="class in ru.nsu.roma
 </td>
 </tr>
 <tr id="i3" class="rowColor">
-<td class="colFirst"><code>java.util.List&lt;<a href="Tree.html" title="class in ru.nsu.romanov.tree">Tree</a>&lt;<a href="Tree.html" title="type parameter in Tree">T</a>&gt;&gt;</code></td>
+<td class="colFirst"><code>@NotNull java.util.List&lt;<a href="Tree.html" title="class in ru.nsu.romanov.tree">Tree</a>&lt;<a href="Tree.html" title="type parameter in Tree">T</a>&gt;&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getChildren()">getChildren</a></span>()</code></th>
 <td class="colLast">
 <div class="block">Getter of child.</div>
@@ -253,6 +253,13 @@ implements java.lang.Iterable&lt;<a href="Tree.html" title="class in ru.nsu.roma
 </tr>
 <tr id="i10" class="altColor">
 <td class="colFirst"><code>void</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setIteratorType(ru.nsu.romanov.tree.IteratorType)">setIteratorType</a></span>&#8203;(@NotNull <a href="IteratorType.html" title="enum in ru.nsu.romanov.tree">IteratorType</a>&nbsp;iteratorType)</code></th>
+<td class="colLast">
+<div class="block">Setter for IteratorType.</div>
+</td>
+</tr>
+<tr id="i11" class="rowColor">
+<td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setVal(T)">setVal</a></span>&#8203;(<a href="Tree.html" title="type parameter in Tree">T</a>&nbsp;val)</code></th>
 <td class="colLast">
 <div class="block">Setter of value.</div>
@@ -297,7 +304,8 @@ implements java.lang.Iterable&lt;<a href="Tree.html" title="class in ru.nsu.roma
 <ul class="blockListLast">
 <li class="blockList">
 <h4>Tree</h4>
-<pre>public&nbsp;Tree&#8203;(<a href="Tree.html" title="type parameter in Tree">T</a>&nbsp;val)</pre>
+<pre>public&nbsp;Tree&#8203;(@NotNull
+            <a href="Tree.html" title="type parameter in Tree">T</a>&nbsp;val)</pre>
 <div class="block">Constructor of class.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
@@ -321,7 +329,8 @@ implements java.lang.Iterable&lt;<a href="Tree.html" title="class in ru.nsu.roma
 <ul class="blockList">
 <li class="blockList">
 <h4>getVal</h4>
-<pre class="methodSignature">public&nbsp;<a href="Tree.html" title="type parameter in Tree">T</a>&nbsp;getVal()</pre>
+<pre class="methodSignature">@NotNull
+public&nbsp;<a href="Tree.html" title="type parameter in Tree">T</a>&nbsp;getVal()</pre>
 <div class="block">Getter of val.</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
@@ -337,7 +346,8 @@ implements java.lang.Iterable&lt;<a href="Tree.html" title="class in ru.nsu.roma
 <ul class="blockList">
 <li class="blockList">
 <h4>setVal</h4>
-<pre class="methodSignature">public&nbsp;void&nbsp;setVal&#8203;(<a href="Tree.html" title="type parameter in Tree">T</a>&nbsp;val)</pre>
+<pre class="methodSignature">public&nbsp;void&nbsp;setVal&#8203;(@NotNull
+                   <a href="Tree.html" title="type parameter in Tree">T</a>&nbsp;val)</pre>
 <div class="block">Setter of value.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
@@ -351,7 +361,8 @@ implements java.lang.Iterable&lt;<a href="Tree.html" title="class in ru.nsu.roma
 <ul class="blockList">
 <li class="blockList">
 <h4>getChildren</h4>
-<pre class="methodSignature">public&nbsp;java.util.List&lt;<a href="Tree.html" title="class in ru.nsu.romanov.tree">Tree</a>&lt;<a href="Tree.html" title="type parameter in Tree">T</a>&gt;&gt;&nbsp;getChildren()</pre>
+<pre class="methodSignature">@NotNull
+public&nbsp;@NotNull java.util.List&lt;<a href="Tree.html" title="class in ru.nsu.romanov.tree">Tree</a>&lt;<a href="Tree.html" title="type parameter in Tree">T</a>&gt;&gt;&nbsp;getChildren()</pre>
 <div class="block">Getter of child.</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
@@ -474,7 +485,7 @@ implements java.lang.Iterable&lt;<a href="Tree.html" title="class in ru.nsu.roma
 <a id="iterator()">
 <!--   -->
 </a>
-<ul class="blockListLast">
+<ul class="blockList">
 <li class="blockList">
 <h4>iterator</h4>
 <pre class="methodSignature">@NotNull
@@ -485,6 +496,21 @@ public&nbsp;@NotNull java.util.Iterator&lt;<a href="Tree.html" title="class in r
 <dd><code>iterator</code>&nbsp;in interface&nbsp;<code>java.lang.Iterable&lt;<a href="Tree.html" title="type parameter in Tree">T</a>&gt;</code></dd>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>Iterator.</dd>
+</dl>
+</li>
+</ul>
+<a id="setIteratorType(ru.nsu.romanov.tree.IteratorType)">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>setIteratorType</h4>
+<pre class="methodSignature">public&nbsp;void&nbsp;setIteratorType&#8203;(@NotNull
+                            @NotNull <a href="IteratorType.html" title="enum in ru.nsu.romanov.tree">IteratorType</a>&nbsp;iteratorType)</pre>
+<div class="block">Setter for IteratorType.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>iteratorType</code> - value we set to this iteratorType.</dd>
 </dl>
 </li>
 </ul>
