@@ -193,7 +193,11 @@ public class Tree<T> implements Iterable<Tree<T>> {
      * @param iteratorType value we set to this iteratorType.
      */
     public void setIteratorType(@NotNull IteratorType iteratorType) {
+        if (this.iteratorType == iteratorType) {
+            return;
+        }
         this.iteratorType = iteratorType;
+        count++;
     }
 
     /**

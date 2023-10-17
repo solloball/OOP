@@ -216,6 +216,19 @@ class TreeTest {
     }
 
     @Test
+    void checkGetChildren() {
+        int size = 101;
+        Tree<Integer> root = new Tree<>(0);
+        for (int i = 1; i < size; i++) {
+            root.add(i);
+        }
+        var col = root.getChildren();
+        for (int i = 1; i < size; i++) {
+            assertEquals(i, col.get(i - 1).getVal());
+        }
+    }
+
+    @Test
     void checkBasicRemove() {
         Tree<String> parent = new Tree<>("1");
         Tree<String> child = parent.add("3");
@@ -346,6 +359,38 @@ class TreeTest {
                 () -> {
                     for (var it : parent) {
                         it.remove();
+                    }
+                }
+        );
+    }
+
+    @Test
+    void checkDfsIteratorWithChangingTypeOperation_shouldThrowException() {
+        Tree<String> parent = new Tree<>("parent");
+        parent.add("child1");
+        parent.add("child2");
+        parent.setIteratorType(DFS);
+        assertThrows(
+                ConcurrentModificationException.class,
+                () -> {
+                    for (var it : parent) {
+                        it.setIteratorType(BFS);
+                    }
+                }
+        );
+    }
+
+    @Test
+    void checkBfsIteratorWithChangingTypeOperation_shouldThrowException() {
+        Tree<String> parent = new Tree<>("parent");
+        parent.add("child1");
+        parent.add("child2");
+        parent.setIteratorType(BFS);
+        assertThrows(
+                ConcurrentModificationException.class,
+                () -> {
+                    for (var it : parent) {
+                        it.setIteratorType(DFS);
                     }
                 }
         );
