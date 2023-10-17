@@ -11,6 +11,7 @@ import static ru.nsu.romanov.tree.IteratorType.DFS;
 
 import java.util.ConcurrentModificationException;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Random;
 import org.junit.jupiter.api.Test;
 
@@ -267,6 +268,22 @@ class TreeTest {
     }
 
     @Test
+    void checkBasicBfsIteration() {
+        Tree<Integer> parent = new Tree<>(1);
+        parent.setIteratorType(BFS);
+        var it = parent.iterator();
+        assertEquals(1, it.next().getVal());
+    }
+
+    @Test
+    void checkBasicDfsIteration() {
+        Tree<Integer> parent = new Tree<>(1);
+        parent.setIteratorType(DFS);
+        var it = parent.iterator();
+        assertEquals(1, it.next().getVal());
+    }
+
+    @Test
     void checkBfsIteration() {
         String[] arr = new String[4];
         Tree<String> parent = new Tree<>("1");
@@ -365,38 +382,6 @@ class TreeTest {
     }
 
     @Test
-    void checkDfsIteratorWithChangingTypeOperation_shouldThrowException() {
-        Tree<String> parent = new Tree<>("parent");
-        parent.add("child1");
-        parent.add("child2");
-        parent.setIteratorType(DFS);
-        assertThrows(
-                ConcurrentModificationException.class,
-                () -> {
-                    for (var it : parent) {
-                        it.setIteratorType(BFS);
-                    }
-                }
-        );
-    }
-
-    @Test
-    void checkBfsIteratorWithChangingTypeOperation_shouldThrowException() {
-        Tree<String> parent = new Tree<>("parent");
-        parent.add("child1");
-        parent.add("child2");
-        parent.setIteratorType(BFS);
-        assertThrows(
-                ConcurrentModificationException.class,
-                () -> {
-                    for (var it : parent) {
-                        it.setIteratorType(DFS);
-                    }
-                }
-        );
-    }
-
-    @Test
     void checkSubIteratorDfs() {
         Tree<String> parent = new Tree<>("parent");
         parent.add("child1");
@@ -429,4 +414,33 @@ class TreeTest {
                 }
         );
     }
+
+    @Test
+    void checkDfsEmptyIterator_shouldThrowException() {
+        Tree<String> parent = new Tree<>("parent");
+        parent.setIteratorType(DFS);
+        assertThrows(
+                NoSuchElementException.class,
+                () -> {
+                    var it = parent.iterator();
+                    it.next();
+                    it.next();
+                }
+        );
+    }
+
+    @Test
+    void checkBfsEmptyIterator_shouldThrowException() {
+        Tree<String> parent = new Tree<>("parent");
+        parent.setIteratorType(BFS);
+        assertThrows(
+                NoSuchElementException.class,
+                () -> {
+                    var it = parent.iterator();
+                    it.next();
+                    it.next();
+                }
+        );
+    }
+
 }

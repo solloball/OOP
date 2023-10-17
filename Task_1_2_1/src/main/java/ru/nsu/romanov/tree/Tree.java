@@ -3,19 +3,13 @@ package ru.nsu.romanov.tree;
 import static ru.nsu.romanov.tree.IteratorType.BFS;
 import static ru.nsu.romanov.tree.IteratorType.DFS;
 
-import java.util.ArrayDeque;
-import java.util.ArrayList;
-import java.util.ConcurrentModificationException;
-import java.util.Deque;
-import java.util.Iterator;
-import java.util.List;
-import java.util.NoSuchElementException;
-import java.util.Objects;
-import java.util.Stack;
+import java.util.*;
+
 import org.jetbrains.annotations.NotNull;
 
+
 /**
- * Class tree.x`
+ * Class tree.
  */
 public class Tree<T> implements Iterable<Tree<T>> {
     private final @NotNull List<Tree<T>> child = new ArrayList<>();
@@ -134,7 +128,9 @@ public class Tree<T> implements Iterable<Tree<T>> {
      */
     public boolean removeChild(T node) {
         boolean res = child.removeIf(tree -> tree.getVal() == node);
-        count++;
+        if (res) {
+            count++;
+        }
         return res;
     }
 
@@ -181,10 +177,7 @@ public class Tree<T> implements Iterable<Tree<T>> {
      */
     @Override
     public @NotNull Iterator<Tree<T>> iterator() {
-        if (iteratorType == BFS) {
-            return new BfsIterator();
-        }
-        return new DfsIterator();
+        return iteratorType == BFS ? new BfsIterator() : new DfsIterator();
     }
 
     /**
@@ -193,15 +186,11 @@ public class Tree<T> implements Iterable<Tree<T>> {
      * @param iteratorType value we set to this iteratorType.
      */
     public void setIteratorType(@NotNull IteratorType iteratorType) {
-        if (this.iteratorType == iteratorType) {
-            return;
-        }
         this.iteratorType = iteratorType;
-        count++;
     }
 
     /**
-     * Describing of std iterator DFS.
+     * Describing of std iterator BFS.
      */
     private class BfsIterator implements Iterator<Tree<T>> {
         private final Deque<Tree<T>> nodesToVisit = new ArrayDeque<>();
