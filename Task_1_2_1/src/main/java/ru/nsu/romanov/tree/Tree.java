@@ -3,7 +3,17 @@ package ru.nsu.romanov.tree;
 import static ru.nsu.romanov.tree.IteratorType.BFS;
 import static ru.nsu.romanov.tree.IteratorType.DFS;
 
-import java.util.*;
+import java.util.HashSet;
+import java.util.ArrayDeque;
+import java.util.ArrayList;
+import java.util.ConcurrentModificationException;
+import java.util.Deque;
+import java.util.Iterator;
+import java.util.List;
+import java.util.NoSuchElementException;
+import java.util.Objects;
+import java.util.Set;
+import java.util.Stack;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -12,7 +22,7 @@ import org.jetbrains.annotations.NotNull;
  * Class tree.
  */
 public class Tree<T> implements Iterable<Tree<T>> {
-    private final @NotNull List<Tree<T>> child = new ArrayList<>();
+    private final @NotNull Set<Tree<T>> child = new HashSet<>();
     private @NotNull T val;
     private Tree<T> parent = null;
     private IteratorType iteratorType = BFS;
@@ -66,8 +76,8 @@ public class Tree<T> implements Iterable<Tree<T>> {
      *
      * @return list child.
      */
-    public @NotNull List<Tree<T>> getChildren() {
-        return child;
+    public @NotNull Set<Tree<T>> getChildren() {
+        return  child;
     }
 
     /**
@@ -100,7 +110,7 @@ public class Tree<T> implements Iterable<Tree<T>> {
     public void remove() {
         count++;
         if (parent != null) {
-            parent.child.remove(this);
+            parent.removeChild(this.getVal());
             parent.child.addAll(this.child);
         }
         parent = null;
@@ -159,15 +169,7 @@ public class Tree<T> implements Iterable<Tree<T>> {
      */
     @Override
     public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + val.hashCode();
-
-        for (Tree<T> it : child) {
-            result = prime * result + it.hashCode();
-        }
-
-        return result;
+        return Objects.hash(child, val);
     }
 
     /**

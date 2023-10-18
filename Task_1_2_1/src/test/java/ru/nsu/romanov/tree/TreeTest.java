@@ -9,10 +9,14 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static ru.nsu.romanov.tree.IteratorType.BFS;
 import static ru.nsu.romanov.tree.IteratorType.DFS;
 
+import java.util.HashSet;
+import java.util.Set;
 import java.util.ConcurrentModificationException;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Random;
+import java.util.stream.Collectors;
+
 import org.junit.jupiter.api.Test;
 
 
@@ -201,6 +205,31 @@ class TreeTest {
     }
 
     @Test
+    void checkEqualsWithDifferentOrder() {
+        int size = 100;
+        Tree<Integer> root1 = new Tree<>(0);
+        Tree<Integer> root2 = new Tree<>(0);
+        for (int i = 0; i < size; i++) {
+            root1.add(i);
+            root2.add(size - i - 1);
+        }
+        assertEquals(root1, root2);
+    }
+
+    @Test
+    void checkEqualsWithDifferentStructure() {
+        Tree<Integer> root1 = new Tree<>(0);
+        Tree<Integer> root2 = new Tree<>(0);
+        Tree<Integer> child1 = root1.add(2);
+        root1.add(1);
+        root2.add(1);
+        Tree<Integer> child2 = root2.add(2);
+        child2.add(0);
+        child1.add(0);
+        assertEquals(child1, child2);
+    }
+
+    @Test
     void checkRemoveNonexistentChild() {
         Tree<String> parent = new Tree<>("1");
         Tree<String> child = parent.add("3");
@@ -217,25 +246,12 @@ class TreeTest {
     }
 
     @Test
-    void checkGetChildren() {
-        int size = 101;
-        Tree<Integer> root = new Tree<>(0);
-        for (int i = 1; i < size; i++) {
-            root.add(i);
-        }
-        var col = root.getChildren();
-        for (int i = 1; i < size; i++) {
-            assertEquals(i, col.get(i - 1).getVal());
-        }
-    }
-
-    @Test
     void checkBasicRemove() {
         Tree<String> parent = new Tree<>("1");
         Tree<String> child = parent.add("3");
         boolean res  = parent.removeChild("3");
-        List<Tree<String>> list = parent.getChildren();
-        assertEquals(0, list.size());
+        Set<Tree<String>> set = parent.getChildren();
+        assertEquals(0, set.size());
         assertTrue(res);
     }
 
@@ -243,18 +259,16 @@ class TreeTest {
     void checkRemoveChild() {
         Tree<Integer> root = new Tree<>(0);
         Tree<Integer> child = root.add(1);
+        Set<Tree<Integer>> expectedSet = new HashSet<>();
         int size = 100;
-        for (int i = 2; i < size; i++) {
+        for (int i = 0; i < size; i++) {
             child.add(i);
+            expectedSet.add(new Tree<Integer>(i));
         }
         assertEquals(1, root.getChildren().size());
         child.remove();
-        List<Tree<Integer>> arr = root.getChildren();
-        int idx = 2;
-        for (var it : arr) {
-            assertEquals(idx, it.getVal());
-            idx++;
-        }
+        var set = root.getChildren();
+        assertEquals(expectedSet.size(), set.size());
     }
 
     @Test
@@ -262,9 +276,22 @@ class TreeTest {
         Tree<String> parent = new Tree<>("1");
         Tree<String> child = parent.add("3");
         boolean res  = parent.removeChild(child);
-        List<Tree<String>> list = parent.getChildren();
+        Set<Tree<String>> list = parent.getChildren();
         assertEquals(0, list.size());
         assertTrue(res);
+    }
+
+    @Test
+    void checkGetChildren() {
+        Tree<Integer> root = new Tree<>(0);
+        Set<Tree<Integer>> expectedSet = new HashSet<>();
+        int size = 100;
+        for (int i = 0; i < size; i++) {
+            root.add(i);
+            expectedSet.add(new Tree<Integer>(i));
+        }
+        Set<Tree<Integer>> set = root.getChildren();
+        assertEquals(expectedSet, set);
     }
 
     @Test
@@ -442,5 +469,4 @@ class TreeTest {
                 }
         );
     }
-
 }
