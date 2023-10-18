@@ -3,11 +3,11 @@ package ru.nsu.romanov.tree;
 import static ru.nsu.romanov.tree.IteratorType.BFS;
 import static ru.nsu.romanov.tree.IteratorType.DFS;
 
-import java.util.HashSet;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.ConcurrentModificationException;
 import java.util.Deque;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.NoSuchElementException;

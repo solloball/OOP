@@ -9,13 +9,13 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static ru.nsu.romanov.tree.IteratorType.BFS;
 import static ru.nsu.romanov.tree.IteratorType.DFS;
 
-import java.util.HashSet;
-import java.util.Set;
 import java.util.ConcurrentModificationException;
+import java.util.HashSet;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Random;
 import java.util.stream.Collectors;
+import java.util.Set;
 
 import org.junit.jupiter.api.Test;
 
@@ -220,10 +220,10 @@ class TreeTest {
     void checkEqualsWithDifferentStructure() {
         Tree<Integer> root1 = new Tree<>(0);
         Tree<Integer> root2 = new Tree<>(0);
-        Tree<Integer> child1 = root1.add(2);
         root1.add(1);
         root2.add(1);
         Tree<Integer> child2 = root2.add(2);
+        Tree<Integer> child1 = root1.add(2);
         child2.add(0);
         child1.add(0);
         assertEquals(child1, child2);
