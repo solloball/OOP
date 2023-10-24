@@ -4,12 +4,10 @@ import static ru.nsu.romanov.tree.IteratorType.BFS;
 import static ru.nsu.romanov.tree.IteratorType.DFS;
 
 import java.util.ArrayDeque;
-import java.util.ArrayList;
 import java.util.ConcurrentModificationException;
 import java.util.Deque;
 import java.util.HashSet;
 import java.util.Iterator;
-import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Objects;
 import java.util.Set;
@@ -27,7 +25,19 @@ public class Tree<T> implements Iterable<Tree<T>> {
     private IteratorType iteratorType = BFS;
     private int count = 0;
 
+    /**
+     * Increment count of operation for all parents.
+     */
+    private void incCount() {
+        count++;
+        if (parent != null) {
+            parent.incCount();
+        }
+    }
 
+    /**
+     * Set new parent to this subtree.
+     */
     private void setParent(Tree<T> parent) {
         this.parent = parent;
     }
@@ -88,7 +98,7 @@ public class Tree<T> implements Iterable<Tree<T>> {
     public Tree<T> add(@NotNull T childVal) {
         Tree<T> child = new Tree<>(childVal, this);
         this.child.add(child);
-        count++;
+        incCount();
         return child;
     }
 
@@ -99,7 +109,7 @@ public class Tree<T> implements Iterable<Tree<T>> {
      */
     public void add(@NotNull Tree<T> child) {
         child.setParent(this);
-        count++;
+        incCount();
         this.child.add(child);
     }
 
@@ -107,7 +117,7 @@ public class Tree<T> implements Iterable<Tree<T>> {
      * Remove this node and add all child to parent child.
      */
     public void remove() {
-        count++;
+        incCount();
         if (parent != null) {
             parent.removeChild(this.getVal());
             parent.child.addAll(this.child);
@@ -124,7 +134,7 @@ public class Tree<T> implements Iterable<Tree<T>> {
     public boolean removeChild(Tree<T> node) {
         boolean res = child.remove(node);
         if (res) {
-            count++;
+            incCount();
         }
         return res;
     }
@@ -138,7 +148,7 @@ public class Tree<T> implements Iterable<Tree<T>> {
     public boolean removeChild(T node) {
         boolean res = child.removeIf(tree -> tree.getVal() == node);
         if (res) {
-            count++;
+            incCount();
         }
         return res;
     }

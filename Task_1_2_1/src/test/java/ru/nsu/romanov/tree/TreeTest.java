@@ -11,11 +11,9 @@ import static ru.nsu.romanov.tree.IteratorType.DFS;
 
 import java.util.ConcurrentModificationException;
 import java.util.HashSet;
-import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Random;
 import java.util.Set;
-import java.util.stream.Collectors;
 import org.junit.jupiter.api.Test;
 
 
@@ -52,6 +50,17 @@ class TreeTest {
     }
 
     @Test
+    void checkHashcodeReflexivity() {
+        final int size = 10000;
+        Tree<Integer> root = new Tree<>(0);
+        Random rd = new Random();
+        for (int i = 0; i < size; i++) {
+            root.add(rd.nextInt());
+        }
+        assertEquals(root.hashCode(), root.hashCode());
+    }
+
+    @Test
     void checkEqualsReflexivity() {
         final int size = 10000;
         Tree<Integer> root = new Tree<>(0);
@@ -60,8 +69,9 @@ class TreeTest {
             root.add(rd.nextInt());
         }
         assertEquals(root, root);
-        assertEquals(root.hashCode(), root.hashCode());
     }
+
+
 
     @Test
     void checkEqualsSymmetry() {
@@ -76,6 +86,19 @@ class TreeTest {
         }
         assertEquals(root, anotherRoot);
         assertEquals(anotherRoot, root);
+    }
+
+    @Test
+    void checkHashcodeSymmetry() {
+        final int size = 10000;
+        Random rd = new Random();
+        Tree<Integer> root = new Tree<>(0);
+        Tree<Integer> anotherRoot = new Tree<>(0);
+        for (int i = 0; i < size; i++) {
+            int val = rd.nextInt();
+            root.add(val);
+            anotherRoot.add(val);
+        }
         assertEquals(root.hashCode(), anotherRoot.hashCode());
     }
 
@@ -95,7 +118,6 @@ class TreeTest {
         assertEquals(root, anotherRoot);
         assertEquals(anotherRoot, thirdRoot);
         assertEquals(root, thirdRoot);
-        assertEquals(root.hashCode(), thirdRoot.hashCode());
     }
 
     @Test
@@ -113,6 +135,22 @@ class TreeTest {
             }
         }
         assertEquals(root, anotherRoot);
+    }
+
+    @Test
+    void checkHashcodeWithDepthTrees() {
+        int depth = 10;
+        int size = 1000;
+        Random rd = new Random();
+        Tree<Integer> root = new Tree<>(0);
+        Tree<Integer> anotherRoot = new Tree<>(0);
+        for (int i = 0; i < depth; i++) {
+            for (int j = 0; j < size; j++) {
+                int val = rd.nextInt();
+                root.add(val);
+                anotherRoot.add(val);
+            }
+        }
         assertEquals(root.hashCode(), anotherRoot.hashCode());
     }
 
@@ -128,6 +166,19 @@ class TreeTest {
             anotherRoot.add(val);
         }
         assertNotEquals(root, anotherRoot);
+    }
+
+    @Test
+    void checkHashcodeWithTreeWithDifferentRoot() {
+        final int size = 10000;
+        Random rd = new Random();
+        Tree<Integer> root = new Tree<>(0);
+        Tree<Integer> anotherRoot = new Tree<>(1);
+        for (int i = 0; i < size; i++) {
+            int val = rd.nextInt();
+            root.add(val);
+            anotherRoot.add(val);
+        }
         assertNotEquals(root.hashCode(), anotherRoot.hashCode());
     }
 
@@ -150,6 +201,26 @@ class TreeTest {
             }
         }
         assertNotEquals(root, anotherRoot);
+    }
+
+    @Test
+    void checkHashcodeWithDifferentLeaf() {
+        int depth = 10;
+        int size = 1000;
+        Random rd = new Random();
+        Tree<Integer> root = new Tree<>(0);
+        Tree<Integer> anotherRoot = new Tree<>(0);
+        for (int i = 0; i < depth; i++) {
+            for (int j = 0; j < size; j++) {
+                int val = rd.nextInt();
+                if (i == 9 && j == 950) {
+                    root.add(val);
+                    anotherRoot.add(2 * val);
+                }
+                root.add(val);
+                anotherRoot.add(val);
+            }
+        }
         assertNotEquals(root.hashCode(), anotherRoot.hashCode());
     }
 
@@ -172,6 +243,26 @@ class TreeTest {
             }
         }
         assertNotEquals(root, anotherRoot);
+    }
+
+    @Test
+    void checkHashcodeWithDifferentInternalNode() {
+        int depth = 10;
+        int size = 1000;
+        Random rd = new Random();
+        Tree<Integer> root = new Tree<>(0);
+        Tree<Integer> anotherRoot = new Tree<>(0);
+        for (int i = 0; i < depth; i++) {
+            for (int j = 0; j < size; j++) {
+                int val = rd.nextInt();
+                if (i == 4 && j == 435) {
+                    root.add(val);
+                    anotherRoot.add(2 * val);
+                }
+                root.add(val);
+                anotherRoot.add(val);
+            }
+        }
         assertNotEquals(root.hashCode(), anotherRoot.hashCode());
     }
 
@@ -183,8 +274,18 @@ class TreeTest {
         Tree<String> child11 = new Tree<>("C");
         parent1.add(child1);
         child1.add(child11);
-        assertNotEquals(parent1.hashCode(), parent2.hashCode());
         assertNotEquals(parent1, parent2);
+    }
+
+    @Test
+    void checkHashcodeWithTreeDifferentDepth() {
+        Tree<String> parent1 = new Tree<>("A");
+        Tree<String> parent2 = new Tree<>("A");
+        Tree<String> child1 = new Tree<>("B");
+        Tree<String> child11 = new Tree<>("C");
+        parent1.add(child1);
+        child1.add(child11);
+        assertNotEquals(parent1.hashCode(), parent2.hashCode());
     }
 
     @Test
@@ -193,14 +294,22 @@ class TreeTest {
         Tree<String> parent = new Tree<>("Par");
         parent.add(tree1);
         Tree<String> tree2 = new Tree<>("A");
-        assertEquals(tree2.hashCode(), tree1.hashCode());
         assertEquals(tree2, tree1);
+    }
+
+    @Test
+    void checkHashcodeWithSingleNode() {
+        Tree<String> tree1 = new Tree<>("A");
+        Tree<String> parent = new Tree<>("Par");
+        parent.add(tree1);
+        Tree<String> tree2 = new Tree<>("A");
+        assertEquals(tree2.hashCode(), tree1.hashCode());
     }
 
     @Test
     void checkEqualsWithNull() {
         Tree<String> tree = new Tree<>("A");
-        assertNotEquals(tree, null);
+        assertNotEquals(null, tree);
     }
 
     @Test
@@ -216,6 +325,18 @@ class TreeTest {
     }
 
     @Test
+    void checkHashcodeWithDifferentOrder() {
+        int size = 100;
+        Tree<Integer> root1 = new Tree<>(0);
+        Tree<Integer> root2 = new Tree<>(0);
+        for (int i = 0; i < size; i++) {
+            root1.add(i);
+            root2.add(size - i - 1);
+        }
+        assertEquals(root1.hashCode(), root2.hashCode());
+    }
+
+    @Test
     void checkEqualsWithDifferentStructure() {
         Tree<Integer> root1 = new Tree<>(0);
         Tree<Integer> root2 = new Tree<>(0);
@@ -226,6 +347,19 @@ class TreeTest {
         child2.add(0);
         child1.add(0);
         assertEquals(child1, child2);
+    }
+
+    @Test
+    void checkHashcodeWithDifferentStructure() {
+        Tree<Integer> root1 = new Tree<>(0);
+        Tree<Integer> root2 = new Tree<>(0);
+        root1.add(1);
+        root2.add(1);
+        Tree<Integer> child2 = root2.add(2);
+        Tree<Integer> child1 = root1.add(2);
+        child2.add(0);
+        child1.add(0);
+        assertEquals(child1.hashCode(), child2.hashCode());
     }
 
     @Test
@@ -467,5 +601,31 @@ class TreeTest {
                     it.next();
                 }
         );
+    }
+
+    @Test
+    void checkBfsIterator_expectThrowException() {
+        Tree<String> parent = new Tree<>("parent");
+        Tree<String> child = parent.add("child");
+        parent.setIteratorType(BFS);
+        var it = parent.iterator();
+        assertThrows(ConcurrentModificationException.class, () -> {
+            it.next();
+            child.add("wow");
+            it.next();
+        });
+    }
+
+    @Test
+    void checkDfsIterator_expectThrowException() {
+        Tree<String> parent = new Tree<>("parent");
+        Tree<String> child = parent.add("child");
+        parent.setIteratorType(DFS);
+        var it = parent.iterator();
+        assertThrows(ConcurrentModificationException.class, () -> {
+            it.next();
+            child.add("wow");
+            it.next();
+        });
     }
 }
