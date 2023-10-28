@@ -1,17 +1,20 @@
 package ru.nsu.romanov.graph;
 
+import java.util.List;
+
 public interface Graph<V> {
-    abstract void readFromFile(String fileName);
 
-    abstract VertexIndex addVertex(V val);
-    abstract void removeVertex(VertexIndex idx);
+    void readFromFile(String fileName);
 
-    abstract void addEdge(VertexIndex from, VertexIndex to, float weight);
-    abstract boolean removeEdge(VertexIndex from, VertexIndex to);
+    VertexIndex addVertex(V val);
+    void removeVertex(VertexIndex idx);
 
-    abstract V getVertexValue(VertexIndex idx);
-    abstract void setVertexValue(VertexIndex idx, V val);
+    void addEdge(VertexIndex from, VertexIndex to, float weight);
+    boolean removeEdge(VertexIndex from, VertexIndex to);
 
-    abstract Edge getEdge(VertexIndex from, VertexIndex to);
-    abstract boolean setEdge(VertexIndex from, VertexIndex to, float weight);
+    V getVertexValue(VertexIndex idx);
+    void setVertexValue(VertexIndex idx, V val);
+
+    Edge getEdge(VertexIndex from, VertexIndex to);
+    boolean setEdge(VertexIndex from, VertexIndex to, float weight);
 }

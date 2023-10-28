@@ -4,13 +4,12 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.StreamTokenizer;
-import java.util.*;
+import java.util.*;;
 
+public class GraphAdjMat<V> implements Graph<V>{
 
-public class GraphList<V> implements Graph<V> {
-    private final List<Set<Edge>> list =
-            new ArrayList<>();
-    private final List<V> values = new ArrayList<>();
+    private final ArrayList<ArrayList<Float>> mat = new ArrayList<>();
+    private final List<V> values = new LinkedList<>();
 
     private void checkIdx(VertexIndex idx) {
         if (idx.idx() < 0 || idx.idx() >= values.size()) {
@@ -34,7 +33,8 @@ public class GraphList<V> implements Graph<V> {
             tokenizer.nextToken();
             countVertex = (int)tokenizer.nval;
             for (int i = 0; i < countVertex; i++) {
-                list.add(new HashSet<>());
+                mat.add(
+                        new ArrayList<>(Collections.nCopies(countVertex, null)));
             }
             tokenizer.nextToken();
             countEdge = (int)tokenizer.nval;
@@ -50,8 +50,7 @@ public class GraphList<V> implements Graph<V> {
                 int to = (int) tokenizer.nval;
                 tokenizer.nextToken();
                 float weight = (float) tokenizer.nval;
-                Edge edge = new Edge(new VertexIndex(from), new VertexIndex(to), weight);
-                list.get(from).add(edge);
+                mat.get(from).set(to, weight);
             }
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -60,39 +59,41 @@ public class GraphList<V> implements Graph<V> {
 
     @Override
     public VertexIndex addVertex(V val) {
+        int size = mat.size();
+        mat.add(new ArrayList<>(Collections.nCopies(size + 1, null)));
         values.add(val);
-        list.add(new HashSet<>());
-        return new VertexIndex(values.size() - 1);
+        for (int i = 0; i < size; i++) {
+            mat.get(i).add(null);
+        }
+        return new VertexIndex(size);
     }
 
     @Override
     public void removeVertex(VertexIndex idx) {
-        checkIdx(idx);
-        list.remove(idx.idx());
+        mat.remove(idx.idx());
         values.remove(idx.idx());
-        for (var iterator : list) {
-            iterator.removeIf(edge -> edge.to.equals(idx));
-            iterator.forEach(edge -> {
-                if (edge.to.idx() > idx.idx()) {
-                    edge.to = new VertexIndex(edge.to.idx() - 1);
-                }
-            });
+        for (var iterator : mat) {
+            iterator.remove(idx.idx());
         }
+        checkIdx(idx);
     }
 
     @Override
     public void addEdge(VertexIndex from, VertexIndex to, float weight) {
         checkIdx(from);
         checkIdx(to);
-        Edge edge = new Edge(from, to, weight);
-        list.get(from.idx()).add(edge);
+        mat.get(from.idx()).set(to.idx(), weight);
     }
 
     @Override
     public boolean removeEdge(VertexIndex from, VertexIndex to) {
         checkIdx(from);
         checkIdx(to);
-        return list.get(from.idx()).removeIf(edge -> edge.to.equals(to));
+        if (mat.get(from.idx()).get(to.idx()) == null) {
+            return false;
+        }
+        mat.get(from.idx()).set(to.idx(), null);
+        return true;
     }
 
     @Override
@@ -111,25 +112,22 @@ public class GraphList<V> implements Graph<V> {
     public Edge getEdge(VertexIndex from, VertexIndex to) {
         checkIdx(from);
         checkIdx(to);
-        for (var it: list.get(from.idx())) {
-            if (it.to.equals(to)) {
-                return it;
-            }
+        Float weight = mat.get(from.idx()).get(to.idx());
+        if (weight == null) {
+            return null;
         }
-        return null;
+        return new Edge(from, to, weight);
     }
 
     @Override
     public boolean setEdge(VertexIndex from, VertexIndex to, float weight) {
         checkIdx(from);
         checkIdx(to);
-        for (var it : list.get(from.idx())) {
-            if (it.to.equals(to)) {
-                it.weight = weight;
-                return true;
-            }
+        if (mat.get(from.idx()).get(to.idx()) == null) {
+            return false;
         }
-        return false;
+        mat.get(from.idx()).set(to.idx(), weight);
+        return true;
     }
 
     @Override
@@ -140,14 +138,12 @@ public class GraphList<V> implements Graph<V> {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        GraphList<?> graphList = (GraphList<?>) o;
-        return Objects.equals(list, graphList.list) && Objects.equals(values, graphList.values);
+        GraphAdjMat<?> that = (GraphAdjMat<?>) o;
+        return Objects.equals(mat, that.mat) && Objects.equals(values, that.values);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(list, values);
+        return Objects.hash(mat, values);
     }
 }
-
-
