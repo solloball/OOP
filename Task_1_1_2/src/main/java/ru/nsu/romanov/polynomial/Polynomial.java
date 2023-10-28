@@ -198,18 +198,18 @@ public class Polynomial {
 
         int i = arr.length - 1;
         int j = otherPol.arr.length - 1;
-        for ( ; i >= 0 && j >= 0; i--, j-- ) {
+        for ( ; i >= 0 && j >= 0; i--, j--) {
             if (arr[i] != otherPol.arr[j]) {
                 return  false;
             }
         }
-        while(i >= 0) {
+        while (i >= 0) {
             if (arr[i] != 0) {
                 return false;
             }
             i--;
         }
-        while(j >= 0) {
+        while (j >= 0) {
             if (otherPol.arr[j] != 0) {
                 return false;
             }
