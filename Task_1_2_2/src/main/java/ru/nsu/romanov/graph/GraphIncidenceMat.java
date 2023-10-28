@@ -4,14 +4,15 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.StreamTokenizer;
-import java.lang.reflect.Type;
 import java.util.*;
 
+public class GraphIncidenceMat<V> implements Graph<V>{
 
-public class GraphList<V> implements Graph<V> {
-    private final List<Set<Edge>> list =
-            new ArrayList<>();
-    private final List<V> values = new LinkedList<>();
+    private List<V> values = new LinkedList<>();
+
+    private List<List<Float>> mat = new LinkedList<>();
+
+    private int countEdge;
 
     private void checkIdx(VertexIndex idx) {
         if (idx.idx() < 0 || idx.idx() >= values.size()) {
@@ -21,7 +22,7 @@ public class GraphList<V> implements Graph<V> {
 
     @Override
     public void readFromFile(String fileName) {
-        list.clear();
+        mat.clear();
         values.clear();
         FileReader reader;
         try {
@@ -31,20 +32,16 @@ public class GraphList<V> implements Graph<V> {
             throw new RuntimeException(e);
         }
         StreamTokenizer tokenizer = new StreamTokenizer(reader);
-        int countEdge;
         int countVertex;
         try {
             tokenizer.nextToken();
             countVertex = (int)tokenizer.nval;
-            for (int i = 0; i < countVertex; i++) {
-                list.add(new HashSet<>());
-            }
             tokenizer.nextToken();
             countEdge = (int)tokenizer.nval;
             for (int i = 0; i < countVertex; i++) {
                 tokenizer.nextToken();
                 String val  = tokenizer.sval;
-                values.add((V) val);
+                addVertex((V) val);
             }
             for (int i = 0; i < countEdge; i++) {
                 tokenizer.nextToken();
@@ -53,8 +50,8 @@ public class GraphList<V> implements Graph<V> {
                 int to = (int) tokenizer.nval;
                 tokenizer.nextToken();
                 float weight = (float) tokenizer.nval;
-                Edge edge = new Edge(new VertexIndex(from), new VertexIndex(to), weight);
-                list.get(from).add(edge);
+                mat.get(from).set(i, weight);
+                mat.get(to).set(i, -weight);
             }
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -64,38 +61,64 @@ public class GraphList<V> implements Graph<V> {
     @Override
     public VertexIndex addVertex(V val) {
         values.add(val);
-        list.add(new HashSet<>());
-        return new VertexIndex(values.size() - 1);
+        mat.add(new LinkedList<>(Collections.nCopies(countEdge, null)));
+        return new VertexIndex(values.size());
     }
 
     @Override
     public void removeVertex(VertexIndex idx) {
         checkIdx(idx);
-        list.remove(idx.idx());
         values.remove(idx.idx());
-        for (var iterator : list) {
-            iterator.removeIf(edge -> edge.to.equals(idx));
-            iterator.forEach(edge -> {
-                if (edge.to.idx() > idx.idx()) {
-                    edge.to = new VertexIndex(edge.to.idx() - 1);
-                }
-            });
+        Stack<Integer> st = new Stack<>();
+        for (int i = 0; i < countEdge; i++) {
+            if (mat.get(idx.idx()).get(i) != null) {
+                st.push(i);
+            }
         }
+        int size = st.size();
+        for (var i = 0; i < size; i++) {
+            int index = st.pop();
+            for (var it : mat) {
+                it.remove(index);
+
+            }
+        }
+        countEdge -= size;
+        mat.remove(idx.idx());
     }
 
     @Override
     public void addEdge(VertexIndex from, VertexIndex to, float weight) {
         checkIdx(from);
         checkIdx(to);
-        Edge edge = new Edge(from, to, weight);
-        list.get(from.idx()).add(edge);
+        for (int i = 0; i < values.size(); i++) {
+            if (i == to.idx()) {
+                mat.get(i).add(-weight);
+            }
+            else if (i == from.idx()) {
+                mat.get(i).add(weight);
+            }
+            else {
+                mat.get(i).add(null);
+            }
+        }
+        countEdge++;
     }
 
     @Override
     public boolean removeEdge(VertexIndex from, VertexIndex to) {
-        checkIdx(from);
-        checkIdx(to);
-        return list.get(from.idx()).removeIf(edge -> edge.to.equals(to));
+        for (int i = 0; i < countEdge; i++) {
+            Float weightFrom = mat.get(from.idx()).get(i);
+            Float weightTo = mat.get(to.idx()).get(i);
+            if (weightFrom != null && weightTo != null && weightFrom > 0) {
+                for (var it : mat) {
+                    it.remove(i);
+                }
+                countEdge--;
+                return true;
+            }
+        }
+        return false;
     }
 
     @Override
@@ -112,11 +135,12 @@ public class GraphList<V> implements Graph<V> {
 
     @Override
     public Edge getEdge(VertexIndex from, VertexIndex to) {
-        checkIdx(from);
-        checkIdx(to);
-        for (var it: list.get(from.idx())) {
-            if (it.to.equals(to)) {
-                return it;
+        for (int i = 0; i < countEdge; i++) {
+            Float weightFrom = mat.get(from.idx()).get(i);
+            Float weightTo = mat.get(to.idx()).get(i);
+            if (weightFrom != null && weightTo != null
+                    && weightFrom > 0 && weightTo < 0) {
+                return new Edge(from, to, weightFrom);
             }
         }
         return null;
@@ -124,11 +148,13 @@ public class GraphList<V> implements Graph<V> {
 
     @Override
     public boolean setEdge(VertexIndex from, VertexIndex to, float weight) {
-        checkIdx(from);
-        checkIdx(to);
-        for (var it : list.get(from.idx())) {
-            if (it.to.equals(to)) {
-                it.weight = weight;
+        for (int i = 0; i < countEdge; i++) {
+            Float weightFrom = mat.get(from.idx()).get(i);
+            Float weightTo = mat.get(to.idx()).get(i);
+            if (weightFrom != null && weightTo != null
+                    && weightFrom > 0 && weightTo < 0) {
+                mat.get(from.idx()).set(i, weight);
+                mat.get(to.idx()).set(i, -weight);
                 return true;
             }
         }
@@ -143,14 +169,12 @@ public class GraphList<V> implements Graph<V> {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        GraphList<?> graphList = (GraphList<?>) o;
-        return Objects.equals(list, graphList.list) && Objects.equals(values, graphList.values);
+        GraphIncidenceMat<?> that = (GraphIncidenceMat<?>) o;
+        return countEdge == that.countEdge && Objects.equals(values, that.values) && Objects.equals(mat, that.mat);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(list, values);
+        return Objects.hash(values, mat, countEdge);
     }
 }
-
-

@@ -19,6 +19,8 @@ public class GraphAdjMat<V> implements Graph<V>{
 
     @Override
     public void readFromFile(String fileName) {
+        mat.clear();
+        values.clear();
         FileReader reader;
         try {
             reader = new FileReader(fileName);

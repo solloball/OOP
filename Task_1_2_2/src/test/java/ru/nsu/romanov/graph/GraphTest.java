@@ -5,13 +5,13 @@ import org.junit.jupiter.api.Test;
 
 class GraphTests {
 
-    private final String Path = "src/test/java/ru/nsu/romanov/graph/graph.txt";
+    private final String path = "src/test/java/ru/nsu/romanov/graph/graph.txt";
 
-    private final String Path2 = "src/test/java/ru/nsu/romanov/graph/graphWithout3Vertex.txt";
+    private final String path2 = "src/test/java/ru/nsu/romanov/graph/graphWithout3Vertex.txt";
     @Test
     void checkGraphListRead() {
         Graph<String> gr = new GraphList<>();
-        gr.readFromFile(Path);
+        gr.readFromFile(path);
     }
 
     @Test
@@ -24,7 +24,7 @@ class GraphTests {
     @Test
     void checkGraphListGetterEdge() {
         Graph<String> gr = new GraphList<>();
-        gr.readFromFile(Path);
+        gr.readFromFile(path);
         Edge e = gr.getEdge(new VertexIndex(1), new VertexIndex(0));
         Assertions.assertEquals(1, e.from.idx());
         Assertions.assertEquals(0, e.to.idx());
@@ -34,7 +34,7 @@ class GraphTests {
     @Test
     void checkGraphListGetterEdgeWithNonexistentEdge() {
         Graph<String> gr = new GraphList<>();
-        gr.readFromFile(Path);
+        gr.readFromFile(path);
         Edge e = gr.getEdge(new VertexIndex(0), new VertexIndex(0));
         Assertions.assertNull(e);
     }
@@ -42,7 +42,7 @@ class GraphTests {
     @Test
     void checkGraphListGetterEdge_expectedThrowIndexBound() {
         Graph<String> gr = new GraphList<>();
-        gr.readFromFile(Path);
+        gr.readFromFile(path);
         Assertions.assertThrows(IndexOutOfBoundsException.class, ()->
                 gr.getEdge(new VertexIndex(0), new VertexIndex(100)));
         Assertions.assertThrows(IndexOutOfBoundsException.class, () ->
@@ -56,7 +56,7 @@ class GraphTests {
     @Test
     void checkGraphListGetterVertex() {
         Graph<String> gr = new GraphList<>();
-        gr.readFromFile(Path);
+        gr.readFromFile(path);
         String str = gr.getVertexValue(new VertexIndex(0));
         Assertions.assertEquals("a", str);
         str = gr.getVertexValue(new VertexIndex(3));
@@ -66,7 +66,7 @@ class GraphTests {
     @Test
     void checkGraphListGetterVertex_expectedThrowIndexBound() {
         Graph<String> gr = new GraphList<>();
-        gr.readFromFile(Path);
+        gr.readFromFile(path);
         Assertions.assertThrows(IndexOutOfBoundsException.class, ()->
                 gr.getVertexValue(new VertexIndex(-1)));
         Assertions.assertThrows(IndexOutOfBoundsException.class, ()->
@@ -76,7 +76,7 @@ class GraphTests {
     @Test
     void checkGraphListAddVertex() {
         Graph<String> gr = new GraphList<>();
-        gr.readFromFile(Path);
+        gr.readFromFile(path);
         String expectedStr = "wow";
         gr.addVertex(expectedStr);
         Assertions.assertEquals(expectedStr, gr.getVertexValue(new VertexIndex(5)));
@@ -88,7 +88,7 @@ class GraphTests {
     @Test
     void checkGraphListAddEdge() {
         Graph<String> gr = new GraphList<>();
-        gr.readFromFile(Path);
+        gr.readFromFile(path);
         VertexIndex from = new VertexIndex(0);
         VertexIndex to = new VertexIndex(3);
         Assertions.assertNull(gr.getEdge(from, to));
@@ -100,7 +100,7 @@ class GraphTests {
     @Test
     void checkGraphListRemoveEdge() {
         Graph<String> gr = new GraphList<>();
-        gr.readFromFile(Path);
+        gr.readFromFile(path);
         VertexIndex from = new VertexIndex(1);
         VertexIndex to = new VertexIndex(2);
         Edge expectedEdge = new Edge(from, to, 6);
@@ -113,7 +113,7 @@ class GraphTests {
     @Test
     void checkGraphListRemoveEdgeNonExistingEdge() {
         Graph<String> gr = new GraphList<>();
-        gr.readFromFile(Path);
+        gr.readFromFile(path);
         Assertions.assertFalse(gr.removeEdge(new VertexIndex(0), new VertexIndex(0)));
         Assertions.assertNull(gr.getEdge(new VertexIndex(0), new VertexIndex(0)));
     }
@@ -121,7 +121,7 @@ class GraphTests {
     @Test
     void checkGraphListRemoveEdge_expectedThrowIndexBound() {
         Graph<String> gr = new GraphList<>();
-        gr.readFromFile(Path);
+        gr.readFromFile(path);
         Assertions.assertThrows(IndexOutOfBoundsException.class, ()->
                 gr.removeEdge(new VertexIndex(5), new VertexIndex(0)));
         Assertions.assertThrows(IndexOutOfBoundsException.class, ()->
@@ -135,7 +135,7 @@ class GraphTests {
     @Test
     void checkGraphListSetEdge() {
         Graph<String> gr = new GraphList<>();
-        gr.readFromFile(Path);
+        gr.readFromFile(path);
         VertexIndex from = new VertexIndex(1);
         VertexIndex to = new VertexIndex(0);
         Edge lastEdge = gr.getEdge(from, to);
@@ -148,7 +148,7 @@ class GraphTests {
     @Test
     void checkGraphListSetEdgeNonExistingEdge() {
         Graph<String> gr = new GraphList<>();
-        gr.readFromFile(Path);
+        gr.readFromFile(path);
         VertexIndex from = new VertexIndex(1);
         VertexIndex to = new VertexIndex(1);
         gr.getEdge(from, to);
@@ -159,7 +159,7 @@ class GraphTests {
     @Test
     void checkGraphListSetEdge_expectedIndexBound() {
         Graph<String> gr = new GraphList<>();
-        gr.readFromFile(Path);
+        gr.readFromFile(path);
         Assertions.assertThrows(IndexOutOfBoundsException.class, () ->
                 gr.setEdge(new VertexIndex(0), new VertexIndex(-1), 0));
         Assertions.assertThrows(IndexOutOfBoundsException.class, () ->
@@ -173,7 +173,7 @@ class GraphTests {
     @Test
     void checkGraphListSetVertex() {
         Graph<String> gr = new GraphList<>();
-        gr.readFromFile(Path);
+        gr.readFromFile(path);
         Assertions.assertEquals("a", gr.getVertexValue(new VertexIndex(0)));
         gr.setVertexValue(new VertexIndex(0), "new");
         Assertions.assertEquals("new", gr.getVertexValue(new VertexIndex(0)));
@@ -182,7 +182,7 @@ class GraphTests {
     @Test
     void checkSetVertex_expectedIndexBound() {
         Graph<String> gr = new GraphList<>();
-        gr.readFromFile(Path);
+        gr.readFromFile(path);
         Assertions.assertThrows(IndexOutOfBoundsException.class, () ->
                 gr.setVertexValue(new VertexIndex(-1), "wow"));
         Assertions.assertThrows(IndexOutOfBoundsException.class, () ->
@@ -192,10 +192,10 @@ class GraphTests {
     @Test
     void checkGraphListRemoveVertex() {
         Graph<String> gr = new GraphList<>();
-        gr.readFromFile(Path);
+        gr.readFromFile(path);
         gr.removeVertex(new VertexIndex(2));
         Graph<String> expectedGr = new GraphList<>();
-        expectedGr.readFromFile(Path2);
+        expectedGr.readFromFile(path2);
         Assertions.assertEquals(expectedGr, gr);
     }
 }
