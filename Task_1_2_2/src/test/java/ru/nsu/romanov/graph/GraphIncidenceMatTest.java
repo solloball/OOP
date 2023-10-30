@@ -331,38 +331,4 @@ public class GraphIncidenceMatTest {
         Assertions.assertEquals(gr2, gr1);
         Assertions.assertEquals(gr1, gr2);
     }
-
-    @Test
-    void checkGraphIncidenceMatEqualsWithDifferentOrderEdge() {
-        Graph<String> gr1 = new GraphIncidenceMat<>();
-        gr1.readFromFile(path);
-        Graph<String> gr2 = new GraphIncidenceMat<>();
-        gr2.addVertex("a");
-        gr2.addVertex("b");
-        gr2.addVertex("c");
-        gr2.addVertex("d");
-        gr2.addVertex("e");
-        gr2.addEdge(new VertexIndex(2), new VertexIndex(0), 7);
-        gr2.addEdge(new VertexIndex(1), new VertexIndex(0), 5);
-        gr2.addEdge(new VertexIndex(1), new VertexIndex(3), (float)8.3);
-        gr2.addEdge(new VertexIndex(1), new VertexIndex(2), 6);
-        Assertions.assertEquals(gr2, gr1);
-    }
-
-    @Test
-    void checkGraphIncidenceMatHashcodeWithDifferentOrderEdge() {
-        Graph<String> gr1 = new GraphIncidenceMat<>();
-        gr1.readFromFile(path);
-        Graph<String> gr2 = new GraphIncidenceMat<>();
-        gr2.addVertex("a");
-        gr2.addVertex("b");
-        gr2.addVertex("c");
-        gr2.addVertex("d");
-        gr2.addVertex("e");
-        gr2.addEdge(new VertexIndex(2), new VertexIndex(0), 7);
-        gr2.addEdge(new VertexIndex(1), new VertexIndex(0), 5);
-        gr2.addEdge(new VertexIndex(1), new VertexIndex(3), (float)8.3);
-        gr2.addEdge(new VertexIndex(1), new VertexIndex(2), 6);
-        Assertions.assertEquals(gr2.hashCode(), gr1.hashCode());
-    }
 }

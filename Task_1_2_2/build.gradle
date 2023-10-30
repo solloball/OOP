@@ -3,7 +3,7 @@ plugins {
     id 'jacoco'
 }
 
-group = 'ru.nsu.shadrina'
+group = 'ru.nsu.romanov'
 version = '1.0-SNAPSHOT'
 
 repositories {
@@ -22,5 +22,10 @@ test {
 jacocoTestReport {
     reports {
         xml.required = true
+    }
+}
+
+toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
     }
 }
