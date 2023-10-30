@@ -52,7 +52,7 @@ public interface Graph<V> {
      * @param from component "from" from edge.
      * @param to component "to" from edge.
      * @return true if this edge existed, and we deleted it,
-     * false if this edge didn't exist.
+     *     false if this edge didn't exist.
      */
     boolean removeEdge(VertexIndex from, VertexIndex to);
 
@@ -89,7 +89,7 @@ public interface Graph<V> {
      * @param to component to of new edge.
      * @param weight weight from of new edge.
      * @return true if this edge existed and edge was changed,
-     * false if this edge didn't exist.
+     *     false if this edge didn't exist.
      */
     boolean setEdge(VertexIndex from, VertexIndex to, float weight);
 

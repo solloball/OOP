@@ -4,6 +4,9 @@ import java.util.Vector;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+/**
+ * Tests for GraphList
+ */
 class GraphListTest {
 
     private final String path = "src/test/java/ru/nsu/romanov/graph/graph.txt";

@@ -4,6 +4,9 @@ import java.util.Vector;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+/**
+ * Tests for GraphAdjMat
+ */
 public class GraphAdjMatTest {
     private final String path = "src/test/java/ru/nsu/romanov/graph/graph.txt";
 

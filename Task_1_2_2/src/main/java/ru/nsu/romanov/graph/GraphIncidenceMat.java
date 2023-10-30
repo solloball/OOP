@@ -108,8 +108,7 @@ public class GraphIncidenceMat<V> implements Graph<V> {
                 mat.get(i).add(-weight);
             } else if (i == from.idx()) {
                 mat.get(i).add(weight);
-            }
-            else {
+            } else {
                 mat.get(i).add(null);
             }
         }
@@ -181,7 +180,9 @@ public class GraphIncidenceMat<V> implements Graph<V> {
             return false;
         }
         GraphIncidenceMat<?> that = (GraphIncidenceMat<?>) o;
-        return countEdge == that.countEdge && Objects.equals(values, that.values) && Objects.equals(mat, that.mat);
+        return countEdge == that.countEdge
+                && Objects.equals(values, that.values)
+                && Objects.equals(mat, that.mat);
     }
 
     @Override

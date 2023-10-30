@@ -4,6 +4,9 @@ import java.util.Vector;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+/**
+ * Tests for GraphIncidenceMat
+ */
 public class GraphIncidenceMatTest {
 
     private final String path = "src/test/java/ru/nsu/romanov/graph/graph.txt";
@@ -49,7 +52,7 @@ public class GraphIncidenceMatTest {
     void checkGraphIncidenceMatReadNonExistingPath_expectedRunTimeEx() {
         Graph<String> gr = new GraphIncidenceMat<>();
         Assertions.assertThrows(RuntimeException.class,
-                ()-> gr.readFromFile("/where?"));
+                () -> gr.readFromFile("/where?"));
     }
 
     @Test
