@@ -49,7 +49,7 @@ class GraphListTest {
     void checkGraphListReadNonExistingPath_expectedRunTimeEx() {
         Graph<String> gr = new GraphList<>();
         Assertions.assertThrows(RuntimeException.class,
-                ()-> gr.readFromFile("/where?"));
+                () -> gr.readFromFile("/where?"));
     }
 
     @Test
@@ -74,13 +74,13 @@ class GraphListTest {
     void checkGraphListGetterEdge_expectedThrowIndexBound() {
         Graph<String> gr = new GraphList<>();
         gr.readFromFile(path);
-        Assertions.assertThrows(IndexOutOfBoundsException.class, ()->
+        Assertions.assertThrows(IndexOutOfBoundsException.class, () ->
                 gr.getEdge(new VertexIndex(0), new VertexIndex(100)));
         Assertions.assertThrows(IndexOutOfBoundsException.class, () ->
                 gr.getEdge(new VertexIndex(100), new VertexIndex(0)));
-        Assertions.assertThrows(IndexOutOfBoundsException.class, ()->
+        Assertions.assertThrows(IndexOutOfBoundsException.class, () ->
                 gr.getEdge(new VertexIndex(-100), new VertexIndex(0)));
-        Assertions.assertThrows(IndexOutOfBoundsException.class, ()->
+        Assertions.assertThrows(IndexOutOfBoundsException.class, () ->
                 gr.getEdge(new VertexIndex(0), new VertexIndex(-100)));
     }
 
@@ -248,13 +248,13 @@ class GraphListTest {
     void checkGraphListTopologicalSort() {
         Graph<String> gr = new GraphList<>();
         gr.readFromFile(path);
-        Vector<VertexIndex> ans = gr.topologicalSort(new VertexIndex(1));
         Vector<VertexIndex> expectedAns = new Vector<>();
         expectedAns.add(new VertexIndex(0));
         expectedAns.add(new VertexIndex(2));
         expectedAns.add(new VertexIndex(3));
         expectedAns.add(new VertexIndex(1));
         expectedAns.add(new VertexIndex(4));
+        Vector<VertexIndex> ans = gr.topologicalSort(new VertexIndex(1));
         Assertions.assertEquals(expectedAns, ans);
     }
 
@@ -358,7 +358,7 @@ class GraphListTest {
         gr2.addVertex("e");
         gr2.addEdge(new VertexIndex(2), new VertexIndex(0), 7);
         gr2.addEdge(new VertexIndex(1), new VertexIndex(0), 5);
-        gr2.addEdge(new VertexIndex(1), new VertexIndex(3), (float)8.3);
+        gr2.addEdge(new VertexIndex(1), new VertexIndex(3), (float) 8.3);
         gr2.addEdge(new VertexIndex(1), new VertexIndex(2), 6);
         Assertions.assertEquals(gr2, gr1);
     }

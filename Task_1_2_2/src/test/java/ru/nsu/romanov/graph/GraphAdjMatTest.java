@@ -233,13 +233,13 @@ public class GraphAdjMatTest {
     void checkGraphAdjMatTopologicalSort() {
         Graph<String> gr = new GraphAdjMat<>();
         gr.readFromFile(path);
-        Vector<VertexIndex> ans = gr.topologicalSort(new VertexIndex(1));
         Vector<VertexIndex> expectedAns = new Vector<>();
         expectedAns.add(new VertexIndex(0));
         expectedAns.add(new VertexIndex(2));
         expectedAns.add(new VertexIndex(3));
         expectedAns.add(new VertexIndex(1));
         expectedAns.add(new VertexIndex(4));
+        Vector<VertexIndex> ans = gr.topologicalSort(new VertexIndex(1));
         Assertions.assertEquals(expectedAns, ans);
     }
 
@@ -326,7 +326,7 @@ public class GraphAdjMatTest {
         gr2.addEdge(new VertexIndex(1), new VertexIndex(0), 5);
         gr2.addEdge(new VertexIndex(1), new VertexIndex(2), 6);
         gr2.addEdge(new VertexIndex(2), new VertexIndex(0), 7);
-        gr2.addEdge(new VertexIndex(1), new VertexIndex(3), (float)8.3);
+        gr2.addEdge(new VertexIndex(1), new VertexIndex(3), (float) 8.3);
         Assertions.assertEquals(gr2, gr1);
         Assertions.assertEquals(gr1, gr2);
     }
@@ -343,7 +343,7 @@ public class GraphAdjMatTest {
         gr2.addVertex("e");
         gr2.addEdge(new VertexIndex(2), new VertexIndex(0), 7);
         gr2.addEdge(new VertexIndex(1), new VertexIndex(0), 5);
-        gr2.addEdge(new VertexIndex(1), new VertexIndex(3), (float)8.3);
+        gr2.addEdge(new VertexIndex(1), new VertexIndex(3), (float) 8.3);
         gr2.addEdge(new VertexIndex(1), new VertexIndex(2), 6);
         Assertions.assertEquals(gr2, gr1);
     }
