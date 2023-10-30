@@ -1,6 +1,5 @@
 package ru.nsu.romanov.graph;
 
-import java.util.List;
 import java.util.Vector;
 
 public interface Graph<V> {

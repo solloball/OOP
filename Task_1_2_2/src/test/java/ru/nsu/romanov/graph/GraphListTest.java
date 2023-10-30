@@ -1,9 +1,8 @@
 package ru.nsu.romanov.graph;
 
+import java.util.Vector;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-
-import java.util.Vector;
 
 class GraphListTest {
 
@@ -24,7 +23,7 @@ class GraphListTest {
         expectedGr.addEdge(new VertexIndex(1), new VertexIndex(0), 5);
         expectedGr.addEdge(new VertexIndex(1), new VertexIndex(2), 6);
         expectedGr.addEdge(new VertexIndex(2), new VertexIndex(0), 7);
-        expectedGr.addEdge(new VertexIndex(1), new VertexIndex(3), (float)8.3);
+        expectedGr.addEdge(new VertexIndex(1), new VertexIndex(3), (float) 8.3);
         Assertions.assertEquals(expectedGr, gr);
     }
 
@@ -42,7 +41,7 @@ class GraphListTest {
         expectedGr.addEdge(new VertexIndex(1), new VertexIndex(0), 5);
         expectedGr.addEdge(new VertexIndex(1), new VertexIndex(2), 6);
         expectedGr.addEdge(new VertexIndex(2), new VertexIndex(0), 7);
-        expectedGr.addEdge(new VertexIndex(1), new VertexIndex(3), (float)8.3);
+        expectedGr.addEdge(new VertexIndex(1), new VertexIndex(3), (float) 8.3);
         Assertions.assertEquals(expectedGr, gr);
     }
 
@@ -99,9 +98,9 @@ class GraphListTest {
     void checkGraphListGetterVertex_expectedThrowIndexBound() {
         Graph<String> gr = new GraphList<>();
         gr.readFromFile(path);
-        Assertions.assertThrows(IndexOutOfBoundsException.class, ()->
+        Assertions.assertThrows(IndexOutOfBoundsException.class, () ->
                 gr.getVertexValue(new VertexIndex(-1)));
-        Assertions.assertThrows(IndexOutOfBoundsException.class, ()->
+        Assertions.assertThrows(IndexOutOfBoundsException.class, () ->
                 gr.getVertexValue(new VertexIndex(5)));
     }
 
@@ -133,13 +132,13 @@ class GraphListTest {
     void checkGraphListAddEdge_expectedThrowIndexBound() {
         Graph<String> gr = new GraphList<>();
         gr.readFromFile(path);
-        Assertions.assertThrows(IndexOutOfBoundsException.class, ()->
+        Assertions.assertThrows(IndexOutOfBoundsException.class, () ->
                 gr.addEdge(new VertexIndex(0), new VertexIndex(5), 3));
-        Assertions.assertThrows(IndexOutOfBoundsException.class, ()->
+        Assertions.assertThrows(IndexOutOfBoundsException.class, () ->
                 gr.addEdge(new VertexIndex(5), new VertexIndex(0), 3));
-        Assertions.assertThrows(IndexOutOfBoundsException.class, ()->
+        Assertions.assertThrows(IndexOutOfBoundsException.class, () ->
                 gr.addEdge(new VertexIndex(-1), new VertexIndex(0), 3));
-        Assertions.assertThrows(IndexOutOfBoundsException.class, ()->
+        Assertions.assertThrows(IndexOutOfBoundsException.class, () ->
                 gr.addEdge(new VertexIndex(0), new VertexIndex(-1), 3));
     }
 
@@ -168,13 +167,13 @@ class GraphListTest {
     void checkGraphListRemoveEdge_expectedThrowIndexBound() {
         Graph<String> gr = new GraphList<>();
         gr.readFromFile(path);
-        Assertions.assertThrows(IndexOutOfBoundsException.class, ()->
+        Assertions.assertThrows(IndexOutOfBoundsException.class, () ->
                 gr.removeEdge(new VertexIndex(5), new VertexIndex(0)));
-        Assertions.assertThrows(IndexOutOfBoundsException.class, ()->
+        Assertions.assertThrows(IndexOutOfBoundsException.class, () ->
                 gr.removeEdge(new VertexIndex(0), new VertexIndex(5)));
-        Assertions.assertThrows(IndexOutOfBoundsException.class, ()->
+        Assertions.assertThrows(IndexOutOfBoundsException.class, () ->
                 gr.removeEdge(new VertexIndex(0), new VertexIndex(-1)));
-        Assertions.assertThrows(IndexOutOfBoundsException.class, ()->
+        Assertions.assertThrows(IndexOutOfBoundsException.class, () ->
                 gr.removeEdge(new VertexIndex(-1), new VertexIndex(0)));
     }
 
@@ -342,7 +341,7 @@ class GraphListTest {
         gr2.addEdge(new VertexIndex(1), new VertexIndex(0), 5);
         gr2.addEdge(new VertexIndex(1), new VertexIndex(2), 6);
         gr2.addEdge(new VertexIndex(2), new VertexIndex(0), 7);
-        gr2.addEdge(new VertexIndex(1), new VertexIndex(3), (float)8.3);
+        gr2.addEdge(new VertexIndex(1), new VertexIndex(3), (float) 8.3);
         Assertions.assertEquals(gr2, gr1);
         Assertions.assertEquals(gr1, gr2);
     }
@@ -376,7 +375,7 @@ class GraphListTest {
         gr2.addVertex("e");
         gr2.addEdge(new VertexIndex(2), new VertexIndex(0), 7);
         gr2.addEdge(new VertexIndex(1), new VertexIndex(0), 5);
-        gr2.addEdge(new VertexIndex(1), new VertexIndex(3), (float)8.3);
+        gr2.addEdge(new VertexIndex(1), new VertexIndex(3), (float) 8.3);
         gr2.addEdge(new VertexIndex(1), new VertexIndex(2), 6);
         Assertions.assertEquals(gr2.hashCode(), gr1.hashCode());
     }
