@@ -3,30 +3,30 @@ package ru.nsu.romanov.graph;
 import java.util.Objects;
 
 /**
- * Edge represent edge in graph
+ * Edge represent edge in graph.
  */
 public class Edge {
     /**
-     * from which vertex the edge
+     * from which vertex the edge.
      */
     public VertexIndex from;
 
     /**
-     * to which vertex the edge
+     * to which vertex the edge.
      */
     public VertexIndex to;
 
     /**
-     * weight of edge
+     * weight of edge.
      */
     public float weight;
 
     /**
-     * constructor of edge
+     * constructor of edge.
      *
-     * @param from set this.from
-     * @param to set this.to
-     * @param weight set this.weight
+     * @param from set this.from.
+     * @param to set this.to.
+     * @param weight set this.weight.
      */
     Edge(VertexIndex from, VertexIndex to, float weight) {
         this.from = from;
@@ -35,10 +35,10 @@ public class Edge {
     }
 
     /**
-     * overriding equals
+     * overriding equals.
      *
-     * @param o object with which we compare
-     * @return true if equal, false otherwise
+     * @param o object with which we compare.
+     * @return true if equal, false otherwise.
      */
     @Override
     public boolean equals(Object o) {
@@ -55,9 +55,9 @@ public class Edge {
     }
 
     /**
-     * overriding hashcode
+     * overriding hashcode.
      *
-     * @return hashcode of this object
+     * @return hashcode of this object.
      */
     @Override
     public int hashCode() {

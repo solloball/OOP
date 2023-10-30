@@ -13,10 +13,10 @@ import java.util.Stack;
 import java.util.Vector;
 
 /**
- * Implementation of Graph
- * In this realization order of edge is important
+ * Implementation of Graph.
+ * In this realization order of edge is important.
  *
- * @param <V> type value if vertex
+ * @param <V> type value if vertex.
  */
 public class GraphIncidenceMat<V> implements Graph<V> {
 

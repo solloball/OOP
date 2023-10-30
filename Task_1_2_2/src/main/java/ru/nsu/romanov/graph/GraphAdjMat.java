@@ -13,10 +13,10 @@ import java.util.Objects;
 import java.util.Vector;
 
 /**
- * Implementation of graph
- * In this realization order of edge isn't important
+ * Implementation of graph.
+ * In this realization order of edge isn't important.
  *
- * @param <V> type value of vertex
+ * @param <V> type value of vertex.
  */
 public class GraphAdjMat<V> implements Graph<V> {
 

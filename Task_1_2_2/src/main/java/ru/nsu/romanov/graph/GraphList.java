@@ -14,10 +14,10 @@ import java.util.Set;
 import java.util.Vector;
 
 /**
- * Implementation of Graph
- * In this realization order of edge is important
+ * Implementation of Graph.
+ * In this realization order of edge is important.
  *
- * @param <V> type value if vertex
+ * @param <V> type value if vertex.
  */
 public class GraphList<V> implements Graph<V> {
     private final List<Set<Edge>> list =
