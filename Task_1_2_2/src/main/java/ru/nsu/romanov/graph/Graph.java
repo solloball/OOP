@@ -4,7 +4,6 @@ import java.util.Vector;
 
 /**
  * Interface for working with graph.
- *
  * Every vertex has VertexIndex which identifies them.
  * If you call to invalid VertexIndex,
  * you will have IndexBoundException.
@@ -48,11 +47,11 @@ public interface Graph<V> {
     void addEdge(VertexIndex from, VertexIndex to, float weight);
 
     /**
-     * remove edge of thus graph
+     * remove edge of thus graph.
      *
      * @param from component "from" from edge.
      * @param to component "to" from edge.
-     * @return true if this edge existed, and we deleted it;
+     * @return true if this edge existed, and we deleted it,
      * false if this edge didn't exist.
      */
     boolean removeEdge(VertexIndex from, VertexIndex to);
@@ -89,7 +88,7 @@ public interface Graph<V> {
      * @param from component from of new edge.
      * @param to component to of new edge.
      * @param weight weight from of new edge.
-     * @return true if this edge existed and edge was changed;
+     * @return true if this edge existed and edge was changed,
      * false if this edge didn't exist.
      */
     boolean setEdge(VertexIndex from, VertexIndex to, float weight);

@@ -47,9 +47,9 @@ public class GraphIncidenceMat<V> implements Graph<V> {
         int countVertex;
         try {
             tokenizer.nextToken();
-            countVertex = (int)tokenizer.nval;
+            countVertex = (int) tokenizer.nval;
             tokenizer.nextToken();
-            countEdge = (int)tokenizer.nval;
+            countEdge = (int) tokenizer.nval;
             for (int i = 0; i < countVertex; i++) {
                 tokenizer.nextToken();
                 String val  = tokenizer.sval;
@@ -106,8 +106,7 @@ public class GraphIncidenceMat<V> implements Graph<V> {
         for (int i = 0; i < values.size(); i++) {
             if (i == to.idx()) {
                 mat.get(i).add(-weight);
-            }
-            else if (i == from.idx()) {
+            } else if (i == from.idx()) {
                 mat.get(i).add(weight);
             }
             else {
