@@ -4,9 +4,21 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.StreamTokenizer;
-import java.util.*;;import static ru.nsu.romanov.graph.Color.White;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Objects;
+import java.util.Vector;
 
-public class GraphAdjMat<V> implements Graph<V>{
+/**
+ * Implementation of graph
+ * In this realization order of edge isn't important
+ *
+ * @param <V> type value of vertex
+ */
+public class GraphAdjMat<V> implements Graph<V> {
 
     private final ArrayList<ArrayList<Float>> mat = new ArrayList<>();
     private final List<V> values = new LinkedList<>();

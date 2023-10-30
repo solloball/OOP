@@ -4,9 +4,21 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.StreamTokenizer;
-import java.util.*;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Objects;
+import java.util.Stack;
+import java.util.Vector;
 
-public class GraphIncidenceMat<V> implements Graph<V>{
+/**
+ * Implementation of Graph
+ * In this realization order of edge is important
+ *
+ * @param <V> type value if vertex
+ */
+public class GraphIncidenceMat<V> implements Graph<V> {
 
     private final List<V> values = new LinkedList<>();
 

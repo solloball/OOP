@@ -4,10 +4,21 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.StreamTokenizer;
-import java.lang.reflect.Type;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Objects;
+import java.util.Set;
+import java.util.Vector;
 
-
+/**
+ * Implementation of Graph
+ * In this realization order of edge is important
+ *
+ * @param <V> type value if vertex
+ */
 public class GraphList<V> implements Graph<V> {
     private final List<Set<Edge>> list =
             new ArrayList<>();
