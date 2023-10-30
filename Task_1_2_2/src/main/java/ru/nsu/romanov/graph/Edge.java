@@ -3,15 +3,17 @@ package ru.nsu.romanov.graph;
 import java.util.Objects;
 
 public class Edge {
+    public VertexIndex from;
+
+    public VertexIndex to;
+
+    public float weight;
 
     Edge(VertexIndex from, VertexIndex to, float weight) {
         this.from = from;
         this.to = to;
         this.weight = weight;
     }
-    public VertexIndex from;
-    public VertexIndex to;
-    public float weight;
 
     @Override
     public boolean equals(Object o) {
@@ -22,7 +24,9 @@ public class Edge {
             return false;
         }
         Edge edge = (Edge) o;
-        return Float.compare(weight, edge.weight) == 0 && Objects.equals(from, edge.from) && Objects.equals(to, edge.to);
+        return Float.compare(weight, edge.weight) == 0
+                && Objects.equals(from, edge.from)
+                && Objects.equals(to, edge.to);
     }
 
     @Override

@@ -9,7 +9,7 @@ public class GraphIncidenceMatTest {
     private final String path = "src/test/java/ru/nsu/romanov/graph/graph.txt";
 
     private final String path2 = "src/test/java/ru/nsu/romanov/graph/graphWithout3Vertex.txt";
-    
+
     @Test
     void checkGraphIncidenceMatRead() {
         Graph<String> gr = new GraphIncidenceMat<>();
@@ -234,13 +234,13 @@ public class GraphIncidenceMatTest {
     void checkGraphIncidenceMattTopologicalSort() {
         Graph<String> gr = new GraphIncidenceMat<>();
         gr.readFromFile(path);
-        Vector<VertexIndex> ans = gr.topologicalSort(new VertexIndex(1));
         Vector<VertexIndex> expectedAns = new Vector<>();
         expectedAns.add(new VertexIndex(0));
         expectedAns.add(new VertexIndex(2));
         expectedAns.add(new VertexIndex(3));
         expectedAns.add(new VertexIndex(1));
         expectedAns.add(new VertexIndex(4));
+        Vector<VertexIndex> ans = gr.topologicalSort(new VertexIndex(1));
         Assertions.assertEquals(expectedAns, ans);
     }
 
