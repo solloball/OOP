@@ -3,15 +3,47 @@ package ru.nsu.romanov.graph;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-class GraphTests {
+import java.util.Vector;
+
+class GraphListTest {
 
     private final String path = "src/test/java/ru/nsu/romanov/graph/graph.txt";
 
     private final String path2 = "src/test/java/ru/nsu/romanov/graph/graphWithout3Vertex.txt";
+
     @Test
     void checkGraphListRead() {
         Graph<String> gr = new GraphList<>();
         gr.readFromFile(path);
+        Graph<String> expectedGr = new GraphList<>();
+        expectedGr.addVertex("a");
+        expectedGr.addVertex("b");
+        expectedGr.addVertex("c");
+        expectedGr.addVertex("d");
+        expectedGr.addVertex("e");
+        expectedGr.addEdge(new VertexIndex(1), new VertexIndex(0), 5);
+        expectedGr.addEdge(new VertexIndex(1), new VertexIndex(2), 6);
+        expectedGr.addEdge(new VertexIndex(2), new VertexIndex(0), 7);
+        expectedGr.addEdge(new VertexIndex(1), new VertexIndex(3), (float)8.3);
+        Assertions.assertEquals(expectedGr, gr);
+    }
+
+    @Test
+    void checkGraphListReadTwice() {
+        Graph<String> gr = new GraphList<>();
+        gr.readFromFile(path2);
+        gr.readFromFile(path);
+        Graph<String> expectedGr = new GraphList<>();
+        expectedGr.addVertex("a");
+        expectedGr.addVertex("b");
+        expectedGr.addVertex("c");
+        expectedGr.addVertex("d");
+        expectedGr.addVertex("e");
+        expectedGr.addEdge(new VertexIndex(1), new VertexIndex(0), 5);
+        expectedGr.addEdge(new VertexIndex(1), new VertexIndex(2), 6);
+        expectedGr.addEdge(new VertexIndex(2), new VertexIndex(0), 7);
+        expectedGr.addEdge(new VertexIndex(1), new VertexIndex(3), (float)8.3);
+        Assertions.assertEquals(expectedGr, gr);
     }
 
     @Test
@@ -98,6 +130,20 @@ class GraphTests {
     }
 
     @Test
+    void checkGraphListAddEdge_expectedThrowIndexBound() {
+        Graph<String> gr = new GraphList<>();
+        gr.readFromFile(path);
+        Assertions.assertThrows(IndexOutOfBoundsException.class, ()->
+                gr.addEdge(new VertexIndex(0), new VertexIndex(5), 3));
+        Assertions.assertThrows(IndexOutOfBoundsException.class, ()->
+                gr.addEdge(new VertexIndex(5), new VertexIndex(0), 3));
+        Assertions.assertThrows(IndexOutOfBoundsException.class, ()->
+                gr.addEdge(new VertexIndex(-1), new VertexIndex(0), 3));
+        Assertions.assertThrows(IndexOutOfBoundsException.class, ()->
+                gr.addEdge(new VertexIndex(0), new VertexIndex(-1), 3));
+    }
+
+    @Test
     void checkGraphListRemoveEdge() {
         Graph<String> gr = new GraphList<>();
         gr.readFromFile(path);
@@ -180,7 +226,7 @@ class GraphTests {
     }
 
     @Test
-    void checkSetVertex_expectedIndexBound() {
+    void checkGraphListSetVertex_expectedIndexBound() {
         Graph<String> gr = new GraphList<>();
         gr.readFromFile(path);
         Assertions.assertThrows(IndexOutOfBoundsException.class, () ->
@@ -197,5 +243,141 @@ class GraphTests {
         Graph<String> expectedGr = new GraphList<>();
         expectedGr.readFromFile(path2);
         Assertions.assertEquals(expectedGr, gr);
+    }
+
+    @Test
+    void checkGraphListTopologicalSort() {
+        Graph<String> gr = new GraphList<>();
+        gr.readFromFile(path);
+        Vector<VertexIndex> ans = gr.topologicalSort(new VertexIndex(1));
+        Vector<VertexIndex> expectedAns = new Vector<>();
+        expectedAns.add(new VertexIndex(0));
+        expectedAns.add(new VertexIndex(2));
+        expectedAns.add(new VertexIndex(3));
+        expectedAns.add(new VertexIndex(1));
+        expectedAns.add(new VertexIndex(4));
+        Assertions.assertEquals(expectedAns, ans);
+    }
+
+    @Test
+    void checkGraphListTopologicalSortWithEmptyGr_expectedThrowIndexBound() {
+        Graph<String> gr = new GraphList<>();
+        Assertions.assertThrows(IndexOutOfBoundsException.class, () ->
+                gr.topologicalSort(new VertexIndex(0)));
+    }
+
+    @Test
+    void checkGraphListTopologicalSort_expectedThrowIndexBound() {
+        Graph<String> gr = new GraphList<>();
+        gr.readFromFile(path);
+        Assertions.assertThrows(IndexOutOfBoundsException.class, () ->
+                gr.topologicalSort(new VertexIndex(5)));
+        Assertions.assertThrows(IndexOutOfBoundsException.class, () ->
+                gr.topologicalSort(new VertexIndex(-1)));
+    }
+
+    @Test
+    void checkGraphListEqualsWithEmptyGraph() {
+        Graph<Integer> gr1 = new GraphList<>();
+        Graph<Integer> gr2 = new GraphList<>();
+        Assertions.assertEquals(gr1, gr2);
+    }
+
+    @Test
+    void checkGraphListHashcodeWithEmptyGraph() {
+        Graph<Integer> gr1 = new GraphList<>();
+        Graph<Integer> gr2 = new GraphList<>();
+        Assertions.assertEquals(gr1.hashCode(), gr2.hashCode());
+    }
+
+    @Test
+    void checkGraphListEqualsWithOneNode() {
+        Graph<Integer> gr1 = new GraphList<>();
+        Graph<Integer> gr2 = new GraphList<>();
+        gr1.addVertex(3);
+        gr2.addVertex(3);
+        Assertions.assertEquals(gr1, gr2);
+    }
+
+    @Test
+    void checkGraphListHashcodeWithOneNode() {
+        Graph<Integer> gr1 = new GraphList<>();
+        Graph<Integer> gr2 = new GraphList<>();
+        gr1.addVertex(3);
+        gr2.addVertex(3);
+        Assertions.assertEquals(gr1.hashCode(), gr2.hashCode());
+    }
+
+    @Test
+    void checkGraphListEqualsWithNull() {
+        Graph<Integer> gr = new GraphList<>();
+        gr.addVertex(3);
+        Assertions.assertNull(null);
+    }
+
+    @Test
+    void checkGraphListEquals_Reflexivity() {
+        Graph<String> gr = new GraphList<>();
+        gr.readFromFile(path);
+        Assertions.assertEquals(gr, gr);
+    }
+
+    @Test
+    void checkGraphListHashcode_Reflexivity() {
+        Graph<String> gr = new GraphList<>();
+        gr.readFromFile(path);
+        Assertions.assertEquals(gr.hashCode(), gr.hashCode());
+    }
+
+    @Test
+    void checkGraphListEqualsSymmetry() {
+        Graph<String> gr1 = new GraphList<>();
+        gr1.readFromFile(path);
+        Graph<String> gr2 = new GraphList<>();
+        gr2.addVertex("a");
+        gr2.addVertex("b");
+        gr2.addVertex("c");
+        gr2.addVertex("d");
+        gr2.addVertex("e");
+        gr2.addEdge(new VertexIndex(1), new VertexIndex(0), 5);
+        gr2.addEdge(new VertexIndex(1), new VertexIndex(2), 6);
+        gr2.addEdge(new VertexIndex(2), new VertexIndex(0), 7);
+        gr2.addEdge(new VertexIndex(1), new VertexIndex(3), (float)8.3);
+        Assertions.assertEquals(gr2, gr1);
+        Assertions.assertEquals(gr1, gr2);
+    }
+
+    @Test
+    void checkGraphListEqualsWithDifferentOrderEdge() {
+        Graph<String> gr1 = new GraphList<>();
+        gr1.readFromFile(path);
+        Graph<String> gr2 = new GraphList<>();
+        gr2.addVertex("a");
+        gr2.addVertex("b");
+        gr2.addVertex("c");
+        gr2.addVertex("d");
+        gr2.addVertex("e");
+        gr2.addEdge(new VertexIndex(2), new VertexIndex(0), 7);
+        gr2.addEdge(new VertexIndex(1), new VertexIndex(0), 5);
+        gr2.addEdge(new VertexIndex(1), new VertexIndex(3), (float)8.3);
+        gr2.addEdge(new VertexIndex(1), new VertexIndex(2), 6);
+        Assertions.assertEquals(gr2, gr1);
+    }
+
+    @Test
+    void checkGraphListHashcodeWithDifferentOrderEdge() {
+        Graph<String> gr1 = new GraphList<>();
+        gr1.readFromFile(path);
+        Graph<String> gr2 = new GraphList<>();
+        gr2.addVertex("a");
+        gr2.addVertex("b");
+        gr2.addVertex("c");
+        gr2.addVertex("d");
+        gr2.addVertex("e");
+        gr2.addEdge(new VertexIndex(2), new VertexIndex(0), 7);
+        gr2.addEdge(new VertexIndex(1), new VertexIndex(0), 5);
+        gr2.addEdge(new VertexIndex(1), new VertexIndex(3), (float)8.3);
+        gr2.addEdge(new VertexIndex(1), new VertexIndex(2), 6);
+        Assertions.assertEquals(gr2.hashCode(), gr1.hashCode());
     }
 }

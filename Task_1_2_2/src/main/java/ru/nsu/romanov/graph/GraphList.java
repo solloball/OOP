@@ -151,6 +151,45 @@ public class GraphList<V> implements Graph<V> {
     public int hashCode() {
         return Objects.hash(list, values);
     }
+
+    private int dfs (VertexIndex curNode, Color[] arr, Vector<VertexIndex> ans) {
+        arr[curNode.idx()] = Color.Grey;
+        for (var edge : list.get(curNode.idx())) {
+            VertexIndex to = edge.to;
+            if (arr[to.idx()] == Color.Grey) {
+                return 1;
+            }
+            if (arr[to.idx()] != Color.Black) {
+                dfs(new VertexIndex(to.idx()), arr, ans);
+            }
+        }
+        arr[curNode.idx()] = Color.Black;
+        ans.add(curNode);
+        return 0;
+    }
+
+    @Override
+    public Vector<VertexIndex> topologicalSort(VertexIndex start) {
+        checkIdx(start);
+        Color[] arr = new Color[values.size()];
+        Arrays.fill(arr, Color.White);
+        Vector<VertexIndex> ans = new Vector<>();
+        if (dfs(start, arr, ans) == 1) {
+            return null;
+        }
+        for (int i = 0; i < values.size(); i++) {
+            if (i == start.idx()) {
+                continue;
+            }
+            if (arr[i] != Color.White) {
+                continue;
+            }
+            if (dfs(new VertexIndex(i), arr, ans) == 1) {
+                return null;
+            }
+        }
+        return ans;
+    }
 }
 
 

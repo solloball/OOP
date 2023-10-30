@@ -4,7 +4,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.StreamTokenizer;
-import java.util.*;;
+import java.util.*;;import static ru.nsu.romanov.graph.Color.White;
 
 public class GraphAdjMat<V> implements Graph<V>{
 
@@ -147,5 +147,45 @@ public class GraphAdjMat<V> implements Graph<V>{
     @Override
     public int hashCode() {
         return Objects.hash(mat, values);
+    }
+
+    private int dfs (VertexIndex curNode, Color[] arr, Vector<VertexIndex> ans) {
+        arr[curNode.idx()] = Color.Grey;
+        for (int i = 0; i < values.size(); i++) {
+            Float weight = mat.get(curNode.idx()).get(i);
+            if (weight == null) {
+                continue;
+            }
+            if (arr[i] == Color.Grey) {
+                return 1;
+            }
+            if (arr[i] != Color.Black) {
+                dfs(new VertexIndex(i), arr, ans);
+            }
+        }
+        arr[curNode.idx()] = Color.Black;
+        ans.add(curNode);
+        return 0;
+    }
+
+    @Override
+    public Vector<VertexIndex> topologicalSort(VertexIndex start) {
+        checkIdx(start);
+        Color[] arr = new Color[values.size()];
+        Arrays.fill(arr, Color.White);
+        Vector<VertexIndex> ans = new Vector<>();
+        dfs(start, arr, ans);
+        for (int i = 0; i < values.size(); i++) {
+            if (i == start.idx()) {
+                continue;
+            }
+            if (arr[i] != Color.White) {
+                continue;
+            }
+            if (dfs(new VertexIndex(i), arr, ans) == 1) {
+                return null;
+            }
+        }
+        return ans;
     }
 }

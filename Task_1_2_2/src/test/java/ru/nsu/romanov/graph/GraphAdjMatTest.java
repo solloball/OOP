@@ -3,14 +3,47 @@ package ru.nsu.romanov.graph;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+import java.util.Vector;
+
 public class GraphAdjMatTest {
     private final String path = "src/test/java/ru/nsu/romanov/graph/graph.txt";
 
     private final String path2 = "src/test/java/ru/nsu/romanov/graph/graphWithout3Vertex.txt";
+
     @Test
     void checkGraphAdjMatRead() {
         Graph<String> gr = new GraphAdjMat<>();
         gr.readFromFile(path);
+        Graph<String> expectedGr = new GraphAdjMat<>();
+        expectedGr.addVertex("a");
+        expectedGr.addVertex("b");
+        expectedGr.addVertex("c");
+        expectedGr.addVertex("d");
+        expectedGr.addVertex("e");
+        expectedGr.addEdge(new VertexIndex(1), new VertexIndex(0), 5);
+        expectedGr.addEdge(new VertexIndex(1), new VertexIndex(2), 6);
+        expectedGr.addEdge(new VertexIndex(2), new VertexIndex(0), 7);
+        expectedGr.addEdge(new VertexIndex(1), new VertexIndex(3), (float)8.3);
+        Assertions.assertEquals(expectedGr, gr);
+    }
+
+    @Test
+    void checkGraphAdjMatReadTwice() {
+        Graph<String> gr = new GraphAdjMat<>();
+        gr.readFromFile(path2);
+        gr.readFromFile(path);
+        Graph<String> expectedGr = new GraphAdjMat<>();
+        expectedGr.addVertex("a");
+        expectedGr.addVertex("b");
+        expectedGr.addVertex("c");
+        expectedGr.addVertex("d");
+        expectedGr.addVertex("e");
+        expectedGr.addEdge(new VertexIndex(1), new VertexIndex(0), 5);
+        expectedGr.addEdge(new VertexIndex(1), new VertexIndex(2), 6);
+        expectedGr.addEdge(new VertexIndex(2), new VertexIndex(0), 7);
+        expectedGr.addEdge(new VertexIndex(1), new VertexIndex(3), (float)8.3);
+        Assertions.assertEquals(expectedGr, gr);
     }
 
     @Test
@@ -196,5 +229,141 @@ public class GraphAdjMatTest {
         Graph<String> expectedGr = new GraphAdjMat<>();
         expectedGr.readFromFile(path2);
         Assertions.assertEquals(expectedGr, gr);
+    }
+
+    @Test
+    void checkGraphAdjMatTopologicalSort() {
+        Graph<String> gr = new GraphAdjMat<>();
+        gr.readFromFile(path);
+        Vector<VertexIndex> ans = gr.topologicalSort(new VertexIndex(1));
+        Vector<VertexIndex> expectedAns = new Vector<>();
+        expectedAns.add(new VertexIndex(0));
+        expectedAns.add(new VertexIndex(2));
+        expectedAns.add(new VertexIndex(3));
+        expectedAns.add(new VertexIndex(1));
+        expectedAns.add(new VertexIndex(4));
+        Assertions.assertEquals(expectedAns, ans);
+    }
+
+    @Test
+    void checkGraphAdjMatTopologicalSortWithEmptyGr_expectedThrowIndexBound() {
+        Graph<String> gr = new GraphAdjMat<>();
+        Assertions.assertThrows(IndexOutOfBoundsException.class, () ->
+                gr.topologicalSort(new VertexIndex(0)));
+    }
+
+    @Test
+    void checkGraphAdjMatTopologicalSort_expectedThrowIndexBound() {
+        Graph<String> gr = new GraphAdjMat<>();
+        gr.readFromFile(path);
+        Assertions.assertThrows(IndexOutOfBoundsException.class, () ->
+                gr.topologicalSort(new VertexIndex(5)));
+        Assertions.assertThrows(IndexOutOfBoundsException.class, () ->
+                gr.topologicalSort(new VertexIndex(-1)));
+    }
+
+    @Test
+    void checkGraphAdjMatEqualsWithEmptyGraph() {
+        Graph<Integer> gr1 = new GraphAdjMat<>();
+        Graph<Integer> gr2 = new GraphAdjMat<>();
+        Assertions.assertEquals(gr1, gr2);
+    }
+
+    @Test
+    void checkGraphAdjMatHashcodeWithEmptyGraph() {
+        Graph<Integer> gr1 = new GraphAdjMat<>();
+        Graph<Integer> gr2 = new GraphAdjMat<>();
+        Assertions.assertEquals(gr1.hashCode(), gr2.hashCode());
+    }
+
+    @Test
+    void checkGraphAdjMatEqualsWithOneNode() {
+        Graph<Integer> gr1 = new GraphAdjMat<>();
+        Graph<Integer> gr2 = new GraphAdjMat<>();
+        gr1.addVertex(3);
+        gr2.addVertex(3);
+        Assertions.assertEquals(gr1, gr2);
+    }
+
+    @Test
+    void checkGraphAdjMatHashcodeWithOneNode() {
+        Graph<Integer> gr1 = new GraphAdjMat<>();
+        Graph<Integer> gr2 = new GraphAdjMat<>();
+        gr1.addVertex(3);
+        gr2.addVertex(3);
+        Assertions.assertEquals(gr1.hashCode(), gr2.hashCode());
+    }
+
+    @Test
+    void checkGraphListEqualsWithNull() {
+        Graph<Integer> gr = new GraphList<>();
+        gr.addVertex(3);
+        Assertions.assertNull(null);
+    }
+
+    @Test
+    void checkGraphAdjMatEquals_Reflexivity() {
+        Graph<String> gr = new GraphAdjMat<>();
+        gr.readFromFile(path);
+        Assertions.assertEquals(gr, gr);
+    }
+
+    @Test
+    void checkGraphAdjMatHashcode_Reflexivity() {
+        Graph<String> gr = new GraphAdjMat<>();
+        gr.readFromFile(path);
+        Assertions.assertEquals(gr.hashCode(), gr.hashCode());
+    }
+
+    @Test
+    void checkGraphAdjMatEqualsSymmetry() {
+        Graph<String> gr1 = new GraphAdjMat<>();
+        gr1.readFromFile(path);
+        Graph<String> gr2 = new GraphAdjMat<>();
+        gr2.addVertex("a");
+        gr2.addVertex("b");
+        gr2.addVertex("c");
+        gr2.addVertex("d");
+        gr2.addVertex("e");
+        gr2.addEdge(new VertexIndex(1), new VertexIndex(0), 5);
+        gr2.addEdge(new VertexIndex(1), new VertexIndex(2), 6);
+        gr2.addEdge(new VertexIndex(2), new VertexIndex(0), 7);
+        gr2.addEdge(new VertexIndex(1), new VertexIndex(3), (float)8.3);
+        Assertions.assertEquals(gr2, gr1);
+        Assertions.assertEquals(gr1, gr2);
+    }
+
+    @Test
+    void checkGraphAdjMatEqualsWithDifferentOrderEdge() {
+        Graph<String> gr1 = new GraphAdjMat<>();
+        gr1.readFromFile(path);
+        Graph<String> gr2 = new GraphAdjMat<>();
+        gr2.addVertex("a");
+        gr2.addVertex("b");
+        gr2.addVertex("c");
+        gr2.addVertex("d");
+        gr2.addVertex("e");
+        gr2.addEdge(new VertexIndex(2), new VertexIndex(0), 7);
+        gr2.addEdge(new VertexIndex(1), new VertexIndex(0), 5);
+        gr2.addEdge(new VertexIndex(1), new VertexIndex(3), (float)8.3);
+        gr2.addEdge(new VertexIndex(1), new VertexIndex(2), 6);
+        Assertions.assertEquals(gr2, gr1);
+    }
+
+    @Test
+    void checkGraphAdjMatHashcodeWithDifferentOrderEdge() {
+        Graph<String> gr1 = new GraphAdjMat<>();
+        gr1.readFromFile(path);
+        Graph<String> gr2 = new GraphAdjMat<>();
+        gr2.addVertex("a");
+        gr2.addVertex("b");
+        gr2.addVertex("c");
+        gr2.addVertex("d");
+        gr2.addVertex("e");
+        gr2.addEdge(new VertexIndex(2), new VertexIndex(0), 7);
+        gr2.addEdge(new VertexIndex(1), new VertexIndex(0), 5);
+        gr2.addEdge(new VertexIndex(1), new VertexIndex(3), (float)8.3);
+        gr2.addEdge(new VertexIndex(1), new VertexIndex(2), 6);
+        Assertions.assertEquals(gr2.hashCode(), gr1.hashCode());
     }
 }

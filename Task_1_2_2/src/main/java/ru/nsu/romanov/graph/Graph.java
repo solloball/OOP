@@ -1,6 +1,7 @@
 package ru.nsu.romanov.graph;
 
 import java.util.List;
+import java.util.Vector;
 
 public interface Graph<V> {
 
@@ -17,4 +18,6 @@ public interface Graph<V> {
 
     Edge getEdge(VertexIndex from, VertexIndex to);
     boolean setEdge(VertexIndex from, VertexIndex to, float weight);
+
+    public Vector<VertexIndex> topologicalSort(VertexIndex start);
 }

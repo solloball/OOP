@@ -8,11 +8,11 @@ import java.util.*;
 
 public class GraphIncidenceMat<V> implements Graph<V>{
 
-    private List<V> values = new LinkedList<>();
+    private final List<V> values = new LinkedList<>();
 
-    private List<List<Float>> mat = new LinkedList<>();
+    private final List<List<Float>> mat = new LinkedList<>();
 
-    private int countEdge;
+    private int countEdge = 0;
 
     private void checkIdx(VertexIndex idx) {
         if (idx.idx() < 0 || idx.idx() >= values.size()) {
@@ -176,5 +176,52 @@ public class GraphIncidenceMat<V> implements Graph<V>{
     @Override
     public int hashCode() {
         return Objects.hash(values, mat, countEdge);
+    }
+
+    private int dfs(VertexIndex curNode, Color[] arr, Vector<VertexIndex> ans) {
+        arr[curNode.idx()] = Color.Grey;
+        for (int i = 0; i < countEdge; i++) {
+            Float weight = mat.get(curNode.idx()).get(i);
+            if (weight != null && weight > 0) {
+                for (int j = 0; j < values.size(); j++) {
+                    Float newWeight = mat.get(j).get(i);
+                    if (newWeight == null || newWeight != -weight) {
+                        continue;
+                    }
+                    if (arr[j] == Color.Grey) {
+                        return 1;
+                    }
+                    if (arr[j] != Color.Black) {
+                        dfs(new VertexIndex(j), arr, ans);
+                    }
+                }
+            }
+        }
+        arr[curNode.idx()] = Color.Black;
+        ans.add(curNode);
+        return 0;
+    }
+
+    @Override
+    public Vector<VertexIndex> topologicalSort(VertexIndex start) {
+        checkIdx(start);
+        Color[] arr = new Color[values.size()];
+        Arrays.fill(arr, Color.White);
+        Vector<VertexIndex> ans = new Vector<>();
+        if (dfs(start, arr, ans) == 1) {
+            return null;
+        }
+        for (int i = 0; i < values.size(); i++) {
+            if (i == start.idx()) {
+                continue;
+            }
+            if (arr[i] != Color.White) {
+                continue;
+            }
+            if (dfs(new VertexIndex(i), arr, ans) == 1) {
+                return null;
+            }
+        }
+        return ans;
     }
 }

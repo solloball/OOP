@@ -3,26 +3,57 @@ package ru.nsu.romanov.graph;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.util.Vector;
+
 public class GraphIncidenceMatTest {
 
         private final String path = "src/test/java/ru/nsu/romanov/graph/graph.txt";
 
         private final String path2 = "src/test/java/ru/nsu/romanov/graph/graphWithout3Vertex.txt";
         @Test
-        void checkGraphListRead() {
+        void checkGraphIncidenceMatRead() {
             Graph<String> gr = new GraphIncidenceMat<>();
             gr.readFromFile(path);
+            Graph<String> expectedGr = new GraphIncidenceMat<>();
+            expectedGr.addVertex("a");
+            expectedGr.addVertex("b");
+            expectedGr.addVertex("c");
+            expectedGr.addVertex("d");
+            expectedGr.addVertex("e");
+            expectedGr.addEdge(new VertexIndex(1), new VertexIndex(0), 5);
+            expectedGr.addEdge(new VertexIndex(1), new VertexIndex(2), 6);
+            expectedGr.addEdge(new VertexIndex(2), new VertexIndex(0), 7);
+            expectedGr.addEdge(new VertexIndex(1), new VertexIndex(3), (float)8.3);
+            Assertions.assertEquals(expectedGr, gr);
         }
 
+    @Test
+    void checkGraphIncidenceMatReadTwice() {
+        Graph<String> gr = new GraphIncidenceMat<>();
+        gr.readFromFile(path2);
+        gr.readFromFile(path);
+        Graph<String> expectedGr = new GraphIncidenceMat<>();
+        expectedGr.addVertex("a");
+        expectedGr.addVertex("b");
+        expectedGr.addVertex("c");
+        expectedGr.addVertex("d");
+        expectedGr.addVertex("e");
+        expectedGr.addEdge(new VertexIndex(1), new VertexIndex(0), 5);
+        expectedGr.addEdge(new VertexIndex(1), new VertexIndex(2), 6);
+        expectedGr.addEdge(new VertexIndex(2), new VertexIndex(0), 7);
+        expectedGr.addEdge(new VertexIndex(1), new VertexIndex(3), (float)8.3);
+        Assertions.assertEquals(expectedGr, gr);
+    }
+
         @Test
-        void checkGraphListReadNonExistingPath_expectedRunTimeEx() {
+        void checkGraphIncidenceMatReadNonExistingPath_expectedRunTimeEx() {
             Graph<String> gr = new GraphIncidenceMat<>();
             Assertions.assertThrows(RuntimeException.class,
                     ()-> gr.readFromFile("/where?"));
         }
 
         @Test
-        void checkGraphListGetterEdge() {
+        void checkGraphIncidenceMatGetterEdge() {
             Graph<String> gr = new GraphIncidenceMat<>();
             gr.readFromFile(path);
             Edge e = gr.getEdge(new VertexIndex(1), new VertexIndex(0));
@@ -32,7 +63,7 @@ public class GraphIncidenceMatTest {
         }
 
         @Test
-        void checkGraphListGetterEdgeWithNonexistentEdge() {
+        void checkGraphIncidenceMatGetterEdgeWithNonexistentEdge() {
             Graph<String> gr = new GraphIncidenceMat<>();
             gr.readFromFile(path);
             Edge e = gr.getEdge(new VertexIndex(0), new VertexIndex(0));
@@ -40,7 +71,7 @@ public class GraphIncidenceMatTest {
         }
 
         @Test
-        void checkGraphListGetterEdge_expectedThrowIndexBound() {
+        void checkGraphIncidenceMatGetterEdge_expectedThrowIndexBound() {
             Graph<String> gr = new GraphIncidenceMat<>();
             gr.readFromFile(path);
             Assertions.assertThrows(IndexOutOfBoundsException.class, ()->
@@ -54,7 +85,7 @@ public class GraphIncidenceMatTest {
         }
 
         @Test
-        void checkGraphListGetterVertex() {
+        void checkGraphIncidenceMatGetterVertex() {
             Graph<String> gr = new GraphIncidenceMat<>();
             gr.readFromFile(path);
             String str = gr.getVertexValue(new VertexIndex(0));
@@ -64,7 +95,7 @@ public class GraphIncidenceMatTest {
         }
 
         @Test
-        void checkGraphListGetterVertex_expectedThrowIndexBound() {
+        void checkGraphIncidenceMatGetterVertex_expectedThrowIndexBound() {
             Graph<String> gr = new GraphIncidenceMat<>();
             gr.readFromFile(path);
             Assertions.assertThrows(IndexOutOfBoundsException.class, ()->
@@ -74,7 +105,7 @@ public class GraphIncidenceMatTest {
         }
 
         @Test
-        void checkGraphListAddVertex() {
+        void checkGraphIncidenceMatAddVertex() {
             Graph<String> gr = new GraphIncidenceMat<>();
             gr.readFromFile(path);
             String expectedStr = "wow";
@@ -86,7 +117,7 @@ public class GraphIncidenceMatTest {
         }
 
         @Test
-        void checkGraphListAddEdge() {
+        void checkGraphIncidenceMatAddEdge() {
             Graph<String> gr = new GraphIncidenceMat<>();
             gr.readFromFile(path);
             VertexIndex from = new VertexIndex(0);
@@ -98,7 +129,7 @@ public class GraphIncidenceMatTest {
         }
 
         @Test
-        void checkGraphListRemoveEdge() {
+        void checkGraphIncidenceMatRemoveEdge() {
             Graph<String> gr = new GraphIncidenceMat<>();
             gr.readFromFile(path);
             VertexIndex from = new VertexIndex(1);
@@ -111,7 +142,7 @@ public class GraphIncidenceMatTest {
         }
 
         @Test
-        void checkGraphListRemoveEdgeNonExistingEdge() {
+        void checkGraphIncidenceMatRemoveEdgeNonExistingEdge() {
             Graph<String> gr = new GraphIncidenceMat<>();
             gr.readFromFile(path);
             Assertions.assertFalse(gr.removeEdge(new VertexIndex(0), new VertexIndex(0)));
@@ -119,7 +150,7 @@ public class GraphIncidenceMatTest {
         }
 
         @Test
-        void checkGraphListRemoveEdge_expectedThrowIndexBound() {
+        void checkGraphIncidenceMatRemoveEdge_expectedThrowIndexBound() {
             Graph<String> gr = new GraphIncidenceMat<>();
             gr.readFromFile(path);
             Assertions.assertThrows(IndexOutOfBoundsException.class, ()->
@@ -133,7 +164,7 @@ public class GraphIncidenceMatTest {
         }
 
         @Test
-        void checkGraphListSetEdge() {
+        void checkGraphIncidenceMatSetEdge() {
             Graph<String> gr = new GraphIncidenceMat<>();
             gr.readFromFile(path);
             VertexIndex from = new VertexIndex(1);
@@ -146,7 +177,7 @@ public class GraphIncidenceMatTest {
         }
 
         @Test
-        void checkGraphListSetEdgeNonExistingEdge() {
+        void checkGraphIncidenceMatSetEdgeNonExistingEdge() {
             Graph<String> gr = new GraphIncidenceMat<>();
             gr.readFromFile(path);
             VertexIndex from = new VertexIndex(1);
@@ -157,7 +188,7 @@ public class GraphIncidenceMatTest {
         }
 
         @Test
-        void checkGraphListSetEdge_expectedIndexBound() {
+        void checkGraphIncidenceMatSetEdge_expectedIndexBound() {
             Graph<String> gr = new GraphIncidenceMat<>();
             gr.readFromFile(path);
             Assertions.assertThrows(IndexOutOfBoundsException.class, () ->
@@ -171,7 +202,7 @@ public class GraphIncidenceMatTest {
         }
 
         @Test
-        void checkGraphListSetVertex() {
+        void checkGraphIncidenceMatSetVertex() {
             Graph<String> gr = new GraphIncidenceMat<>();
             gr.readFromFile(path);
             Assertions.assertEquals("a", gr.getVertexValue(new VertexIndex(0)));
@@ -180,7 +211,7 @@ public class GraphIncidenceMatTest {
         }
 
         @Test
-        void checkSetVertex_expectedIndexBound() {
+        void checkGraphIncidenceMatSetVertex_expectedIndexBound() {
             Graph<String> gr = new GraphIncidenceMat<>();
             gr.readFromFile(path);
             Assertions.assertThrows(IndexOutOfBoundsException.class, () ->
@@ -190,7 +221,7 @@ public class GraphIncidenceMatTest {
         }
 
         @Test
-        void checkGraphListRemoveVertex() {
+        void checkGraphIncidenceMatRemoveVertex() {
             Graph<String> gr = new GraphIncidenceMat<>();
             gr.readFromFile(path);
             gr.removeVertex(new VertexIndex(2));
@@ -198,4 +229,140 @@ public class GraphIncidenceMatTest {
             expectedGr.readFromFile(path2);
             Assertions.assertEquals(expectedGr, gr);
         }
+
+    @Test
+    void checkGraphIncidenceMattTopologicalSort() {
+        Graph<String> gr = new GraphIncidenceMat<>();
+        gr.readFromFile(path);
+        Vector<VertexIndex> ans = gr.topologicalSort(new VertexIndex(1));
+        Vector<VertexIndex> expectedAns = new Vector<>();
+        expectedAns.add(new VertexIndex(0));
+        expectedAns.add(new VertexIndex(2));
+        expectedAns.add(new VertexIndex(3));
+        expectedAns.add(new VertexIndex(1));
+        expectedAns.add(new VertexIndex(4));
+        Assertions.assertEquals(expectedAns, ans);
+    }
+
+    @Test
+    void checkGraphIncidenceMatTopologicalSortWithEmptyGr_expectedThrowIndexBound() {
+        Graph<String> gr = new GraphIncidenceMat<>();
+        Assertions.assertThrows(IndexOutOfBoundsException.class, () ->
+                gr.topologicalSort(new VertexIndex(0)));
+    }
+
+    @Test
+    void checkGraphIncidenceMatTopologicalSort_expectedThrowIndexBound() {
+        Graph<String> gr = new GraphIncidenceMat<>();
+        gr.readFromFile(path);
+        Assertions.assertThrows(IndexOutOfBoundsException.class, () ->
+                gr.topologicalSort(new VertexIndex(5)));
+        Assertions.assertThrows(IndexOutOfBoundsException.class, () ->
+                gr.topologicalSort(new VertexIndex(-1)));
+    }
+
+    @Test
+    void checkGraphIncidenceMatEqualsWithEmptyGraph() {
+        Graph<Integer> gr1 = new GraphIncidenceMat<>();
+        Graph<Integer> gr2 = new GraphIncidenceMat<>();
+        Assertions.assertEquals(gr1, gr2);
+    }
+
+    @Test
+    void checkGraphIncidenceMatHashcodeWithEmptyGraph() {
+        Graph<Integer> gr1 = new GraphIncidenceMat<>();
+        Graph<Integer> gr2 = new GraphIncidenceMat<>();
+        Assertions.assertEquals(gr1.hashCode(), gr2.hashCode());
+    }
+
+    @Test
+    void checkGraphIncidenceMatEqualsWithOneNode() {
+        Graph<Integer> gr1 = new GraphIncidenceMat<>();
+        Graph<Integer> gr2 = new GraphIncidenceMat<>();
+        gr1.addVertex(3);
+        gr2.addVertex(3);
+        Assertions.assertEquals(gr1, gr2);
+    }
+
+    @Test
+    void checkGraphIncidenceMatHashcodeWithOneNode() {
+        Graph<Integer> gr1 = new GraphIncidenceMat<>();
+        Graph<Integer> gr2 = new GraphIncidenceMat<>();
+        gr1.addVertex(3);
+        gr2.addVertex(3);
+        Assertions.assertEquals(gr1.hashCode(), gr2.hashCode());
+    }
+
+    @Test
+    void checkGraphIncidenceMatEqualsWithNull() {
+        Graph<Integer> gr = new GraphIncidenceMat<>();
+        gr.addVertex(3);
+        Assertions.assertNull(null);
+    }
+
+    @Test
+    void checkGraphIncidenceMatEquals_Reflexivity() {
+        Graph<String> gr = new GraphIncidenceMat<>();
+        gr.readFromFile(path);
+        Assertions.assertEquals(gr, gr);
+    }
+
+    @Test
+    void checkGraphIncidenceMatHashcode_Reflexivity() {
+        Graph<String> gr = new GraphIncidenceMat<>();
+        gr.readFromFile(path);
+        Assertions.assertEquals(gr.hashCode(), gr.hashCode());
+    }
+
+    @Test
+    void checkGraphIncidenceMatEqualsSymmetry() {
+        Graph<String> gr1 = new GraphIncidenceMat<>();
+        gr1.readFromFile(path);
+        Graph<String> gr2 = new GraphIncidenceMat<>();
+        gr2.addVertex("a");
+        gr2.addVertex("b");
+        gr2.addVertex("c");
+        gr2.addVertex("d");
+        gr2.addVertex("e");
+        gr2.addEdge(new VertexIndex(1), new VertexIndex(0), 5);
+        gr2.addEdge(new VertexIndex(1), new VertexIndex(2), 6);
+        gr2.addEdge(new VertexIndex(2), new VertexIndex(0), 7);
+        gr2.addEdge(new VertexIndex(1), new VertexIndex(3), (float)8.3);
+        Assertions.assertEquals(gr2, gr1);
+        Assertions.assertEquals(gr1, gr2);
+    }
+
+    @Test
+    void checkGraphIncidenceMatEqualsWithDifferentOrderEdge() {
+        Graph<String> gr1 = new GraphIncidenceMat<>();
+        gr1.readFromFile(path);
+        Graph<String> gr2 = new GraphIncidenceMat<>();
+        gr2.addVertex("a");
+        gr2.addVertex("b");
+        gr2.addVertex("c");
+        gr2.addVertex("d");
+        gr2.addVertex("e");
+        gr2.addEdge(new VertexIndex(2), new VertexIndex(0), 7);
+        gr2.addEdge(new VertexIndex(1), new VertexIndex(0), 5);
+        gr2.addEdge(new VertexIndex(1), new VertexIndex(3), (float)8.3);
+        gr2.addEdge(new VertexIndex(1), new VertexIndex(2), 6);
+        Assertions.assertEquals(gr2, gr1);
+    }
+
+    @Test
+    void checkGraphIncidenceMatHashcodeWithDifferentOrderEdge() {
+        Graph<String> gr1 = new GraphIncidenceMat<>();
+        gr1.readFromFile(path);
+        Graph<String> gr2 = new GraphIncidenceMat<>();
+        gr2.addVertex("a");
+        gr2.addVertex("b");
+        gr2.addVertex("c");
+        gr2.addVertex("d");
+        gr2.addVertex("e");
+        gr2.addEdge(new VertexIndex(2), new VertexIndex(0), 7);
+        gr2.addEdge(new VertexIndex(1), new VertexIndex(0), 5);
+        gr2.addEdge(new VertexIndex(1), new VertexIndex(3), (float)8.3);
+        gr2.addEdge(new VertexIndex(1), new VertexIndex(2), 6);
+        Assertions.assertEquals(gr2.hashCode(), gr1.hashCode());
+    }
 }
