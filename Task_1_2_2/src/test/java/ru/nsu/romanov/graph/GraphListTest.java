@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 /**
- * Tests for GraphList
+ * Tests for GraphList.
  */
 class GraphListTest {
 

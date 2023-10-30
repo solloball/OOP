@@ -125,7 +125,7 @@ public class GraphList<V> implements Graph<V> {
     public Edge getEdge(VertexIndex from, VertexIndex to) {
         checkIdx(from);
         checkIdx(to);
-        for (var it: list.get(from.idx())) {
+        for (var it : list.get(from.idx())) {
             if (it.to.equals(to)) {
                 return it;
             }
@@ -163,7 +163,7 @@ public class GraphList<V> implements Graph<V> {
         return Objects.hash(list, values);
     }
 
-    private int dfs (VertexIndex curNode, Color[] arr, Vector<VertexIndex> ans) {
+    private int dfs(VertexIndex curNode, Color[] arr, Vector<VertexIndex> ans) {
         arr[curNode.idx()] = Color.Grey;
         for (var edge : list.get(curNode.idx())) {
             VertexIndex to = edge.to;
