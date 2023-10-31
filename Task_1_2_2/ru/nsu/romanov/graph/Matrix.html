@@ -71,11 +71,18 @@ loadScripts(document, 'script');</script>
 </div>
 <section class="class-description" id="class-description">
 <dl class="notes">
+<dt>Type Parameters:</dt>
+<dd><code>V</code> - value which matrix stores.</dd>
+<dd><code>I</code> - key for i index.</dd>
+<dd><code>J</code> - key for j index.</dd>
+</dl>
+<dl class="notes">
 <dt>All Known Implementing Classes:</dt>
 <dd><code><a href="MatrixList.html" title="class in ru.nsu.romanov.graph">MatrixList</a></code></dd>
 </dl>
 <hr>
 <div class="type-signature"><span class="modifiers">public interface </span><span class="element-name type-name-label">Matrix&lt;V,<wbr>I,<wbr>J&gt;</span></div>
+<div class="block">Interface for matrix.</div>
 </section>
 <section class="summary">
 <ul class="summary-list">
@@ -93,59 +100,91 @@ loadScripts(document, 'script');</script>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code>void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#addColumn(I,V)" class="member-name-link">addColumn</a><wbr>(<a href="Matrix.html" title="type parameter in Matrix">I</a>&nbsp;i,
  <a href="Matrix.html" title="type parameter in Matrix">V</a>&nbsp;val)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">
+<div class="block">add new column for all index i.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code>void</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#addColumnAll(V)" class="member-name-link">addColumnAll</a><wbr>(<a href="Matrix.html" title="type parameter in Matrix">V</a>&nbsp;val)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">
+<div class="block">add new column with new value.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code>void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#addRow()" class="member-name-link">addRow</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">
+<div class="block">add empty row.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code>void</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#addRow(V)" class="member-name-link">addRow</a><wbr>(<a href="Matrix.html" title="type parameter in Matrix">V</a>&nbsp;val)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">
+<div class="block">add row with one node with new value.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code>void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#addRow(V,int)" class="member-name-link">addRow</a><wbr>(<a href="Matrix.html" title="type parameter in Matrix">V</a>&nbsp;val,
  int&nbsp;size)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">
+<div class="block">add new row with size node with new value.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code>void</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#clear()" class="member-name-link">clear</a>()</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">
+<div class="block">clear matrix.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code>int</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#getColumnSize(java.lang.Integer)" class="member-name-link">getColumnSize</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Integer.html" title="class or interface in java.lang" class="external-link">Integer</a>&nbsp;i)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">
+<div class="block">get column size with index i.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code>int</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#getSize()" class="member-name-link">getSize</a>()</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">
+<div class="block">get size of rows.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="Matrix.html" title="type parameter in Matrix">V</a></code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#getVal(I,J)" class="member-name-link">getVal</a><wbr>(<a href="Matrix.html" title="type parameter in Matrix">I</a>&nbsp;i,
  <a href="Matrix.html" title="type parameter in Matrix">J</a>&nbsp;j)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">
+<div class="block">get value from position (i, j).</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code>void</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#remove(I,J)" class="member-name-link">remove</a><wbr>(<a href="Matrix.html" title="type parameter in Matrix">I</a>&nbsp;i,
  <a href="Matrix.html" title="type parameter in Matrix">J</a>&nbsp;j)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">
+<div class="block">remove node in position (i, j).</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code>void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#removeColumn(J)" class="member-name-link">removeColumn</a><wbr>(<a href="Matrix.html" title="type parameter in Matrix">J</a>&nbsp;j)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">
+<div class="block">remove column with index j.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code>void</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#removeRow(I)" class="member-name-link">removeRow</a><wbr>(<a href="Matrix.html" title="type parameter in Matrix">I</a>&nbsp;i)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">
+<div class="block">remove row with index i.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code>void</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#setColumn(I,V)" class="member-name-link">setColumn</a><wbr>(<a href="Matrix.html" title="type parameter in Matrix">I</a>&nbsp;j,
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#setColumn(J,V)" class="member-name-link">setColumn</a><wbr>(<a href="Matrix.html" title="type parameter in Matrix">J</a>&nbsp;j,
  <a href="Matrix.html" title="type parameter in Matrix">V</a>&nbsp;val)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">
+<div class="block">set value for all column with index j.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code>void</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#setMatrix(V)" class="member-name-link">setMatrix</a><wbr>(<a href="Matrix.html" title="type parameter in Matrix">V</a>&nbsp;val)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">
+<div class="block">set new value for all matrix.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code>void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#setRows(I,V)" class="member-name-link">setRows</a><wbr>(<a href="Matrix.html" title="type parameter in Matrix">I</a>&nbsp;i,
  <a href="Matrix.html" title="type parameter in Matrix">V</a>&nbsp;val)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">
+<div class="block">set value for all rows with index i.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code>void</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#setVal(I,J,V)" class="member-name-link">setVal</a><wbr>(<a href="Matrix.html" title="type parameter in Matrix">I</a>&nbsp;i,
  <a href="Matrix.html" title="type parameter in Matrix">J</a>&nbsp;j,
  <a href="Matrix.html" title="type parameter in Matrix">V</a>&nbsp;val)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">
+<div class="block">set new value to position (i, j).</div>
+</div>
 </div>
 </div>
 </div>
@@ -166,6 +205,13 @@ loadScripts(document, 'script');</script>
 <div class="member-signature"><span class="return-type">void</span>&nbsp;<span class="element-name">setVal</span><wbr><span class="parameters">(<a href="Matrix.html" title="type parameter in Matrix">I</a>&nbsp;i,
  <a href="Matrix.html" title="type parameter in Matrix">J</a>&nbsp;j,
  <a href="Matrix.html" title="type parameter in Matrix">V</a>&nbsp;val)</span></div>
+<div class="block">set new value to position (i, j).</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>i</code> - key index i.</dd>
+<dd><code>j</code> - key index j.</dd>
+<dd><code>val</code> - new Value.</dd>
+</dl>
 </section>
 </li>
 <li>
@@ -173,13 +219,27 @@ loadScripts(document, 'script');</script>
 <h3 id="getVal(java.lang.Object,java.lang.Object)">getVal</h3>
 <div class="member-signature"><span class="return-type"><a href="Matrix.html" title="type parameter in Matrix">V</a></span>&nbsp;<span class="element-name">getVal</span><wbr><span class="parameters">(<a href="Matrix.html" title="type parameter in Matrix">I</a>&nbsp;i,
  <a href="Matrix.html" title="type parameter in Matrix">J</a>&nbsp;j)</span></div>
+<div class="block">get value from position (i, j).</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>i</code> - key index i.</dd>
+<dd><code>j</code> - key index j.</dd>
+<dt>Returns:</dt>
+<dd>value if it existed, null otherwise.</dd>
+</dl>
 </section>
 </li>
 <li>
-<section class="detail" id="setColumn(I,V)">
+<section class="detail" id="setColumn(J,V)">
 <h3 id="setColumn(java.lang.Object,java.lang.Object)">setColumn</h3>
-<div class="member-signature"><span class="return-type">void</span>&nbsp;<span class="element-name">setColumn</span><wbr><span class="parameters">(<a href="Matrix.html" title="type parameter in Matrix">I</a>&nbsp;j,
+<div class="member-signature"><span class="return-type">void</span>&nbsp;<span class="element-name">setColumn</span><wbr><span class="parameters">(<a href="Matrix.html" title="type parameter in Matrix">J</a>&nbsp;j,
  <a href="Matrix.html" title="type parameter in Matrix">V</a>&nbsp;val)</span></div>
+<div class="block">set value for all column with index j.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>j</code> - key index j.</dd>
+<dd><code>val</code> - new value.</dd>
+</dl>
 </section>
 </li>
 <li>
@@ -187,18 +247,30 @@ loadScripts(document, 'script');</script>
 <h3 id="setRows(java.lang.Object,java.lang.Object)">setRows</h3>
 <div class="member-signature"><span class="return-type">void</span>&nbsp;<span class="element-name">setRows</span><wbr><span class="parameters">(<a href="Matrix.html" title="type parameter in Matrix">I</a>&nbsp;i,
  <a href="Matrix.html" title="type parameter in Matrix">V</a>&nbsp;val)</span></div>
+<div class="block">set value for all rows with index i.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>i</code> - key index i.</dd>
+<dd><code>val</code> - new value.</dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="setMatrix(V)">
 <h3 id="setMatrix(java.lang.Object)">setMatrix</h3>
 <div class="member-signature"><span class="return-type">void</span>&nbsp;<span class="element-name">setMatrix</span><wbr><span class="parameters">(<a href="Matrix.html" title="type parameter in Matrix">V</a>&nbsp;val)</span></div>
+<div class="block">set new value for all matrix.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>val</code> - new value.</dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="clear()">
 <h3>clear</h3>
 <div class="member-signature"><span class="return-type">void</span>&nbsp;<span class="element-name">clear</span>()</div>
+<div class="block">clear matrix.</div>
 </section>
 </li>
 <li>
@@ -206,18 +278,34 @@ loadScripts(document, 'script');</script>
 <h3 id="remove(java.lang.Object,java.lang.Object)">remove</h3>
 <div class="member-signature"><span class="return-type">void</span>&nbsp;<span class="element-name">remove</span><wbr><span class="parameters">(<a href="Matrix.html" title="type parameter in Matrix">I</a>&nbsp;i,
  <a href="Matrix.html" title="type parameter in Matrix">J</a>&nbsp;j)</span></div>
+<div class="block">remove node in position (i, j).</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>i</code> - key index i.</dd>
+<dd><code>j</code> - key index j.</dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="removeRow(I)">
 <h3 id="removeRow(java.lang.Object)">removeRow</h3>
 <div class="member-signature"><span class="return-type">void</span>&nbsp;<span class="element-name">removeRow</span><wbr><span class="parameters">(<a href="Matrix.html" title="type parameter in Matrix">I</a>&nbsp;i)</span></div>
+<div class="block">remove row with index i.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>i</code> - key index i.</dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="removeColumn(J)">
 <h3 id="removeColumn(java.lang.Object)">removeColumn</h3>
 <div class="member-signature"><span class="return-type">void</span>&nbsp;<span class="element-name">removeColumn</span><wbr><span class="parameters">(<a href="Matrix.html" title="type parameter in Matrix">J</a>&nbsp;j)</span></div>
+<div class="block">remove column with index j.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>j</code> - key index j.</dd>
+</dl>
 </section>
 </li>
 <li>
@@ -225,24 +313,41 @@ loadScripts(document, 'script');</script>
 <h3 id="addColumn(java.lang.Object,java.lang.Object)">addColumn</h3>
 <div class="member-signature"><span class="return-type">void</span>&nbsp;<span class="element-name">addColumn</span><wbr><span class="parameters">(<a href="Matrix.html" title="type parameter in Matrix">I</a>&nbsp;i,
  <a href="Matrix.html" title="type parameter in Matrix">V</a>&nbsp;val)</span></div>
+<div class="block">add new column for all index i.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>i</code> - key index i.</dd>
+<dd><code>val</code> - new value.</dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="addColumnAll(V)">
 <h3 id="addColumnAll(java.lang.Object)">addColumnAll</h3>
 <div class="member-signature"><span class="return-type">void</span>&nbsp;<span class="element-name">addColumnAll</span><wbr><span class="parameters">(<a href="Matrix.html" title="type parameter in Matrix">V</a>&nbsp;val)</span></div>
+<div class="block">add new column with new value.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>val</code> - new value.</dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="addRow()">
 <h3>addRow</h3>
 <div class="member-signature"><span class="return-type">void</span>&nbsp;<span class="element-name">addRow</span>()</div>
+<div class="block">add empty row.</div>
 </section>
 </li>
 <li>
 <section class="detail" id="addRow(V)">
 <h3 id="addRow(java.lang.Object)">addRow</h3>
 <div class="member-signature"><span class="return-type">void</span>&nbsp;<span class="element-name">addRow</span><wbr><span class="parameters">(<a href="Matrix.html" title="type parameter in Matrix">V</a>&nbsp;val)</span></div>
+<div class="block">add row with one node with new value.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>val</code> - new value.</dd>
+</dl>
 </section>
 </li>
 <li>
@@ -250,18 +355,36 @@ loadScripts(document, 'script');</script>
 <h3 id="addRow(java.lang.Object,int)">addRow</h3>
 <div class="member-signature"><span class="return-type">void</span>&nbsp;<span class="element-name">addRow</span><wbr><span class="parameters">(<a href="Matrix.html" title="type parameter in Matrix">V</a>&nbsp;val,
  int&nbsp;size)</span></div>
+<div class="block">add new row with size node with new value.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>val</code> - new value.</dd>
+<dd><code>size</code> - count of node.</dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="getSize()">
 <h3>getSize</h3>
 <div class="member-signature"><span class="return-type">int</span>&nbsp;<span class="element-name">getSize</span>()</div>
+<div class="block">get size of rows.</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd>counts of rows.</dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="getColumnSize(java.lang.Integer)">
 <h3>getColumnSize</h3>
 <div class="member-signature"><span class="return-type">int</span>&nbsp;<span class="element-name">getColumnSize</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Integer.html" title="class or interface in java.lang" class="external-link">Integer</a>&nbsp;i)</span></div>
+<div class="block">get column size with index i.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>i</code> - key index i.</dd>
+<dt>Returns:</dt>
+<dd>matrix[i] size.</dd>
+</dl>
 </section>
 </li>
 </ul>
