@@ -20,7 +20,7 @@ public class GraphIncidenceMat<V> implements Graph<V> {
 
     private final List<V> values = new LinkedList<>();
 
-    private final List<List<Float>> mat = new LinkedList<>();
+    private final Matrix<Float, Integer, Integer> mat = new MatrixList<>();
 
     private int countEdge = 0;
 
@@ -53,8 +53,8 @@ public class GraphIncidenceMat<V> implements Graph<V> {
                 int to = (int) tokenizer.nval;
                 tokenizer.nextToken();
                 float weight = (float) tokenizer.nval;
-                mat.get(from).set(i, weight);
-                mat.get(to).set(i, -weight);
+                mat.setVal(from, i, weight);
+                mat.setVal(to, i, -weight);
             }
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -64,7 +64,7 @@ public class GraphIncidenceMat<V> implements Graph<V> {
     @Override
     public VertexIndex addVertex(V val) {
         values.add(val);
-        mat.add(new LinkedList<>(Collections.nCopies(countEdge, null)));
+        mat.addRow(null, countEdge);
         return new VertexIndex(values.size());
     }
 
@@ -74,47 +74,38 @@ public class GraphIncidenceMat<V> implements Graph<V> {
         values.remove(idx.idx());
         Stack<Integer> st = new Stack<>();
         for (int i = 0; i < countEdge; i++) {
-            if (mat.get(idx.idx()).get(i) != null) {
+            if (mat.getVal(idx.idx(), i) != null) {
                 st.push(i);
             }
         }
         int size = st.size();
         for (var i = 0; i < size; i++) {
             int index = st.pop();
-            for (var it : mat) {
-                it.remove(index);
-
-            }
+            mat.removeColumn(index);
         }
         countEdge -= size;
-        mat.remove(idx.idx());
+        mat.removeRow(idx.idx());
     }
 
     @Override
     public void addEdge(VertexIndex from, VertexIndex to, float weight) {
         checkIdx(from);
         checkIdx(to);
-        for (int i = 0; i < values.size(); i++) {
-            if (i == to.idx()) {
-                mat.get(i).add(-weight);
-            } else if (i == from.idx()) {
-                mat.get(i).add(weight);
-            } else {
-                mat.get(i).add(null);
-            }
-        }
+        mat.addColumnAll(null);
+        int size = mat.getColumnSize(from.idx());
+        mat.setVal(to.idx(), size - 1, -weight);
+        mat.setVal(from.idx(), size - 1, weight);
         countEdge++;
     }
 
     @Override
     public boolean removeEdge(VertexIndex from, VertexIndex to) {
         for (int i = 0; i < countEdge; i++) {
-            Float weightFrom = mat.get(from.idx()).get(i);
-            Float weightTo = mat.get(to.idx()).get(i);
+            Float weightTo = mat.getVal(to.idx(), i);
+            Float weightFrom = mat.getVal(from.idx(), i);
+
             if (weightFrom != null && weightTo != null && weightFrom > 0) {
-                for (var it : mat) {
-                    it.remove(i);
-                }
+                mat.removeColumn(i);
                 countEdge--;
                 return true;
             }
@@ -137,8 +128,8 @@ public class GraphIncidenceMat<V> implements Graph<V> {
     @Override
     public Edge getEdge(VertexIndex from, VertexIndex to) {
         for (int i = 0; i < countEdge; i++) {
-            Float weightFrom = mat.get(from.idx()).get(i);
-            Float weightTo = mat.get(to.idx()).get(i);
+            Float weightFrom = mat.getVal(from.idx(), i);
+            Float weightTo = mat.getVal(to.idx(), i);
             if (weightFrom != null && weightTo != null
                     && weightFrom > 0 && weightTo < 0) {
                 return new Edge(from, to, weightFrom);
@@ -150,12 +141,12 @@ public class GraphIncidenceMat<V> implements Graph<V> {
     @Override
     public boolean setEdge(VertexIndex from, VertexIndex to, float weight) {
         for (int i = 0; i < countEdge; i++) {
-            Float weightFrom = mat.get(from.idx()).get(i);
-            Float weightTo = mat.get(to.idx()).get(i);
+            Float weightFrom = mat.getVal(from.idx(), i);
+            Float weightTo = mat.getVal(to.idx(), i);
             if (weightFrom != null && weightTo != null
                     && weightFrom > 0 && weightTo < 0) {
-                mat.get(from.idx()).set(i, weight);
-                mat.get(to.idx()).set(i, -weight);
+                mat.setVal(from.idx(), i, weight);
+                mat.setVal(to.idx(), i, -weight);
                 return true;
             }
         }
@@ -184,10 +175,10 @@ public class GraphIncidenceMat<V> implements Graph<V> {
     private int dfs(VertexIndex curNode, Color[] arr, List<VertexIndex> ans) {
         arr[curNode.idx()] = Color.GREY;
         for (int i = 0; i < countEdge; i++) {
-            Float weight = mat.get(curNode.idx()).get(i);
+            Float weight = mat.getVal(curNode.idx(), i);
             if (weight != null && weight > 0) {
                 for (int j = 0; j < values.size(); j++) {
-                    Float newWeight = mat.get(j).get(i);
+                    Float newWeight = mat.getVal(j, i);
                     if (newWeight == null || newWeight != -weight) {
                         continue;
                     }

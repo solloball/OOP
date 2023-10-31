@@ -20,7 +20,7 @@ import java.util.Stack;
  */
 public class GraphAdjMat<V> implements Graph<V> {
 
-    private final ArrayList<ArrayList<Float>> mat = new ArrayList<>();
+    private final Matrix<Float, Integer, Integer> mat = new MatrixList<>();
     private final List<V> values = new LinkedList<>();
 
     private void checkIdx(VertexIndex idx) {
@@ -39,8 +39,7 @@ public class GraphAdjMat<V> implements Graph<V> {
             int countVertex;
             countVertex = (int) tokenizer.nval;
             for (int i = 0; i < countVertex; i++) {
-                mat.add(
-                        new ArrayList<>(Collections.nCopies(countVertex, null)));
+                mat.addRow(null, countVertex);
             }
             tokenizer.nextToken();
             int countEdge;
@@ -57,7 +56,7 @@ public class GraphAdjMat<V> implements Graph<V> {
                 int to = (int) tokenizer.nval;
                 tokenizer.nextToken();
                 float weight = (float) tokenizer.nval;
-                mat.get(from).set(to, weight);
+                mat.setVal(from, to, weight);
             }
         } catch (FileNotFoundException e) {
             System.out.println("failed to found file");
@@ -69,40 +68,36 @@ public class GraphAdjMat<V> implements Graph<V> {
 
     @Override
     public VertexIndex addVertex(V val) {
-        int size = mat.size();
-        mat.add(new ArrayList<>(Collections.nCopies(size + 1, null)));
+        int size = mat.getSize();
+        mat.addRow(null, size);
         values.add(val);
-        for (int i = 0; i < size; i++) {
-            mat.get(i).add(null);
-        }
+        mat.addColumnAll(null);
         return new VertexIndex(size);
     }
 
     @Override
     public void removeVertex(VertexIndex idx) {
-        mat.remove(idx.idx());
-        values.remove(idx.idx());
-        for (var iterator : mat) {
-            iterator.remove(idx.idx());
-        }
         checkIdx(idx);
+        mat.removeRow(idx.idx());
+        values.remove(idx.idx());
+        mat.removeColumn(idx.idx());
     }
 
     @Override
     public void addEdge(VertexIndex from, VertexIndex to, float weight) {
         checkIdx(from);
         checkIdx(to);
-        mat.get(from.idx()).set(to.idx(), weight);
+        mat.setVal(from.idx(), to.idx(), weight);
     }
 
     @Override
     public boolean removeEdge(VertexIndex from, VertexIndex to) {
         checkIdx(from);
         checkIdx(to);
-        if (mat.get(from.idx()).get(to.idx()) == null) {
+        if (mat.getVal(from.idx(), to.idx()) == null) {
             return false;
         }
-        mat.get(from.idx()).set(to.idx(), null);
+        mat.setVal(from.idx(), to.idx(), null);
         return true;
     }
 
@@ -122,7 +117,7 @@ public class GraphAdjMat<V> implements Graph<V> {
     public Edge getEdge(VertexIndex from, VertexIndex to) {
         checkIdx(from);
         checkIdx(to);
-        Float weight = mat.get(from.idx()).get(to.idx());
+        Float weight = mat.getVal(from.idx(), to.idx());
         if (weight == null) {
             return null;
         }
@@ -133,10 +128,10 @@ public class GraphAdjMat<V> implements Graph<V> {
     public boolean setEdge(VertexIndex from, VertexIndex to, float weight) {
         checkIdx(from);
         checkIdx(to);
-        if (mat.get(from.idx()).get(to.idx()) == null) {
+        if (mat.getVal(from.idx(), to.idx()) == null) {
             return false;
         }
-        mat.get(from.idx()).set(to.idx(), weight);
+        mat.setVal(from.idx(), to.idx(), weight);
         return true;
     }
 
@@ -160,7 +155,7 @@ public class GraphAdjMat<V> implements Graph<V> {
     private int dfs(VertexIndex curNode, Color[] arr, List<VertexIndex> ans) {
         arr[curNode.idx()] = Color.GREY;
         for (int i = 0; i < values.size(); i++) {
-            Float weight = mat.get(curNode.idx()).get(i);
+            Float weight = mat.getVal(curNode.idx(), i);
             if (weight == null) {
                 continue;
             }
