@@ -1,12 +1,5 @@
 package ru.nsu.romanov.graph;
 
-import ru.nsu.romanov.graph.interfaceGraph.Color;
-import ru.nsu.romanov.graph.interfaceGraph.Edge;
-import ru.nsu.romanov.graph.interfaceGraph.Graph;
-import ru.nsu.romanov.graph.interfaceGraph.VertexIndex;
-import ru.nsu.romanov.graph.matrix.Matrix;
-import ru.nsu.romanov.graph.matrix.MatrixList;
-
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.StreamTokenizer;
@@ -15,6 +8,12 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Objects;
 import java.util.Stack;
+import ru.nsu.romanov.graph.interfaceGraph.Color;
+import ru.nsu.romanov.graph.interfaceGraph.Edge;
+import ru.nsu.romanov.graph.interfaceGraph.Graph;
+import ru.nsu.romanov.graph.interfaceGraph.VertexIndex;
+import ru.nsu.romanov.graph.matrix.Matrix;
+import ru.nsu.romanov.graph.matrix.MatrixList;
 
 /**
  * Implementation of Graph.
