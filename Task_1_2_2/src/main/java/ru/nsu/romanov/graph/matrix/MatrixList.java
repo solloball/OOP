@@ -110,7 +110,7 @@ public class MatrixList<V> implements Matrix<V, Integer, Integer> {
             if (j >= row.size()) {
                 throw new IndexOutOfBoundsException();
             }
-            row.remove((int) j);
+            row.set(j, val);
         }
     }
 
