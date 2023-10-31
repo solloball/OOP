@@ -1,12 +1,15 @@
 package ru.nsu.romanov.graph;
 
-import static java.lang.Integer.min;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ * realization of matrix which is ArrayList * ArrayList.
+ *
+ * @param <V> type of value.
+ */
 public class MatrixList<V> implements Matrix<V, Integer, Integer> {
 
     private final List<List<V>> matrix = new ArrayList<>();

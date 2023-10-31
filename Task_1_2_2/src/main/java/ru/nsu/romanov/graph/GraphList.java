@@ -33,7 +33,7 @@ public class GraphList<V> implements Graph<V> {
     public void readFromFile(String fileName) {
         list.clear();
         values.clear();
-        try (FileReader reader = new FileReader(fileName)){
+        try (FileReader reader = new FileReader(fileName)) {
             StreamTokenizer tokenizer = new StreamTokenizer(reader);
             int countVertex;
             tokenizer.nextToken();
