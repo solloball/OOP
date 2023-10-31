@@ -4,7 +4,13 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.StreamTokenizer;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Objects;
+import java.util.Stack;
 
 /**
  * Implementation of graph.
@@ -29,15 +35,15 @@ public class GraphAdjMat<V> implements Graph<V> {
         values.clear();
         try (FileReader reader = new FileReader(fileName)) {
             StreamTokenizer tokenizer = new StreamTokenizer(reader);
-            int countEdge;
-            int countVertex;
             tokenizer.nextToken();
+            int countVertex;
             countVertex = (int) tokenizer.nval;
             for (int i = 0; i < countVertex; i++) {
                 mat.add(
                         new ArrayList<>(Collections.nCopies(countVertex, null)));
             }
             tokenizer.nextToken();
+            int countEdge;
             countEdge = (int) tokenizer.nval;
             for (int i = 0; i < countVertex; i++) {
                 tokenizer.nextToken();

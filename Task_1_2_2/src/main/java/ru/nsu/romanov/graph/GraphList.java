@@ -1,10 +1,16 @@
 package ru.nsu.romanov.graph;
 
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.StreamTokenizer;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Objects;
+import java.util.Set;
+import java.util.Stack;
 
 /**
  * Implementation of Graph.
@@ -29,7 +35,6 @@ public class GraphList<V> implements Graph<V> {
         values.clear();
         try (FileReader reader = new FileReader(fileName)){
             StreamTokenizer tokenizer = new StreamTokenizer(reader);
-            int countEdge;
             int countVertex;
             tokenizer.nextToken();
             countVertex = (int) tokenizer.nval;
@@ -37,6 +42,7 @@ public class GraphList<V> implements Graph<V> {
                 list.add(new HashSet<>());
             }
             tokenizer.nextToken();
+            int countEdge;
             countEdge = (int) tokenizer.nval;
             for (int i = 0; i < countVertex; i++) {
                 tokenizer.nextToken();

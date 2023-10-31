@@ -1,6 +1,5 @@
 package ru.nsu.romanov.graph;
 
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.StreamTokenizer;
@@ -10,7 +9,6 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Objects;
 import java.util.Stack;
-import java.util.Vector;
 
 /**
  * Implementation of Graph.
