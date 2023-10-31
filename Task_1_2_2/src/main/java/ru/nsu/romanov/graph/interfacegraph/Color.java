@@ -1,4 +1,4 @@
-package ru.nsu.romanov.graph.interfaceGraph;
+package ru.nsu.romanov.graph.interfacegraph;
 
 /**
  * enum that represents states of vertex in graph.

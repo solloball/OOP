@@ -8,7 +8,7 @@ import ru.nsu.romanov.graph.matrix.MatrixList;
 /**
  * tests for matrix list.
  */
-public class MatrixLIstTest {
+public class MatrixListTest {
     @Test
     void checkAddRow() {
         Matrix<String, Integer, Integer> mat = new MatrixList<>();
