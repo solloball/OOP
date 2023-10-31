@@ -158,20 +158,20 @@ public class GraphAdjMat<V> implements Graph<V> {
     }
 
     private int dfs(VertexIndex curNode, Color[] arr, List<VertexIndex> ans) {
-        arr[curNode.idx()] = Color.Grey;
+        arr[curNode.idx()] = Color.GREY;
         for (int i = 0; i < values.size(); i++) {
             Float weight = mat.get(curNode.idx()).get(i);
             if (weight == null) {
                 continue;
             }
-            if (arr[i] == Color.Grey) {
+            if (arr[i] == Color.GREY) {
                 return 1;
             }
-            if (arr[i] != Color.Black) {
+            if (arr[i] != Color.BLACK) {
                 dfs(new VertexIndex(i), arr, ans);
             }
         }
-        arr[curNode.idx()] = Color.Black;
+        arr[curNode.idx()] = Color.BLACK;
         ans.add(curNode);
         return 0;
     }
@@ -180,14 +180,14 @@ public class GraphAdjMat<V> implements Graph<V> {
     public List<VertexIndex> topologicalSort(VertexIndex start) {
         checkIdx(start);
         Color[] arr = new Color[values.size()];
-        Arrays.fill(arr, Color.White);
+        Arrays.fill(arr, Color.WHITE);
         List<VertexIndex> ans = new Stack<>();
         dfs(start, arr, ans);
         for (int i = 0; i < values.size(); i++) {
             if (i == start.idx()) {
                 continue;
             }
-            if (arr[i] != Color.White) {
+            if (arr[i] != Color.WHITE) {
                 continue;
             }
             if (dfs(new VertexIndex(i), arr, ans) == 1) {

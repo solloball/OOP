@@ -182,7 +182,7 @@ public class GraphIncidenceMat<V> implements Graph<V> {
     }
 
     private int dfs(VertexIndex curNode, Color[] arr, List<VertexIndex> ans) {
-        arr[curNode.idx()] = Color.Grey;
+        arr[curNode.idx()] = Color.GREY;
         for (int i = 0; i < countEdge; i++) {
             Float weight = mat.get(curNode.idx()).get(i);
             if (weight != null && weight > 0) {
@@ -191,16 +191,16 @@ public class GraphIncidenceMat<V> implements Graph<V> {
                     if (newWeight == null || newWeight != -weight) {
                         continue;
                     }
-                    if (arr[j] == Color.Grey) {
+                    if (arr[j] == Color.GREY) {
                         return 1;
                     }
-                    if (arr[j] != Color.Black) {
+                    if (arr[j] != Color.BLACK) {
                         dfs(new VertexIndex(j), arr, ans);
                     }
                 }
             }
         }
-        arr[curNode.idx()] = Color.Black;
+        arr[curNode.idx()] = Color.BLACK;
         ans.add(curNode);
         return 0;
     }
@@ -209,7 +209,7 @@ public class GraphIncidenceMat<V> implements Graph<V> {
     public List<VertexIndex> topologicalSort(VertexIndex start) {
         checkIdx(start);
         Color[] arr = new Color[values.size()];
-        Arrays.fill(arr, Color.White);
+        Arrays.fill(arr, Color.WHITE);
         List<VertexIndex> ans = new Stack<>();
         if (dfs(start, arr, ans) == 1) {
             return null;
@@ -218,7 +218,7 @@ public class GraphIncidenceMat<V> implements Graph<V> {
             if (i == start.idx()) {
                 continue;
             }
-            if (arr[i] != Color.White) {
+            if (arr[i] != Color.WHITE) {
                 continue;
             }
             if (dfs(new VertexIndex(i), arr, ans) == 1) {

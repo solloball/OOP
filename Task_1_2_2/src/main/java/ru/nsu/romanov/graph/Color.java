@@ -7,5 +7,5 @@ package ru.nsu.romanov.graph;
  * White - Not visited.
  */
 public enum Color {
-    Black, Grey, White
+    BLACK, GREY, WHITE
 }
