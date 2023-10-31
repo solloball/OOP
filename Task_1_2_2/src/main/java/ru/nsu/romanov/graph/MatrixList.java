@@ -12,13 +12,13 @@ public class MatrixList<V> implements Matrix<V, Integer, Integer> {
     private final List<List<V>> matrix = new ArrayList<>();
 
     private void checkI(Integer i) {
-        if (i < 0 || i >= matrix.size()) {
+        if (i == null || i < 0 || i >= matrix.size()) {
             throw new IndexOutOfBoundsException();
         }
     }
 
     private void checkJ(Integer j) {
-        if (j < 0) {
+        if (j == null || j < 0) {
             throw new IndexOutOfBoundsException();
         }
     }
