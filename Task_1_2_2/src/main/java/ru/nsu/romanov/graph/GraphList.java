@@ -4,14 +4,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.StreamTokenizer;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Objects;
-import java.util.Set;
-import java.util.Vector;
+import java.util.*;
 
 /**
  * Implementation of Graph.
@@ -34,17 +27,10 @@ public class GraphList<V> implements Graph<V> {
     public void readFromFile(String fileName) {
         list.clear();
         values.clear();
-        FileReader reader;
-        try {
-            reader = new FileReader(fileName);
-        } catch (FileNotFoundException e) {
-            System.out.println("failed to found file");
-            throw new RuntimeException(e);
-        }
-        StreamTokenizer tokenizer = new StreamTokenizer(reader);
-        int countEdge;
-        int countVertex;
-        try {
+        try (FileReader reader = new FileReader(fileName)){
+            StreamTokenizer tokenizer = new StreamTokenizer(reader);
+            int countEdge;
+            int countVertex;
             tokenizer.nextToken();
             countVertex = (int) tokenizer.nval;
             for (int i = 0; i < countVertex; i++) {
@@ -163,7 +149,7 @@ public class GraphList<V> implements Graph<V> {
         return Objects.hash(list, values);
     }
 
-    private int dfs(VertexIndex curNode, Color[] arr, Vector<VertexIndex> ans) {
+    private int dfs(VertexIndex curNode, Color[] arr, List<VertexIndex> ans) {
         arr[curNode.idx()] = Color.Grey;
         for (var edge : list.get(curNode.idx())) {
             VertexIndex to = edge.to;
@@ -180,11 +166,11 @@ public class GraphList<V> implements Graph<V> {
     }
 
     @Override
-    public Vector<VertexIndex> topologicalSort(VertexIndex start) {
+    public List<VertexIndex> topologicalSort(VertexIndex start) {
         checkIdx(start);
         Color[] arr = new Color[values.size()];
         Arrays.fill(arr, Color.White);
-        Vector<VertexIndex> ans = new Vector<>();
+        List<VertexIndex> ans = new Stack<>();
         if (dfs(start, arr, ans) == 1) {
             return null;
         }

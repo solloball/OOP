@@ -36,16 +36,9 @@ public class GraphIncidenceMat<V> implements Graph<V> {
     public void readFromFile(String fileName) {
         mat.clear();
         values.clear();
-        FileReader reader;
-        try {
-            reader = new FileReader(fileName);
-        } catch (FileNotFoundException e) {
-            System.out.println("failed to found file");
-            throw new RuntimeException(e);
-        }
-        StreamTokenizer tokenizer = new StreamTokenizer(reader);
-        int countVertex;
-        try {
+        try (FileReader reader = new FileReader(fileName)) {
+            StreamTokenizer tokenizer = new StreamTokenizer(reader);
+            int countVertex;
             tokenizer.nextToken();
             countVertex = (int) tokenizer.nval;
             tokenizer.nextToken();
@@ -190,7 +183,7 @@ public class GraphIncidenceMat<V> implements Graph<V> {
         return Objects.hash(values, mat, countEdge);
     }
 
-    private int dfs(VertexIndex curNode, Color[] arr, Vector<VertexIndex> ans) {
+    private int dfs(VertexIndex curNode, Color[] arr, List<VertexIndex> ans) {
         arr[curNode.idx()] = Color.Grey;
         for (int i = 0; i < countEdge; i++) {
             Float weight = mat.get(curNode.idx()).get(i);
@@ -215,11 +208,11 @@ public class GraphIncidenceMat<V> implements Graph<V> {
     }
 
     @Override
-    public Vector<VertexIndex> topologicalSort(VertexIndex start) {
+    public List<VertexIndex> topologicalSort(VertexIndex start) {
         checkIdx(start);
         Color[] arr = new Color[values.size()];
         Arrays.fill(arr, Color.White);
-        Vector<VertexIndex> ans = new Vector<>();
+        List<VertexIndex> ans = new Stack<>();
         if (dfs(start, arr, ans) == 1) {
             return null;
         }

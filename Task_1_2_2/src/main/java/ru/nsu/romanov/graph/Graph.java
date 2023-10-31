@@ -1,6 +1,6 @@
 package ru.nsu.romanov.graph;
 
-import java.util.Vector;
+import java.util.List;
 
 /**
  * Interface for working with graph.
@@ -98,7 +98,7 @@ public interface Graph<V> {
      * return null if graph can't have Topological Sort.
      *
      * @param start from what vertex we start.
-     * @return vector with vertex in topological sort order.
+     * @return list with vertex in topological sort order.
      */
-    Vector<VertexIndex> topologicalSort(VertexIndex start);
+    List<VertexIndex> topologicalSort(VertexIndex start);
 }

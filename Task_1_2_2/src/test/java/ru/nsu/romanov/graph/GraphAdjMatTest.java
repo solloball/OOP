@@ -1,5 +1,7 @@
 package ru.nsu.romanov.graph;
 
+import java.util.List;
+import java.util.Stack;
 import java.util.Vector;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -236,13 +238,13 @@ public class GraphAdjMatTest {
     void checkGraphAdjMatTopologicalSort() {
         Graph<String> gr = new GraphAdjMat<>();
         gr.readFromFile(path);
-        Vector<VertexIndex> expectedAns = new Vector<>();
+        List<VertexIndex> expectedAns = new Stack<>();
         expectedAns.add(new VertexIndex(0));
         expectedAns.add(new VertexIndex(2));
         expectedAns.add(new VertexIndex(3));
         expectedAns.add(new VertexIndex(1));
         expectedAns.add(new VertexIndex(4));
-        Vector<VertexIndex> ans = gr.topologicalSort(new VertexIndex(1));
+        List<VertexIndex> ans = gr.topologicalSort(new VertexIndex(1));
         Assertions.assertEquals(expectedAns, ans);
     }
 

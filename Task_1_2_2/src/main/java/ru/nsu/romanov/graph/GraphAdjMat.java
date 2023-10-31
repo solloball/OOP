@@ -4,13 +4,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.StreamTokenizer;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Objects;
-import java.util.Vector;
+import java.util.*;
 
 /**
  * Implementation of graph.
@@ -33,17 +27,10 @@ public class GraphAdjMat<V> implements Graph<V> {
     public void readFromFile(String fileName) {
         mat.clear();
         values.clear();
-        FileReader reader;
-        try {
-            reader = new FileReader(fileName);
-        } catch (FileNotFoundException e) {
-            System.out.println("failed to found file");
-            throw new RuntimeException(e);
-        }
-        StreamTokenizer tokenizer = new StreamTokenizer(reader);
-        int countEdge;
-        int countVertex;
-        try {
+        try (FileReader reader = new FileReader(fileName)) {
+            StreamTokenizer tokenizer = new StreamTokenizer(reader);
+            int countEdge;
+            int countVertex;
             tokenizer.nextToken();
             countVertex = (int) tokenizer.nval;
             for (int i = 0; i < countVertex; i++) {
@@ -54,7 +41,7 @@ public class GraphAdjMat<V> implements Graph<V> {
             countEdge = (int) tokenizer.nval;
             for (int i = 0; i < countVertex; i++) {
                 tokenizer.nextToken();
-                String val  = tokenizer.sval;
+                String val = tokenizer.sval;
                 values.add((V) val);
             }
             for (int i = 0; i < countEdge; i++) {
@@ -66,6 +53,9 @@ public class GraphAdjMat<V> implements Graph<V> {
                 float weight = (float) tokenizer.nval;
                 mat.get(from).set(to, weight);
             }
+        } catch (FileNotFoundException e) {
+            System.out.println("failed to found file");
+            throw new RuntimeException(e);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -161,7 +151,7 @@ public class GraphAdjMat<V> implements Graph<V> {
         return Objects.hash(mat, values);
     }
 
-    private int dfs(VertexIndex curNode, Color[] arr, Vector<VertexIndex> ans) {
+    private int dfs(VertexIndex curNode, Color[] arr, List<VertexIndex> ans) {
         arr[curNode.idx()] = Color.Grey;
         for (int i = 0; i < values.size(); i++) {
             Float weight = mat.get(curNode.idx()).get(i);
@@ -181,11 +171,11 @@ public class GraphAdjMat<V> implements Graph<V> {
     }
 
     @Override
-    public Vector<VertexIndex> topologicalSort(VertexIndex start) {
+    public List<VertexIndex> topologicalSort(VertexIndex start) {
         checkIdx(start);
         Color[] arr = new Color[values.size()];
         Arrays.fill(arr, Color.White);
-        Vector<VertexIndex> ans = new Vector<>();
+        List<VertexIndex> ans = new Stack<>();
         dfs(start, arr, ans);
         for (int i = 0; i < values.size(); i++) {
             if (i == start.idx()) {
