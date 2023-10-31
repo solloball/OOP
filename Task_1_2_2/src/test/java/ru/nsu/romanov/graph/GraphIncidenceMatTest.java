@@ -4,8 +4,8 @@ import java.util.List;
 import java.util.Stack;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import ru.nsu.romanov.graph.interfacegraph.Graph;
 import ru.nsu.romanov.graph.interfacegraph.Edge;
+import ru.nsu.romanov.graph.interfacegraph.Graph;
 import ru.nsu.romanov.graph.interfacegraph.VertexIndex;
 
 /**

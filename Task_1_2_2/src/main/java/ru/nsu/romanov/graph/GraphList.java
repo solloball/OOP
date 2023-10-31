@@ -11,10 +11,10 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 import java.util.Stack;
-import ru.nsu.romanov.graph.interfaceGraph.Color;
-import ru.nsu.romanov.graph.interfaceGraph.Edge;
-import ru.nsu.romanov.graph.interfaceGraph.Graph;
-import ru.nsu.romanov.graph.interfaceGraph.VertexIndex;
+import ru.nsu.romanov.graph.interfacegraph.Color;
+import ru.nsu.romanov.graph.interfacegraph.Edge;
+import ru.nsu.romanov.graph.interfacegraph.Graph;
+import ru.nsu.romanov.graph.interfacegraph.VertexIndex;
 
 /**
  * Implementation of Graph.
