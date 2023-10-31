@@ -15,11 +15,7 @@
 <script type="text/javascript" src="../../../../script-dir/jquery-ui.min.js"></script>
 </head>
 <body class="package-declaration-page">
-<script type="text/javascript">var evenRowColor = "even-row-color";
-var oddRowColor = "odd-row-color";
-var tableTab = "table-tab";
-var activeTableTab = "active-table-tab";
-var pathtoroot = "../../../../";
+<script type="text/javascript">var pathtoroot = "../../../../";
 loadScripts(document, 'script');</script>
 <noscript>
 <div>JavaScript is disabled on your browser.</div>
@@ -31,6 +27,7 @@ loadScripts(document, 'script');</script>
 <div class="top-nav" id="navbar-top">
 <div class="skip-nav"><a href="#skip-navbar-top" title="Skip navigation links">Skip navigation links</a></div>
 <ul id="navbar-top-firstrow" class="nav-list" title="Navigation">
+<li><a href="../../../../index.html">Overview</a></li>
 <li class="nav-bar-cell1-rev">Package</li>
 <li>Class</li>
 <li><a href="package-tree.html">Tree</a></li>
@@ -43,7 +40,7 @@ loadScripts(document, 'script');</script>
 <ul class="sub-nav-list">
 <li>Package:&nbsp;</li>
 <li>Description&nbsp;|&nbsp;</li>
-<li>Related Packages&nbsp;|&nbsp;</li>
+<li><a href="#related-package-summary">Related Packages</a>&nbsp;|&nbsp;</li>
 <li><a href="#class-summary">Classes and Interfaces</a></li>
 </ul>
 </div>
@@ -65,49 +62,35 @@ loadScripts(document, 'script');</script>
 <section class="summary">
 <ul class="summary-list">
 <li>
+<div id="related-package-summary">
+<div class="caption"><span>Related Packages</span></div>
+<div class="summary-table two-column-summary">
+<div class="table-header col-first">Package</div>
+<div class="table-header col-last">Description</div>
+<div class="col-first even-row-color"><a href="interfaceGraph/package-summary.html">ru.nsu.romanov.graph.interfaceGraph</a></div>
+<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-first odd-row-color"><a href="matrix/package-summary.html">ru.nsu.romanov.graph.matrix</a></div>
+<div class="col-last odd-row-color">&nbsp;</div>
+</div>
+</div>
+</li>
+<li>
 <div id="class-summary">
-<div class="table-tabs" role="tablist" aria-orientation="horizontal"><button id="class-summary-tab0" role="tab" aria-selected="true" aria-controls="class-summary.tabpanel" tabindex="0" onkeydown="switchTab(event)" onclick="show('class-summary', 'class-summary', 2)" class="active-table-tab">All Classes and Interfaces</button><button id="class-summary-tab1" role="tab" aria-selected="false" aria-controls="class-summary.tabpanel" tabindex="-1" onkeydown="switchTab(event)" onclick="show('class-summary', 'class-summary-tab1', 2)" class="table-tab">Interfaces</button><button id="class-summary-tab2" role="tab" aria-selected="false" aria-controls="class-summary.tabpanel" tabindex="-1" onkeydown="switchTab(event)" onclick="show('class-summary', 'class-summary-tab2', 2)" class="table-tab">Classes</button><button id="class-summary-tab3" role="tab" aria-selected="false" aria-controls="class-summary.tabpanel" tabindex="-1" onkeydown="switchTab(event)" onclick="show('class-summary', 'class-summary-tab3', 2)" class="table-tab">Enum Classes</button><button id="class-summary-tab4" role="tab" aria-selected="false" aria-controls="class-summary.tabpanel" tabindex="-1" onkeydown="switchTab(event)" onclick="show('class-summary', 'class-summary-tab4', 2)" class="table-tab">Record Classes</button></div>
-<div id="class-summary.tabpanel" role="tabpanel">
-<div class="summary-table two-column-summary" aria-labelledby="class-summary-tab0">
+<div class="caption"><span>Classes</span></div>
+<div class="summary-table two-column-summary">
 <div class="table-header col-first">Class</div>
 <div class="table-header col-last">Description</div>
-<div class="col-first even-row-color class-summary class-summary-tab3"><a href="Color.html" title="enum class in ru.nsu.romanov.graph">Color</a></div>
-<div class="col-last even-row-color class-summary class-summary-tab3">
-<div class="block">enum that represents states of vertex in graph.</div>
-</div>
-<div class="col-first odd-row-color class-summary class-summary-tab2"><a href="Edge.html" title="class in ru.nsu.romanov.graph">Edge</a></div>
-<div class="col-last odd-row-color class-summary class-summary-tab2">
-<div class="block">Edge represent edge in graph.</div>
-</div>
-<div class="col-first even-row-color class-summary class-summary-tab1"><a href="Graph.html" title="interface in ru.nsu.romanov.graph">Graph</a>&lt;V&gt;</div>
-<div class="col-last even-row-color class-summary class-summary-tab1">
-<div class="block">Interface for working with graph.</div>
-</div>
-<div class="col-first odd-row-color class-summary class-summary-tab2"><a href="GraphAdjMat.html" title="class in ru.nsu.romanov.graph">GraphAdjMat</a>&lt;V&gt;</div>
-<div class="col-last odd-row-color class-summary class-summary-tab2">
+<div class="col-first even-row-color class-summary class-summary-tab2"><a href="GraphAdjMat.html" title="class in ru.nsu.romanov.graph">GraphAdjMat</a>&lt;V&gt;</div>
+<div class="col-last even-row-color class-summary class-summary-tab2">
 <div class="block">Implementation of graph.</div>
 </div>
-<div class="col-first even-row-color class-summary class-summary-tab2"><a href="GraphIncidenceMat.html" title="class in ru.nsu.romanov.graph">GraphIncidenceMat</a>&lt;V&gt;</div>
+<div class="col-first odd-row-color class-summary class-summary-tab2"><a href="GraphIncidenceMat.html" title="class in ru.nsu.romanov.graph">GraphIncidenceMat</a>&lt;V&gt;</div>
+<div class="col-last odd-row-color class-summary class-summary-tab2">
+<div class="block">Implementation of Graph.</div>
+</div>
+<div class="col-first even-row-color class-summary class-summary-tab2"><a href="GraphList.html" title="class in ru.nsu.romanov.graph">GraphList</a>&lt;V&gt;</div>
 <div class="col-last even-row-color class-summary class-summary-tab2">
 <div class="block">Implementation of Graph.</div>
-</div>
-<div class="col-first odd-row-color class-summary class-summary-tab2"><a href="GraphList.html" title="class in ru.nsu.romanov.graph">GraphList</a>&lt;V&gt;</div>
-<div class="col-last odd-row-color class-summary class-summary-tab2">
-<div class="block">Implementation of Graph.</div>
-</div>
-<div class="col-first even-row-color class-summary class-summary-tab1"><a href="Matrix.html" title="interface in ru.nsu.romanov.graph">Matrix</a>&lt;V,<wbr>I,<wbr>J&gt;</div>
-<div class="col-last even-row-color class-summary class-summary-tab1">
-<div class="block">Interface for matrix.</div>
-</div>
-<div class="col-first odd-row-color class-summary class-summary-tab2"><a href="MatrixList.html" title="class in ru.nsu.romanov.graph">MatrixList</a>&lt;V&gt;</div>
-<div class="col-last odd-row-color class-summary class-summary-tab2">
-<div class="block">realization of matrix which is ArrayList * ArrayList.</div>
-</div>
-<div class="col-first even-row-color class-summary class-summary-tab4"><a href="VertexIndex.html" title="class in ru.nsu.romanov.graph">VertexIndex</a></div>
-<div class="col-last even-row-color class-summary class-summary-tab4">
-<div class="block">Record VertexIndex
- store identifies index of vertex.</div>
-</div>
 </div>
 </div>
 </div>
