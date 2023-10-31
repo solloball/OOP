@@ -1,4 +1,5 @@
-package ru.nsu.romanov.graph;
+package ru.nsu.romanov.graph.matrix;
+
 
 import java.util.ArrayList;
 import java.util.Collections;

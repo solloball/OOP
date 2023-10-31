@@ -1,5 +1,10 @@
 package ru.nsu.romanov.graph;
 
+import ru.nsu.romanov.graph.interfaceGraph.Color;
+import ru.nsu.romanov.graph.interfaceGraph.Edge;
+import ru.nsu.romanov.graph.interfaceGraph.Graph;
+import ru.nsu.romanov.graph.interfaceGraph.VertexIndex;
+
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.StreamTokenizer;

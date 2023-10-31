@@ -1,18 +1,21 @@
 package ru.nsu.romanov.graph;
 
+import ru.nsu.romanov.graph.interfaceGraph.Edge;
+import ru.nsu.romanov.graph.interfaceGraph.Graph;
+
 import java.util.List;
 import java.util.Stack;
-import java.util.Vector;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import ru.nsu.romanov.graph.interfaceGraph.VertexIndex;
 
 /**
  * Tests for GraphAdjMat.
  */
 public class GraphAdjMatTest {
-    private final String path = "src/test/java/ru/nsu/romanov/graph/graph.txt";
+    private final String path = "resources/graph.txt";
 
-    private final String path2 = "src/test/java/ru/nsu/romanov/graph/graphWithout3Vertex.txt";
+    private final String path2 = "resources/graphWithout3Vertex.txt";
 
     @Test
     void checkGraphAdjMatRead() {

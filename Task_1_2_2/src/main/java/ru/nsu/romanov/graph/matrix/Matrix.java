@@ -1,4 +1,4 @@
-package ru.nsu.romanov.graph;
+package ru.nsu.romanov.graph.matrix;
 
 /**
  * Interface for matrix.

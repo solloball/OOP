@@ -1,4 +1,4 @@
-package ru.nsu.romanov.graph;
+package ru.nsu.romanov.graph.interfaceGraph;
 
 import java.util.List;
 

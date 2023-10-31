@@ -1,4 +1,4 @@
-package ru.nsu.romanov.graph;
+package ru.nsu.romanov.graph.interfaceGraph;
 
 import java.util.Objects;
 
@@ -28,7 +28,7 @@ public class Edge {
      * @param to set this.to.
      * @param weight set this.weight.
      */
-    Edge(VertexIndex from, VertexIndex to, float weight) {
+    public Edge(VertexIndex from, VertexIndex to, float weight) {
         this.from = from;
         this.to = to;
         this.weight = weight;
