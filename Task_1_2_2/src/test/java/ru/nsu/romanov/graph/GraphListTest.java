@@ -13,11 +13,11 @@ import ru.nsu.romanov.graph.interfacegraph.VertexIndex;
  */
 class GraphListTest {
 
-    private final String path = getClass().getClassLoader().
-            getResource("graph.txt").getPath();
+    private final String path = getClass().getClassLoader()
+            .getResource("graph.txt").getPath();
 
-    private final String path2 = getClass().getClassLoader().
-            getResource("graphWithout3Vertex.txt").getPath();
+    private final String path2 = getClass().getClassLoader()
+            .getResource("graphWithout3Vertex.txt").getPath();
 
     @Test
     void checkGraphListRead() {
