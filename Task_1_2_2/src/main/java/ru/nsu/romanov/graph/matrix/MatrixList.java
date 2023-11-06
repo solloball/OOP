@@ -11,7 +11,7 @@ import java.util.Objects;
  *
  * @param <V> type of value.
  */
-public class MatrixList<V> implements Matrix<V, Integer, Integer> {
+public class MatrixList<V> implements Matrix<V> {
 
     private final List<List<V>> matrix = new ArrayList<>();
 

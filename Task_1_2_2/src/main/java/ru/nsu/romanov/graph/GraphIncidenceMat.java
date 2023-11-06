@@ -8,7 +8,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Objects;
 import java.util.Stack;
-import ru.nsu.romanov.graph.interfacegraph.Color;
+import ru.nsu.romanov.graph.Color;
 import ru.nsu.romanov.graph.interfacegraph.Edge;
 import ru.nsu.romanov.graph.interfacegraph.Graph;
 import ru.nsu.romanov.graph.interfacegraph.VertexIndex;
@@ -25,7 +25,7 @@ public class GraphIncidenceMat<V> implements Graph<V> {
 
     private final List<V> values = new LinkedList<>();
 
-    private final Matrix<Float, Integer, Integer> mat = new MatrixList<>();
+    private final Matrix<Float> mat = new MatrixList<>();
 
     private int countEdge = 0;
 

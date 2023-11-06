@@ -4,10 +4,8 @@ package ru.nsu.romanov.graph.matrix;
  * Interface for matrix.
  *
  * @param <V> value which matrix stores.
- * @param <I> key for i index.
- * @param <J> key for j index.
  */
-public interface Matrix<V, I, J> {
+public interface Matrix<V> {
 
     /**
      * set new value to position (i, j).
@@ -16,7 +14,7 @@ public interface Matrix<V, I, J> {
      * @param j key index j.
      * @param val new Value.
      */
-    void setVal(I i, J j, V val);
+    void setVal(Integer i, Integer j, V val);
 
     /**
      * get value from position (i, j).
@@ -25,7 +23,7 @@ public interface Matrix<V, I, J> {
      * @param j key index j.
      * @return value if it existed, null otherwise.
      */
-    V getVal(I i, J j);
+    V getVal(Integer i, Integer j);
 
     /**
      * set value for all column with index j.
@@ -33,7 +31,7 @@ public interface Matrix<V, I, J> {
      * @param j key index j.
      * @param val new value.
      */
-    void setColumn(J j, V val);
+    void setColumn(Integer j, V val);
 
     /**
      * set value for all rows with index i.
@@ -41,7 +39,7 @@ public interface Matrix<V, I, J> {
      * @param i key index i.
      * @param val new value.
      */
-    void setRows(I i, V val);
+    void setRows(Integer i, V val);
 
     /**
      * set new value for all matrix.
@@ -61,21 +59,21 @@ public interface Matrix<V, I, J> {
      * @param i key index i.
      * @param j key index j.
      */
-    void remove(I i, J j);
+    void remove(Integer i, Integer j);
 
     /**
      * remove row with index i.
      *
      * @param i key index i.
      */
-    void removeRow(I i);
+    void removeRow(Integer i);
 
     /**
      * remove column with index j.
      *
      * @param j key index j.
      */
-    void removeColumn(J j);
+    void removeColumn(Integer j);
 
     /**
      * add new column for all index i.
@@ -83,7 +81,7 @@ public interface Matrix<V, I, J> {
      * @param i key index i.
      * @param val new value.
      */
-    void addColumn(I i, V val);
+    void addColumn(Integer i, V val);
 
     /**
      * add new column with new value.

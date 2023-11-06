@@ -12,9 +12,12 @@ import ru.nsu.romanov.graph.interfacegraph.VertexIndex;
  * Tests for GraphAdjMat.
  */
 public class GraphAdjMatTest {
-    private final String path = "resources/graph.txt";
 
-    private final String path2 = "resources/graphWithout3Vertex.txt";
+    private final String path = getClass().getClassLoader().
+            getResource("graph.txt").getPath();
+
+    private final String path2 = getClass().getClassLoader().
+            getResource("graphWithout3Vertex.txt").getPath();
 
     @Test
     void checkGraphAdjMatRead() {

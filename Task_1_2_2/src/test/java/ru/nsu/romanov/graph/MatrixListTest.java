@@ -11,7 +11,7 @@ import ru.nsu.romanov.graph.matrix.MatrixList;
 public class MatrixListTest {
     @Test
     void checkAddRow() {
-        Matrix<String, Integer, Integer> mat = new MatrixList<>();
+        Matrix<String> mat = new MatrixList<>();
         Assertions.assertEquals(0, mat.getSize());
         mat.addRow();
         Assertions.assertEquals(1, mat.getSize());
@@ -19,14 +19,14 @@ public class MatrixListTest {
 
     @Test
     void checkAddRowWithOneNode() {
-        Matrix<String, Integer, Integer> mat = new MatrixList<>();
+        Matrix<String> mat = new MatrixList<>();
         mat.addRow("element");
         Assertions.assertEquals("element", mat.getVal(0, 0));
     }
 
     @Test
     void checkAddRowWithSomeNodes() {
-        Matrix<String, Integer, Integer> mat = new MatrixList<>();
+        Matrix<String> mat = new MatrixList<>();
         mat.addRow("element", 5);
         for (int i = 0; i < 5; i++) {
             Assertions.assertEquals("element", mat.getVal(0, i));
@@ -35,7 +35,7 @@ public class MatrixListTest {
 
     @Test
     void checkSetVal() {
-        Matrix<String, Integer, Integer> mat = new MatrixList<>();
+        Matrix<String> mat = new MatrixList<>();
         mat.addRow("element");
         Assertions.assertEquals("element", mat.getVal(0, 0));
         mat.setVal(0, 0, "wow");
@@ -44,14 +44,14 @@ public class MatrixListTest {
 
     @Test
     void checkGetVal() {
-        Matrix<Integer, Integer, Integer> mat = new MatrixList<>();
+        Matrix<Integer> mat = new MatrixList<>();
         mat.addRow(5);
         Assertions.assertEquals(5, mat.getVal(0, 0));
     }
 
     @Test
     void checkSetEdge() {
-        Matrix<Integer, Integer, Integer> mat = new MatrixList<>();
+        Matrix<Integer> mat = new MatrixList<>();
         mat.addRow(5);
         mat.addRow(6);
         mat.addRow(5, 5);
@@ -61,7 +61,7 @@ public class MatrixListTest {
 
     @Test
     void checkGetSize() {
-        Matrix<Integer, Integer, Integer> mat = new MatrixList<>();
+        Matrix<Integer> mat = new MatrixList<>();
         mat.addRow(5);
         mat.addRow(6);
         mat.addRow(5, 5);
@@ -70,7 +70,7 @@ public class MatrixListTest {
 
     @Test
     void checkRemoveRow() {
-        Matrix<Integer, Integer, Integer> mat = new MatrixList<>();
+        Matrix<Integer> mat = new MatrixList<>();
         mat.addRow(5);
         mat.removeRow(0);
         Assertions.assertEquals(0, mat.getSize());
@@ -78,7 +78,7 @@ public class MatrixListTest {
 
     @Test
     void checkRemoveColumn() {
-        Matrix<Integer, Integer, Integer> mat = new MatrixList<>();
+        Matrix<Integer> mat = new MatrixList<>();
         mat.addRow(5, 5);
         mat.removeColumn(3);
         Assertions.assertEquals(4, mat.getColumnSize(0));
@@ -86,7 +86,7 @@ public class MatrixListTest {
 
     @Test
     void checkAddColumn() {
-        Matrix<Integer, Integer, Integer> mat = new MatrixList<>();
+        Matrix<Integer> mat = new MatrixList<>();
         mat.addRow(5, 5);
         mat.addColumn(0, 4);
         Assertions.assertEquals(4, mat.getVal(0, 5));
@@ -94,7 +94,7 @@ public class MatrixListTest {
 
     @Test
     void checkAddColumnAll() {
-        Matrix<Integer, Integer, Integer> mat = new MatrixList<>();
+        Matrix<Integer> mat = new MatrixList<>();
         mat.addRow(5, 5);
         mat.addRow(5, 5);
         mat.addRow(5, 5);
@@ -106,7 +106,7 @@ public class MatrixListTest {
 
     @Test
     void checkSetColumn() {
-        Matrix<Integer, Integer, Integer> mat = new MatrixList<>();
+        Matrix<Integer> mat = new MatrixList<>();
         mat.addRow(5, 5);
         mat.addRow(5, 5);
         mat.addRow(5, 5);
@@ -118,7 +118,7 @@ public class MatrixListTest {
 
     @Test
     void checkSetRow() {
-        Matrix<Integer, Integer, Integer> mat = new MatrixList<>();
+        Matrix<Integer> mat = new MatrixList<>();
         mat.addRow(5, 5);
         mat.addRow(5, 5);
         mat.addRow(5, 5);
@@ -130,7 +130,7 @@ public class MatrixListTest {
 
     @Test
     void checkSetMatrix() {
-        Matrix<Integer, Integer, Integer> mat = new MatrixList<>();
+        Matrix<Integer> mat = new MatrixList<>();
         mat.addRow(5, 5);
         mat.addRow(5, 5);
         mat.addRow(5, 5);
@@ -144,11 +144,11 @@ public class MatrixListTest {
 
     @Test
     void checkEquals() {
-        Matrix<Integer, Integer, Integer> mat = new MatrixList<>();
+        Matrix<Integer> mat = new MatrixList<>();
         mat.addRow(5, 5);
         mat.addRow(5, 5);
         mat.addRow(5, 5);
-        Matrix<Integer, Integer, Integer> mat2 = new MatrixList<>();
+        Matrix<Integer> mat2 = new MatrixList<>();
         mat2.addRow(5, 5);
         mat2.addRow(5, 5);
         mat2.addRow(5, 5);
@@ -158,11 +158,11 @@ public class MatrixListTest {
 
     @Test
     void checkHashCode() {
-        Matrix<Integer, Integer, Integer> mat = new MatrixList<>();
+        Matrix<Integer> mat = new MatrixList<>();
         mat.addRow(5, 5);
         mat.addRow(5, 5);
         mat.addRow(5, 5);
-        Matrix<Integer, Integer, Integer> mat2 = new MatrixList<>();
+        Matrix<Integer> mat2 = new MatrixList<>();
         mat2.addRow(5, 5);
         mat2.addRow(5, 5);
         mat2.addRow(5, 5);
@@ -171,15 +171,15 @@ public class MatrixListTest {
 
     @Test
     void checkEqualsEmpty() {
-        Matrix<Integer, Integer, Integer> mat = new MatrixList<>();
-        Matrix<Integer, Integer, Integer> mat2 = new MatrixList<>();
+        Matrix<Integer> mat = new MatrixList<>();
+        Matrix<Integer> mat2 = new MatrixList<>();
         Assertions.assertEquals(mat, mat2);
     }
 
     @Test
     void checkHashcodeEmpty() {
-        Matrix<Integer, Integer, Integer> mat = new MatrixList<>();
-        Matrix<Integer, Integer, Integer> mat2 = new MatrixList<>();
+        Matrix<Integer> mat = new MatrixList<>();
+        Matrix<Integer> mat2 = new MatrixList<>();
         Assertions.assertEquals(mat.hashCode(), mat2.hashCode());
     }
 }
