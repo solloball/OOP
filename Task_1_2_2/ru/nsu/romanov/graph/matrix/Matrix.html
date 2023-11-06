@@ -68,21 +68,19 @@ loadScripts(document, 'script');</script>
 <!-- ======== START OF CLASS DATA ======== -->
 <div class="header">
 <div class="sub-title"><span class="package-label-in-type">Package</span>&nbsp;<a href="package-summary.html">ru.nsu.romanov.graph.matrix</a></div>
-<h1 title="Interface Matrix" class="title">Interface Matrix&lt;V,<wbr>I,<wbr>J&gt;</h1>
+<h1 title="Interface Matrix" class="title">Interface Matrix&lt;V&gt;</h1>
 </div>
 <section class="class-description" id="class-description">
 <dl class="notes">
 <dt>Type Parameters:</dt>
 <dd><code>V</code> - value which matrix stores.</dd>
-<dd><code>I</code> - key for i index.</dd>
-<dd><code>J</code> - key for j index.</dd>
 </dl>
 <dl class="notes">
 <dt>All Known Implementing Classes:</dt>
 <dd><code><a href="MatrixList.html" title="class in ru.nsu.romanov.graph.matrix">MatrixList</a></code></dd>
 </dl>
 <hr>
-<div class="type-signature"><span class="modifiers">public interface </span><span class="element-name type-name-label">Matrix&lt;V,<wbr>I,<wbr>J&gt;</span></div>
+<div class="type-signature"><span class="modifiers">public interface </span><span class="element-name type-name-label">Matrix&lt;V&gt;</span></div>
 <div class="block">Interface for matrix.</div>
 </section>
 <section class="summary">
@@ -99,7 +97,7 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-second">Method</div>
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code>void</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#addColumn(I,V)" class="member-name-link">addColumn</a><wbr>(<a href="Matrix.html" title="type parameter in Matrix">I</a>&nbsp;i,
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#addColumn(java.lang.Integer,V)" class="member-name-link">addColumn</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Integer.html" title="class or interface in java.lang" class="external-link">Integer</a>&nbsp;i,
  <a href="Matrix.html" title="type parameter in Matrix">V</a>&nbsp;val)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">
 <div class="block">add new column for all index i.</div>
@@ -141,29 +139,29 @@ loadScripts(document, 'script');</script>
 <div class="block">get size of rows.</div>
 </div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="Matrix.html" title="type parameter in Matrix">V</a></code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#getVal(I,J)" class="member-name-link">getVal</a><wbr>(<a href="Matrix.html" title="type parameter in Matrix">I</a>&nbsp;i,
- <a href="Matrix.html" title="type parameter in Matrix">J</a>&nbsp;j)</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#getVal(java.lang.Integer,java.lang.Integer)" class="member-name-link">getVal</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Integer.html" title="class or interface in java.lang" class="external-link">Integer</a>&nbsp;i,
+ <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Integer.html" title="class or interface in java.lang" class="external-link">Integer</a>&nbsp;j)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">
 <div class="block">get value from position (i, j).</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code>void</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#remove(I,J)" class="member-name-link">remove</a><wbr>(<a href="Matrix.html" title="type parameter in Matrix">I</a>&nbsp;i,
- <a href="Matrix.html" title="type parameter in Matrix">J</a>&nbsp;j)</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#remove(java.lang.Integer,java.lang.Integer)" class="member-name-link">remove</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Integer.html" title="class or interface in java.lang" class="external-link">Integer</a>&nbsp;i,
+ <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Integer.html" title="class or interface in java.lang" class="external-link">Integer</a>&nbsp;j)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">
 <div class="block">remove node in position (i, j).</div>
 </div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code>void</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#removeColumn(J)" class="member-name-link">removeColumn</a><wbr>(<a href="Matrix.html" title="type parameter in Matrix">J</a>&nbsp;j)</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#removeColumn(java.lang.Integer)" class="member-name-link">removeColumn</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Integer.html" title="class or interface in java.lang" class="external-link">Integer</a>&nbsp;j)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">
 <div class="block">remove column with index j.</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code>void</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#removeRow(I)" class="member-name-link">removeRow</a><wbr>(<a href="Matrix.html" title="type parameter in Matrix">I</a>&nbsp;i)</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#removeRow(java.lang.Integer)" class="member-name-link">removeRow</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Integer.html" title="class or interface in java.lang" class="external-link">Integer</a>&nbsp;i)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">
 <div class="block">remove row with index i.</div>
 </div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code>void</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#setColumn(J,V)" class="member-name-link">setColumn</a><wbr>(<a href="Matrix.html" title="type parameter in Matrix">J</a>&nbsp;j,
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#setColumn(java.lang.Integer,V)" class="member-name-link">setColumn</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Integer.html" title="class or interface in java.lang" class="external-link">Integer</a>&nbsp;j,
  <a href="Matrix.html" title="type parameter in Matrix">V</a>&nbsp;val)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">
 <div class="block">set value for all column with index j.</div>
@@ -174,14 +172,14 @@ loadScripts(document, 'script');</script>
 <div class="block">set new value for all matrix.</div>
 </div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code>void</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#setRows(I,V)" class="member-name-link">setRows</a><wbr>(<a href="Matrix.html" title="type parameter in Matrix">I</a>&nbsp;i,
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#setRows(java.lang.Integer,V)" class="member-name-link">setRows</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Integer.html" title="class or interface in java.lang" class="external-link">Integer</a>&nbsp;i,
  <a href="Matrix.html" title="type parameter in Matrix">V</a>&nbsp;val)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">
 <div class="block">set value for all rows with index i.</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code>void</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#setVal(I,J,V)" class="member-name-link">setVal</a><wbr>(<a href="Matrix.html" title="type parameter in Matrix">I</a>&nbsp;i,
- <a href="Matrix.html" title="type parameter in Matrix">J</a>&nbsp;j,
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#setVal(java.lang.Integer,java.lang.Integer,V)" class="member-name-link">setVal</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Integer.html" title="class or interface in java.lang" class="external-link">Integer</a>&nbsp;i,
+ <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Integer.html" title="class or interface in java.lang" class="external-link">Integer</a>&nbsp;j,
  <a href="Matrix.html" title="type parameter in Matrix">V</a>&nbsp;val)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">
 <div class="block">set new value to position (i, j).</div>
@@ -201,10 +199,10 @@ loadScripts(document, 'script');</script>
 <h2>Method Details</h2>
 <ul class="member-list">
 <li>
-<section class="detail" id="setVal(I,J,V)">
-<h3 id="setVal(java.lang.Object,java.lang.Object,java.lang.Object)">setVal</h3>
-<div class="member-signature"><span class="return-type">void</span>&nbsp;<span class="element-name">setVal</span><wbr><span class="parameters">(<a href="Matrix.html" title="type parameter in Matrix">I</a>&nbsp;i,
- <a href="Matrix.html" title="type parameter in Matrix">J</a>&nbsp;j,
+<section class="detail" id="setVal(java.lang.Integer,java.lang.Integer,V)">
+<h3 id="setVal(java.lang.Integer,java.lang.Integer,java.lang.Object)">setVal</h3>
+<div class="member-signature"><span class="return-type">void</span>&nbsp;<span class="element-name">setVal</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Integer.html" title="class or interface in java.lang" class="external-link">Integer</a>&nbsp;i,
+ <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Integer.html" title="class or interface in java.lang" class="external-link">Integer</a>&nbsp;j,
  <a href="Matrix.html" title="type parameter in Matrix">V</a>&nbsp;val)</span></div>
 <div class="block">set new value to position (i, j).</div>
 <dl class="notes">
@@ -216,10 +214,10 @@ loadScripts(document, 'script');</script>
 </section>
 </li>
 <li>
-<section class="detail" id="getVal(I,J)">
-<h3 id="getVal(java.lang.Object,java.lang.Object)">getVal</h3>
-<div class="member-signature"><span class="return-type"><a href="Matrix.html" title="type parameter in Matrix">V</a></span>&nbsp;<span class="element-name">getVal</span><wbr><span class="parameters">(<a href="Matrix.html" title="type parameter in Matrix">I</a>&nbsp;i,
- <a href="Matrix.html" title="type parameter in Matrix">J</a>&nbsp;j)</span></div>
+<section class="detail" id="getVal(java.lang.Integer,java.lang.Integer)">
+<h3>getVal</h3>
+<div class="member-signature"><span class="return-type"><a href="Matrix.html" title="type parameter in Matrix">V</a></span>&nbsp;<span class="element-name">getVal</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Integer.html" title="class or interface in java.lang" class="external-link">Integer</a>&nbsp;i,
+ <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Integer.html" title="class or interface in java.lang" class="external-link">Integer</a>&nbsp;j)</span></div>
 <div class="block">get value from position (i, j).</div>
 <dl class="notes">
 <dt>Parameters:</dt>
@@ -231,9 +229,9 @@ loadScripts(document, 'script');</script>
 </section>
 </li>
 <li>
-<section class="detail" id="setColumn(J,V)">
-<h3 id="setColumn(java.lang.Object,java.lang.Object)">setColumn</h3>
-<div class="member-signature"><span class="return-type">void</span>&nbsp;<span class="element-name">setColumn</span><wbr><span class="parameters">(<a href="Matrix.html" title="type parameter in Matrix">J</a>&nbsp;j,
+<section class="detail" id="setColumn(java.lang.Integer,V)">
+<h3 id="setColumn(java.lang.Integer,java.lang.Object)">setColumn</h3>
+<div class="member-signature"><span class="return-type">void</span>&nbsp;<span class="element-name">setColumn</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Integer.html" title="class or interface in java.lang" class="external-link">Integer</a>&nbsp;j,
  <a href="Matrix.html" title="type parameter in Matrix">V</a>&nbsp;val)</span></div>
 <div class="block">set value for all column with index j.</div>
 <dl class="notes">
@@ -244,9 +242,9 @@ loadScripts(document, 'script');</script>
 </section>
 </li>
 <li>
-<section class="detail" id="setRows(I,V)">
-<h3 id="setRows(java.lang.Object,java.lang.Object)">setRows</h3>
-<div class="member-signature"><span class="return-type">void</span>&nbsp;<span class="element-name">setRows</span><wbr><span class="parameters">(<a href="Matrix.html" title="type parameter in Matrix">I</a>&nbsp;i,
+<section class="detail" id="setRows(java.lang.Integer,V)">
+<h3 id="setRows(java.lang.Integer,java.lang.Object)">setRows</h3>
+<div class="member-signature"><span class="return-type">void</span>&nbsp;<span class="element-name">setRows</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Integer.html" title="class or interface in java.lang" class="external-link">Integer</a>&nbsp;i,
  <a href="Matrix.html" title="type parameter in Matrix">V</a>&nbsp;val)</span></div>
 <div class="block">set value for all rows with index i.</div>
 <dl class="notes">
@@ -275,10 +273,10 @@ loadScripts(document, 'script');</script>
 </section>
 </li>
 <li>
-<section class="detail" id="remove(I,J)">
-<h3 id="remove(java.lang.Object,java.lang.Object)">remove</h3>
-<div class="member-signature"><span class="return-type">void</span>&nbsp;<span class="element-name">remove</span><wbr><span class="parameters">(<a href="Matrix.html" title="type parameter in Matrix">I</a>&nbsp;i,
- <a href="Matrix.html" title="type parameter in Matrix">J</a>&nbsp;j)</span></div>
+<section class="detail" id="remove(java.lang.Integer,java.lang.Integer)">
+<h3>remove</h3>
+<div class="member-signature"><span class="return-type">void</span>&nbsp;<span class="element-name">remove</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Integer.html" title="class or interface in java.lang" class="external-link">Integer</a>&nbsp;i,
+ <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Integer.html" title="class or interface in java.lang" class="external-link">Integer</a>&nbsp;j)</span></div>
 <div class="block">remove node in position (i, j).</div>
 <dl class="notes">
 <dt>Parameters:</dt>
@@ -288,9 +286,9 @@ loadScripts(document, 'script');</script>
 </section>
 </li>
 <li>
-<section class="detail" id="removeRow(I)">
-<h3 id="removeRow(java.lang.Object)">removeRow</h3>
-<div class="member-signature"><span class="return-type">void</span>&nbsp;<span class="element-name">removeRow</span><wbr><span class="parameters">(<a href="Matrix.html" title="type parameter in Matrix">I</a>&nbsp;i)</span></div>
+<section class="detail" id="removeRow(java.lang.Integer)">
+<h3>removeRow</h3>
+<div class="member-signature"><span class="return-type">void</span>&nbsp;<span class="element-name">removeRow</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Integer.html" title="class or interface in java.lang" class="external-link">Integer</a>&nbsp;i)</span></div>
 <div class="block">remove row with index i.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
@@ -299,9 +297,9 @@ loadScripts(document, 'script');</script>
 </section>
 </li>
 <li>
-<section class="detail" id="removeColumn(J)">
-<h3 id="removeColumn(java.lang.Object)">removeColumn</h3>
-<div class="member-signature"><span class="return-type">void</span>&nbsp;<span class="element-name">removeColumn</span><wbr><span class="parameters">(<a href="Matrix.html" title="type parameter in Matrix">J</a>&nbsp;j)</span></div>
+<section class="detail" id="removeColumn(java.lang.Integer)">
+<h3>removeColumn</h3>
+<div class="member-signature"><span class="return-type">void</span>&nbsp;<span class="element-name">removeColumn</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Integer.html" title="class or interface in java.lang" class="external-link">Integer</a>&nbsp;j)</span></div>
 <div class="block">remove column with index j.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
@@ -310,9 +308,9 @@ loadScripts(document, 'script');</script>
 </section>
 </li>
 <li>
-<section class="detail" id="addColumn(I,V)">
-<h3 id="addColumn(java.lang.Object,java.lang.Object)">addColumn</h3>
-<div class="member-signature"><span class="return-type">void</span>&nbsp;<span class="element-name">addColumn</span><wbr><span class="parameters">(<a href="Matrix.html" title="type parameter in Matrix">I</a>&nbsp;i,
+<section class="detail" id="addColumn(java.lang.Integer,V)">
+<h3 id="addColumn(java.lang.Integer,java.lang.Object)">addColumn</h3>
+<div class="member-signature"><span class="return-type">void</span>&nbsp;<span class="element-name">addColumn</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Integer.html" title="class or interface in java.lang" class="external-link">Integer</a>&nbsp;i,
  <a href="Matrix.html" title="type parameter in Matrix">V</a>&nbsp;val)</span></div>
 <div class="block">add new column for all index i.</div>
 <dl class="notes">

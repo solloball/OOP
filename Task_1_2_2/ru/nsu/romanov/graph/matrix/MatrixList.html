@@ -80,12 +80,12 @@ loadScripts(document, 'script');</script>
 </dl>
 <dl class="notes">
 <dt>All Implemented Interfaces:</dt>
-<dd><code><a href="Matrix.html" title="interface in ru.nsu.romanov.graph.matrix">Matrix</a>&lt;V,<wbr><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Integer.html" title="class or interface in java.lang" class="external-link">Integer</a>,<wbr><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Integer.html" title="class or interface in java.lang" class="external-link">Integer</a>&gt;</code></dd>
+<dd><code><a href="Matrix.html" title="interface in ru.nsu.romanov.graph.matrix">Matrix</a>&lt;V&gt;</code></dd>
 </dl>
 <hr>
 <div class="type-signature"><span class="modifiers">public class </span><span class="element-name type-name-label">MatrixList&lt;V&gt;</span>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a>
-implements <a href="Matrix.html" title="interface in ru.nsu.romanov.graph.matrix">Matrix</a>&lt;V,<wbr><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Integer.html" title="class or interface in java.lang" class="external-link">Integer</a>,<wbr><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Integer.html" title="class or interface in java.lang" class="external-link">Integer</a>&gt;</span></div>
+implements <a href="Matrix.html" title="interface in ru.nsu.romanov.graph.matrix">Matrix</a>&lt;V&gt;</span></div>
 <div class="block">realization of matrix which is ArrayList * ArrayList.</div>
 </section>
 <section class="summary">
@@ -245,11 +245,11 @@ implements <a href="Matrix.html" title="interface in ru.nsu.romanov.graph.matrix
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">setVal</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Integer.html" title="class or interface in java.lang" class="external-link">Integer</a>&nbsp;i,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Integer.html" title="class or interface in java.lang" class="external-link">Integer</a>&nbsp;j,
  <a href="MatrixList.html" title="type parameter in MatrixList">V</a>&nbsp;val)</span></div>
-<div class="block"><span class="descfrm-type-label">Description copied from interface:&nbsp;<code><a href="Matrix.html#setVal(I,J,V)">Matrix</a></code></span></div>
+<div class="block"><span class="descfrm-type-label">Description copied from interface:&nbsp;<code><a href="Matrix.html#setVal(java.lang.Integer,java.lang.Integer,V)">Matrix</a></code></span></div>
 <div class="block">set new value to position (i, j).</div>
 <dl class="notes">
 <dt>Specified by:</dt>
-<dd><code><a href="Matrix.html#setVal(I,J,V)">setVal</a></code>&nbsp;in interface&nbsp;<code><a href="Matrix.html" title="interface in ru.nsu.romanov.graph.matrix">Matrix</a>&lt;<a href="MatrixList.html" title="type parameter in MatrixList">V</a>,<wbr><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Integer.html" title="class or interface in java.lang" class="external-link">Integer</a>,<wbr><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Integer.html" title="class or interface in java.lang" class="external-link">Integer</a>&gt;</code></dd>
+<dd><code><a href="Matrix.html#setVal(java.lang.Integer,java.lang.Integer,V)">setVal</a></code>&nbsp;in interface&nbsp;<code><a href="Matrix.html" title="interface in ru.nsu.romanov.graph.matrix">Matrix</a>&lt;<a href="MatrixList.html" title="type parameter in MatrixList">V</a>&gt;</code></dd>
 <dt>Parameters:</dt>
 <dd><code>i</code> - key index i.</dd>
 <dd><code>j</code> - key index j.</dd>
@@ -262,11 +262,11 @@ implements <a href="Matrix.html" title="interface in ru.nsu.romanov.graph.matrix
 <h3>getVal</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="MatrixList.html" title="type parameter in MatrixList">V</a></span>&nbsp;<span class="element-name">getVal</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Integer.html" title="class or interface in java.lang" class="external-link">Integer</a>&nbsp;i,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Integer.html" title="class or interface in java.lang" class="external-link">Integer</a>&nbsp;j)</span></div>
-<div class="block"><span class="descfrm-type-label">Description copied from interface:&nbsp;<code><a href="Matrix.html#getVal(I,J)">Matrix</a></code></span></div>
+<div class="block"><span class="descfrm-type-label">Description copied from interface:&nbsp;<code><a href="Matrix.html#getVal(java.lang.Integer,java.lang.Integer)">Matrix</a></code></span></div>
 <div class="block">get value from position (i, j).</div>
 <dl class="notes">
 <dt>Specified by:</dt>
-<dd><code><a href="Matrix.html#getVal(I,J)">getVal</a></code>&nbsp;in interface&nbsp;<code><a href="Matrix.html" title="interface in ru.nsu.romanov.graph.matrix">Matrix</a>&lt;<a href="MatrixList.html" title="type parameter in MatrixList">V</a>,<wbr><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Integer.html" title="class or interface in java.lang" class="external-link">Integer</a>,<wbr><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Integer.html" title="class or interface in java.lang" class="external-link">Integer</a>&gt;</code></dd>
+<dd><code><a href="Matrix.html#getVal(java.lang.Integer,java.lang.Integer)">getVal</a></code>&nbsp;in interface&nbsp;<code><a href="Matrix.html" title="interface in ru.nsu.romanov.graph.matrix">Matrix</a>&lt;<a href="MatrixList.html" title="type parameter in MatrixList">V</a>&gt;</code></dd>
 <dt>Parameters:</dt>
 <dd><code>i</code> - key index i.</dd>
 <dd><code>j</code> - key index j.</dd>
@@ -283,7 +283,7 @@ implements <a href="Matrix.html" title="interface in ru.nsu.romanov.graph.matrix
 <div class="block">clear matrix.</div>
 <dl class="notes">
 <dt>Specified by:</dt>
-<dd><code><a href="Matrix.html#clear()">clear</a></code>&nbsp;in interface&nbsp;<code><a href="Matrix.html" title="interface in ru.nsu.romanov.graph.matrix">Matrix</a>&lt;<a href="MatrixList.html" title="type parameter in MatrixList">V</a>,<wbr><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Integer.html" title="class or interface in java.lang" class="external-link">Integer</a>,<wbr><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Integer.html" title="class or interface in java.lang" class="external-link">Integer</a>&gt;</code></dd>
+<dd><code><a href="Matrix.html#clear()">clear</a></code>&nbsp;in interface&nbsp;<code><a href="Matrix.html" title="interface in ru.nsu.romanov.graph.matrix">Matrix</a>&lt;<a href="MatrixList.html" title="type parameter in MatrixList">V</a>&gt;</code></dd>
 </dl>
 </section>
 </li>
@@ -292,11 +292,11 @@ implements <a href="Matrix.html" title="interface in ru.nsu.romanov.graph.matrix
 <h3>remove</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">remove</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Integer.html" title="class or interface in java.lang" class="external-link">Integer</a>&nbsp;i,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Integer.html" title="class or interface in java.lang" class="external-link">Integer</a>&nbsp;j)</span></div>
-<div class="block"><span class="descfrm-type-label">Description copied from interface:&nbsp;<code><a href="Matrix.html#remove(I,J)">Matrix</a></code></span></div>
+<div class="block"><span class="descfrm-type-label">Description copied from interface:&nbsp;<code><a href="Matrix.html#remove(java.lang.Integer,java.lang.Integer)">Matrix</a></code></span></div>
 <div class="block">remove node in position (i, j).</div>
 <dl class="notes">
 <dt>Specified by:</dt>
-<dd><code><a href="Matrix.html#remove(I,J)">remove</a></code>&nbsp;in interface&nbsp;<code><a href="Matrix.html" title="interface in ru.nsu.romanov.graph.matrix">Matrix</a>&lt;<a href="MatrixList.html" title="type parameter in MatrixList">V</a>,<wbr><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Integer.html" title="class or interface in java.lang" class="external-link">Integer</a>,<wbr><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Integer.html" title="class or interface in java.lang" class="external-link">Integer</a>&gt;</code></dd>
+<dd><code><a href="Matrix.html#remove(java.lang.Integer,java.lang.Integer)">remove</a></code>&nbsp;in interface&nbsp;<code><a href="Matrix.html" title="interface in ru.nsu.romanov.graph.matrix">Matrix</a>&lt;<a href="MatrixList.html" title="type parameter in MatrixList">V</a>&gt;</code></dd>
 <dt>Parameters:</dt>
 <dd><code>i</code> - key index i.</dd>
 <dd><code>j</code> - key index j.</dd>
@@ -307,11 +307,11 @@ implements <a href="Matrix.html" title="interface in ru.nsu.romanov.graph.matrix
 <section class="detail" id="removeRow(java.lang.Integer)">
 <h3>removeRow</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">removeRow</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Integer.html" title="class or interface in java.lang" class="external-link">Integer</a>&nbsp;i)</span></div>
-<div class="block"><span class="descfrm-type-label">Description copied from interface:&nbsp;<code><a href="Matrix.html#removeRow(I)">Matrix</a></code></span></div>
+<div class="block"><span class="descfrm-type-label">Description copied from interface:&nbsp;<code><a href="Matrix.html#removeRow(java.lang.Integer)">Matrix</a></code></span></div>
 <div class="block">remove row with index i.</div>
 <dl class="notes">
 <dt>Specified by:</dt>
-<dd><code><a href="Matrix.html#removeRow(I)">removeRow</a></code>&nbsp;in interface&nbsp;<code><a href="Matrix.html" title="interface in ru.nsu.romanov.graph.matrix">Matrix</a>&lt;<a href="MatrixList.html" title="type parameter in MatrixList">V</a>,<wbr><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Integer.html" title="class or interface in java.lang" class="external-link">Integer</a>,<wbr><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Integer.html" title="class or interface in java.lang" class="external-link">Integer</a>&gt;</code></dd>
+<dd><code><a href="Matrix.html#removeRow(java.lang.Integer)">removeRow</a></code>&nbsp;in interface&nbsp;<code><a href="Matrix.html" title="interface in ru.nsu.romanov.graph.matrix">Matrix</a>&lt;<a href="MatrixList.html" title="type parameter in MatrixList">V</a>&gt;</code></dd>
 <dt>Parameters:</dt>
 <dd><code>i</code> - key index i.</dd>
 </dl>
@@ -321,11 +321,11 @@ implements <a href="Matrix.html" title="interface in ru.nsu.romanov.graph.matrix
 <section class="detail" id="removeColumn(java.lang.Integer)">
 <h3>removeColumn</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">removeColumn</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Integer.html" title="class or interface in java.lang" class="external-link">Integer</a>&nbsp;j)</span></div>
-<div class="block"><span class="descfrm-type-label">Description copied from interface:&nbsp;<code><a href="Matrix.html#removeColumn(J)">Matrix</a></code></span></div>
+<div class="block"><span class="descfrm-type-label">Description copied from interface:&nbsp;<code><a href="Matrix.html#removeColumn(java.lang.Integer)">Matrix</a></code></span></div>
 <div class="block">remove column with index j.</div>
 <dl class="notes">
 <dt>Specified by:</dt>
-<dd><code><a href="Matrix.html#removeColumn(J)">removeColumn</a></code>&nbsp;in interface&nbsp;<code><a href="Matrix.html" title="interface in ru.nsu.romanov.graph.matrix">Matrix</a>&lt;<a href="MatrixList.html" title="type parameter in MatrixList">V</a>,<wbr><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Integer.html" title="class or interface in java.lang" class="external-link">Integer</a>,<wbr><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Integer.html" title="class or interface in java.lang" class="external-link">Integer</a>&gt;</code></dd>
+<dd><code><a href="Matrix.html#removeColumn(java.lang.Integer)">removeColumn</a></code>&nbsp;in interface&nbsp;<code><a href="Matrix.html" title="interface in ru.nsu.romanov.graph.matrix">Matrix</a>&lt;<a href="MatrixList.html" title="type parameter in MatrixList">V</a>&gt;</code></dd>
 <dt>Parameters:</dt>
 <dd><code>j</code> - key index j.</dd>
 </dl>
@@ -336,11 +336,11 @@ implements <a href="Matrix.html" title="interface in ru.nsu.romanov.graph.matrix
 <h3 id="addColumn(java.lang.Integer,java.lang.Object)">addColumn</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">addColumn</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Integer.html" title="class or interface in java.lang" class="external-link">Integer</a>&nbsp;i,
  <a href="MatrixList.html" title="type parameter in MatrixList">V</a>&nbsp;val)</span></div>
-<div class="block"><span class="descfrm-type-label">Description copied from interface:&nbsp;<code><a href="Matrix.html#addColumn(I,V)">Matrix</a></code></span></div>
+<div class="block"><span class="descfrm-type-label">Description copied from interface:&nbsp;<code><a href="Matrix.html#addColumn(java.lang.Integer,V)">Matrix</a></code></span></div>
 <div class="block">add new column for all index i.</div>
 <dl class="notes">
 <dt>Specified by:</dt>
-<dd><code><a href="Matrix.html#addColumn(I,V)">addColumn</a></code>&nbsp;in interface&nbsp;<code><a href="Matrix.html" title="interface in ru.nsu.romanov.graph.matrix">Matrix</a>&lt;<a href="MatrixList.html" title="type parameter in MatrixList">V</a>,<wbr><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Integer.html" title="class or interface in java.lang" class="external-link">Integer</a>,<wbr><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Integer.html" title="class or interface in java.lang" class="external-link">Integer</a>&gt;</code></dd>
+<dd><code><a href="Matrix.html#addColumn(java.lang.Integer,V)">addColumn</a></code>&nbsp;in interface&nbsp;<code><a href="Matrix.html" title="interface in ru.nsu.romanov.graph.matrix">Matrix</a>&lt;<a href="MatrixList.html" title="type parameter in MatrixList">V</a>&gt;</code></dd>
 <dt>Parameters:</dt>
 <dd><code>i</code> - key index i.</dd>
 <dd><code>val</code> - new value.</dd>
@@ -355,7 +355,7 @@ implements <a href="Matrix.html" title="interface in ru.nsu.romanov.graph.matrix
 <div class="block">add new column with new value.</div>
 <dl class="notes">
 <dt>Specified by:</dt>
-<dd><code><a href="Matrix.html#addColumnAll(V)">addColumnAll</a></code>&nbsp;in interface&nbsp;<code><a href="Matrix.html" title="interface in ru.nsu.romanov.graph.matrix">Matrix</a>&lt;<a href="MatrixList.html" title="type parameter in MatrixList">V</a>,<wbr><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Integer.html" title="class or interface in java.lang" class="external-link">Integer</a>,<wbr><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Integer.html" title="class or interface in java.lang" class="external-link">Integer</a>&gt;</code></dd>
+<dd><code><a href="Matrix.html#addColumnAll(V)">addColumnAll</a></code>&nbsp;in interface&nbsp;<code><a href="Matrix.html" title="interface in ru.nsu.romanov.graph.matrix">Matrix</a>&lt;<a href="MatrixList.html" title="type parameter in MatrixList">V</a>&gt;</code></dd>
 <dt>Parameters:</dt>
 <dd><code>val</code> - new value.</dd>
 </dl>
@@ -369,7 +369,7 @@ implements <a href="Matrix.html" title="interface in ru.nsu.romanov.graph.matrix
 <div class="block">add empty row.</div>
 <dl class="notes">
 <dt>Specified by:</dt>
-<dd><code><a href="Matrix.html#addRow()">addRow</a></code>&nbsp;in interface&nbsp;<code><a href="Matrix.html" title="interface in ru.nsu.romanov.graph.matrix">Matrix</a>&lt;<a href="MatrixList.html" title="type parameter in MatrixList">V</a>,<wbr><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Integer.html" title="class or interface in java.lang" class="external-link">Integer</a>,<wbr><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Integer.html" title="class or interface in java.lang" class="external-link">Integer</a>&gt;</code></dd>
+<dd><code><a href="Matrix.html#addRow()">addRow</a></code>&nbsp;in interface&nbsp;<code><a href="Matrix.html" title="interface in ru.nsu.romanov.graph.matrix">Matrix</a>&lt;<a href="MatrixList.html" title="type parameter in MatrixList">V</a>&gt;</code></dd>
 </dl>
 </section>
 </li>
@@ -381,7 +381,7 @@ implements <a href="Matrix.html" title="interface in ru.nsu.romanov.graph.matrix
 <div class="block">add row with one node with new value.</div>
 <dl class="notes">
 <dt>Specified by:</dt>
-<dd><code><a href="Matrix.html#addRow(V)">addRow</a></code>&nbsp;in interface&nbsp;<code><a href="Matrix.html" title="interface in ru.nsu.romanov.graph.matrix">Matrix</a>&lt;<a href="MatrixList.html" title="type parameter in MatrixList">V</a>,<wbr><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Integer.html" title="class or interface in java.lang" class="external-link">Integer</a>,<wbr><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Integer.html" title="class or interface in java.lang" class="external-link">Integer</a>&gt;</code></dd>
+<dd><code><a href="Matrix.html#addRow(V)">addRow</a></code>&nbsp;in interface&nbsp;<code><a href="Matrix.html" title="interface in ru.nsu.romanov.graph.matrix">Matrix</a>&lt;<a href="MatrixList.html" title="type parameter in MatrixList">V</a>&gt;</code></dd>
 <dt>Parameters:</dt>
 <dd><code>val</code> - new value.</dd>
 </dl>
@@ -396,7 +396,7 @@ implements <a href="Matrix.html" title="interface in ru.nsu.romanov.graph.matrix
 <div class="block">add new row with size node with new value.</div>
 <dl class="notes">
 <dt>Specified by:</dt>
-<dd><code><a href="Matrix.html#addRow(V,int)">addRow</a></code>&nbsp;in interface&nbsp;<code><a href="Matrix.html" title="interface in ru.nsu.romanov.graph.matrix">Matrix</a>&lt;<a href="MatrixList.html" title="type parameter in MatrixList">V</a>,<wbr><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Integer.html" title="class or interface in java.lang" class="external-link">Integer</a>,<wbr><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Integer.html" title="class or interface in java.lang" class="external-link">Integer</a>&gt;</code></dd>
+<dd><code><a href="Matrix.html#addRow(V,int)">addRow</a></code>&nbsp;in interface&nbsp;<code><a href="Matrix.html" title="interface in ru.nsu.romanov.graph.matrix">Matrix</a>&lt;<a href="MatrixList.html" title="type parameter in MatrixList">V</a>&gt;</code></dd>
 <dt>Parameters:</dt>
 <dd><code>val</code> - new value.</dd>
 <dd><code>size</code> - count of node.</dd>
@@ -408,11 +408,11 @@ implements <a href="Matrix.html" title="interface in ru.nsu.romanov.graph.matrix
 <h3 id="setColumn(java.lang.Integer,java.lang.Object)">setColumn</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">setColumn</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Integer.html" title="class or interface in java.lang" class="external-link">Integer</a>&nbsp;j,
  <a href="MatrixList.html" title="type parameter in MatrixList">V</a>&nbsp;val)</span></div>
-<div class="block"><span class="descfrm-type-label">Description copied from interface:&nbsp;<code><a href="Matrix.html#setColumn(J,V)">Matrix</a></code></span></div>
+<div class="block"><span class="descfrm-type-label">Description copied from interface:&nbsp;<code><a href="Matrix.html#setColumn(java.lang.Integer,V)">Matrix</a></code></span></div>
 <div class="block">set value for all column with index j.</div>
 <dl class="notes">
 <dt>Specified by:</dt>
-<dd><code><a href="Matrix.html#setColumn(J,V)">setColumn</a></code>&nbsp;in interface&nbsp;<code><a href="Matrix.html" title="interface in ru.nsu.romanov.graph.matrix">Matrix</a>&lt;<a href="MatrixList.html" title="type parameter in MatrixList">V</a>,<wbr><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Integer.html" title="class or interface in java.lang" class="external-link">Integer</a>,<wbr><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Integer.html" title="class or interface in java.lang" class="external-link">Integer</a>&gt;</code></dd>
+<dd><code><a href="Matrix.html#setColumn(java.lang.Integer,V)">setColumn</a></code>&nbsp;in interface&nbsp;<code><a href="Matrix.html" title="interface in ru.nsu.romanov.graph.matrix">Matrix</a>&lt;<a href="MatrixList.html" title="type parameter in MatrixList">V</a>&gt;</code></dd>
 <dt>Parameters:</dt>
 <dd><code>j</code> - key index j.</dd>
 <dd><code>val</code> - new value.</dd>
@@ -424,11 +424,11 @@ implements <a href="Matrix.html" title="interface in ru.nsu.romanov.graph.matrix
 <h3 id="setRows(java.lang.Integer,java.lang.Object)">setRows</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">setRows</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Integer.html" title="class or interface in java.lang" class="external-link">Integer</a>&nbsp;i,
  <a href="MatrixList.html" title="type parameter in MatrixList">V</a>&nbsp;val)</span></div>
-<div class="block"><span class="descfrm-type-label">Description copied from interface:&nbsp;<code><a href="Matrix.html#setRows(I,V)">Matrix</a></code></span></div>
+<div class="block"><span class="descfrm-type-label">Description copied from interface:&nbsp;<code><a href="Matrix.html#setRows(java.lang.Integer,V)">Matrix</a></code></span></div>
 <div class="block">set value for all rows with index i.</div>
 <dl class="notes">
 <dt>Specified by:</dt>
-<dd><code><a href="Matrix.html#setRows(I,V)">setRows</a></code>&nbsp;in interface&nbsp;<code><a href="Matrix.html" title="interface in ru.nsu.romanov.graph.matrix">Matrix</a>&lt;<a href="MatrixList.html" title="type parameter in MatrixList">V</a>,<wbr><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Integer.html" title="class or interface in java.lang" class="external-link">Integer</a>,<wbr><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Integer.html" title="class or interface in java.lang" class="external-link">Integer</a>&gt;</code></dd>
+<dd><code><a href="Matrix.html#setRows(java.lang.Integer,V)">setRows</a></code>&nbsp;in interface&nbsp;<code><a href="Matrix.html" title="interface in ru.nsu.romanov.graph.matrix">Matrix</a>&lt;<a href="MatrixList.html" title="type parameter in MatrixList">V</a>&gt;</code></dd>
 <dt>Parameters:</dt>
 <dd><code>i</code> - key index i.</dd>
 <dd><code>val</code> - new value.</dd>
@@ -443,7 +443,7 @@ implements <a href="Matrix.html" title="interface in ru.nsu.romanov.graph.matrix
 <div class="block">set new value for all matrix.</div>
 <dl class="notes">
 <dt>Specified by:</dt>
-<dd><code><a href="Matrix.html#setMatrix(V)">setMatrix</a></code>&nbsp;in interface&nbsp;<code><a href="Matrix.html" title="interface in ru.nsu.romanov.graph.matrix">Matrix</a>&lt;<a href="MatrixList.html" title="type parameter in MatrixList">V</a>,<wbr><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Integer.html" title="class or interface in java.lang" class="external-link">Integer</a>,<wbr><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Integer.html" title="class or interface in java.lang" class="external-link">Integer</a>&gt;</code></dd>
+<dd><code><a href="Matrix.html#setMatrix(V)">setMatrix</a></code>&nbsp;in interface&nbsp;<code><a href="Matrix.html" title="interface in ru.nsu.romanov.graph.matrix">Matrix</a>&lt;<a href="MatrixList.html" title="type parameter in MatrixList">V</a>&gt;</code></dd>
 <dt>Parameters:</dt>
 <dd><code>val</code> - new value.</dd>
 </dl>
@@ -457,7 +457,7 @@ implements <a href="Matrix.html" title="interface in ru.nsu.romanov.graph.matrix
 <div class="block">get size of rows.</div>
 <dl class="notes">
 <dt>Specified by:</dt>
-<dd><code><a href="Matrix.html#getSize()">getSize</a></code>&nbsp;in interface&nbsp;<code><a href="Matrix.html" title="interface in ru.nsu.romanov.graph.matrix">Matrix</a>&lt;<a href="MatrixList.html" title="type parameter in MatrixList">V</a>,<wbr><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Integer.html" title="class or interface in java.lang" class="external-link">Integer</a>,<wbr><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Integer.html" title="class or interface in java.lang" class="external-link">Integer</a>&gt;</code></dd>
+<dd><code><a href="Matrix.html#getSize()">getSize</a></code>&nbsp;in interface&nbsp;<code><a href="Matrix.html" title="interface in ru.nsu.romanov.graph.matrix">Matrix</a>&lt;<a href="MatrixList.html" title="type parameter in MatrixList">V</a>&gt;</code></dd>
 <dt>Returns:</dt>
 <dd>counts of rows.</dd>
 </dl>
@@ -491,7 +491,7 @@ implements <a href="Matrix.html" title="interface in ru.nsu.romanov.graph.matrix
 <div class="block">get column size with index i.</div>
 <dl class="notes">
 <dt>Specified by:</dt>
-<dd><code><a href="Matrix.html#getColumnSize(java.lang.Integer)">getColumnSize</a></code>&nbsp;in interface&nbsp;<code><a href="Matrix.html" title="interface in ru.nsu.romanov.graph.matrix">Matrix</a>&lt;<a href="MatrixList.html" title="type parameter in MatrixList">V</a>,<wbr><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Integer.html" title="class or interface in java.lang" class="external-link">Integer</a>,<wbr><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Integer.html" title="class or interface in java.lang" class="external-link">Integer</a>&gt;</code></dd>
+<dd><code><a href="Matrix.html#getColumnSize(java.lang.Integer)">getColumnSize</a></code>&nbsp;in interface&nbsp;<code><a href="Matrix.html" title="interface in ru.nsu.romanov.graph.matrix">Matrix</a>&lt;<a href="MatrixList.html" title="type parameter in MatrixList">V</a>&gt;</code></dd>
 <dt>Parameters:</dt>
 <dd><code>i</code> - key index i.</dd>
 <dt>Returns:</dt>
