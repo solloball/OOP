@@ -22,7 +22,7 @@ class FinderTest {
         Finder f = new Finder();
         List<Long> expectedList = new ArrayList<>();
         expectedList.add((long) 5);
-        Assertions.assertEquals(expectedList,f.find("ab", Objects.requireNonNull(getClass()
+        Assertions.assertEquals(expectedList, f.find("ab", Objects.requireNonNull(getClass()
                 .getClassLoader().getResource("basic")).getPath()));
     }
 
@@ -31,7 +31,7 @@ class FinderTest {
         Finder f = new Finder();
         List<Long> expectedList = new ArrayList<>();
         expectedList.add((long) 8);
-        Assertions.assertEquals(expectedList,f.find("۞", Objects.requireNonNull(getClass()
+        Assertions.assertEquals(expectedList, f.find("۞", Objects.requireNonNull(getClass()
                 .getClassLoader().getResource("arabicSymbols")).getPath()));
     }
 
@@ -40,7 +40,7 @@ class FinderTest {
         Finder f = new Finder();
         List<Long> expectedList = new ArrayList<>();
         expectedList.add((long) 19);
-        Assertions.assertEquals(expectedList,f.find("⿓", Objects.requireNonNull(getClass()
+        Assertions.assertEquals(expectedList, f.find("⿓", Objects.requireNonNull(getClass()
                 .getClassLoader().getResource("hieroglyph")).getPath()));
     }
 
@@ -49,7 +49,7 @@ class FinderTest {
         Finder f = new Finder();
         List<Long> expectedList = new ArrayList<>();
         expectedList.add((long) 4);
-        Assertions.assertEquals(expectedList,f.find("ab", Objects.requireNonNull(getClass()
+        Assertions.assertEquals(expectedList, f.find("ab", Objects.requireNonNull(getClass()
                 .getClassLoader().getResource("targetBetweenLines")).getPath()));
     }
 
@@ -107,7 +107,7 @@ class FinderTest {
             try (FileWriter wr = new FileWriter(file)) {
                 for (int i = 0; i < 100; i++) {
                     for (int j = 0; j <= 9; j++) {
-                            wr.write('0' + j);
+                        wr.write('0' + j);
                     }
                 }
             }
@@ -136,8 +136,7 @@ class FinderTest {
                 for (long i = 0; i < largeFileCountSymbols; i++) {
                     if (i == 100 || i == 1024 * 1024 || i == 1900000050) {
                         wr.write("1");
-                    }
-                    else {
+                    } else {
                         wr.write((abs(rd.nextInt()) % 100) + 50);
                     }
                 }
