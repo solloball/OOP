@@ -1,7 +1,6 @@
 package ru.nsu.romanov.finder;
 
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
+import static java.lang.Math.abs;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -10,9 +9,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.Random;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
-import static java.lang.Math.abs;
-
+/**
+Tests for class Finder.
+ */
 class FinderTest {
 
     @Test
