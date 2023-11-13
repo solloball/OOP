@@ -1,7 +1,6 @@
 package ru.nsu.romanov.finder;
 
-import java.io.FileInputStream;
-import java.io.IOException;
+import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.util.*;
 
@@ -10,31 +9,33 @@ import java.util.*;
  */
 public class Finder {
 
-    String lastString = "";
-    public List<Integer> find(String  target, String path) {
-        List<Integer> ans = new ArrayList<>();
-        int lenTarget = target.length();
-        int index;
-        int indexContainer = 0;
+    public List<Long> find(String  target, String path) {
+        List<Long> ans = new ArrayList<>();
+        String container = "";
+        final int bufLen = 1000000;
+        char[] buf = new char[bufLen];
+        long lenTarget = target.length();
+        long index;
+        long indexContainer = 0;
+        int count;
 
         System.out.println("start finding!\n");
-        try (FileInputStream inputStream = new FileInputStream(path);
-                Scanner sc = new Scanner(inputStream, StandardCharsets.UTF_8)) {
-            while (sc.hasNextLine()) {
-                String currentString = sc.nextLine();
-                currentString = lastString + currentString;
+        try (BufferedReader br = new BufferedReader(new FileReader(path, StandardCharsets.UTF_8))) {
+            while ((count = br.read(buf)) != -1) {
+                String currentString = new String(buf,0,count);
+                currentString = container + currentString;
 
                 while ((index = currentString.indexOf(target)) != -1) {
-                    int offset = index + 1;
+                    long offset = index + 1;
                     ans.add(indexContainer + index);
-                    currentString = currentString.substring(offset);
+                    currentString = currentString.substring((int)offset);
                     indexContainer += offset;
                 }
 
-                lastString = currentString;
-                if (lenTarget < lastString.length()) {
-                    int offset = lastString.length() - lenTarget - 1;
-                    lastString = lastString.substring(offset);
+                container = currentString;
+                if (lenTarget < container.length()) {
+                    long offset = container.length() - lenTarget - 1;
+                    container = container.substring((int)offset);
                     indexContainer += offset;
                 }
             }
@@ -42,6 +43,7 @@ public class Finder {
             throw new RuntimeException(e);
         }
         System.out.println("finding finished!\n");
+
         return ans;
     }
 }
