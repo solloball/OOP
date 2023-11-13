@@ -15,10 +15,6 @@ public class Finder {
 
     /**
      Find index of substring and contain them in list.
-
-     @param target substring.
-     @param path path to file.
-     @return list with indexes of occurrences of targets into file.
     */
     public List<Long> find(String  target, String path) {
         List<Long> ans = new ArrayList<>();
