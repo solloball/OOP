@@ -132,7 +132,8 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <hr>
 <pre>public class <span class="typeNameLabel">Finder</span>
 extends java.lang.Object</pre>
-<div class="block">Sample class to simulate 1.1 task functionality</div>
+<div class="block">Finder finds all index of substrings into string.
+ It can work with every size of file.</div>
 </li>
 </ul>
 </div>
@@ -178,7 +179,9 @@ extends java.lang.Object</pre>
 <td class="colFirst"><code>java.util.List&lt;java.lang.Long&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#find(java.lang.String,java.lang.String)">find</a></span>&#8203;(java.lang.String&nbsp;target,
     java.lang.String&nbsp;path)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Find index of substring and contain them in list.</div>
+</td>
 </tr>
 </table>
 <ul class="blockList">
@@ -231,6 +234,14 @@ extends java.lang.Object</pre>
 <h4>find</h4>
 <pre class="methodSignature">public&nbsp;java.util.List&lt;java.lang.Long&gt;&nbsp;find&#8203;(java.lang.String&nbsp;target,
                                            java.lang.String&nbsp;path)</pre>
+<div class="block">Find index of substring and contain them in list.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>target</code> - substring.</dd>
+<dd><code>path</code> - path to file.</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>list with indexes of occurrences of targets into file.</dd>
+</dl>
 </li>
 </ul>
 </li>
