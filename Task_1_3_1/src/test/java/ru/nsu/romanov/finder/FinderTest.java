@@ -60,7 +60,7 @@ class FinderTest {
         for (int i = 0; i < 6; i++) {
             expectedList.add((long) i);
         }
-        Assertions.assertEquals(expectedList,f.find("aaa", Objects.requireNonNull(getClass()
+        Assertions.assertEquals(expectedList, f.find("aaa", Objects.requireNonNull(getClass()
                 .getClassLoader().getResource("betweenTarget")).getPath()));
     }
 
