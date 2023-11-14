@@ -15,11 +15,13 @@ public class Finder {
 
     /**
      Find index of substring and contain them in list.
+     Max count of index which finder can find is 100000000;
     */
     public List<Long> find(String  target, String path) {
         List<Long> ans = new ArrayList<>();
         String container = "";
         final int bufLen = 1000000;
+        final int maxCountIndex = 100000000;
         char[] buf = new char[bufLen];
         long lenTarget = target.length();
         long index;
@@ -34,6 +36,11 @@ public class Finder {
 
                 while ((index = currentString.indexOf(target)) != -1) {
                     long offset = index + 1;
+                    if (ans.size() > maxCountIndex) {
+                        System.out.println("Count of indexes is more than " +
+                                maxCountIndex + "\nfinding finished!\n");
+                        return ans;
+                    }
                     ans.add(indexContainer + index);
                     currentString = currentString.substring((int) offset);
                     indexContainer += offset;

@@ -121,9 +121,9 @@ class FinderTest {
     void realBigFile() {
         Finder f = new Finder();
         List<Long> expectedList = new ArrayList<>();
-        expectedList.add((long) 100);
-        expectedList.add((long) 1024 * 1024);
-        expectedList.add((long) 1900000050);
+        expectedList.add(100L);
+        expectedList.add(1024 * 1024L);
+        expectedList.add(1900000050L);
         try {
             File file = new File("largeFile");
             file.deleteOnExit();
