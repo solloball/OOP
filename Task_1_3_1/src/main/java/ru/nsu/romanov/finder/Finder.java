@@ -37,8 +37,8 @@ public class Finder {
                 while ((index = currentString.indexOf(target)) != -1) {
                     long offset = index + 1;
                     if (ans.size() > maxCountIndex) {
-                        System.out.println("Count of indexes is more than " +
-                                maxCountIndex + "\nfinding finished!\n");
+                        System.out.println("Count of indexes is more than "
+                                + maxCountIndex + "\nfinding finished!\n");
                         return ans;
                     }
                     ans.add(indexContainer + index);
