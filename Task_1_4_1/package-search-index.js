@@ -1,1 +1,1 @@
-packageSearchIndex = [{"l":"All Packages","url":"allpackages-index.html"},{"l":"ru.nsu.romanov.recordbook"}]
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"ru.nsu.romanov.recordbook"},{"l":"ru.nsu.romanov.recordbook.student"},{"l":"ru.nsu.romanov.recordbook.subject"}];updateSearchResults();
