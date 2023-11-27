@@ -77,6 +77,9 @@ loadScripts(document, 'script');</script>
 <hr>
 <div class="type-signature"><span class="modifiers">public class </span><span class="element-name type-name-label">Subject</span>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a></span></div>
+<div class="block">Class subject.
+ field name must be unique.
+ field subjectIdx must be unique.</div>
 </section>
 <section class="summary">
 <ul class="summary-list">
@@ -88,11 +91,13 @@ loadScripts(document, 'script');</script>
 <div class="summary-table two-column-summary">
 <div class="table-header col-first">Constructor</div>
 <div class="table-header col-last">Description</div>
-<div class="col-constructor-name even-row-color"><code><a href="#%3Cinit%3E(java.lang.String,ru.nsu.romanov.recordbook.subject.TypeObject,ru.nsu.romanov.recordbook.Semester,ru.nsu.romanov.recordbook.subject.SubjectIdx)" class="member-name-link">Subject</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;name,
- <a href="TypeObject.html" title="enum class in ru.nsu.romanov.recordbook.subject">TypeObject</a>&nbsp;typeObject,
+<div class="col-constructor-name even-row-color"><code><a href="#%3Cinit%3E(java.lang.String,ru.nsu.romanov.recordbook.subject.TypeSubject,ru.nsu.romanov.recordbook.Semester,ru.nsu.romanov.recordbook.subject.SubjectIdx)" class="member-name-link">Subject</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;name,
+ <a href="TypeSubject.html" title="enum class in ru.nsu.romanov.recordbook.subject">TypeSubject</a>&nbsp;typeSubject,
  <a href="../Semester.html" title="enum class in ru.nsu.romanov.recordbook">Semester</a>&nbsp;semester,
  <a href="SubjectIdx.html" title="class in ru.nsu.romanov.recordbook.subject">SubjectIdx</a>&nbsp;subjectIdx)</code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">Constructor of class.</div>
+</div>
 </div>
 </section>
 </li>
@@ -109,28 +114,44 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="SubjectIdx.html" title="class in ru.nsu.romanov.recordbook.subject">SubjectIdx</a></code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getIndex()" class="member-name-link">getIndex</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Getter for subject index.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getName()" class="member-name-link">getName</a>()</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Getter for name.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="../Semester.html" title="enum class in ru.nsu.romanov.recordbook">Semester</a></code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getSemester()" class="member-name-link">getSemester</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="TypeObject.html" title="enum class in ru.nsu.romanov.recordbook.subject">TypeObject</a></code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getTypeObject()" class="member-name-link">getTypeObject</a>()</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Getter of semester.</div>
+</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="TypeSubject.html" title="enum class in ru.nsu.romanov.recordbook.subject">TypeSubject</a></code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getTypeSubject()" class="member-name-link">getTypeSubject</a>()</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Getter for Type Subject.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setName(java.lang.String)" class="member-name-link">setName</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;name)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Setter for subject name.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setSemester(ru.nsu.romanov.recordbook.Semester)" class="member-name-link">setSemester</a><wbr>(<a href="../Semester.html" title="enum class in ru.nsu.romanov.recordbook">Semester</a>&nbsp;semester)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Setter of semester.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setTypeObject(ru.nsu.romanov.recordbook.subject.TypeObject)" class="member-name-link">setTypeObject</a><wbr>(<a href="TypeObject.html" title="enum class in ru.nsu.romanov.recordbook.subject">TypeObject</a>&nbsp;typeObject)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setTypeSubject(ru.nsu.romanov.recordbook.subject.TypeSubject)" class="member-name-link">setTypeSubject</a><wbr>(<a href="TypeSubject.html" title="enum class in ru.nsu.romanov.recordbook.subject">TypeSubject</a>&nbsp;typeObject)</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Setter for typeSubject</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#toString()" class="member-name-link">toString</a>()</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Override default of toString.</div>
+</div>
 </div>
 </div>
 </div>
@@ -149,12 +170,20 @@ loadScripts(document, 'script');</script>
 <h2>Constructor Details</h2>
 <ul class="member-list">
 <li>
-<section class="detail" id="&lt;init&gt;(java.lang.String,ru.nsu.romanov.recordbook.subject.TypeObject,ru.nsu.romanov.recordbook.Semester,ru.nsu.romanov.recordbook.subject.SubjectIdx)">
+<section class="detail" id="&lt;init&gt;(java.lang.String,ru.nsu.romanov.recordbook.subject.TypeSubject,ru.nsu.romanov.recordbook.Semester,ru.nsu.romanov.recordbook.subject.SubjectIdx)">
 <h3>Subject</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name">Subject</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;name,
- <a href="TypeObject.html" title="enum class in ru.nsu.romanov.recordbook.subject">TypeObject</a>&nbsp;typeObject,
+ <a href="TypeSubject.html" title="enum class in ru.nsu.romanov.recordbook.subject">TypeSubject</a>&nbsp;typeSubject,
  <a href="../Semester.html" title="enum class in ru.nsu.romanov.recordbook">Semester</a>&nbsp;semester,
  <a href="SubjectIdx.html" title="class in ru.nsu.romanov.recordbook.subject">SubjectIdx</a>&nbsp;subjectIdx)</span></div>
+<div class="block">Constructor of class.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>name</code> - name of subject.</dd>
+<dd><code>typeSubject</code> - typeOfSubject like exam, test or graded_test.</dd>
+<dd><code>semester</code> - semester in which this subject taught.</dd>
+<dd><code>subjectIdx</code> - index of this subject.</dd>
+</dl>
 </section>
 </li>
 </ul>
@@ -169,51 +198,89 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="setSemester(ru.nsu.romanov.recordbook.Semester)">
 <h3>setSemester</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">setSemester</span><wbr><span class="parameters">(<a href="../Semester.html" title="enum class in ru.nsu.romanov.recordbook">Semester</a>&nbsp;semester)</span></div>
+<div class="block">Setter of semester.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>semester</code> - semester to set.</dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="getSemester()">
 <h3>getSemester</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="../Semester.html" title="enum class in ru.nsu.romanov.recordbook">Semester</a></span>&nbsp;<span class="element-name">getSemester</span>()</div>
+<div class="block">Getter of semester.</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd>semester.</dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="getName()">
 <h3>getName</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></span>&nbsp;<span class="element-name">getName</span>()</div>
+<div class="block">Getter for name.</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd>name of subject.</dd>
+</dl>
 </section>
 </li>
 <li>
-<section class="detail" id="setTypeObject(ru.nsu.romanov.recordbook.subject.TypeObject)">
-<h3>setTypeObject</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">setTypeObject</span><wbr><span class="parameters">(<a href="TypeObject.html" title="enum class in ru.nsu.romanov.recordbook.subject">TypeObject</a>&nbsp;typeObject)</span></div>
+<section class="detail" id="setTypeSubject(ru.nsu.romanov.recordbook.subject.TypeSubject)">
+<h3>setTypeSubject</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">setTypeSubject</span><wbr><span class="parameters">(<a href="TypeSubject.html" title="enum class in ru.nsu.romanov.recordbook.subject">TypeSubject</a>&nbsp;typeObject)</span></div>
+<div class="block">Setter for typeSubject</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>typeObject</code> - type of Subject to set.</dd>
+</dl>
 </section>
 </li>
 <li>
-<section class="detail" id="getTypeObject()">
-<h3>getTypeObject</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="TypeObject.html" title="enum class in ru.nsu.romanov.recordbook.subject">TypeObject</a></span>&nbsp;<span class="element-name">getTypeObject</span>()</div>
+<section class="detail" id="getTypeSubject()">
+<h3>getTypeSubject</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="TypeSubject.html" title="enum class in ru.nsu.romanov.recordbook.subject">TypeSubject</a></span>&nbsp;<span class="element-name">getTypeSubject</span>()</div>
+<div class="block">Getter for Type Subject.</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd>Type of subject.</dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="setName(java.lang.String)">
 <h3>setName</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">setName</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;name)</span></div>
+<div class="block">Setter for subject name.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>name</code> - new name of subject to set.</dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="getIndex()">
 <h3>getIndex</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="SubjectIdx.html" title="class in ru.nsu.romanov.recordbook.subject">SubjectIdx</a></span>&nbsp;<span class="element-name">getIndex</span>()</div>
+<div class="block">Getter for subject index.</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd>index of subject.</dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="toString()">
 <h3>toString</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></span>&nbsp;<span class="element-name">toString</span>()</div>
+<div class="block">Override default of toString.</div>
 <dl class="notes">
 <dt>Overrides:</dt>
 <dd><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html#toString()" title="class or interface in java.lang" class="external-link">toString</a></code>&nbsp;in class&nbsp;<code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a></code></dd>
+<dt>Returns:</dt>
+<dd>representation of class in string.</dd>
 </dl>
 </section>
 </li>

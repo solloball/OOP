@@ -77,7 +77,8 @@ loadScripts(document, 'script');</script>
 <hr>
 <div class="type-signature"><span class="modifiers">public class </span><span class="element-name type-name-label">RecordBook</span>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a></span></div>
-<div class="block">Record book for FIT NSU.</div>
+<div class="block">Record book for FIT NSU.
+ Name of students and subject must be unique.</div>
 </section>
 <section class="summary">
 <ul class="summary-list">
@@ -90,7 +91,9 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-first">Constructor</div>
 <div class="table-header col-last">Description</div>
 <div class="col-constructor-name even-row-color"><code><a href="#%3Cinit%3E()" class="member-name-link">RecordBook</a>()</code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">Constructor for recordBook.</div>
+</div>
 </div>
 </section>
 </li>
@@ -108,46 +111,70 @@ loadScripts(document, 'script');</script>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>boolean</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#addStudent(java.lang.String,ru.nsu.romanov.recordbook.Semester)" class="member-name-link">addStudent</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;studentFullName,
  <a href="Semester.html" title="enum class in ru.nsu.romanov.recordbook">Semester</a>&nbsp;semester)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Method which add new student.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>boolean</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#addSubject(java.lang.String,ru.nsu.romanov.recordbook.Semester,ru.nsu.romanov.recordbook.subject.TypeObject)" class="member-name-link">addSubject</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;subjectName,
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#addSubject(java.lang.String,ru.nsu.romanov.recordbook.Semester,ru.nsu.romanov.recordbook.subject.TypeSubject)" class="member-name-link">addSubject</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;subjectName,
  <a href="Semester.html" title="enum class in ru.nsu.romanov.recordbook">Semester</a>&nbsp;semester,
- <a href="subject/TypeObject.html" title="enum class in ru.nsu.romanov.recordbook.subject">TypeObject</a>&nbsp;typeObject)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+ <a href="subject/TypeSubject.html" title="enum class in ru.nsu.romanov.recordbook.subject">TypeSubject</a>&nbsp;typeObject)</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Add new subject.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="student/Student.html" title="class in ru.nsu.romanov.recordbook.student">Student</a></code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getStudent(java.lang.String)" class="member-name-link">getStudent</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;studentFullName)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Getter for student.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="Mark.html" title="enum class in ru.nsu.romanov.recordbook">Mark</a></code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getStudentMark(java.lang.String,java.lang.String)" class="member-name-link">getStudentMark</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;studentName,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;subjectName)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Get student with name studentName mark for subject with name subjectName.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="subject/Subject.html" title="class in ru.nsu.romanov.recordbook.subject">Subject</a></code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getSubject(java.lang.String)" class="member-name-link">getSubject</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;subjectName)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Getter fr subject.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>boolean</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#isPossibleToHaveIncreasedScholarship(java.lang.String)" class="member-name-link">isPossibleToHaveIncreasedScholarship</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;studentFullName)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Method which calc is possible to hav increased scholarship.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>boolean</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#isPossibleToHaveRedDiploma(java.lang.String)" class="member-name-link">isPossibleToHaveRedDiploma</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;studentFullName)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Method to find  is possible to have red diploma.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>boolean</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#removeStudent(java.lang.String)" class="member-name-link">removeStudent</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;studentFullName)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">remove student and all his marks.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>boolean</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#removeSubject(java.lang.String)" class="member-name-link">removeSubject</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;subjectName)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Remove subject from record book.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>boolean</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setStudentMark(java.lang.String,java.lang.String,ru.nsu.romanov.recordbook.Mark)" class="member-name-link">setStudentMark</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;subjectName,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;studentFullName,
  <a href="Mark.html" title="enum class in ru.nsu.romanov.recordbook">Mark</a>&nbsp;mark)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Set student mark for subject subjectName for student studentFullName.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#StudentInfo(java.lang.String)" class="member-name-link">StudentInfo</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;studentFullName)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Write student info into string and return it.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>boolean</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#transferSemester(java.lang.String,ru.nsu.romanov.recordbook.Semester)" class="member-name-link">transferSemester</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;studentFullName,
  <a href="Semester.html" title="enum class in ru.nsu.romanov.recordbook">Semester</a>&nbsp;semester)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Transfer student to Semester semester.</div>
+</div>
 </div>
 </div>
 </div>
@@ -169,6 +196,8 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="&lt;init&gt;()">
 <h3>RecordBook</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name">RecordBook</span>()</div>
+<div class="block">Constructor for recordBook.
+ Just made a first element in matrix mark.</div>
 </section>
 </li>
 </ul>
@@ -183,12 +212,26 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="getStudent(java.lang.String)">
 <h3>getStudent</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="student/Student.html" title="class in ru.nsu.romanov.recordbook.student">Student</a></span>&nbsp;<span class="element-name">getStudent</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;studentFullName)</span></div>
+<div class="block">Getter for student.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>studentFullName</code> - name of student.</dd>
+<dt>Returns:</dt>
+<dd>student with name studentFullName.</dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="getSubject(java.lang.String)">
 <h3>getSubject</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="subject/Subject.html" title="class in ru.nsu.romanov.recordbook.subject">Subject</a></span>&nbsp;<span class="element-name">getSubject</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;subjectName)</span></div>
+<div class="block">Getter fr subject.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>subjectName</code> - name of subject.</dd>
+<dt>Returns:</dt>
+<dd>subject with name subjectName.</dd>
+</dl>
 </section>
 </li>
 <li>
@@ -196,6 +239,15 @@ loadScripts(document, 'script');</script>
 <h3>addStudent</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name">addStudent</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;studentFullName,
  <a href="Semester.html" title="enum class in ru.nsu.romanov.recordbook">Semester</a>&nbsp;semester)</span></div>
+<div class="block">Method which add new student.
+ index will be taken from list freeIndexes or least free index.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>studentFullName</code> - name of student.</dd>
+<dd><code>semester</code> - semester in which student studies.</dd>
+<dt>Returns:</dt>
+<dd>true if student was made, false if there is a student with this name.</dd>
+</dl>
 </section>
 </li>
 <li>
@@ -203,12 +255,27 @@ loadScripts(document, 'script');</script>
 <h3>transferSemester</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name">transferSemester</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;studentFullName,
  <a href="Semester.html" title="enum class in ru.nsu.romanov.recordbook">Semester</a>&nbsp;semester)</span></div>
+<div class="block">Transfer student to Semester semester.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>studentFullName</code> - name of student.</dd>
+<dd><code>semester</code> - semester to transfer.</dd>
+<dt>Returns:</dt>
+<dd>true if student was transferred, false if there is no such student, or student is in this Semester.</dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="removeStudent(java.lang.String)">
 <h3>removeStudent</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name">removeStudent</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;studentFullName)</span></div>
+<div class="block">remove student and all his marks.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>studentFullName</code> - name of student.</dd>
+<dt>Returns:</dt>
+<dd>true student is removed, false if there is no such student.</dd>
+</dl>
 </section>
 </li>
 <li>
@@ -216,38 +283,93 @@ loadScripts(document, 'script');</script>
 <h3>getStudentMark</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="Mark.html" title="enum class in ru.nsu.romanov.recordbook">Mark</a></span>&nbsp;<span class="element-name">getStudentMark</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;studentName,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;subjectName)</span></div>
+<div class="block">Get student with name studentName mark for subject with name subjectName.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>studentName</code> - name of student.</dd>
+<dd><code>subjectName</code> - name of subject.</dd>
+<dt>Returns:</dt>
+<dd>Mark (Undefined if there is no info about mark), null if this student or subject not exist.</dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="StudentInfo(java.lang.String)">
 <h3>StudentInfo</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></span>&nbsp;<span class="element-name">StudentInfo</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;studentFullName)</span></div>
+<div class="block">Write student info into string and return it.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>studentFullName</code> - name of student.</dd>
+<dt>Returns:</dt>
+<dd>"" if this student not exist, otherwise info.</dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="isPossibleToHaveRedDiploma(java.lang.String)">
 <h3>isPossibleToHaveRedDiploma</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name">isPossibleToHaveRedDiploma</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;studentFullName)</span></div>
+<div class="block">Method to find  is possible to have red diploma.
+ if type of subject is Test mark not important expect TWO.
+ if mark is retake so it's not important.
+ if avr of marks is less than 4.8 then false.
+ if there is at least one three or two than false.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>studentFullName</code> - name of student.</dd>
+<dt>Returns:</dt>
+<dd>true if is possible to have red diploma, otherwise false.</dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="isPossibleToHaveIncreasedScholarship(java.lang.String)">
 <h3>isPossibleToHaveIncreasedScholarship</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name">isPossibleToHaveIncreasedScholarship</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;studentFullName)</span></div>
+<div class="block">Method which calc is possible to hav increased scholarship.
+ if type of subject is Test mark not important expect TWO.
+ if mark is retake so false.
+ if there is at least one three or two than false.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>studentFullName</code> - name of student.</dd>
+<dt>Returns:</dt>
+<dd>true if is possible to hav increased scholarship, otherwise false.</dd>
+</dl>
 </section>
 </li>
 <li>
-<section class="detail" id="addSubject(java.lang.String,ru.nsu.romanov.recordbook.Semester,ru.nsu.romanov.recordbook.subject.TypeObject)">
+<section class="detail" id="addSubject(java.lang.String,ru.nsu.romanov.recordbook.Semester,ru.nsu.romanov.recordbook.subject.TypeSubject)">
 <h3>addSubject</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name">addSubject</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;subjectName,
  <a href="Semester.html" title="enum class in ru.nsu.romanov.recordbook">Semester</a>&nbsp;semester,
- <a href="subject/TypeObject.html" title="enum class in ru.nsu.romanov.recordbook.subject">TypeObject</a>&nbsp;typeObject)</span></div>
+ <a href="subject/TypeSubject.html" title="enum class in ru.nsu.romanov.recordbook.subject">TypeSubject</a>&nbsp;typeObject)</span></div>
+<div class="block">Add new subject.
+ index is taken from list free indexes if it's not empty, otherwise is taken the least.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>subjectName</code> - name of subject.</dd>
+<dd><code>semester</code> - semester of subject.</dd>
+<dd><code>typeObject</code> - type of this subject.</dd>
+<dt>Returns:</dt>
+<dd>true if subject is added, false if there is a subject with this name.</dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="removeSubject(java.lang.String)">
 <h3>removeSubject</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name">removeSubject</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;subjectName)</span></div>
+<div class="block">Remove subject from record book.
+ add this index to free index list.
+ also remove all marks.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>subjectName</code> - name of subject.</dd>
+<dt>Returns:</dt>
+<dd>true if this subject was removed, false if there is no subject with name subjectName.</dd>
+</dl>
 </section>
 </li>
 <li>
@@ -256,6 +378,15 @@ loadScripts(document, 'script');</script>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name">setStudentMark</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;subjectName,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;studentFullName,
  <a href="Mark.html" title="enum class in ru.nsu.romanov.recordbook">Mark</a>&nbsp;mark)</span></div>
+<div class="block">Set student mark for subject subjectName for student studentFullName.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>subjectName</code> - name of subject.</dd>
+<dd><code>studentFullName</code> - name of student.</dd>
+<dd><code>mark</code> - mark to set.</dd>
+<dt>Returns:</dt>
+<dd>true if mark was set, false if there is no subject or student.</dd>
+</dl>
 </section>
 </li>
 </ul>
