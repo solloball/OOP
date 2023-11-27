@@ -522,7 +522,8 @@ class RecordBookTest {
         recordBook.addStudent("stud", Semester.FIFTH);
         recordBook.addSubject("sub", Semester.SECOND, TypeSubject.GRADED_TEST);
         recordBook.setStudentMark("sub", "stud", Mark.FIVE_RETAKED);
-        Subject subject = new Subject("sub", TypeSubject.GRADED_TEST, Semester.SECOND, new SubjectIdx(0));
+        Subject subject = new Subject("sub", TypeSubject.GRADED_TEST,
+                Semester.SECOND, new SubjectIdx(0));
         Student student = new Student(new StudentIdx(0), "stud", Semester.FIFTH);
         Assertions.assertEquals(student + "\n" + subject + " Mark : " + Mark.FIVE_RETAKED + "\n",
                 recordBook.studentInfo("stud"));
@@ -536,7 +537,8 @@ class RecordBookTest {
         recordBook.setStudentMark("sub", "stud", Mark.FIVE_RETAKED);
         recordBook.addSubject("sub2", Semester.SECOND, TypeSubject.EXAM);
         recordBook.setStudentMark("sub2", "stud", Mark.FOUR);
-        Subject subject = new Subject("sub", TypeSubject.GRADED_TEST, Semester.SECOND, new SubjectIdx(0));
+        Subject subject = new Subject("sub", TypeSubject.GRADED_TEST,
+                Semester.SECOND, new SubjectIdx(0));
         Subject subject2 = new Subject("sub2", TypeSubject.EXAM, Semester.SECOND, new SubjectIdx(0));
         Student student = new Student(new StudentIdx(0), "stud", Semester.FIFTH);
         Assertions.assertEquals(student + "\n" + subject + " Mark : " + Mark.FIVE_RETAKED + "\n"
@@ -547,7 +549,8 @@ class RecordBookTest {
     @Test
     void addSubjectBasic() {
         RecordBook recordBook = new RecordBook();
-        Assertions.assertTrue(recordBook.addSubject("wow", Semester.SECOND, TypeSubject.EXAM));
+        Assertions.assertTrue(recordBook.addSubject("wow",
+                Semester.SECOND, TypeSubject.EXAM));
         Subject subject = recordBook.getSubject("wow");
         Subject expSubject = new Subject("wow", TypeSubject.EXAM, Semester.SECOND, new SubjectIdx(0));
         Assertions.assertEquals(expSubject.getTypeSubject(), subject.getTypeSubject());
@@ -559,8 +562,10 @@ class RecordBookTest {
     @Test
     void addTwoSubjectBasic() {
         RecordBook recordBook = new RecordBook();
-        Assertions.assertTrue(recordBook.addSubject("wow", Semester.SECOND, TypeSubject.EXAM));
-        Assertions.assertTrue(recordBook.addSubject("woiw", Semester.FIFTH, TypeSubject.TEST));
+        Assertions.assertTrue(recordBook.addSubject("wow",
+                Semester.SECOND, TypeSubject.EXAM));
+        Assertions.assertTrue(recordBook.addSubject("woiw",
+                Semester.FIFTH, TypeSubject.TEST));
         Subject subject = recordBook.getSubject("wow");
         Subject expSubject = new Subject("wow", TypeSubject.EXAM, Semester.SECOND, new SubjectIdx(0));
         Assertions.assertEquals(expSubject.getTypeSubject(), subject.getTypeSubject());
@@ -611,7 +616,8 @@ class RecordBookTest {
         recordBook.removeSubject("test");
         recordBook.addSubject("test", Semester.FIFTH, TypeSubject.EXAM);
         Subject subject = recordBook.getSubject("test");
-        Subject expSubject = new Subject("test", TypeSubject.EXAM, Semester.FIFTH, new SubjectIdx(0));
+        Subject expSubject = new Subject("test", TypeSubject.EXAM,
+                Semester.FIFTH, new SubjectIdx(0));
         Assertions.assertEquals(expSubject.getTypeSubject(), subject.getTypeSubject());
         Assertions.assertEquals(expSubject.getSemester(), subject.getSemester());
         Assertions.assertEquals(expSubject.getIndex(), subject.getIndex());
@@ -625,7 +631,8 @@ class RecordBookTest {
         recordBook.removeSubject("test");
         recordBook.addSubject("test2", Semester.FIFTH, TypeSubject.EXAM);
         Subject subject = recordBook.getSubject("test2");
-        Subject expSubject = new Subject("test2", TypeSubject.EXAM, Semester.FIFTH, new SubjectIdx(0));
+        Subject expSubject = new Subject("test2", TypeSubject.EXAM,
+                Semester.FIFTH, new SubjectIdx(0));
         Assertions.assertEquals(expSubject.getTypeSubject(), subject.getTypeSubject());
         Assertions.assertEquals(expSubject.getSemester(), subject.getSemester());
         Assertions.assertEquals(expSubject.getIndex(), subject.getIndex());
