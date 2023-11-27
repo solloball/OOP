@@ -4,8 +4,9 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import ru.nsu.romanov.recordbook.Semester;
 
-import static org.junit.jupiter.api.Assertions.*;
-
+/**
+ * tests for class Student.
+ */
 class StudentTest {
 
     @Test

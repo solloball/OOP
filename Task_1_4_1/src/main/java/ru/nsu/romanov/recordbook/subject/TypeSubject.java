@@ -1,5 +1,8 @@
 package ru.nsu.romanov.recordbook.subject;
 
-public enum TypeObject {
+/**
+ * enum for store type of subject.
+ */
+public enum TypeSubject {
     EXAM, TEST, GRADED_TEST
 }

@@ -6,10 +6,11 @@ import ru.nsu.romanov.recordbook.student.Student;
 import ru.nsu.romanov.recordbook.student.StudentIdx;
 import ru.nsu.romanov.recordbook.subject.Subject;
 import ru.nsu.romanov.recordbook.subject.SubjectIdx;
-import ru.nsu.romanov.recordbook.subject.TypeObject;
+import ru.nsu.romanov.recordbook.subject.TypeSubject;
 
-import java.util.Objects;
-
+/**
+ * Tests for record book.
+ */
 class RecordBookTest {
 
     @Test
@@ -32,13 +33,13 @@ class RecordBookTest {
     @Test
     void getSubjectBasic() {
         RecordBook recordBook = new RecordBook();
-        recordBook.addSubject("wow", Semester.FIRST, TypeObject.TEST);
-        Subject expSubject = new Subject("wow", TypeObject.TEST, Semester.FIRST, new SubjectIdx(0));
+        recordBook.addSubject("wow", Semester.FIRST, TypeSubject.TEST);
+        Subject expSubject = new Subject("wow", TypeSubject.TEST, Semester.FIRST, new SubjectIdx(0));
         Subject subject = recordBook.getSubject("wow");
         Assertions.assertEquals(expSubject.getIndex(), subject.getIndex());
         Assertions.assertEquals(expSubject.getName(), subject.getName());
         Assertions.assertEquals(expSubject.getSemester(), subject.getSemester());
-        Assertions.assertEquals(expSubject.getTypeObject(), subject.getTypeObject());
+        Assertions.assertEquals(expSubject.getTypeSubject(), subject.getTypeSubject());
     }
     @Test
     void getSubjectWithNotExistingSubject() {
@@ -115,8 +116,8 @@ class RecordBookTest {
     void transferSemesterDownerWithMarks() {
         RecordBook recordBook = new RecordBook();
         recordBook.addStudent("wow", Semester.FIFTH);
-        recordBook.addSubject("sub1", Semester.FIFTH, TypeObject.EXAM);
-        recordBook.addSubject("sub2", Semester.SECOND, TypeObject.EXAM);
+        recordBook.addSubject("sub1", Semester.FIFTH, TypeSubject.GRADED_TEST);
+        recordBook.addSubject("sub2", Semester.SECOND, TypeSubject.EXAM);
         recordBook.setStudentMark("sub1", "wow", Mark.FIVE);
         recordBook.setStudentMark("sub2", "wow", Mark.TWO);
         recordBook.transferSemester("wow", Semester.FOURTH);
@@ -128,8 +129,8 @@ class RecordBookTest {
     void transferSemesterUpperWithMarks() {
         RecordBook recordBook = new RecordBook();
         recordBook.addStudent("wow", Semester.FIFTH);
-        recordBook.addSubject("sub1", Semester.FIFTH, TypeObject.EXAM);
-        recordBook.addSubject("sub2", Semester.SECOND, TypeObject.EXAM);
+        recordBook.addSubject("sub1", Semester.FIFTH, TypeSubject.EXAM);
+        recordBook.addSubject("sub2", Semester.SECOND, TypeSubject.EXAM);
         recordBook.setStudentMark("sub1", "wow", Mark.FIVE);
         recordBook.setStudentMark("sub2", "wow", Mark.TWO);
         recordBook.transferSemester("wow", Semester.SIXTH);
@@ -182,8 +183,8 @@ class RecordBookTest {
     void removeStudentWithMarks() {
         RecordBook recordBook = new RecordBook();
         recordBook.addStudent("stud", Semester.FIRST);
-        recordBook.addSubject("subj", Semester.FIRST, TypeObject.EXAM);
-        recordBook.addSubject("subj2", Semester.FIRST, TypeObject.EXAM);
+        recordBook.addSubject("subj", Semester.FIRST, TypeSubject.EXAM);
+        recordBook.addSubject("subj2", Semester.FIRST, TypeSubject.EXAM);
         recordBook.setStudentMark("subj", "stud", Mark.TWO);
         recordBook.setStudentMark("subj2", "stud", Mark.FIVE);
         recordBook.removeStudent("stud");
@@ -196,8 +197,8 @@ class RecordBookTest {
     void removeStudentWithMarksWithDifferentNames() {
         RecordBook recordBook = new RecordBook();
         recordBook.addStudent("stud", Semester.FIRST);
-        recordBook.addSubject("subj", Semester.FIRST, TypeObject.EXAM);
-        recordBook.addSubject("subj2", Semester.FIRST, TypeObject.EXAM);
+        recordBook.addSubject("subj", Semester.FIRST, TypeSubject.EXAM);
+        recordBook.addSubject("subj2", Semester.FIRST, TypeSubject.EXAM);
         recordBook.setStudentMark("subj", "stud", Mark.TWO);
         recordBook.setStudentMark("subj2", "stud", Mark.FIVE);
         recordBook.removeStudent("stud");
@@ -221,7 +222,7 @@ class RecordBookTest {
     void isPossibleToHaveIncreasedScholarshipBasicWithSubject() {
         RecordBook recordBook = new RecordBook();
         recordBook.addStudent("wow", Semester.SECOND);
-        recordBook.addSubject("sub", Semester.SECOND, TypeObject.EXAM);
+        recordBook.addSubject("sub", Semester.SECOND, TypeSubject.EXAM);
         Assertions.assertTrue(recordBook.isPossibleToHaveIncreasedScholarship("wow"));
     }
 
@@ -229,7 +230,7 @@ class RecordBookTest {
     void isPossibleToHaveIncreasedScholarshipBasicWithSubjectWithMarks() {
         RecordBook recordBook = new RecordBook();
         recordBook.addStudent("wow", Semester.SECOND);
-        recordBook.addSubject("sub", Semester.SECOND, TypeObject.EXAM);
+        recordBook.addSubject("sub", Semester.SECOND, TypeSubject.EXAM);
         recordBook.setStudentMark("sub", "wow", Mark.FOUR);
         Assertions.assertTrue(recordBook.isPossibleToHaveIncreasedScholarship("wow"));
     }
@@ -238,7 +239,7 @@ class RecordBookTest {
     void isPossibleToHaveIncreasedScholarshipBasicWithSubjectWithBadMarks() {
         RecordBook recordBook = new RecordBook();
         recordBook.addStudent("wow", Semester.SECOND);
-        recordBook.addSubject("sub", Semester.SECOND, TypeObject.EXAM);
+        recordBook.addSubject("sub", Semester.SECOND, TypeSubject.EXAM);
         recordBook.setStudentMark("sub", "wow", Mark.TWO);
         Assertions.assertFalse(recordBook.isPossibleToHaveIncreasedScholarship("wow"));
     }
@@ -260,7 +261,7 @@ class RecordBookTest {
     void isPossibleToHaveIncreasedScholarshipWithStudentOnFirstSemesterWithGoodMarks() {
         RecordBook recordBook = new RecordBook();
         recordBook.addStudent("wow", Semester.FIRST);
-        recordBook.addSubject("sub", Semester.FIRST,TypeObject.EXAM);
+        recordBook.addSubject("sub", Semester.FIRST,TypeSubject.EXAM);
         recordBook.setStudentMark("sub", "wow", Mark.FIVE);
         Assertions.assertFalse(recordBook.isPossibleToHaveIncreasedScholarship("wow"));
     }
@@ -276,7 +277,7 @@ class RecordBookTest {
     void isPossibleToHaveIncreasedScholarshipWithStudentOnLastSemesterWithGoodMarks() {
         RecordBook recordBook = new RecordBook();
         recordBook.addStudent("wow", Semester.TENTH);
-        recordBook.addSubject("sub", Semester.TENTH,TypeObject.EXAM);
+        recordBook.addSubject("sub", Semester.TENTH,TypeSubject.EXAM);
         recordBook.setStudentMark("sub", "wow", Mark.FIVE);
         Assertions.assertFalse(recordBook.isPossibleToHaveIncreasedScholarship("wow"));
     }
@@ -285,7 +286,7 @@ class RecordBookTest {
     void isPossibleToHaveIncreasedScholarshipWithBadMarksInPrevSemester() {
         RecordBook recordBook = new RecordBook();
         recordBook.addStudent("wow", Semester.SECOND);
-        recordBook.addSubject("sub", Semester.FIRST,TypeObject.EXAM);
+        recordBook.addSubject("sub", Semester.FIRST,TypeSubject.EXAM);
         recordBook.setStudentMark("sub", "wow", Mark.TWO);
         Assertions.assertTrue(recordBook.isPossibleToHaveIncreasedScholarship("wow"));
     }
@@ -294,7 +295,7 @@ class RecordBookTest {
     void isPossibleToHaveIncreasedScholarshipWithBadMarksInNextSemester() {
         RecordBook recordBook = new RecordBook();
         recordBook.addStudent("wow", Semester.SECOND);
-        recordBook.addSubject("sub", Semester.FIFTH,TypeObject.EXAM);
+        recordBook.addSubject("sub", Semester.FIFTH,TypeSubject.EXAM);
         recordBook.setStudentMark("sub", "wow", Mark.TWO);
         Assertions.assertTrue(recordBook.isPossibleToHaveIncreasedScholarship("wow"));
     }
@@ -303,7 +304,7 @@ class RecordBookTest {
     void isPossibleToHaveIncreasedScholarshipWithRetakeFour() {
         RecordBook recordBook = new RecordBook();
         recordBook.addStudent("wow", Semester.SECOND);
-        recordBook.addSubject("sub", Semester.SECOND,TypeObject.EXAM);
+        recordBook.addSubject("sub", Semester.SECOND,TypeSubject.EXAM);
         recordBook.setStudentMark("sub", "wow", Mark.FOUR_RETAKED);
         Assertions.assertFalse(recordBook.isPossibleToHaveIncreasedScholarship("wow"));
     }
@@ -312,7 +313,7 @@ class RecordBookTest {
     void isPossibleToHaveIncreasedScholarshipWithRetakeFive() {
         RecordBook recordBook = new RecordBook();
         recordBook.addStudent("wow", Semester.SECOND);
-        recordBook.addSubject("sub", Semester.SECOND,TypeObject.EXAM);
+        recordBook.addSubject("sub", Semester.SECOND,TypeSubject.EXAM);
         recordBook.setStudentMark("sub", "wow", Mark.FIVE_RETAKED);
         Assertions.assertFalse(recordBook.isPossibleToHaveIncreasedScholarship("wow"));
     }
@@ -321,7 +322,7 @@ class RecordBookTest {
     void isPossibleToHaveIncreasedScholarshipWithThreeInTest() {
         RecordBook recordBook = new RecordBook();
         recordBook.addStudent("wow", Semester.SECOND);
-        recordBook.addSubject("sub", Semester.SECOND,TypeObject.TEST);
+        recordBook.addSubject("sub", Semester.SECOND,TypeSubject.TEST);
         recordBook.setStudentMark("sub", "wow", Mark.THREE);
         Assertions.assertTrue(recordBook.isPossibleToHaveIncreasedScholarship("wow"));
     }
@@ -337,7 +338,7 @@ class RecordBookTest {
     void isPossibleToHaveRedDiplomaBasicWithMarks() {
         RecordBook recordBook = new RecordBook();
         recordBook.addStudent("wow", Semester.SECOND);
-        recordBook.addSubject("sub", Semester.SECOND, TypeObject.EXAM);
+        recordBook.addSubject("sub", Semester.SECOND, TypeSubject.EXAM);
         recordBook.setStudentMark("sub", "wow", Mark.FIVE);
         Assertions.assertTrue(recordBook.isPossibleToHaveRedDiploma("wow"));
     }
@@ -346,7 +347,7 @@ class RecordBookTest {
     void isPossibleToHaveRedDiplomaBasicWithThreeInTest() {
         RecordBook recordBook = new RecordBook();
         recordBook.addStudent("wow", Semester.SECOND);
-        recordBook.addSubject("sub", Semester.SECOND, TypeObject.TEST);
+        recordBook.addSubject("sub", Semester.SECOND, TypeSubject.TEST);
         recordBook.setStudentMark("sub", "wow", Mark.THREE);
         Assertions.assertTrue(recordBook.isPossibleToHaveRedDiploma("wow"));
     }
@@ -355,7 +356,7 @@ class RecordBookTest {
     void isPossibleToHaveRedDiplomaBasicWithThree() {
         RecordBook recordBook = new RecordBook();
         recordBook.addStudent("wow", Semester.SECOND);
-        recordBook.addSubject("sub", Semester.SECOND, TypeObject.EXAM);
+        recordBook.addSubject("sub", Semester.SECOND, TypeSubject.EXAM);
         recordBook.setStudentMark("sub", "wow", Mark.THREE);
         Assertions.assertFalse(recordBook.isPossibleToHaveRedDiploma("wow"));
     }
@@ -364,15 +365,15 @@ class RecordBookTest {
     void isPossibleToHaveRedDiplomaBasicWithGoodMarks() {
         RecordBook recordBook = new RecordBook();
         recordBook.addStudent("wow", Semester.SECOND);
-        recordBook.addSubject("sub1", Semester.SECOND, TypeObject.EXAM);
+        recordBook.addSubject("sub1", Semester.SECOND, TypeSubject.EXAM);
         recordBook.setStudentMark("sub1", "wow", Mark.FIVE);
-        recordBook.addSubject("sub2", Semester.SECOND, TypeObject.EXAM);
+        recordBook.addSubject("sub2", Semester.SECOND, TypeSubject.EXAM);
         recordBook.setStudentMark("sub2", "wow", Mark.FIVE);
-        recordBook.addSubject("sub3", Semester.SECOND, TypeObject.EXAM);
+        recordBook.addSubject("sub3", Semester.SECOND, TypeSubject.EXAM);
         recordBook.setStudentMark("sub3", "wow", Mark.FIVE);
-        recordBook.addSubject("sub4", Semester.SECOND, TypeObject.EXAM);
+        recordBook.addSubject("sub4", Semester.SECOND, TypeSubject.EXAM);
         recordBook.setStudentMark("sub4", "wow", Mark.FIVE);
-        recordBook.addSubject("sub5", Semester.SECOND, TypeObject.EXAM);
+        recordBook.addSubject("sub5", Semester.SECOND, TypeSubject.EXAM);
         recordBook.setStudentMark("sub5", "wow", Mark.FOUR);
         Assertions.assertTrue(recordBook.isPossibleToHaveRedDiploma("wow"));
     }
@@ -381,15 +382,15 @@ class RecordBookTest {
     void isPossibleToHaveRedDiplomaBasicWithBadMarks() {
         RecordBook recordBook = new RecordBook();
         recordBook.addStudent("wow", Semester.SECOND);
-        recordBook.addSubject("sub1", Semester.SECOND, TypeObject.EXAM);
+        recordBook.addSubject("sub1", Semester.SECOND, TypeSubject.EXAM);
         recordBook.setStudentMark("sub1", "wow", Mark.FIVE);
-        recordBook.addSubject("sub2", Semester.SECOND, TypeObject.EXAM);
+        recordBook.addSubject("sub2", Semester.SECOND, TypeSubject.EXAM);
         recordBook.setStudentMark("sub2", "wow", Mark.FIVE);
-        recordBook.addSubject("sub3", Semester.SECOND, TypeObject.EXAM);
+        recordBook.addSubject("sub3", Semester.SECOND, TypeSubject.EXAM);
         recordBook.setStudentMark("sub3", "wow", Mark.FIVE);
-        recordBook.addSubject("sub4", Semester.SECOND, TypeObject.EXAM);
+        recordBook.addSubject("sub4", Semester.SECOND, TypeSubject.EXAM);
         recordBook.setStudentMark("sub4", "wow", Mark.FOUR);
-        recordBook.addSubject("sub5", Semester.SECOND, TypeObject.EXAM);
+        recordBook.addSubject("sub5", Semester.SECOND, TypeSubject.EXAM);
         recordBook.setStudentMark("sub5", "wow", Mark.FOUR);
         Assertions.assertFalse(recordBook.isPossibleToHaveRedDiploma("wow"));
     }
@@ -398,15 +399,15 @@ class RecordBookTest {
     void isPossibleToHaveRedDiplomaBasicWithRetakeMarks() {
         RecordBook recordBook = new RecordBook();
         recordBook.addStudent("wow", Semester.SECOND);
-        recordBook.addSubject("sub1", Semester.SECOND, TypeObject.EXAM);
+        recordBook.addSubject("sub1", Semester.SECOND, TypeSubject.EXAM);
         recordBook.setStudentMark("sub1", "wow", Mark.FIVE_RETAKED);
-        recordBook.addSubject("sub2", Semester.SECOND, TypeObject.EXAM);
+        recordBook.addSubject("sub2", Semester.SECOND, TypeSubject.EXAM);
         recordBook.setStudentMark("sub2", "wow", Mark.FIVE_RETAKED);
-        recordBook.addSubject("sub3", Semester.SECOND, TypeObject.EXAM);
+        recordBook.addSubject("sub3", Semester.SECOND, TypeSubject.EXAM);
         recordBook.setStudentMark("sub3", "wow", Mark.FIVE_RETAKED);
-        recordBook.addSubject("sub4", Semester.SECOND, TypeObject.EXAM);
+        recordBook.addSubject("sub4", Semester.SECOND, TypeSubject.EXAM);
         recordBook.setStudentMark("sub4", "wow", Mark.FIVE_RETAKED);
-        recordBook.addSubject("sub5", Semester.SECOND, TypeObject.EXAM);
+        recordBook.addSubject("sub5", Semester.SECOND, TypeSubject.EXAM);
         recordBook.setStudentMark("sub5", "wow", Mark.FOUR_RETAKED);
         Assertions.assertTrue(recordBook.isPossibleToHaveRedDiploma("wow"));
     }
@@ -415,25 +416,25 @@ class RecordBookTest {
     void isPossibleToHaveRedDiplomaBasicWithOneThree() {
         RecordBook recordBook = new RecordBook();
         recordBook.addStudent("wow", Semester.SIXTH);
-        recordBook.addSubject("sub1", Semester.SECOND, TypeObject.EXAM);
+        recordBook.addSubject("sub1", Semester.SECOND, TypeSubject.EXAM);
         recordBook.setStudentMark("sub1", "wow", Mark.FIVE_RETAKED);
-        recordBook.addSubject("sub2", Semester.THIRD, TypeObject.EXAM);
+        recordBook.addSubject("sub2", Semester.THIRD, TypeSubject.EXAM);
         recordBook.setStudentMark("sub2", "wow", Mark.FIVE_RETAKED);
-        recordBook.addSubject("sub3", Semester.THIRD, TypeObject.EXAM);
+        recordBook.addSubject("sub3", Semester.THIRD, TypeSubject.EXAM);
         recordBook.setStudentMark("sub3", "wow", Mark.FIVE_RETAKED);
-        recordBook.addSubject("sub4", Semester.THIRD, TypeObject.EXAM);
+        recordBook.addSubject("sub4", Semester.THIRD, TypeSubject.EXAM);
         recordBook.setStudentMark("sub4", "wow", Mark.FIVE_RETAKED);
-        recordBook.addSubject("sub5", Semester.SECOND, TypeObject.EXAM);
+        recordBook.addSubject("sub5", Semester.SECOND, TypeSubject.EXAM);
         recordBook.setStudentMark("sub5", "wow", Mark.FIVE_RETAKED);
-        recordBook.addSubject("sub6", Semester.SIXTH, TypeObject.EXAM);
+        recordBook.addSubject("sub6", Semester.SIXTH, TypeSubject.EXAM);
         recordBook.setStudentMark("sub6", "wow", Mark.FIVE_RETAKED);
-        recordBook.addSubject("sub7", Semester.SIXTH, TypeObject.EXAM);
+        recordBook.addSubject("sub7", Semester.SIXTH, TypeSubject.EXAM);
         recordBook.setStudentMark("sub7", "wow", Mark.FIVE_RETAKED);
-        recordBook.addSubject("sub8", Semester.SIXTH, TypeObject.EXAM);
+        recordBook.addSubject("sub8", Semester.SIXTH, TypeSubject.EXAM);
         recordBook.setStudentMark("sub8", "wow", Mark.FIVE_RETAKED);
-        recordBook.addSubject("sub9", Semester.FIFTH, TypeObject.EXAM);
+        recordBook.addSubject("sub9", Semester.FIFTH, TypeSubject.EXAM);
         recordBook.setStudentMark("sub9", "wow", Mark.FIVE_RETAKED);
-        recordBook.addSubject("sub10", Semester.FIRST, TypeObject.EXAM);
+        recordBook.addSubject("sub10", Semester.FIRST, TypeSubject.EXAM);
         recordBook.setStudentMark("sub10", "wow", Mark.THREE);
         Assertions.assertFalse(recordBook.isPossibleToHaveRedDiploma("wow"));
     }
@@ -450,8 +451,8 @@ class RecordBookTest {
     void StudentInfoBasicWithsSubject() {
         RecordBook recordBook = new RecordBook();
         recordBook.addStudent("stud", Semester.FIFTH);
-        recordBook.addSubject("sub", Semester.SECOND, TypeObject.EXAM);
-        Subject subject = new Subject("sub", TypeObject.EXAM, Semester.SECOND, new SubjectIdx(0));
+        recordBook.addSubject("sub", Semester.SECOND, TypeSubject.EXAM);
+        Subject subject = new Subject("sub", TypeSubject.EXAM, Semester.SECOND, new SubjectIdx(0));
         Student student = new Student(new StudentIdx(0), "stud", Semester.FIFTH);
         Assertions.assertEquals(student + "\n" + subject + " Mark : There is no information\n",
                 recordBook.StudentInfo("stud"));
@@ -461,9 +462,9 @@ class RecordBookTest {
     void StudentInfoBasicWithsSubjectWithMark() {
         RecordBook recordBook = new RecordBook();
         recordBook.addStudent("stud", Semester.FIFTH);
-        recordBook.addSubject("sub", Semester.SECOND, TypeObject.EXAM);
+        recordBook.addSubject("sub", Semester.SECOND, TypeSubject.EXAM);
         recordBook.setStudentMark("sub", "stud", Mark.THREE);
-        Subject subject = new Subject("sub", TypeObject.EXAM, Semester.SECOND, new SubjectIdx(0));
+        Subject subject = new Subject("sub", TypeSubject.EXAM, Semester.SECOND, new SubjectIdx(0));
         Student student = new Student(new StudentIdx(0), "stud", Semester.FIFTH);
         Assertions.assertEquals(student + "\n" + subject + " Mark : " + Mark.THREE + "\n",
                 recordBook.StudentInfo("stud"));
@@ -473,9 +474,9 @@ class RecordBookTest {
     void StudentInfoBasicWithsSubjectWithMarkTest() {
         RecordBook recordBook = new RecordBook();
         recordBook.addStudent("stud", Semester.FIFTH);
-        recordBook.addSubject("sub", Semester.SECOND, TypeObject.TEST);
+        recordBook.addSubject("sub", Semester.SECOND, TypeSubject.TEST);
         recordBook.setStudentMark("sub", "stud", Mark.THREE);
-        Subject subject = new Subject("sub", TypeObject.TEST, Semester.SECOND, new SubjectIdx(0));
+        Subject subject = new Subject("sub", TypeSubject.TEST, Semester.SECOND, new SubjectIdx(0));
         Student student = new Student(new StudentIdx(0), "stud", Semester.FIFTH);
         Assertions.assertEquals(student + "\n" + subject + " Mark : Pass\n",
                 recordBook.StudentInfo("stud"));
@@ -485,9 +486,9 @@ class RecordBookTest {
     void StudentInfoBasicWithsSubjectWithFiveTest() {
         RecordBook recordBook = new RecordBook();
         recordBook.addStudent("stud", Semester.FIFTH);
-        recordBook.addSubject("sub", Semester.SECOND, TypeObject.TEST);
+        recordBook.addSubject("sub", Semester.SECOND, TypeSubject.TEST);
         recordBook.setStudentMark("sub", "stud", Mark.FIVE);
-        Subject subject = new Subject("sub", TypeObject.TEST, Semester.SECOND, new SubjectIdx(0));
+        Subject subject = new Subject("sub", TypeSubject.TEST, Semester.SECOND, new SubjectIdx(0));
         Student student = new Student(new StudentIdx(0), "stud", Semester.FIFTH);
         Assertions.assertEquals(student + "\n" + subject + " Mark : Pass\n",
                 recordBook.StudentInfo("stud"));
@@ -497,9 +498,9 @@ class RecordBookTest {
     void StudentInfoBasicWithsSubjectWithFourTest() {
         RecordBook recordBook = new RecordBook();
         recordBook.addStudent("stud", Semester.FIFTH);
-        recordBook.addSubject("sub", Semester.SECOND, TypeObject.TEST);
+        recordBook.addSubject("sub", Semester.SECOND, TypeSubject.TEST);
         recordBook.setStudentMark("sub", "stud", Mark.FOUR);
-        Subject subject = new Subject("sub", TypeObject.TEST, Semester.SECOND, new SubjectIdx(0));
+        Subject subject = new Subject("sub", TypeSubject.TEST, Semester.SECOND, new SubjectIdx(0));
         Student student = new Student(new StudentIdx(0), "stud", Semester.FIFTH);
         Assertions.assertEquals(student + "\n" + subject + " Mark : Pass\n",
                 recordBook.StudentInfo("stud"));
@@ -509,9 +510,9 @@ class RecordBookTest {
     void StudentInfoBasicWithsSubjectWithTwoTest() {
         RecordBook recordBook = new RecordBook();
         recordBook.addStudent("stud", Semester.FIFTH);
-        recordBook.addSubject("sub", Semester.SECOND, TypeObject.TEST);
+        recordBook.addSubject("sub", Semester.SECOND, TypeSubject.TEST);
         recordBook.setStudentMark("sub", "stud", Mark.TWO);
-        Subject subject = new Subject("sub", TypeObject.TEST, Semester.SECOND, new SubjectIdx(0));
+        Subject subject = new Subject("sub", TypeSubject.TEST, Semester.SECOND, new SubjectIdx(0));
         Student student = new Student(new StudentIdx(0), "stud", Semester.FIFTH);
         Assertions.assertEquals(student + "\n" + subject + " Mark : Academic Debt\n",
                 recordBook.StudentInfo("stud"));
@@ -521,9 +522,9 @@ class RecordBookTest {
     void StudentInfoBasicWithsSubjectWithRetakeMark() {
         RecordBook recordBook = new RecordBook();
         recordBook.addStudent("stud", Semester.FIFTH);
-        recordBook.addSubject("sub", Semester.SECOND, TypeObject.GRADED_TEST);
+        recordBook.addSubject("sub", Semester.SECOND, TypeSubject.GRADED_TEST);
         recordBook.setStudentMark("sub", "stud", Mark.FIVE_RETAKED);
-        Subject subject = new Subject("sub", TypeObject.GRADED_TEST, Semester.SECOND, new SubjectIdx(0));
+        Subject subject = new Subject("sub", TypeSubject.GRADED_TEST, Semester.SECOND, new SubjectIdx(0));
         Student student = new Student(new StudentIdx(0), "stud", Semester.FIFTH);
         Assertions.assertEquals(student + "\n" + subject + " Mark : " + Mark.FIVE_RETAKED + "\n",
                 recordBook.StudentInfo("stud"));
@@ -533,12 +534,12 @@ class RecordBookTest {
     void StudentInfoBasicWithTwoSubjects() {
         RecordBook recordBook = new RecordBook();
         recordBook.addStudent("stud", Semester.FIFTH);
-        recordBook.addSubject("sub", Semester.SECOND, TypeObject.GRADED_TEST);
+        recordBook.addSubject("sub", Semester.SECOND, TypeSubject.GRADED_TEST);
         recordBook.setStudentMark("sub", "stud", Mark.FIVE_RETAKED);
-        recordBook.addSubject("sub2", Semester.SECOND, TypeObject.EXAM);
+        recordBook.addSubject("sub2", Semester.SECOND, TypeSubject.EXAM);
         recordBook.setStudentMark("sub2", "stud", Mark.FOUR);
-        Subject subject = new Subject("sub", TypeObject.GRADED_TEST, Semester.SECOND, new SubjectIdx(0));
-        Subject subject2 = new Subject("sub2", TypeObject.EXAM, Semester.SECOND, new SubjectIdx(0));
+        Subject subject = new Subject("sub", TypeSubject.GRADED_TEST, Semester.SECOND, new SubjectIdx(0));
+        Subject subject2 = new Subject("sub2", TypeSubject.EXAM, Semester.SECOND, new SubjectIdx(0));
         Student student = new Student(new StudentIdx(0), "stud", Semester.FIFTH);
         Assertions.assertEquals(student + "\n" + subject + " Mark : " + Mark.FIVE_RETAKED + "\n"
                 + subject2 + " Mark : " + Mark.FOUR + "\n",
@@ -548,53 +549,53 @@ class RecordBookTest {
     @Test
     void addSubjectBasic() {
         RecordBook recordBook = new RecordBook();
-        Assertions.assertTrue(recordBook.addSubject("wow", Semester.SECOND, TypeObject.EXAM));
+        Assertions.assertTrue(recordBook.addSubject("wow", Semester.SECOND, TypeSubject.EXAM));
         Subject subject = recordBook.getSubject("wow");
-        Subject expSubject = new Subject("wow", TypeObject.EXAM, Semester.SECOND, new SubjectIdx(0));
-        Assertions.assertEquals(expSubject.getTypeObject(), subject.getTypeObject());
+        Subject expSubject = new Subject("wow", TypeSubject.EXAM, Semester.SECOND, new SubjectIdx(0));
+        Assertions.assertEquals(expSubject.getTypeSubject(), subject.getTypeSubject());
         Assertions.assertEquals(expSubject.getSemester(), subject.getSemester());
         Assertions.assertEquals(expSubject.getIndex(), subject.getIndex());
-        Assertions.assertEquals(expSubject.getTypeObject(), subject.getTypeObject());
+        Assertions.assertEquals(expSubject.getTypeSubject(), subject.getTypeSubject());
     }
 
     @Test
     void addTwoSubjectBasic() {
         RecordBook recordBook = new RecordBook();
-        Assertions.assertTrue(recordBook.addSubject("wow", Semester.SECOND, TypeObject.EXAM));
-        Assertions.assertTrue(recordBook.addSubject("woiw", Semester.FIFTH, TypeObject.TEST));
+        Assertions.assertTrue(recordBook.addSubject("wow", Semester.SECOND, TypeSubject.EXAM));
+        Assertions.assertTrue(recordBook.addSubject("woiw", Semester.FIFTH, TypeSubject.TEST));
         Subject subject = recordBook.getSubject("wow");
-        Subject expSubject = new Subject("wow", TypeObject.EXAM, Semester.SECOND, new SubjectIdx(0));
-        Assertions.assertEquals(expSubject.getTypeObject(), subject.getTypeObject());
+        Subject expSubject = new Subject("wow", TypeSubject.EXAM, Semester.SECOND, new SubjectIdx(0));
+        Assertions.assertEquals(expSubject.getTypeSubject(), subject.getTypeSubject());
         Assertions.assertEquals(expSubject.getSemester(), subject.getSemester());
         Assertions.assertEquals(expSubject.getIndex(), subject.getIndex());
-        Assertions.assertEquals(expSubject.getTypeObject(), subject.getTypeObject());
+        Assertions.assertEquals(expSubject.getTypeSubject(), subject.getTypeSubject());
         Subject subject2 = recordBook.getSubject("woiw");
-        Subject expSubject2 = new Subject("woiw", TypeObject.TEST, Semester.FIFTH, new SubjectIdx(1));
-        Assertions.assertEquals(expSubject2.getTypeObject(), subject2.getTypeObject());
+        Subject expSubject2 = new Subject("woiw", TypeSubject.TEST, Semester.FIFTH, new SubjectIdx(1));
+        Assertions.assertEquals(expSubject2.getTypeSubject(), subject2.getTypeSubject());
         Assertions.assertEquals(expSubject2.getSemester(), subject2.getSemester());
         Assertions.assertEquals(expSubject2.getIndex(), subject2.getIndex());
-        Assertions.assertEquals(expSubject2.getTypeObject(), subject2.getTypeObject());
+        Assertions.assertEquals(expSubject2.getTypeSubject(), subject2.getTypeSubject());
     }
 
     @Test
     void addExistingEqualSubject() {
         RecordBook recordBook = new RecordBook();
-        Assertions.assertTrue(recordBook.addSubject("wow", Semester.SECOND, TypeObject.EXAM));
-        Assertions.assertFalse(recordBook.addSubject("wow", Semester.SECOND, TypeObject.EXAM));
+        Assertions.assertTrue(recordBook.addSubject("wow", Semester.SECOND, TypeSubject.EXAM));
+        Assertions.assertFalse(recordBook.addSubject("wow", Semester.SECOND, TypeSubject.EXAM));
     }
 
     @Test
     void addExistingNotEqualSubject() {
         RecordBook recordBook = new RecordBook();
-        Assertions.assertTrue(recordBook.addSubject("wow", Semester.SECOND, TypeObject.EXAM));
-        Assertions.assertFalse(recordBook.addSubject("wow", Semester.FIFTH, TypeObject.EXAM));
-        Assertions.assertFalse(recordBook.addSubject("wow", Semester.SECOND, TypeObject.TEST));
+        Assertions.assertTrue(recordBook.addSubject("wow", Semester.SECOND, TypeSubject.EXAM));
+        Assertions.assertFalse(recordBook.addSubject("wow", Semester.FIFTH, TypeSubject.EXAM));
+        Assertions.assertFalse(recordBook.addSubject("wow", Semester.SECOND, TypeSubject.TEST));
     }
 
     @Test
     void removeSubjectBasic() {
         RecordBook recordBook = new RecordBook();
-        recordBook.addSubject("test", Semester.FIFTH, TypeObject.GRADED_TEST);
+        recordBook.addSubject("test", Semester.FIFTH, TypeSubject.GRADED_TEST);
         Assertions.assertTrue(recordBook.removeSubject("test"));
         Assertions.assertNull(recordBook.getSubject("test"));
     }
@@ -608,41 +609,41 @@ class RecordBookTest {
     @Test
     void removeSubjectIndex() {
         RecordBook recordBook = new RecordBook();
-        recordBook.addSubject("test", Semester.FIFTH, TypeObject.EXAM);
+        recordBook.addSubject("test", Semester.FIFTH, TypeSubject.EXAM);
         recordBook.removeSubject("test");
-        recordBook.addSubject("test", Semester.FIFTH, TypeObject.EXAM);
+        recordBook.addSubject("test", Semester.FIFTH, TypeSubject.EXAM);
         Subject subject = recordBook.getSubject("test");
-        Subject expSubject = new Subject("test", TypeObject.EXAM, Semester.FIFTH, new SubjectIdx(0));
-        Assertions.assertEquals(expSubject.getTypeObject(), subject.getTypeObject());
+        Subject expSubject = new Subject("test", TypeSubject.EXAM, Semester.FIFTH, new SubjectIdx(0));
+        Assertions.assertEquals(expSubject.getTypeSubject(), subject.getTypeSubject());
         Assertions.assertEquals(expSubject.getSemester(), subject.getSemester());
         Assertions.assertEquals(expSubject.getIndex(), subject.getIndex());
-        Assertions.assertEquals(expSubject.getTypeObject(), subject.getTypeObject());
+        Assertions.assertEquals(expSubject.getTypeSubject(), subject.getTypeSubject());
     }
 
     @Test
     void removeSubjectIndexWithDifferentName() {
         RecordBook recordBook = new RecordBook();
-        recordBook.addSubject("test", Semester.FIFTH, TypeObject.EXAM);
+        recordBook.addSubject("test", Semester.FIFTH, TypeSubject.EXAM);
         recordBook.removeSubject("test");
-        recordBook.addSubject("test2", Semester.FIFTH, TypeObject.EXAM);
+        recordBook.addSubject("test2", Semester.FIFTH, TypeSubject.EXAM);
         Subject subject = recordBook.getSubject("test2");
-        Subject expSubject = new Subject("test2", TypeObject.EXAM, Semester.FIFTH, new SubjectIdx(0));
-        Assertions.assertEquals(expSubject.getTypeObject(), subject.getTypeObject());
+        Subject expSubject = new Subject("test2", TypeSubject.EXAM, Semester.FIFTH, new SubjectIdx(0));
+        Assertions.assertEquals(expSubject.getTypeSubject(), subject.getTypeSubject());
         Assertions.assertEquals(expSubject.getSemester(), subject.getSemester());
         Assertions.assertEquals(expSubject.getIndex(), subject.getIndex());
-        Assertions.assertEquals(expSubject.getTypeObject(), subject.getTypeObject());
+        Assertions.assertEquals(expSubject.getTypeSubject(), subject.getTypeSubject());
     }
 
     @Test
     void removeSubjectWithMarks() {
         RecordBook recordBook = new RecordBook();
-        recordBook.addSubject("test", Semester.FIFTH, TypeObject.EXAM);
+        recordBook.addSubject("test", Semester.FIFTH, TypeSubject.EXAM);
         recordBook.addStudent("stud", Semester.FIFTH);
         recordBook.addStudent("stud2", Semester.FIFTH);
         recordBook.setStudentMark("test", "stud", Mark.FIVE);
         recordBook.setStudentMark("test", "stud2", Mark.TWO);
         recordBook.removeSubject("test");
-        recordBook.addSubject("test", Semester.FIFTH, TypeObject.EXAM);
+        recordBook.addSubject("test", Semester.FIFTH, TypeSubject.EXAM);
         Assertions.assertEquals(Mark.UNDEFINED, recordBook.getStudentMark("stud", "test"));
         Assertions.assertEquals(Mark.UNDEFINED, recordBook.getStudentMark("stud2", "test"));
     }
@@ -650,7 +651,7 @@ class RecordBookTest {
     @Test
     void getStudentMarkWithNotSettingMark() {
         RecordBook recordBook = new RecordBook();
-        recordBook.addSubject("subj", Semester.FIRST, TypeObject.EXAM);
+        recordBook.addSubject("subj", Semester.FIRST, TypeSubject.EXAM);
         recordBook.addStudent("stud", Semester.FIRST);
         Assertions.assertEquals(Mark.UNDEFINED, recordBook.getStudentMark("stud", "subj"));
     }
@@ -658,7 +659,7 @@ class RecordBookTest {
     @Test
     void getStudentMarkWithNotSettingDifferentSemester() {
         RecordBook recordBook = new RecordBook();
-        recordBook.addSubject("subj", Semester.FIRST, TypeObject.EXAM);
+        recordBook.addSubject("subj", Semester.FIRST, TypeSubject.EXAM);
         recordBook.addStudent("stud", Semester.FIFTH);
         Assertions.assertEquals(Mark.UNDEFINED, recordBook.getStudentMark("stud", "subj"));
     }
@@ -666,7 +667,7 @@ class RecordBookTest {
     @Test
     void getStudentMarkWithNotSettingDifferentSemesterWithStudent() {
         RecordBook recordBook = new RecordBook();
-        recordBook.addSubject("subj", Semester.FIFTH, TypeObject.EXAM);
+        recordBook.addSubject("subj", Semester.FIFTH, TypeSubject.EXAM);
         recordBook.addStudent("stud", Semester.FIRST);
         Assertions.assertEquals(Mark.UNDEFINED, recordBook.getStudentMark("stud", "subj"));
     }
@@ -675,7 +676,7 @@ class RecordBookTest {
     void setStudentMarkToExamSub() {
         RecordBook recordBook = new RecordBook();
         recordBook.addStudent("stud", Semester.FIRST);
-        recordBook.addSubject("subj", Semester.FIRST, TypeObject.EXAM);
+        recordBook.addSubject("subj", Semester.FIRST, TypeSubject.EXAM);
         Assertions.assertTrue(recordBook.setStudentMark("subj", "stud", Mark.FIVE));
         Assertions.assertEquals(Mark.FIVE, recordBook.getStudentMark("stud", "subj"));
     }
@@ -684,7 +685,7 @@ class RecordBookTest {
     void setStudentMarkToExamTest() {
         RecordBook recordBook = new RecordBook();
         recordBook.addStudent("stud", Semester.FIRST);
-        recordBook.addSubject("subj", Semester.FIRST, TypeObject.TEST);
+        recordBook.addSubject("subj", Semester.FIRST, TypeSubject.TEST);
         Assertions.assertTrue(recordBook.setStudentMark("subj", "stud", Mark.TWO));
         Assertions.assertEquals(Mark.TWO, recordBook.getStudentMark("stud", "subj"));
     }
@@ -693,7 +694,7 @@ class RecordBookTest {
     void setStudentMarkToExamGradedTest() {
         RecordBook recordBook = new RecordBook();
         recordBook.addStudent("stud", Semester.FIRST);
-        recordBook.addSubject("subj", Semester.FIRST, TypeObject.GRADED_TEST);
+        recordBook.addSubject("subj", Semester.FIRST, TypeSubject.GRADED_TEST);
         Assertions.assertTrue(recordBook.setStudentMark("subj", "stud", Mark.TWO));
         Assertions.assertEquals(Mark.TWO, recordBook.getStudentMark("stud", "subj"));
     }
@@ -702,7 +703,7 @@ class RecordBookTest {
     void setStudentWithNotExistingMark() {
         RecordBook recordBook = new RecordBook();
         recordBook.addStudent("stud", Semester.FIRST);
-        recordBook.addSubject("subj", Semester.FIFTH, TypeObject.GRADED_TEST);
+        recordBook.addSubject("subj", Semester.FIFTH, TypeSubject.GRADED_TEST);
         Assertions.assertTrue(recordBook.setStudentMark("subj", "stud", Mark.TWO));
         Assertions.assertEquals(Mark.TWO, recordBook.getStudentMark("stud", "subj"));
     }
@@ -710,7 +711,7 @@ class RecordBookTest {
     @Test
     void setStudentWithNotExistingStudent() {
         RecordBook recordBook = new RecordBook();
-        recordBook.addSubject("subj", Semester.FIFTH, TypeObject.GRADED_TEST);
+        recordBook.addSubject("subj", Semester.FIFTH, TypeSubject.GRADED_TEST);
         Assertions.assertFalse(recordBook.setStudentMark("subj", "None", Mark.TWO));
     }
 
