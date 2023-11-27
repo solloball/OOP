@@ -45,7 +45,7 @@ class StudentTest {
     void testToString() {
         Student student = new Student(new StudentIdx(1), "woww", Semester.FIRST);
         Assertions.assertEquals("Student{" +
-                ", fullName='" + "woww" + '\'' +
+                "fullName='" + "woww" + '\'' +
                 ", semester=" + Semester.FIRST +
                 '}', student.toString());
     }
