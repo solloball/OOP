@@ -8,21 +8,49 @@ public class Subject {
     private String name;
     private TypeObject typeObject;
     private Semester semester;
+    private final SubjectIdx index;
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        Subject subject = (Subject) o;
-        return Objects.equals(name, subject.name) && typeObject == subject.typeObject && semester == subject.semester;
+    public Subject(String name, TypeObject typeObject, Semester semester, SubjectIdx subjectIdx) {
+        this.name = name;
+        this.index = subjectIdx;
+        this.semester = semester;
+        this.typeObject = typeObject;
+    }
+
+    public void setSemester(Semester semester) {
+        this.semester = semester;
+    }
+
+    public Semester getSemester() {
+        return semester;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setTypeObject(TypeObject typeObject) {
+        this.typeObject = typeObject;
+    }
+
+    public TypeObject getTypeObject() {
+        return typeObject;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public SubjectIdx getIndex() {
+        return index;
     }
 
     @Override
-    public int hashCode() {
-        return Objects.hash(name, typeObject, semester);
+    public String toString() {
+        return "Subject{" +
+                "name='" + name + '\'' +
+                ", typeObject=" + typeObject +
+                ", semester=" + semester +
+                '}';
     }
 }

@@ -5,24 +5,41 @@ import ru.nsu.romanov.recordbook.Semester;
 import java.util.Objects;
 
 public class Student {
-    private StudentIdx index;
+    private final StudentIdx index;
     private String fullName;
     private Semester semester;
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        Student student = (Student) o;
-        return Objects.equals(index, student.index) && Objects.equals(fullName, student.fullName) && semester == student.semester;
+    public Student(StudentIdx index, String fullName, Semester semester) {
+        this.fullName = fullName;
+        this.semester = semester;
+        this.index = index;
+    }
+
+    public Semester getSemester() {
+        return semester;
+    }
+
+    public String getFullName() {
+        return fullName;
+    }
+
+    public StudentIdx getIndex() {
+        return index;
+    }
+
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
+    }
+
+    public void setSemester(Semester semester) {
+        this.semester = semester;
     }
 
     @Override
-    public int hashCode() {
-        return Objects.hash(index, fullName, semester);
+    public String toString() {
+        return "Student{" +
+                "fullName='" + fullName + '\'' +
+                ", semester=" + semester +
+                '}';
     }
 }
