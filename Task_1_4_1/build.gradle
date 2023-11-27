@@ -3,7 +3,7 @@ plugins {
     id 'jacoco'
 }
 
-group = 'ru.nsu.romanov.recordbook'
+group = 'ru.nsu.romanov'
 version = '1.0-SNAPSHOT'
 
 repositories {
@@ -24,10 +24,3 @@ jacocoTestReport {
         xml.required = true
     }
 }
-
-java {
-    toolchain {
-        languageVersion = JavaLanguageVersion.of(19)
-    }
-}
-
