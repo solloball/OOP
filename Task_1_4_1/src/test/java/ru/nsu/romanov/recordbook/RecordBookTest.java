@@ -208,10 +208,6 @@ class RecordBookTest {
     }
 
     @Test
-    void studentInfo() {
-    }
-
-    @Test
     void isPossibleToHaveIncreasedScholarshipBasic() {
         RecordBook recordBook = new RecordBook();
         recordBook.addStudent("wow", Semester.SECOND);
@@ -444,7 +440,7 @@ class RecordBookTest {
         RecordBook recordBook = new RecordBook();
         recordBook.addStudent("stud", Semester.FIFTH);
         Student student = new Student(new StudentIdx(0), "stud", Semester.FIFTH);
-        Assertions.assertEquals(student.toString() + "\n", recordBook.StudentInfo("stud"));
+        Assertions.assertEquals(student.toString() + "\n", recordBook.studentInfo("stud"));
     }
 
     @Test
@@ -455,7 +451,7 @@ class RecordBookTest {
         Subject subject = new Subject("sub", TypeSubject.EXAM, Semester.SECOND, new SubjectIdx(0));
         Student student = new Student(new StudentIdx(0), "stud", Semester.FIFTH);
         Assertions.assertEquals(student + "\n" + subject + " Mark : There is no information\n",
-                recordBook.StudentInfo("stud"));
+                recordBook.studentInfo("stud"));
     }
 
     @Test
@@ -467,7 +463,7 @@ class RecordBookTest {
         Subject subject = new Subject("sub", TypeSubject.EXAM, Semester.SECOND, new SubjectIdx(0));
         Student student = new Student(new StudentIdx(0), "stud", Semester.FIFTH);
         Assertions.assertEquals(student + "\n" + subject + " Mark : " + Mark.THREE + "\n",
-                recordBook.StudentInfo("stud"));
+                recordBook.studentInfo("stud"));
     }
 
     @Test
@@ -479,7 +475,7 @@ class RecordBookTest {
         Subject subject = new Subject("sub", TypeSubject.TEST, Semester.SECOND, new SubjectIdx(0));
         Student student = new Student(new StudentIdx(0), "stud", Semester.FIFTH);
         Assertions.assertEquals(student + "\n" + subject + " Mark : Pass\n",
-                recordBook.StudentInfo("stud"));
+                recordBook.studentInfo("stud"));
     }
 
     @Test
@@ -491,7 +487,7 @@ class RecordBookTest {
         Subject subject = new Subject("sub", TypeSubject.TEST, Semester.SECOND, new SubjectIdx(0));
         Student student = new Student(new StudentIdx(0), "stud", Semester.FIFTH);
         Assertions.assertEquals(student + "\n" + subject + " Mark : Pass\n",
-                recordBook.StudentInfo("stud"));
+                recordBook.studentInfo("stud"));
     }
 
     @Test
@@ -503,7 +499,7 @@ class RecordBookTest {
         Subject subject = new Subject("sub", TypeSubject.TEST, Semester.SECOND, new SubjectIdx(0));
         Student student = new Student(new StudentIdx(0), "stud", Semester.FIFTH);
         Assertions.assertEquals(student + "\n" + subject + " Mark : Pass\n",
-                recordBook.StudentInfo("stud"));
+                recordBook.studentInfo("stud"));
     }
 
     @Test
@@ -515,7 +511,7 @@ class RecordBookTest {
         Subject subject = new Subject("sub", TypeSubject.TEST, Semester.SECOND, new SubjectIdx(0));
         Student student = new Student(new StudentIdx(0), "stud", Semester.FIFTH);
         Assertions.assertEquals(student + "\n" + subject + " Mark : Academic Debt\n",
-                recordBook.StudentInfo("stud"));
+                recordBook.studentInfo("stud"));
     }
 
     @Test
@@ -527,7 +523,7 @@ class RecordBookTest {
         Subject subject = new Subject("sub", TypeSubject.GRADED_TEST, Semester.SECOND, new SubjectIdx(0));
         Student student = new Student(new StudentIdx(0), "stud", Semester.FIFTH);
         Assertions.assertEquals(student + "\n" + subject + " Mark : " + Mark.FIVE_RETAKED + "\n",
-                recordBook.StudentInfo("stud"));
+                recordBook.studentInfo("stud"));
     }
 
     @Test
@@ -543,7 +539,7 @@ class RecordBookTest {
         Student student = new Student(new StudentIdx(0), "stud", Semester.FIFTH);
         Assertions.assertEquals(student + "\n" + subject + " Mark : " + Mark.FIVE_RETAKED + "\n"
                 + subject2 + " Mark : " + Mark.FOUR + "\n",
-                recordBook.StudentInfo("stud"));
+                recordBook.studentInfo("stud"));
     }
 
     @Test

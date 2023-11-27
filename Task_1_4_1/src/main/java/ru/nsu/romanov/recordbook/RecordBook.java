@@ -86,7 +86,7 @@ public class RecordBook {
      * @param studentFullName name of student.
      * @param semester semester to transfer.
      * @return true if student was transferred,
-     * false if there is no such student, or student is in this Semester.
+     *     false if there is no such student, or student is in this Semester.
      */
     public boolean transferSemester(String studentFullName, Semester semester) {
         Student student = getStudent(studentFullName);
@@ -96,7 +96,8 @@ public class RecordBook {
         if (student.getSemester().ordinal() > semester.ordinal()) {
             setStudentMarkUnd(student, semester, student.getSemester());
         } else if (student.getSemester().ordinal() < semester.ordinal()) {
-            setStudentMarkUnd(student, Semester.values()[student.getSemester().ordinal() + 1], semester);
+            setStudentMarkUnd(student,
+                    Semester.values()[student.getSemester().ordinal() + 1], semester);
         } else {
             return false;
         }
@@ -125,7 +126,8 @@ public class RecordBook {
      *
      * @param studentName name of student.
      * @param subjectName name of subject.
-     * @return Mark (Undefined if there is no info about mark), null if this student or subject not exist.
+     * @return Mark (Undefined if there is no info about mark),
+     *     null if this student or subject not exist.
      */
     public Mark getStudentMark(String studentName, String subjectName) {
         Student student = getStudent(studentName);
@@ -145,7 +147,7 @@ public class RecordBook {
      * @param studentFullName name of student.
      * @return "" if this student not exist, otherwise info.
      */
-    public String StudentInfo(String studentFullName) {
+    public String studentInfo(String studentFullName) {
         Student student = getStudent(studentFullName);
         if (student == null) {
             return "No such student!";
@@ -156,7 +158,8 @@ public class RecordBook {
         List<Subject> list = subList(Semester.FIRST, student.getSemester());
         for (Subject sub : list) {
             Mark mark = (marks.get(sub.getIndex().idx()).size() > student.getIndex().idx())
-                    ? marks.get(sub.getIndex().idx()).get(student.getIndex().idx()) : Mark.UNDEFINED;
+                    ? marks.get(sub.getIndex().idx()).get(student.getIndex().idx())
+                    : Mark.UNDEFINED;
             res.append(sub);
             res.append(" Mark : ");
 
@@ -167,8 +170,7 @@ public class RecordBook {
             if (sub.getTypeSubject() == TypeSubject.TEST) {
                 if (mark == Mark.TWO) {
                     res.append("Academic Debt\n");
-                }
-                else {
+                } else {
                     res.append("Pass\n");
                 }
                 continue;
@@ -200,7 +202,8 @@ public class RecordBook {
         final float minAverageMark = 4.8F;
         for (Subject sub : list) {
             Mark mark = (marks.get(sub.getIndex().idx()).size() > student.getIndex().idx())
-                    ? marks.get(sub.getIndex().idx()).get(student.getIndex().idx()) : Mark.UNDEFINED;
+                    ? marks.get(sub.getIndex().idx()).get(student.getIndex().idx())
+                    : Mark.UNDEFINED;
             if (sub.getTypeSubject() == TypeSubject.TEST) {
                 if (mark == Mark.TWO) {
                     return false;
@@ -208,7 +211,6 @@ public class RecordBook {
                 continue;
             }
             switch (mark) {
-                case UNDEFINED -> {}
                 case TWO, THREE, THREE_RETAKED -> {
                     return false;
                 }
@@ -220,6 +222,7 @@ public class RecordBook {
                     sumMarks += 5;
                     count++;
                 }
+                default -> { }
             }
         }
         if (count == 0) {
