@@ -57,10 +57,10 @@ class SubjectTest {
     @Test
     void testToString() {
         Subject subject = new Subject("wow", TypeSubject.TEST, Semester.FIRST, new SubjectIdx(1));
-        Assertions.assertEquals("Subject{" +
-                "name='" + "wow" + '\'' +
-                ", typeObject=" + TypeSubject.TEST +
-                ", semester=" + Semester.FIRST +
-                '}', subject.toString());
+        Assertions.assertEquals("Subject{"
+                + "name='" + "wow" + '\''
+                + ", typeObject=" + TypeSubject.TEST
+                + ", semester=" + Semester.FIRST
+                + '}', subject.toString());
     }
 }

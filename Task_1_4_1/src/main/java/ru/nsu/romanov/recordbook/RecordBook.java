@@ -214,7 +214,7 @@ public class RecordBook {
                 case TWO, THREE, THREE_RETAKED -> {
                     return false;
                 }
-                case FOUR_RETAKED , FOUR -> {
+                case FOUR_RETAKED, FOUR -> {
                     sumMarks += 4;
                     count++;
                 }
@@ -251,7 +251,8 @@ public class RecordBook {
         List<Subject> list = subList(student.getSemester(), student.getSemester());
         for (var sub : list) {
             Mark mark = (marks.get(sub.getIndex().idx()).size() > student.getIndex().idx())
-                    ? marks.get(sub.getIndex().idx()).get(student.getIndex().idx()) : Mark.UNDEFINED;
+                    ? marks.get(sub.getIndex().idx()).get(student.getIndex().idx())
+                    : Mark.UNDEFINED;
             if (sub.getTypeSubject() == TypeSubject.TEST && mark == Mark.THREE) {
                 continue;
             }
@@ -276,8 +277,8 @@ public class RecordBook {
         if (subjects.containsKey(subjectName)) {
             return false;
         }
-        SubjectIdx index = (freeSubjectIdx.isEmpty()) ?
-                new SubjectIdx(subjects.size()) : freeSubjectIdx.remove();
+        SubjectIdx index = (freeSubjectIdx.isEmpty())
+                ? new SubjectIdx(subjects.size()) : freeSubjectIdx.remove();
         subjects.put(subjectName, new Subject(subjectName, typeObject, semester, index));
         marks.add(new ArrayList<>());
         return true;
@@ -320,7 +321,8 @@ public class RecordBook {
     }
 
     /**
-     * find all subject with semester, which minSemester <= semester <= maxSemester and return in list.
+     * find all subject with semester,
+     *     which minSemester <= semester <= maxSemester and return in list.
      *
      * @param minSemester min semester.
      * @param maxSemester max semester.
