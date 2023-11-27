@@ -71,8 +71,8 @@ public class RecordBook {
         if (students.containsKey(studentFullName)) {
             return false;
         }
-        StudentIdx studentIndex = (freeStudentIdx.isEmpty()) ?
-                new StudentIdx(students.size()) : freeStudentIdx.remove();
+        StudentIdx studentIndex = (freeStudentIdx.isEmpty())
+                ? new StudentIdx(students.size()) : freeStudentIdx.remove();
         Student student = new Student(studentIndex, studentFullName, semester);
         students.put(studentFullName, student);
 
@@ -85,7 +85,8 @@ public class RecordBook {
      *
      * @param studentFullName name of student.
      * @param semester semester to transfer.
-     * @return true if student was transferred, false if there is no such student, or student is in this Semester.
+     * @return true if student was transferred,
+     * false if there is no such student, or student is in this Semester.
      */
     public boolean transferSemester(String studentFullName, Semester semester) {
         Student student = getStudent(studentFullName);

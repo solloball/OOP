@@ -72,15 +72,15 @@ public class Student {
     }
 
     /**
-     * Override standart toString.
+     * Override standard toString.
      *
      * @return String representation of class.
      */
     @Override
     public String toString() {
-        return "Student{" +
-                "fullName='" + fullName + '\'' +
-                ", semester=" + semester +
-                '}';
+        return "Student{"
+                + "fullName='" + fullName + '\''
+                + ", semester=" + semester
+                + '}';
     }
 }

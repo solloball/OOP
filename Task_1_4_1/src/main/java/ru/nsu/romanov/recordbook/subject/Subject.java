@@ -56,7 +56,7 @@ public class Subject {
     }
 
     /**
-     * Setter for typeSubject
+     * Setter for typeSubject.
      *
      * @param typeObject type of Subject to set.
      */
@@ -98,10 +98,10 @@ public class Subject {
      */
     @Override
     public String toString() {
-        return "Subject{" +
-                "name='" + name + '\'' +
-                ", typeObject=" + typeSubject +
-                ", semester=" + semester +
-                '}';
+        return "Subject{"
+                + "name='" + name + '\''
+                + ", typeObject=" + typeSubject
+                + ", semester=" + semester
+                + '}';
     }
 }
