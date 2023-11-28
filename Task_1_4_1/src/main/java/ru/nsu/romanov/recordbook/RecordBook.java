@@ -8,7 +8,6 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Queue;
-
 import ru.nsu.romanov.recordbook.student.Student;
 import ru.nsu.romanov.recordbook.student.StudentIdx;
 import ru.nsu.romanov.recordbook.subject.Subject;
