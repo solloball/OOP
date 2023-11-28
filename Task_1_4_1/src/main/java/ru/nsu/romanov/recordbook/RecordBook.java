@@ -1,5 +1,6 @@
 package ru.nsu.romanov.recordbook;
 
+import java.util.Arrays;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -7,6 +8,8 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Queue;
+import java.util.stream.Collectors;
+
 import ru.nsu.romanov.recordbook.student.Student;
 import ru.nsu.romanov.recordbook.student.StudentIdx;
 import ru.nsu.romanov.recordbook.subject.Subject;
@@ -135,10 +138,12 @@ public class RecordBook {
         if (student == null || subject == null) {
             return Mark.UNDEFINED;
         }
-        if (marks.get(subject.getIndex().idx()).size() <= student.getIndex().idx()) {
+        int studentIdx = student.getIndex().idx();
+        int subjectIdx = subject.getIndex().idx();
+        if (marks.get(subjectIdx).size() <= studentIdx) {
             return Mark.UNDEFINED;
         }
-        return marks.get(subject.getIndex().idx()).get(student.getIndex().idx());
+        return marks.get(subjectIdx).get(studentIdx);
     }
 
     /**
@@ -156,10 +161,10 @@ public class RecordBook {
         res.append(student);
         res.append("\n");
         List<Subject> list = subList(Semester.FIRST, student.getSemester());
+        int studentIdx = student.getIndex().idx();
         for (Subject sub : list) {
-            Mark mark = (marks.get(sub.getIndex().idx()).size() > student.getIndex().idx())
-                    ? marks.get(sub.getIndex().idx()).get(student.getIndex().idx())
-                    : Mark.UNDEFINED;
+            int subjectIdx = sub.getIndex().idx();
+            Mark mark = getMark(subjectIdx, studentIdx);
             res.append(sub);
             res.append(" Mark : ");
 
@@ -197,38 +202,26 @@ public class RecordBook {
             return  false;
         }
         List<Subject> list = subList(Semester.FIRST, student.getSemester());
-        float sumMarks = 0;
-        int count = 0;
         final float minAverageMark = 4.8F;
-        for (Subject sub : list) {
-            Mark mark = (marks.get(sub.getIndex().idx()).size() > student.getIndex().idx())
-                    ? marks.get(sub.getIndex().idx()).get(student.getIndex().idx())
-                    : Mark.UNDEFINED;
-            if (sub.getTypeSubject() == TypeSubject.TEST) {
-                if (mark == Mark.TWO) {
-                    return false;
-                }
-                continue;
+        int studentIdx = student.getIndex().idx();
+        if (list.stream().anyMatch(subject -> {
+            var mark = getMark(subject.getIndex().idx(), studentIdx);
+            if (mark == Mark.TWO) {
+                return true;
             }
-            switch (mark) {
-                case TWO, THREE, THREE_RETAKED -> {
-                    return false;
-                }
-                case FOUR_RETAKED, FOUR -> {
-                    sumMarks += 4;
-                    count++;
-                }
-                case FIVE_RETAKED, FIVE -> {
-                    sumMarks += 5;
-                    count++;
-                }
-                default -> { }
-            }
+            return (mark == Mark.THREE || mark == Mark.THREE_RETAKED)
+                    && subject.getTypeSubject() != TypeSubject.TEST;
+        })) {
+            return false;
         }
-        if (count == 0) {
+        var set = Arrays.asList(Mark.FOUR_RETAKED, Mark.FIVE, Mark.FOUR, Mark.FIVE_RETAKED);
+        List<Integer> ans = list.stream().filter(subject -> set.contains(getMark(subject.getIndex().idx(), studentIdx))).
+                map(subject -> getMark(subject.getIndex().idx(), studentIdx)
+                .toInt()).toList();
+        if (ans.isEmpty()) {
             return true;
         }
-        return sumMarks / count >= minAverageMark;
+        return (float) ans.stream().mapToInt(Integer::valueOf).sum() / ans.size() >= minAverageMark;
     }
 
     /**
@@ -249,19 +242,12 @@ public class RecordBook {
             return false;
         }
         List<Subject> list = subList(student.getSemester(), student.getSemester());
-        for (var sub : list) {
-            Mark mark = (marks.get(sub.getIndex().idx()).size() > student.getIndex().idx())
-                    ? marks.get(sub.getIndex().idx()).get(student.getIndex().idx())
-                    : Mark.UNDEFINED;
-            if (sub.getTypeSubject() == TypeSubject.TEST && mark == Mark.THREE) {
-                continue;
-            }
-            if (mark == Mark.TWO || mark == Mark.THREE || mark == Mark.THREE_RETAKED
-                || mark == Mark.FOUR_RETAKED || mark == Mark.FIVE_RETAKED) {
-                return false;
-            }
-        }
-        return true;
+        int studentIdx = student.getIndex().idx();
+        var set = Arrays.asList(Mark.FIVE_RETAKED, Mark.FOUR_RETAKED, Mark.THREE_RETAKED, Mark.TWO);
+        return list.stream().noneMatch(sub ->
+                set.contains(getMark(sub.getIndex().idx(), studentIdx))
+                || (getMark(sub.getIndex().idx(), studentIdx) == Mark.THREE
+                && sub.getTypeSubject() != TypeSubject.TEST));
     }
 
     /**
@@ -358,10 +344,26 @@ public class RecordBook {
      */
     private void setMark(SubjectIdx subIdx, StudentIdx studentIdx, Mark mark) {
         assert marks.size() > subIdx.idx(); // ERROR
-        if (marks.get(subIdx.idx()).size() <= studentIdx.idx()) {
-            int count = studentIdx.idx() - marks.get(subIdx.idx()).size() + 1;
-            marks.get(subIdx.idx()).addAll(Collections.nCopies(count, Mark.UNDEFINED));
+        int subjectIndex = subIdx.idx();
+        int studentIndex = studentIdx.idx();
+        if (marks.get(subjectIndex).size() <= studentIndex) {
+            int count = studentIndex - marks.get(subjectIndex).size() + 1;
+            marks.get(subjectIndex).addAll(Collections.nCopies(count, Mark.UNDEFINED));
         }
-        marks.get(subIdx.idx()).set(studentIdx.idx(), mark);
+        marks.get(subjectIndex).set(studentIndex, mark);
+    }
+
+    /**
+     * Healer method for getting mark.
+     * if there is no info about mark, return undefined.
+     *
+     * @param subIdx index of subject.
+     * @param studentIdx index of student.
+     * @return Mark.
+     */
+    private Mark getMark(int subIdx, int studentIdx) {
+        return (marks.get(subIdx).size() > studentIdx)
+                ? marks.get(subIdx).get(studentIdx)
+                : Mark.UNDEFINED;
     }
 }
