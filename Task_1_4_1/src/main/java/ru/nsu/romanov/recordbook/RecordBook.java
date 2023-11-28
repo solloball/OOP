@@ -1,14 +1,13 @@
 package ru.nsu.romanov.recordbook;
 
-import java.util.Arrays;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Queue;
-import java.util.stream.Collectors;
 
 import ru.nsu.romanov.recordbook.student.Student;
 import ru.nsu.romanov.recordbook.student.StudentIdx;
@@ -215,8 +214,9 @@ public class RecordBook {
             return false;
         }
         var set = Arrays.asList(Mark.FOUR_RETAKED, Mark.FIVE, Mark.FOUR, Mark.FIVE_RETAKED);
-        List<Integer> ans = list.stream().filter(subject -> set.contains(getMark(subject.getIndex().idx(), studentIdx))).
-                map(subject -> getMark(subject.getIndex().idx(), studentIdx)
+        List<Integer> ans = list.stream().filter(subject ->
+                set.contains(getMark(subject.getIndex().idx(), studentIdx)))
+                .map(subject -> getMark(subject.getIndex().idx(), studentIdx)
                 .toInt()).toList();
         if (ans.isEmpty()) {
             return true;
