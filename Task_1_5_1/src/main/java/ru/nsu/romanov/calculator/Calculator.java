@@ -10,7 +10,6 @@ import java.lang.Math;
  * Calculator
  */
 public class Calculator {
-
     private String string = null;
     private Scanner scanner = null;
     public @NotNull Double solver() {
