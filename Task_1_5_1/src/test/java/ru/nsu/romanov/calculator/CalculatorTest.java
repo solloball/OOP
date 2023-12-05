@@ -42,7 +42,7 @@ class CalculatorTest {
         Assertions.assertEquals(3,
                 calculator.solver("3"));
     }
-    
+
     @Test
     void calculatorTestSub() {
         Calculator calculator = new Calculator();
@@ -151,14 +151,14 @@ class CalculatorTest {
     @Test
     void calculatorTestPow() {
         Calculator calculator = new Calculator();
-        Assertions.assertEquals(Math.pow(5,7),
+        Assertions.assertEquals(Math.pow(5, 7),
                 calculator.solver("pow 5 7"));
     }
 
     @Test
     void calculatorTestBigExpression() {
         Calculator calculator = new Calculator();
-        Assertions.assertEquals(Math.pow((double) 4 /9, Math.sqrt(Math.cos(5))),
+        Assertions.assertEquals(Math.pow((double) 4 / 9, Math.sqrt(Math.cos(5))),
                 calculator.solver("pow / 4 + 4 5 sqrt cos 5"));
     }
 
