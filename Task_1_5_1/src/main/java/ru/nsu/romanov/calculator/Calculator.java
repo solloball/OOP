@@ -1,31 +1,47 @@
 package ru.nsu.romanov.calculator;
 
 import org.jetbrains.annotations.NotNull;
+
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Scanner;
 import java.lang.Math;
 
 /**
- * Calculator
+ * Calculator.
  */
 public class Calculator {
-    private String string = null;
     private Scanner scanner = null;
-    public @NotNull Double solver() {
+
+    /**
+     * Parse string and solve it.
+     * If string is not valid, wil throw IllegalStateException,
+     *     or ArithmeticException.
+     *
+     * @param string string to parse.
+     * @return value of expression.
+     */
+    public @NotNull Double solver(String string) {
         if (string == null || string.isEmpty()) {
-            throw new RuntimeException("Input string is null or empty");
+            throw new IllegalStateException("Input string is null or empty");
         }
         scanner = new Scanner(string);
         @NotNull Double ans = parser();
+        if (scanner.hasNext()) {
+            throw new IllegalStateException("Input string has too many numbers");
+        }
         scanner.close();
         return ans;
     }
 
-    public void setString(String string) {
-        this.string = string;
-    }
-
+    /**
+     * parse and solve string using scanner.
+     * If string is not valid, wil throw IllegalStateException,
+     *     or ArithmeticException.
+     *
+     * @return value of expression.
+     */
     private @NotNull Double parser() {
         if (!scanner.hasNext()) {
             throw new IllegalStateException("Input string is not valid");
@@ -33,12 +49,12 @@ public class Calculator {
         if (scanner.hasNextDouble()) {
             return scanner.nextDouble();
         }
-        TypeOperation typeOperation = null;
+        TypeOperation typeOperation;
         String operation = scanner.next();
         switch (operation) {
-            case "+" -> {
+            case "+" ->
                 typeOperation = TypeOperation.ADD;
-            }
+
             case "-" -> {
                 typeOperation = TypeOperation.SUB;
             }
@@ -67,13 +83,8 @@ public class Calculator {
         }
 
         List<@NotNull Double> arguments = new LinkedList<>();
-        try {
-            for (int i = 0; i < typeOperation.getArity(); i++) {
-                arguments.add(parser());
-            }
-        }
-        catch (IllegalStateException e) {
-            throw  new IllegalStateException(e);
+        for (int i = 0; i < typeOperation.getArity(); i++) {
+            arguments.add(parser());
         }
 
         switch (typeOperation) {
@@ -115,11 +126,36 @@ public class Calculator {
             }
             case SQRT -> {
                 if (arguments.get(0) < 0) {
-                    throw new ArithmeticException("argument is less than zero in sqrt");
+                    throw new ArithmeticException("Argument is less than zero in sqrt");
                 }
                 return Math.sqrt(arguments.get(0));
             }
             default -> throw new IllegalStateException("Unexpected value: " + operation);
+        }
+    }
+
+    /**
+     * main function that run calculator.
+     * It catches IllegalStateException and ArithmeticException,
+     *     and writes their msg.
+     * To exit, just write "exit" in one line.
+     *
+     * @param args args.
+     */
+    public static void main(String[] args) {
+        try (Scanner inputScanner = new Scanner(System.in)) {
+            Calculator calculator = new Calculator();
+            while(true) {
+                String input = inputScanner.nextLine();
+                if (Objects.equals(input, "exit")) {
+                    break;
+                }
+                try {
+                    System.out.print(calculator.solver(input));
+                } catch (IllegalStateException | ArithmeticException e) {
+                    System.out.println(e);
+                }
+            }
         }
     }
 }
