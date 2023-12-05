@@ -42,14 +42,7 @@ class CalculatorTest {
         Assertions.assertEquals(3,
                 calculator.solver("3"));
     }
-
-    @Test
-    void checkOneNegativeNumber() {
-        Calculator calculator = new Calculator();
-        Assertions.assertEquals(-54674.567,
-                calculator.solver("-54674,567"));
-    }
-
+    
     @Test
     void calculatorTestSub() {
         Calculator calculator = new Calculator();

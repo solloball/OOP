@@ -1,12 +1,11 @@
 package ru.nsu.romanov.calculator;
 
-import org.jetbrains.annotations.NotNull;
-
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Objects;
 import java.util.Scanner;
 import java.lang.Math;
+import org.jetbrains.annotations.NotNull;
 
 /**
  * Calculator.
@@ -99,7 +98,8 @@ public class Calculator {
             }
             case DIV -> {
                 if (arguments.get(1) == 0) {
-                    throw new ArithmeticException("Division by null exception: " + arguments.get(0) + " / 0" );
+                    throw new ArithmeticException("Division by null exception: "
+                            + arguments.get(0) + " / 0" );
                 }
                 return arguments.get(0) / arguments.get(1);
             }
@@ -145,7 +145,7 @@ public class Calculator {
     public static void main(String[] args) {
         try (Scanner inputScanner = new Scanner(System.in)) {
             Calculator calculator = new Calculator();
-            while(true) {
+            while (true) {
                 String input = inputScanner.nextLine();
                 if (Objects.equals(input, "exit")) {
                     break;
