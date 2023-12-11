@@ -5,50 +5,17 @@ package ru.nsu.romanov.recordbook;
  * THREE_RETAKED, FOUR_RETAKED, FIVE_RETAKED should be set if student retakes exam or test.
  */
 public enum Mark {
-    TWO {
-        @Override
-        public int toInt() {
-            return 2;
-        }
-    },
-    THREE {
-        @Override
-        public int toInt() {
-            return 3;
-        }
-    },
-    FOUR {
-        @Override
-        public int toInt() {
-            return 4;
-        }
-    },
-    FIVE {
-        @Override
-        public int toInt() {
-            return 5;
-        }
-    },
-    UNDEFINED,
-    THREE_RETAKED {
-        @Override
-        public int toInt() {
-            return 3;
-        }
-    },
-    FOUR_RETAKED {
-        @Override
-        public int toInt() {
-            return 4;
-        }
-    },
-    FIVE_RETAKED {
-        @Override
-        public int toInt() {
-            return 5;
-        }
-    };
+    TWO(2), THREE(3), FOUR(4), FIVE(5),
+    UNDEFINED(0), THREE_RETAKED(3),
+    FOUR_RETAKED(4), FIVE_RETAKED(5);
+
+    private final int mark;
+
+    Mark(int mark) {
+        this.mark = mark;
+    }
+
     public int toInt() {
-        return 0;
+        return mark;
     }
 }
