@@ -48,90 +48,68 @@ public class Calculator {
         if (scanner.hasNextDouble()) {
             return scanner.nextDouble();
         }
-        TypeOperation typeOperation;
-        String operation = scanner.next();
-        switch (operation) {
-            case "+" ->
-                typeOperation = TypeOperation.ADD;
 
-            case "-" -> {
-                typeOperation = TypeOperation.SUB;
-            }
-            case "/" -> {
-                typeOperation = TypeOperation.DIV;
-            }
-            case "*" -> {
-                typeOperation = TypeOperation.MLT;
-            }
-            case "sin" -> {
-                typeOperation = TypeOperation.SIN;
-            }
-            case "cos" -> {
-                typeOperation = TypeOperation.COS;
-            }
-            case "log" -> {
-                typeOperation = TypeOperation.LOG;
-            }
-            case "sqrt" -> {
-                typeOperation = TypeOperation.SQRT;
-            }
-            case "pow" -> {
-                typeOperation = TypeOperation.POW;
-            }
+        String operation = scanner.next();
+        TypeOperation typeOperation = switch (operation) {
+            case "+" -> TypeOperation.ADD;
+            case "-" -> TypeOperation.SUB;
+            case "/" -> TypeOperation.DIV;
+            case "*" -> TypeOperation.MLT;
+            case "sin" -> TypeOperation.SIN;
+            case "cos" -> TypeOperation.COS;
+            case "log" -> TypeOperation.LOG;
+            case "sqrt" -> TypeOperation.SQRT;
+            case "pow" -> TypeOperation.POW;
             default -> throw new IllegalStateException("Unexpected value: " + operation);
-        }
+        };
 
         List<@NotNull Double> arguments = new LinkedList<>();
         for (int i = 0; i < typeOperation.getArity(); i++) {
             arguments.add(parser());
         }
 
-        switch (typeOperation) {
-            case ADD -> {
-                return arguments.get(0) + arguments.get(1);
-            }
-            case SUB -> {
-                return arguments.get(0) - arguments.get(1);
-            }
-            case MLT -> {
-                return arguments.get(0) * arguments.get(1);
-            }
+        return switch (typeOperation) {
+            case ADD -> arguments.get(0) + arguments.get(1);
+            case SUB -> arguments.get(0) - arguments.get(1);
+            case MLT -> arguments.get(0) * arguments.get(1);
             case DIV -> {
-                if (arguments.get(1) == 0) {
+                double dividend = arguments.get(0);
+                double divisor = arguments.get(1);
+                if (divisor == 0) {
                     throw new ArithmeticException("Division by null exception: "
-                            + arguments.get(0) + " / 0");
+                            + dividend + " / 0");
                 }
-                return arguments.get(0) / arguments.get(1);
+                yield dividend / arguments.get(1);
             }
-            case SIN -> {
-                return Math.sin(arguments.get(0));
-            }
-            case COS -> {
-                return Math.cos(arguments.get(0));
-            }
+            case SIN -> Math.sin(arguments.get(0));
+            case COS -> Math.cos(arguments.get(0));
             case LOG -> {
-                if (arguments.get(0) <= 0) {
+                double base  = arguments.get(0);
+                if (base <= 0) {
                     throw new ArithmeticException("First parameter in log must be above then zero");
                 }
-                if (arguments.get(0) == 1) {
+                if (base == 1) {
                     throw new ArithmeticException("First parameter must be not equal to 1");
                 }
-                if (arguments.get(1) <= 0) {
+                double argument = arguments.get(1);
+                if (argument <= 0) {
                     throw  new ArithmeticException("Second parameter must be above then zero");
                 }
-                return Math.log(arguments.get(1)) / Math.log(arguments.get(0));
+                yield Math.log(argument) / Math.log(base);
             }
             case POW -> {
-                return Math.pow(arguments.get(0), arguments.get(1));
+                double argument = arguments.get(0);
+                double degree = arguments.get(1);
+                yield Math.pow(argument, degree);
             }
             case SQRT -> {
-                if (arguments.get(0) < 0) {
+                double argument = arguments.get(0);
+                if (argument < 0) {
                     throw new ArithmeticException("Argument is less than zero in sqrt");
                 }
-                return Math.sqrt(arguments.get(0));
+                yield Math.sqrt(argument);
             }
-            default -> throw new IllegalStateException("Unexpected value: " + operation);
-        }
+        };
     }
 
     /**
