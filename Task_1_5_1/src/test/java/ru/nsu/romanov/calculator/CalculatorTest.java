@@ -173,7 +173,7 @@ class CalculatorTest {
     void calculatorTestWithFloatValue() {
         Calculator calculator = new Calculator();
         Assertions.assertEquals(Math.pow((double) -4.3 / (4.1 - 5.145), Math.sqrt(Math.cos(-5.35))),
-                calculator.solver("pow / -4,3 + 4,1 -5,145 sqrt cos -5,35"));
+                calculator.solver("pow / -4.3 + 4.1 -5.145 sqrt cos -5.35"));
     }
 
     @Test
