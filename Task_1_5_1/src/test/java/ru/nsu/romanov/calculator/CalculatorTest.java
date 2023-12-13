@@ -181,6 +181,6 @@ class CalculatorTest {
         Calculator calculator = new Calculator();
         Assertions.assertEquals((Math.cos(Math.sin(4) + Math.pow(3, Math.sqrt(2))))
                         / (-1 * 3),
-                calculator.solver("/ cos + sin 4 pow 3 sqrt 2 * -1 3"));
+                calculator.solver("/ cos + sin 4 pow 3 sqrt 2 * - 0 1 3"));
     }
 }
