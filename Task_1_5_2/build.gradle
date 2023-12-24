@@ -1,0 +1,48 @@
+plugins {
+    id 'java'
+    id 'jacoco'
+    id "application"
+}
+
+group = 'ru.nsu.romanov.note'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation platform('org.junit:junit-bom:5.9.1')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.12.4'
+    implementation 'com.fasterxml.jackson.core:jackson-annotations:2.12.4'
+    implementation 'com.fasterxml.jackson.core:jackson-core:2.12.4'
+    implementation group: 'args4j',    name: 'args4j',         version: '2.33'
+    implementation group: 'args4j',    name: 'args4j-site',    version: '2.33'
+}
+
+test {
+    useJUnitPlatform()
+}
+
+application {
+    // Define the main class for the application.
+    mainClass = 'ru.nsu.romanov.note.Note'
+}
+
+jar {
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+    manifest {
+        attributes 'Main-Class': 'ru.nsu.romanov.note.NoteBook'
+    }
+    archiveBaseName = 'Notebook'
+    from {
+        configurations.runtimeClasspath.findAll { it.name.endsWith('jar') }.collect { zipTree(it) }
+    }
+}
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
+}
