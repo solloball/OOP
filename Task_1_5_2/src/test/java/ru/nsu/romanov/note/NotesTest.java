@@ -13,7 +13,7 @@ import org.kohsuke.args4j.CmdLineException;
 /**
  * All test for NoteBook.
  */
-class SampleTest {
+class NotesTest {
 
     @Test
     void emptyString_expectedCmdLineException() {

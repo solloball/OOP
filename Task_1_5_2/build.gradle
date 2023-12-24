@@ -25,21 +25,6 @@ test {
     useJUnitPlatform()
 }
 
-application {
-    // Define the main class for the application.
-    mainClass = 'ru.nsu.romanov.note.Note'
-}
-
-jar {
-    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
-    manifest {
-        attributes 'Main-Class': 'ru.nsu.romanov.note.NoteBook'
-    }
-    archiveBaseName = 'Notebook'
-    from {
-        configurations.runtimeClasspath.findAll { it.name.endsWith('jar') }.collect { zipTree(it) }
-    }
-}
 
 java {
     toolchain {
