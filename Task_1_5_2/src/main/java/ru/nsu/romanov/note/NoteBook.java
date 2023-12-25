@@ -141,6 +141,7 @@ public class NoteBook {
                             .removeIf(t -> Objects.equals(t.name(), it)));
                     mapper.writeValue(new File(fileName), json);
                 }
+                default -> throw new IOException("Invalid operation");
             }
         } catch (IOException e) {
             throw new IOException(e);
