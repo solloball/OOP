@@ -53,7 +53,7 @@ class NotesTest {
     @Test
     void allOperationsInput_expectedCmdLineException() {
         NoteBook noteBook = new NoteBook();
-        String[] input = new String[] {"-add", "newNote","-show", "-rm", "newNote"};
+        String[] input = new String[] {"-add", "newNote", "-show", "-rm", "newNote"};
         Assertions.assertThrows(CmdLineException.class, () -> noteBook.init(input));
     }
 
@@ -74,7 +74,7 @@ class NotesTest {
         String fileName = "Notebook.json";
         List<Note> json = mapper.readValue(new File(fileName), new TypeReference<>() {});
         Assertions.assertEquals(1, json.size());
-        Assertions.assertEquals("newNote",json.get(0).name());
+        Assertions.assertEquals("newNote", json.get(0).name());
         noteBook = new NoteBook();
         input = new String[] {"-rm", "newNote"};
         noteBook.init(input);
@@ -91,8 +91,8 @@ class NotesTest {
         String fileName = "Notebook.json";
         List<Note> json = mapper.readValue(new File(fileName), new TypeReference<>() {});
         Assertions.assertEquals(2, json.size());
-        Assertions.assertEquals("newNote",json.get(0).name());
-        Assertions.assertEquals("anotherNote",json.get(1).name());
+        Assertions.assertEquals("newNote", json.get(0).name());
+        Assertions.assertEquals("anotherNote", json.get(1).name());
         noteBook = new NoteBook();
         input = new String[] {"-rm", "newNote", "anotherNote"};
         noteBook.init(input);
@@ -141,9 +141,11 @@ class NotesTest {
     @Test
     void showEmptyArguments_expectedCmdLineException() {
         NoteBook noteBook = new NoteBook();
-        Assertions.assertThrows(CmdLineException.class, () -> noteBook.init(new String[] {"-show", "one"}));
+        Assertions.assertThrows(CmdLineException.class,
+                () -> noteBook.init(new String[] {"-show", "one"}));
         NoteBook noteBook2 = new NoteBook();
-        Assertions.assertThrows(CmdLineException.class, () -> noteBook2.init(new String[] {"-show", "one", "two"}));
+        Assertions.assertThrows(CmdLineException.class,
+                () -> noteBook2.init(new String[] {"-show", "one", "two"}));
     }
 
     @Test
@@ -169,7 +171,7 @@ class NotesTest {
         noteBook = new NoteBook();
         input = new String[] {"-show"};
         noteBook.init(input);
-        Assertions.assertEquals("Notes:\ntoShow\n" ,noteBook.doMain());
+        Assertions.assertEquals("Notes:\ntoShow\n", noteBook.doMain());
         noteBook = new NoteBook();
         input = new String[] {"-rm", "toShow"};
         noteBook.init(input);
@@ -185,7 +187,7 @@ class NotesTest {
         noteBook = new NoteBook();
         input = new String[] {"-show", "13.12.2021 14:05", "31.12.2023 14:05", "new"};
         noteBook.init(input);
-        Assertions.assertEquals("Notes:\ntoShow new note\n" ,noteBook.doMain());
+        Assertions.assertEquals("Notes:\ntoShow new note\n", noteBook.doMain());
         noteBook = new NoteBook();
         input = new String[] {"-rm", "toShow new note"};
         noteBook.init(input);
