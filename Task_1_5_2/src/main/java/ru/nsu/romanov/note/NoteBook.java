@@ -12,9 +12,9 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.Objects;
 import java.util.List;
 import java.util.Locale;
+import java.util.Objects;
 import org.kohsuke.args4j.Argument;
 import org.kohsuke.args4j.CmdLineException;
 import org.kohsuke.args4j.CmdLineParser;
@@ -86,7 +86,7 @@ public class NoteBook {
             } else {
                 typeOperation = ADD;
             }
-        } catch(CmdLineException e) {
+        } catch (CmdLineException e) {
             throw new CmdLineException(parser, e.getMessage(), e.getCause());
         }
     }

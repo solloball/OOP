@@ -204,7 +204,7 @@ class NotesTest {
         input = new String[] {"-show", "13.12.2021 14:05", "31.12.2023 14:05", "note"};
         noteBook.init(input);
         Assertions.assertEquals(
-                "Notes:\ntoShow new note\nnote os cool!!\n" ,noteBook.doMain());
+                "Notes:\ntoShow new note\nnote os cool!!\n", noteBook.doMain());
         noteBook = new NoteBook();
         input = new String[] {"-rm", "toShow new note", "note os cool!!"};
         noteBook.init(input);
@@ -220,7 +220,7 @@ class NotesTest {
         noteBook = new NoteBook();
         input = new String[] {"-show", "13.12.2025 14:05", "31.12.2025 14:05", "note"};
         noteBook.init(input);
-        Assertions.assertEquals("Notes:\n" ,noteBook.doMain());
+        Assertions.assertEquals("Notes:\n", noteBook.doMain());
         noteBook = new NoteBook();
         input = new String[] {"-rm", "toShow new note"};
         noteBook.init(input);
@@ -236,7 +236,7 @@ class NotesTest {
         noteBook = new NoteBook();
         input = new String[] {"-show", "13.12.2007 14:05", "31.12.2007 14:05", "note"};
         noteBook.init(input);
-        Assertions.assertEquals("Notes:\n" ,noteBook.doMain());
+        Assertions.assertEquals("Notes:\n", noteBook.doMain());
         noteBook = new NoteBook();
         input = new String[] {"-rm", "toShow new note"};
         noteBook.init(input);
