@@ -30,6 +30,16 @@ jacocoTestReport {
     }
 }
 
+jar {
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+    manifest {
+        attributes 'Main-Class': 'ru.nsu.romanov.note.NoteBook'
+    }
+    archiveBaseName = 'Notebook'
+    from {
+        configurations.runtimeClasspath.findAll { it.name.endsWith('jar') }.collect { zipTree(it) }
+    }
+}
 
 java {
     toolchain {
