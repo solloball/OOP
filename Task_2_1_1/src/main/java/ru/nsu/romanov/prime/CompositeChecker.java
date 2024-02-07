@@ -3,27 +3,27 @@ package ru.nsu.romanov.prime;
 import java.util.Arrays;
 import java.util.List;
 
-public class PrimeChecker {
-    private boolean isPrime(int number) {
+public class CompositeChecker {
+    private boolean isComposite(int number) {
         if (number == 2) {
-            return true;
+            return false;
         }
         if (number < 2 || number % 2 == 0) {
-            return false;
+            return true;
         }
         for (int i = 3; i * i <= number; i += 2) {
             if (number % i == 0) {
-                return false;
+                return true;
             }
         }
-        return true;
+        return false;
     }
 
-    public boolean hasPrimeStream(List<Integer> arr) {
-        return arr.parallelStream().anyMatch(this::isPrime);
+    public boolean hasCompositeStream(List<Integer> arr) {
+        return arr.parallelStream().anyMatch(this::isComposite);
     }
 
-    public boolean hasPrimeThread(List<Integer> arr, int threadsCount) {
+    public boolean hasCompositeThread(List<Integer> arr, int threadsCount) {
 
         if (arr.isEmpty()) {
             return false;
@@ -33,12 +33,12 @@ public class PrimeChecker {
             throw new IllegalArgumentException("threads count must be more than zero");
         }
 
-        PrimeCheckerThread[] threads = new PrimeCheckerThread[threadsCount];
+        CompositeCheckerThread[] threads = new CompositeCheckerThread[threadsCount];
 
         int butchSize = Math.max(arr.size() / threadsCount + 1, 1);
 
         for (int i = 0; i < threadsCount; i++) {
-            threads[i] = new PrimeCheckerThread(arr.subList(
+            threads[i] = new CompositeCheckerThread(arr.subList(
                     Math.min(i * butchSize, arr.size() - 1),
                     Math.min((i + 1) * butchSize, arr.size())
             ));
@@ -53,10 +53,10 @@ public class PrimeChecker {
             }
         });
 
-        return Arrays.stream(threads).anyMatch(PrimeCheckerThread::result);
+        return Arrays.stream(threads).anyMatch(CompositeCheckerThread::result);
     }
 
-    public boolean hasPrimeSeq(List<Integer> arr) {
-        return arr.stream().anyMatch(this::isPrime);
+    public boolean hasCompositeSeq(List<Integer> arr) {
+        return arr.stream().anyMatch(this::isComposite);
     }
 }

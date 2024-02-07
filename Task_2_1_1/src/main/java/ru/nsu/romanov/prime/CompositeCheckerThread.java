@@ -3,13 +3,13 @@ package ru.nsu.romanov.prime;
 import java.util.List;
 import java.util.Scanner;
 
-public class PrimeCheckerThread implements Runnable {
+public class CompositeCheckerThread implements Runnable {
 
     public final Thread t = new Thread(this);
     private final List<Integer> list;
     private volatile boolean res;
 
-    public PrimeCheckerThread(List<Integer> list) {
+    public CompositeCheckerThread(List<Integer> list) {
         this.list = list;
     }
 
@@ -19,8 +19,8 @@ public class PrimeCheckerThread implements Runnable {
 
     @Override
     public void run() {
-        PrimeChecker primeChecker = new PrimeChecker();
+        CompositeChecker primeChecker = new CompositeChecker();
 
-        res = primeChecker.hasPrimeSeq(list);
+        res = primeChecker.hasCompositeSeq(list);
     }
 }

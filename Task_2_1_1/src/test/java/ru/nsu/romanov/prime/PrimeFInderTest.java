@@ -11,57 +11,98 @@ public class PrimeFInderTest {
     @Test
     void SeqSimpleTest() {
         List<Integer> list = Arrays.asList(6, 8, 7, 13, 5, 9, 4);
-        PrimeChecker primeChecker = new PrimeChecker();
-        Assertions.assertTrue(primeChecker.hasPrimeSeq(list));
+        CompositeChecker primeChecker = new CompositeChecker();
+        Assertions.assertTrue(primeChecker.hasCompositeSeq(list));
     }
 
     @Test
     void SeqSimpleTestWithOnePrime() {
         List<Integer> list = List.of(20319251);
-        PrimeChecker primeChecker = new PrimeChecker();
-        Assertions.assertTrue(primeChecker.hasPrimeSeq(list));
+        CompositeChecker primeChecker = new CompositeChecker();
+        Assertions.assertFalse(primeChecker.hasCompositeSeq(list));
+    }
+
+    @Test
+    void SeqSimpleTestEmptyList() {
+        List<Integer> list = new ArrayList<>();
+        CompositeChecker primeChecker = new CompositeChecker();
+        Assertions.assertFalse(primeChecker.hasCompositeStream(list));
+    }
+
+    @Test
+    void SeqTestOnlyPrime() {
+        List<Integer> list = List.of(
+                20319251, 6997901, 6997927, 6997937, 17858849, 6997967,
+                6998009, 6998029, 6998039, 20165149, 6998051, 6998053);
+        CompositeChecker primeChecker = new CompositeChecker();
+        Assertions.assertFalse(primeChecker.hasCompositeSeq(list));
     }
 
 
     @Test
     void StreamSimpleTest() {
         List<Integer> list = Arrays.asList(6, 8, 7, 13, 5, 9, 4);
-        PrimeChecker primeChecker = new PrimeChecker();
-        Assertions.assertTrue(primeChecker.hasPrimeStream(list));
+        CompositeChecker primeChecker = new CompositeChecker();
+        Assertions.assertTrue(primeChecker.hasCompositeStream(list));
     }
 
     @Test
     void StreamSimpleTestWithOnePrime() {
         List<Integer> list = List.of(20319251);
-        PrimeChecker primeChecker = new PrimeChecker();
-        Assertions.assertTrue(primeChecker.hasPrimeStream(list));
+        CompositeChecker primeChecker = new CompositeChecker();
+        Assertions.assertFalse(primeChecker.hasCompositeStream(list));
+    }
+
+    @Test
+    void StreamSimpleTestEmptyList() {
+        List<Integer> list = new ArrayList<>();
+        CompositeChecker primeChecker = new CompositeChecker();
+        Assertions.assertFalse(primeChecker.hasCompositeStream(list));
+    }
+
+    @Test
+    void StreamTestOnlyPrime() {
+        List<Integer> list = List.of(
+                20319251, 6997901, 6997927, 6997937, 17858849, 6997967,
+                6998009, 6998029, 6998039, 20165149, 6998051, 6998053);
+        CompositeChecker primeChecker = new CompositeChecker();
+        Assertions.assertFalse(primeChecker.hasCompositeStream(list));
     }
 
     @Test
     void ThreadSimpleTest() {
         List<Integer> list = Arrays.asList(6, 8, 7, 13, 5, 9, 4);
-        PrimeChecker primeChecker = new PrimeChecker();
-        Assertions.assertTrue(primeChecker.hasPrimeThread(list, 1));
+        CompositeChecker primeChecker = new CompositeChecker();
+        Assertions.assertTrue(primeChecker.hasCompositeThread(list, 1));
     }
 
     @Test
     void ThreadSimpleTestManyThreads() {
         List<Integer> list = Arrays.asList(6, 8, 7, 13, 5, 9, 4);
-        PrimeChecker primeChecker = new PrimeChecker();
-        Assertions.assertTrue(primeChecker.hasPrimeThread(list, 100));
+        CompositeChecker primeChecker = new CompositeChecker();
+        Assertions.assertTrue(primeChecker.hasCompositeThread(list, 100));
     }
 
     @Test
     void ThreadSimpleTestWithOnePrimeManyThreads() {
         List<Integer> list = List.of(20319251);
-        PrimeChecker primeChecker = new PrimeChecker();
-        Assertions.assertTrue(primeChecker.hasPrimeThread(list, 100));
+        CompositeChecker primeChecker = new CompositeChecker();
+        Assertions.assertFalse(primeChecker.hasCompositeThread(list, 100));
     }
 
     @Test
-    void ThreadSimpleTestEmptyList() {
+    void ThreadTestEmptyList() {
         List<Integer> list = new ArrayList<>();
-        PrimeChecker primeChecker = new PrimeChecker();
-        Assertions.assertFalse(primeChecker.hasPrimeThread(list, 100));
+        CompositeChecker primeChecker = new CompositeChecker();
+        Assertions.assertFalse(primeChecker.hasCompositeThread(list, 100));
+    }
+
+    @Test
+    void ThreadTestOnlyPrime() {
+        List<Integer> list = List.of(
+                20319251, 6997901, 6997927, 6997937, 17858849, 6997967,
+                6998009, 6998029, 6998039, 20165149, 6998051, 6998053);
+        CompositeChecker primeChecker = new CompositeChecker();
+        Assertions.assertFalse(primeChecker.hasCompositeThread(list, 5));
     }
 }
