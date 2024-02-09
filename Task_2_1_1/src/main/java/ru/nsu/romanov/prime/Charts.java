@@ -1,7 +1,5 @@
 package ru.nsu.romanov.prime;
 
-import javax.swing.BorderFactory;
-import javax.swing.JFrame;
 import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.EventQueue;
@@ -10,6 +8,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import javax.swing.BorderFactory;
+import javax.swing.JFrame;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
@@ -31,13 +31,13 @@ public class Charts extends JFrame {
      * Constructor for charts.
      */
     public Charts() {
-        initUI();
+        initUi();
     }
 
     /**
      * initializes UI.
      */
-    private void initUI() {
+    private void initUi() {
 
         XYDataset dataset = createDataset();
         JFreeChart chart = createChart(dataset);
@@ -177,15 +177,15 @@ public class Charts extends JFrame {
                 true,
                 false
         );
-
-        XYPlot plot = chart.getXYPlot();
-
+        
         var renderer = new XYLineAndShapeRenderer();
 
         renderer.setSeriesPaint(0, Color.RED);
         renderer.setSeriesStroke(0, new BasicStroke(2.0f));
         renderer.setSeriesPaint(1, Color.BLUE);
         renderer.setSeriesStroke(1, new BasicStroke(2.0f));
+
+        XYPlot plot = chart.getXYPlot();
 
         plot.setRenderer(renderer);
         plot.setBackgroundPaint(Color.white);
