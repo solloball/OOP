@@ -1,1 +1,1 @@
-typeSearchIndex = [{"l":"All Classes","url":"allclasses-index.html"},{"p":"ru.nsu.romanov.prime","l":"CompositeChecker"},{"p":"ru.nsu.romanov.prime","l":"CompositeCheckerThread"}]
+typeSearchIndex = [{"l":"All Classes","url":"allclasses-index.html"},{"p":"ru.nsu.romanov.prime","l":"Charts"},{"p":"ru.nsu.romanov.prime","l":"CompositeChecker"},{"p":"ru.nsu.romanov.prime","l":"CompositeCheckerThread"}]
