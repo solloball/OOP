@@ -68,12 +68,12 @@ public class CompositeChecker {
                     Math.min(i * butchSize, arr.size() - 1),
                     Math.min((i + 1) * butchSize, arr.size())
             ));
-            threads[i].t.start();
+            threads[i].thr.start();
         }
 
         Arrays.stream(threads).forEach(d -> {
             try {
-                d.t.join();
+                d.thr.join();
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }

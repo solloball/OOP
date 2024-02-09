@@ -7,7 +7,7 @@ import java.util.List;
  */
 public class CompositeCheckerThread implements Runnable {
 
-    public final Thread t = new Thread(this);
+    public final Thread thr = new Thread(this);
     private final List<Integer> list;
     private boolean res;
 

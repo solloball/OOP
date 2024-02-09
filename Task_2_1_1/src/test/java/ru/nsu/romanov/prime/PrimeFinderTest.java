@@ -49,7 +49,7 @@ public class PrimeFinderTest {
     }
 
     @Test
-    void StreamSimpleTestWithOnePrime() {
+    void streamSimpleTestWithOnePrime() {
         List<Integer> list = List.of(20319251);
         CompositeChecker primeChecker = new CompositeChecker();
         Assertions.assertFalse(primeChecker.hasCompositeStream(list));
