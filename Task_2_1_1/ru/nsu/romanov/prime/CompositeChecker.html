@@ -132,6 +132,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <hr>
 <pre>public class <span class="typeNameLabel">CompositeChecker</span>
 extends java.lang.Object</pre>
+<div class="block">Class for finding composite number in list.</div>
 </li>
 </ul>
 </div>
@@ -176,18 +177,24 @@ extends java.lang.Object</pre>
 <tr id="i0" class="altColor">
 <td class="colFirst"><code>boolean</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#hasCompositeSeq(java.util.List)">hasCompositeSeq</a></span>&#8203;(java.util.List&lt;java.lang.Integer&gt;&nbsp;arr)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">check for composite number in list using default stream.</div>
+</td>
 </tr>
 <tr id="i1" class="rowColor">
 <td class="colFirst"><code>boolean</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#hasCompositeStream(java.util.List)">hasCompositeStream</a></span>&#8203;(java.util.List&lt;java.lang.Integer&gt;&nbsp;arr)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">check for composite number in list using parallel stream.</div>
+</td>
 </tr>
 <tr id="i2" class="altColor">
 <td class="colFirst"><code>boolean</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#hasCompositeThread(java.util.List,int)">hasCompositeThread</a></span>&#8203;(java.util.List&lt;java.lang.Integer&gt;&nbsp;arr,
                   int&nbsp;threadsCount)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">check for composite number in list using threads.</div>
+</td>
 </tr>
 </table>
 <ul class="blockList">
@@ -239,6 +246,13 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>hasCompositeStream</h4>
 <pre class="methodSignature">public&nbsp;boolean&nbsp;hasCompositeStream&#8203;(java.util.List&lt;java.lang.Integer&gt;&nbsp;arr)</pre>
+<div class="block">check for composite number in list using parallel stream.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>arr</code> - list to check.</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>true if there is at least one composite number, false otherwise.</dd>
+</dl>
 </li>
 </ul>
 <a id="hasCompositeThread(java.util.List,int)">
@@ -249,6 +263,14 @@ extends java.lang.Object</pre>
 <h4>hasCompositeThread</h4>
 <pre class="methodSignature">public&nbsp;boolean&nbsp;hasCompositeThread&#8203;(java.util.List&lt;java.lang.Integer&gt;&nbsp;arr,
                                   int&nbsp;threadsCount)</pre>
+<div class="block">check for composite number in list using threads.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>arr</code> - list to check.</dd>
+<dd><code>threadsCount</code> - counts of threads.</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>true if there is at least one composite number, false otherwise.</dd>
+</dl>
 </li>
 </ul>
 <a id="hasCompositeSeq(java.util.List)">
@@ -258,6 +280,13 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>hasCompositeSeq</h4>
 <pre class="methodSignature">public&nbsp;boolean&nbsp;hasCompositeSeq&#8203;(java.util.List&lt;java.lang.Integer&gt;&nbsp;arr)</pre>
+<div class="block">check for composite number in list using default stream.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>arr</code> - list to check.</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>true if there is at least one composite number, false otherwise.</dd>
+</dl>
 </li>
 </ul>
 </li>

@@ -137,6 +137,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <pre>public class <span class="typeNameLabel">CompositeCheckerThread</span>
 extends java.lang.Object
 implements java.lang.Runnable</pre>
+<div class="block">class implementing runnable and stores Thread.</div>
 </li>
 </ul>
 </div>
@@ -181,7 +182,9 @@ implements java.lang.Runnable</pre>
 </tr>
 <tr class="altColor">
 <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(java.util.List)">CompositeCheckerThread</a></span>&#8203;(java.util.List&lt;java.lang.Integer&gt;&nbsp;list)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Constructor for CompositeCheckerThread.</div>
+</td>
 </tr>
 </table>
 </li>
@@ -204,12 +207,16 @@ implements java.lang.Runnable</pre>
 <tr id="i0" class="altColor">
 <td class="colFirst"><code>boolean</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#result()">result</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">return result of calculating.</div>
+</td>
 </tr>
 <tr id="i1" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#run()">run</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Standard method for running threads.</div>
+</td>
 </tr>
 </table>
 <ul class="blockList">
@@ -261,6 +268,11 @@ implements java.lang.Runnable</pre>
 <li class="blockList">
 <h4>CompositeCheckerThread</h4>
 <pre>public&nbsp;CompositeCheckerThread&#8203;(java.util.List&lt;java.lang.Integer&gt;&nbsp;list)</pre>
+<div class="block">Constructor for CompositeCheckerThread.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>list</code> - list to check.</dd>
+</dl>
 </li>
 </ul>
 </li>
@@ -280,6 +292,11 @@ implements java.lang.Runnable</pre>
 <li class="blockList">
 <h4>result</h4>
 <pre class="methodSignature">public&nbsp;boolean&nbsp;result()</pre>
+<div class="block">return result of calculating.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>true if thread found at least one composite number, otherwise false.</dd>
+</dl>
 </li>
 </ul>
 <a id="run()">
@@ -289,6 +306,7 @@ implements java.lang.Runnable</pre>
 <li class="blockList">
 <h4>run</h4>
 <pre class="methodSignature">public&nbsp;void&nbsp;run()</pre>
+<div class="block">Standard method for running threads.</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code>run</code>&nbsp;in interface&nbsp;<code>java.lang.Runnable</code></dd>
