@@ -9,30 +9,30 @@ import org.junit.jupiter.api.Test;
 /**
  * Class for testing Composite checker.
  */
-public class PrimeFInderTest {
+public class PrimeFinderTest {
     @Test
-    void SeqSimpleTest() {
+    void seqSimpleTest() {
         List<Integer> list = Arrays.asList(6, 8, 7, 13, 5, 9, 4);
         CompositeChecker primeChecker = new CompositeChecker();
         Assertions.assertTrue(primeChecker.hasCompositeSeq(list));
     }
 
     @Test
-    void SeqSimpleTestWithOnePrime() {
+    void seqSimpleTestWithOnePrime() {
         List<Integer> list = List.of(20319251);
         CompositeChecker primeChecker = new CompositeChecker();
         Assertions.assertFalse(primeChecker.hasCompositeSeq(list));
     }
 
     @Test
-    void SeqSimpleTestEmptyList() {
+    void seqSimpleTestEmptyList() {
         List<Integer> list = new ArrayList<>();
         CompositeChecker primeChecker = new CompositeChecker();
         Assertions.assertFalse(primeChecker.hasCompositeStream(list));
     }
 
     @Test
-    void SeqTestOnlyPrime() {
+    void seqTestOnlyPrime() {
         List<Integer> list = List.of(
                 20319251, 6997901, 6997927, 6997937, 17858849, 6997967,
                 6998009, 6998029, 6998039, 20165149, 6998051, 6998053);
@@ -42,7 +42,7 @@ public class PrimeFInderTest {
 
 
     @Test
-    void StreamSimpleTest() {
+    void streamSimpleTest() {
         List<Integer> list = Arrays.asList(6, 8, 7, 13, 5, 9, 4);
         CompositeChecker primeChecker = new CompositeChecker();
         Assertions.assertTrue(primeChecker.hasCompositeStream(list));
@@ -56,14 +56,14 @@ public class PrimeFInderTest {
     }
 
     @Test
-    void StreamSimpleTestEmptyList() {
+    void streamSimpleTestEmptyList() {
         List<Integer> list = new ArrayList<>();
         CompositeChecker primeChecker = new CompositeChecker();
         Assertions.assertFalse(primeChecker.hasCompositeStream(list));
     }
 
     @Test
-    void StreamTestOnlyPrime() {
+    void streamTestOnlyPrime() {
         List<Integer> list = List.of(
                 20319251, 6997901, 6997927, 6997937, 17858849, 6997967,
                 6998009, 6998029, 6998039, 20165149, 6998051, 6998053);
@@ -72,35 +72,35 @@ public class PrimeFInderTest {
     }
 
     @Test
-    void ThreadSimpleTest() {
+    void threadSimpleTest() {
         List<Integer> list = Arrays.asList(6, 8, 7, 13, 5, 9, 4);
         CompositeChecker primeChecker = new CompositeChecker();
         Assertions.assertTrue(primeChecker.hasCompositeThread(list, 1));
     }
 
     @Test
-    void ThreadSimpleTestManyThreads() {
+    void threadSimpleTestManyThreads() {
         List<Integer> list = Arrays.asList(6, 8, 7, 13, 5, 9, 4);
         CompositeChecker primeChecker = new CompositeChecker();
         Assertions.assertTrue(primeChecker.hasCompositeThread(list, 100));
     }
 
     @Test
-    void ThreadSimpleTestWithOnePrimeManyThreads() {
+    void threadSimpleTestWithOnePrimeManyThreads() {
         List<Integer> list = List.of(20319251);
         CompositeChecker primeChecker = new CompositeChecker();
         Assertions.assertFalse(primeChecker.hasCompositeThread(list, 100));
     }
 
     @Test
-    void ThreadTestEmptyList() {
+    void threadTestEmptyList() {
         List<Integer> list = new ArrayList<>();
         CompositeChecker primeChecker = new CompositeChecker();
         Assertions.assertFalse(primeChecker.hasCompositeThread(list, 100));
     }
 
     @Test
-    void ThreadTestOnlyPrime() {
+    void threadTestOnlyPrime() {
         List<Integer> list = List.of(
                 20319251, 6997901, 6997927, 6997937, 17858849, 6997967,
                 6998009, 6998029, 6998039, 20165149, 6998051, 6998053);
