@@ -88,60 +88,89 @@ public class Charts extends JFrame {
 
         countPrimeNum.forEach(count -> {
             List<Integer> dataSet = dataSet(count);
+            long res = 0;
+            int countRepeats = 3;
+            long startTime, endTime;
 
-            long startTime = System.nanoTime();
-            compositeChecker.hasCompositeSeq(dataSet);
-            long endTime   = System.nanoTime();
-            long totalTime = endTime - startTime;
-            seriesSeq.add(count.doubleValue(), totalTime);
+            for (int i = 0; i < countRepeats; i++) {
+                startTime = System.nanoTime();
+                compositeChecker.hasCompositeSeq(dataSet);
+                endTime = System.nanoTime();
+                res += endTime - startTime;
+            }
+            seriesSeq.add(count.doubleValue(), (double) res / countRepeats);
 
-            startTime = System.nanoTime();
-            compositeChecker.hasCompositeStream(dataSet);
-            endTime   = System.nanoTime();
-            totalTime = endTime - startTime;
-            seriesParStream.add(count.doubleValue(), totalTime);
+            res = 0;
+            for (int i = 0; i < countRepeats; i++) {
+                startTime = System.nanoTime();
+                compositeChecker.hasCompositeStream(dataSet);
+                endTime = System.nanoTime();
+                res += endTime - startTime;
+            }
+            seriesParStream.add(count.doubleValue(), (double) res / countRepeats);
 
-            startTime = System.nanoTime();
-            compositeChecker.hasCompositeThread(dataSet, 1);
-            endTime   = System.nanoTime();
-            totalTime = endTime - startTime;
-            series1Thread.add(count.doubleValue(), totalTime);
+            res = 0;
+            for (int i = 0; i < countRepeats; i++) {
+                startTime = System.nanoTime();
+                compositeChecker.hasCompositeThread(dataSet, 1);
+                endTime = System.nanoTime();
+                res += endTime - startTime;
+            }
+            series1Thread.add(count.doubleValue(), (double) res / countRepeats);
 
-            startTime = System.nanoTime();
-            compositeChecker.hasCompositeThread(dataSet, 3);
-            endTime   = System.nanoTime();
-            totalTime = endTime - startTime;
-            series3Threads.add(count.doubleValue(), totalTime);
+            res = 0;
+            for (int i = 0; i < countRepeats; i++) {
+                startTime = System.nanoTime();
+                compositeChecker.hasCompositeThread(dataSet, 3);
+                endTime = System.nanoTime();
+                res += endTime - startTime;
+            }
+            series3Threads.add(count.doubleValue(), (double) res / countRepeats);
 
-            startTime = System.nanoTime();
-            compositeChecker.hasCompositeThread(dataSet, 5);
-            endTime   = System.nanoTime();
-            totalTime = endTime - startTime;
-            series5Threads.add(count.doubleValue(), totalTime);
+            res = 0;
+            for (int i = 0; i < countRepeats; i++) {
+                startTime = System.nanoTime();
+                compositeChecker.hasCompositeThread(dataSet, 5);
+                endTime = System.nanoTime();
+                res += endTime - startTime;
+            }
+            series5Threads.add(count.doubleValue(), (double) res / countRepeats);
 
-            startTime = System.nanoTime();
-            compositeChecker.hasCompositeThread(dataSet, 8);
-            endTime   = System.nanoTime();
-            totalTime = endTime - startTime;
-            series8Threads.add(count.doubleValue(), totalTime);
+            res = 0;
+            for (int i = 0; i < countRepeats; i++) {
+                startTime = System.nanoTime();
+                compositeChecker.hasCompositeThread(dataSet, 8);
+                endTime = System.nanoTime();
+                res += endTime - startTime;
+            }
+            series8Threads.add(count.doubleValue(), (double) res / countRepeats);
 
-            startTime = System.nanoTime();
-            compositeChecker.hasCompositeThread(dataSet, 10);
-            endTime   = System.nanoTime();
-            totalTime = endTime - startTime;
-            series10Threads.add(count.doubleValue(), totalTime);
+            res = 0;
+            for (int i = 0; i < countRepeats; i++) {
+                startTime = System.nanoTime();
+                compositeChecker.hasCompositeThread(dataSet, 10);
+                endTime = System.nanoTime();
+                res += endTime - startTime;
+            }
+            series10Threads.add(count.doubleValue(), (double) res / countRepeats);
 
-            startTime = System.nanoTime();
-            compositeChecker.hasCompositeThread(dataSet, 20);
-            endTime   = System.nanoTime();
-            totalTime = endTime - startTime;
-            series20Threads.add(count.doubleValue(), totalTime);
+            res = 0;
+            for (int i = 0; i < countRepeats; i++) {
+                startTime = System.nanoTime();
+                compositeChecker.hasCompositeThread(dataSet, 20);
+                endTime = System.nanoTime();
+                res += endTime - startTime;
+            }
+            series20Threads.add(count.doubleValue(), (double) res / countRepeats);
 
-            startTime = System.nanoTime();
-            compositeChecker.hasCompositeThread(dataSet, 100);
-            endTime   = System.nanoTime();
-            totalTime = endTime - startTime;
-            series100Threads.add(count.doubleValue(), totalTime);
+            res = 0;
+            for (int i = 0; i < countRepeats; i++) {
+                startTime = System.nanoTime();
+                compositeChecker.hasCompositeThread(dataSet, 100);
+                endTime = System.nanoTime();
+                res += endTime - startTime;
+            }
+            series100Threads.add(count.doubleValue(), (double) res /countRepeats);
         });
 
 
@@ -168,9 +197,9 @@ public class Charts extends JFrame {
     private JFreeChart createChart(final XYDataset dataset) {
 
         JFreeChart chart = ChartFactory.createXYLineChart(
-                "Average salary per age",
-                "Age",
-                "Salary (€)",
+                "Average performance",
+                "Count elements",
+                "performance",
                 dataset,
                 PlotOrientation.VERTICAL,
                 true,
