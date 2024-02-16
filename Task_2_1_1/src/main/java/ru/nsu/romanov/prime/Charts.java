@@ -90,7 +90,8 @@ public class Charts extends JFrame {
             List<Integer> dataSet = dataSet(count);
             long res = 0;
             int countRepeats = 3;
-            long startTime, endTime;
+            long startTime;
+            long endTime;
 
             for (int i = 0; i < countRepeats; i++) {
                 startTime = System.nanoTime();
@@ -170,7 +171,7 @@ public class Charts extends JFrame {
                 endTime = System.nanoTime();
                 res += endTime - startTime;
             }
-            series100Threads.add(count.doubleValue(), (double) res /countRepeats);
+            series100Threads.add(count.doubleValue(), (double) res / countRepeats);
         });
 
 
