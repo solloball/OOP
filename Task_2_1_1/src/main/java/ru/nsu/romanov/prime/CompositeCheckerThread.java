@@ -1,9 +1,8 @@
 package ru.nsu.romanov.prime;
 
+import java.util.List;
 import ru.nsu.romanov.prime.solver.Solver;
 import ru.nsu.romanov.prime.solver.SolverSeq;
-
-import java.util.List;
 
 /**
  * class implementing runnable and stores Thread.

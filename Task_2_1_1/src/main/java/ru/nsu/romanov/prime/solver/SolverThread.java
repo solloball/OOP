@@ -1,9 +1,8 @@
 package ru.nsu.romanov.prime.solver;
 
-import ru.nsu.romanov.prime.CompositeCheckerThread;
-
 import java.util.Arrays;
 import java.util.List;
+import ru.nsu.romanov.prime.CompositeCheckerThread;
 
 /**
  * Solver which uses threads to find composite number.
