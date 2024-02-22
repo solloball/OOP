@@ -27,6 +27,12 @@
     catch(err) {
     }
 //-->
+var data = {"i0":2,"i1":2,"i2":1,"i3":2,"i4":2,"i5":2};
+var tabs = {65535:["t0","All Classes"],1:["t1","Interface Summary"],2:["t2","Class Summary"]};
+var altColor = "altColor";
+var rowColor = "rowColor";
+var tableTab = "tableTab";
+var activeTableTab = "activeTableTab";
 var pathtoroot = "./";
 var useModuleDirectories = true;
 loadScripts(document, 'script');</script>
@@ -45,7 +51,8 @@ loadScripts(document, 'script');</script>
 <!--   -->
 </a>
 <ul class="navList" title="Navigation">
-<li><a href="ru/nsu/romanov/prime/package-summary.html">Package</a></li>
+<li><a href="index.html">Overview</a></li>
+<li>Package</li>
 <li>Class</li>
 <li><a href="overview-tree.html">Tree</a></li>
 <li><a href="deprecated-list.html">Deprecated</a></li>
@@ -98,7 +105,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <ul class="blockList">
 <li class="blockList">
 <table class="typeSummary">
-<caption><span>Class Summary</span><span class="tabEnd">&nbsp;</span></caption>
+<caption><span id="t0" class="activeTableTab"><span>All Classes</span><span class="tabEnd">&nbsp;</span></span><span id="t1" class="tableTab"><span><a href="javascript:show(1);">Interface Summary</a></span><span class="tabEnd">&nbsp;</span></span><span id="t2" class="tableTab"><span><a href="javascript:show(2);">Class Summary</a></span><span class="tabEnd">&nbsp;</span></span></caption>
 <tr>
 <th class="colFirst" scope="col">Class</th>
 <th class="colLast" scope="col">Description</th>
@@ -110,15 +117,34 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 </th>
 </tr>
 <tr id="i1" class="rowColor">
-<td class="colFirst"><a href="ru/nsu/romanov/prime/CompositeChecker.html" title="class in ru.nsu.romanov.prime">CompositeChecker</a></td>
-<th class="colLast" scope="row">
-<div class="block">Class for finding composite number in list.</div>
-</th>
-</tr>
-<tr id="i2" class="altColor">
 <td class="colFirst"><a href="ru/nsu/romanov/prime/CompositeCheckerThread.html" title="class in ru.nsu.romanov.prime">CompositeCheckerThread</a></td>
 <th class="colLast" scope="row">
 <div class="block">class implementing runnable and stores Thread.</div>
+</th>
+</tr>
+<tr id="i2" class="altColor">
+<td class="colFirst"><a href="ru/nsu/romanov/prime/solver/Solver.html" title="interface in ru.nsu.romanov.prime.solver">Solver</a></td>
+<th class="colLast" scope="row">
+<div class="block">Interface solver,
+    it response for finding composite number in list.</div>
+</th>
+</tr>
+<tr id="i3" class="rowColor">
+<td class="colFirst"><a href="ru/nsu/romanov/prime/solver/SolverSeq.html" title="class in ru.nsu.romanov.prime.solver">SolverSeq</a></td>
+<th class="colLast" scope="row">
+<div class="block">Solver which uses default stream to find composite number.</div>
+</th>
+</tr>
+<tr id="i4" class="altColor">
+<td class="colFirst"><a href="ru/nsu/romanov/prime/solver/SolverStream.html" title="class in ru.nsu.romanov.prime.solver">SolverStream</a></td>
+<th class="colLast" scope="row">
+<div class="block">Solver which uses parallel stream to find composite number.</div>
+</th>
+</tr>
+<tr id="i5" class="rowColor">
+<td class="colFirst"><a href="ru/nsu/romanov/prime/solver/SolverThread.html" title="class in ru.nsu.romanov.prime.solver">SolverThread</a></td>
+<th class="colLast" scope="row">
+<div class="block">Solver which uses threads to find composite number.</div>
 </th>
 </tr>
 </table>
@@ -137,7 +163,8 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <!--   -->
 </a>
 <ul class="navList" title="Navigation">
-<li><a href="ru/nsu/romanov/prime/package-summary.html">Package</a></li>
+<li><a href="index.html">Overview</a></li>
+<li>Package</li>
 <li>Class</li>
 <li><a href="overview-tree.html">Tree</a></li>
 <li><a href="deprecated-list.html">Deprecated</a></li>
