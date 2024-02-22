@@ -1,5 +1,8 @@
 package ru.nsu.romanov.prime;
 
+import ru.nsu.romanov.prime.solver.Solver;
+import ru.nsu.romanov.prime.solver.SolverSeq;
+
 import java.util.List;
 
 /**
@@ -34,8 +37,11 @@ public class CompositeCheckerThread implements Runnable {
      */
     @Override
     public void run() {
-        CompositeChecker primeChecker = new CompositeChecker();
+        Solver solver = new SolverSeq();
 
-        res = primeChecker.hasCompositeSeq(list);
+        res = solver.solve(list);
+        if (res) {
+            thr.interrupt();
+        }
     }
 }

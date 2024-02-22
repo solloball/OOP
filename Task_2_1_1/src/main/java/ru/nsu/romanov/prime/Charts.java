@@ -21,6 +21,10 @@ import org.jfree.chart.title.TextTitle;
 import org.jfree.data.xy.XYDataset;
 import org.jfree.data.xy.XYSeries;
 import org.jfree.data.xy.XYSeriesCollection;
+import ru.nsu.romanov.prime.solver.Solver;
+import ru.nsu.romanov.prime.solver.SolverSeq;
+import ru.nsu.romanov.prime.solver.SolverStream;
+import ru.nsu.romanov.prime.solver.SolverThread;
 
 /**
  * class for making charts.
@@ -74,7 +78,6 @@ public class Charts extends JFrame {
 
         final List<Integer> countPrimeNum =
                 Arrays.asList(1000, 10000, 100000, 1000000, 3000000);
-        CompositeChecker compositeChecker = new CompositeChecker();
 
         var seriesSeq = new XYSeries("SEQ");
         var seriesParStream = new XYSeries("STREAM");
@@ -93,81 +96,90 @@ public class Charts extends JFrame {
             long startTime;
             long endTime;
 
+            Solver solverSeq = new SolverSeq();
             for (int i = 0; i < countRepeats; i++) {
                 startTime = System.nanoTime();
-                compositeChecker.hasCompositeSeq(dataSet);
+                solverSeq.solve(dataSet);
                 endTime = System.nanoTime();
                 res += endTime - startTime;
             }
             seriesSeq.add(count.doubleValue(), (double) res / countRepeats);
 
+            Solver solverStream = new SolverStream();
             res = 0;
             for (int i = 0; i < countRepeats; i++) {
                 startTime = System.nanoTime();
-                compositeChecker.hasCompositeStream(dataSet);
+                solverStream.solve(dataSet);
                 endTime = System.nanoTime();
                 res += endTime - startTime;
             }
             seriesParStream.add(count.doubleValue(), (double) res / countRepeats);
 
+            SolverThread solverThread = new SolverThread(1);
             res = 0;
             for (int i = 0; i < countRepeats; i++) {
                 startTime = System.nanoTime();
-                compositeChecker.hasCompositeThread(dataSet, 1);
+                solverThread.solve(dataSet);
                 endTime = System.nanoTime();
                 res += endTime - startTime;
             }
             series1Thread.add(count.doubleValue(), (double) res / countRepeats);
 
+            solverThread.setCountThreads(3);
             res = 0;
             for (int i = 0; i < countRepeats; i++) {
                 startTime = System.nanoTime();
-                compositeChecker.hasCompositeThread(dataSet, 3);
+                solverThread.solve(dataSet);
                 endTime = System.nanoTime();
                 res += endTime - startTime;
             }
             series3Threads.add(count.doubleValue(), (double) res / countRepeats);
 
+            solverThread.setCountThreads(5);
             res = 0;
             for (int i = 0; i < countRepeats; i++) {
                 startTime = System.nanoTime();
-                compositeChecker.hasCompositeThread(dataSet, 5);
+                solverThread.solve(dataSet);
                 endTime = System.nanoTime();
                 res += endTime - startTime;
             }
             series5Threads.add(count.doubleValue(), (double) res / countRepeats);
 
+            solverThread.setCountThreads(8);
             res = 0;
             for (int i = 0; i < countRepeats; i++) {
                 startTime = System.nanoTime();
-                compositeChecker.hasCompositeThread(dataSet, 8);
+                solverThread.solve(dataSet);
                 endTime = System.nanoTime();
                 res += endTime - startTime;
             }
             series8Threads.add(count.doubleValue(), (double) res / countRepeats);
 
+            solverThread.setCountThreads(10);
             res = 0;
             for (int i = 0; i < countRepeats; i++) {
                 startTime = System.nanoTime();
-                compositeChecker.hasCompositeThread(dataSet, 10);
+                solverThread.solve(dataSet);
                 endTime = System.nanoTime();
                 res += endTime - startTime;
             }
             series10Threads.add(count.doubleValue(), (double) res / countRepeats);
 
+            solverThread.setCountThreads(20);
             res = 0;
             for (int i = 0; i < countRepeats; i++) {
                 startTime = System.nanoTime();
-                compositeChecker.hasCompositeThread(dataSet, 20);
+                solverThread.solve(dataSet);
                 endTime = System.nanoTime();
                 res += endTime - startTime;
             }
             series20Threads.add(count.doubleValue(), (double) res / countRepeats);
 
+            solverThread.setCountThreads(100);
             res = 0;
             for (int i = 0; i < countRepeats; i++) {
                 startTime = System.nanoTime();
-                compositeChecker.hasCompositeThread(dataSet, 100);
+                solverThread.solve(dataSet);
                 endTime = System.nanoTime();
                 res += endTime - startTime;
             }
