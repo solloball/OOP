@@ -182,7 +182,8 @@ implements java.lang.Runnable</pre>
 <th class="colLast" scope="col">Description</th>
 </tr>
 <tr class="altColor">
-<th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(java.util.List)">CompositeCheckerThread</a></span>&#8203;(java.util.List&lt;java.lang.Integer&gt;&nbsp;list)</code></th>
+<th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(java.util.List,java.util.List)">CompositeCheckerThread</a></span>&#8203;(java.util.List&lt;java.lang.Integer&gt;&nbsp;list,
+                      java.util.List&lt;<a href="CompositeCheckerThread.html" title="class in ru.nsu.romanov.prime">CompositeCheckerThread</a>&gt;&nbsp;otherThreads)</code></th>
 <td class="colLast">
 <div class="block">Constructor for CompositeCheckerThread.</div>
 </td>
@@ -262,13 +263,14 @@ implements java.lang.Runnable</pre>
 <!--   -->
 </a>
 <h3>Constructor Detail</h3>
-<a id="&lt;init&gt;(java.util.List)">
+<a id="&lt;init&gt;(java.util.List,java.util.List)">
 <!--   -->
 </a>
 <ul class="blockListLast">
 <li class="blockList">
 <h4>CompositeCheckerThread</h4>
-<pre>public&nbsp;CompositeCheckerThread&#8203;(java.util.List&lt;java.lang.Integer&gt;&nbsp;list)</pre>
+<pre>public&nbsp;CompositeCheckerThread&#8203;(java.util.List&lt;java.lang.Integer&gt;&nbsp;list,
+                              java.util.List&lt;<a href="CompositeCheckerThread.html" title="class in ru.nsu.romanov.prime">CompositeCheckerThread</a>&gt;&nbsp;otherThreads)</pre>
 <div class="block">Constructor for CompositeCheckerThread.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
@@ -296,7 +298,8 @@ implements java.lang.Runnable</pre>
 <div class="block">return result of calculating.</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
-<dd>true if thread found at least one composite number, otherwise false.</dd>
+<dd>true if thread found at least one composite number,
+      otherwise false.</dd>
 </dl>
 </li>
 </ul>
