@@ -35,7 +35,7 @@ public class Stockpile {
         return capacity;
     }
 
-    public void setCapacity(int capacity) {
+    synchronized public void setCapacity(int capacity) {
         this.capacity = capacity;
         this.count = 0;
     }

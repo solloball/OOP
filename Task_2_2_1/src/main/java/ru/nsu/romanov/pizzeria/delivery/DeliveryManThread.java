@@ -1,6 +1,6 @@
-package ru.nsu.romanov.pizzeria.components.delivery;
+package ru.nsu.romanov.pizzeria.delivery;
 
-import ru.nsu.romanov.pizzeria.components.order.Order;
+import ru.nsu.romanov.pizzeria.order.Order;
 import ru.nsu.romanov.pizzeria.components.stockpile.Stockpile;
 import ru.nsu.romanov.pizzeria.components.thread_safe_queue.QueueThreadSafe;
 

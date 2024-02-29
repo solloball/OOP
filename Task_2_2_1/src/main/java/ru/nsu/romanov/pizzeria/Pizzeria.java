@@ -1,14 +1,16 @@
 package ru.nsu.romanov.pizzeria;
 
-import ru.nsu.romanov.pizzeria.components.bakery.Baker;
-import ru.nsu.romanov.pizzeria.components.bakery.Bakery;
-import ru.nsu.romanov.pizzeria.components.delivery.Delivery;
-import ru.nsu.romanov.pizzeria.components.delivery.DeliveryMan;
-import ru.nsu.romanov.pizzeria.components.order.Order;
+import ru.nsu.romanov.pizzeria.bakery.Baker;
+import ru.nsu.romanov.pizzeria.bakery.Bakery;
+import ru.nsu.romanov.pizzeria.delivery.Delivery;
+import ru.nsu.romanov.pizzeria.delivery.DeliveryMan;
+import ru.nsu.romanov.pizzeria.order.Order;
 import ru.nsu.romanov.pizzeria.components.stockpile.Stockpile;
 import ru.nsu.romanov.pizzeria.components.thread_safe_queue.QueueThreadSafe;
 
+import java.util.ArrayList;
 import java.util.Queue;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 public class Pizzeria {
@@ -21,24 +23,23 @@ public class Pizzeria {
     public void run() throws InterruptedException {
         bakery.run();
         delivery.run();
+    }
 
-        while (true) {
-            Queue<Order> cQueue = cookingOrders.getQueue();
-            Queue<Order> dQueue = deliveryOrders.getQueue();
-            Queue<Order> doneQueue = doneOrders.getQueue();
-            int count = stockpile.getCount();
-            System.out.println(count + cQueue.toString() + dQueue.toString() + doneQueue.toString());
-            TimeUnit.SECONDS.sleep(1);
-        }
+    public void stop() {
+        bakery.stop();
+        delivery.stop();
     }
 
     public void addOrder(Order order) {
         cookingOrders.push(order);
     }
 
-    public void stop() {
-        bakery.stop();
-        delivery.stop();
+    public List<Queue<Order>> getStatus() {
+        List<Queue<Order>> res = new ArrayList<>();
+        res.add(cookingOrders.getQueue());
+        res.add(deliveryOrders.getQueue());
+        res.add(doneOrders.getQueue());
+        return res;
     }
 
     public void addDeliveryMan(DeliveryMan deliveryMan) {
@@ -61,11 +62,13 @@ public class Pizzeria {
         return bakery.removeBaker(index);
     }
 
-
     private final Delivery delivery;
     private final Stockpile stockpile = new Stockpile();
     private final Bakery bakery;
-    private final QueueThreadSafe<Order> cookingOrders = new QueueThreadSafe<>();
-    private final QueueThreadSafe<Order> deliveryOrders = new QueueThreadSafe<>();
-    private final QueueThreadSafe<Order> doneOrders = new QueueThreadSafe<>();
+    private final QueueThreadSafe<Order> cookingOrders = 
+        new QueueThreadSafe<>();
+    private final QueueThreadSafe<Order> deliveryOrders = 
+        new QueueThreadSafe<>();
+    private final QueueThreadSafe<Order> doneOrders = 
+        new QueueThreadSafe<>();
 }

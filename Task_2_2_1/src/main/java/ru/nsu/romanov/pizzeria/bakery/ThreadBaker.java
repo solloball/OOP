@@ -1,6 +1,6 @@
-package ru.nsu.romanov.pizzeria.components.bakery;
+package ru.nsu.romanov.pizzeria.bakery;
 
-import ru.nsu.romanov.pizzeria.components.order.Order;
+import ru.nsu.romanov.pizzeria.order.Order;
 import ru.nsu.romanov.pizzeria.components.stockpile.Stockpile;
 import ru.nsu.romanov.pizzeria.components.thread_safe_queue.QueueThreadSafe;
 
@@ -8,13 +8,14 @@ import java.util.concurrent.TimeUnit;
 
 public class ThreadBaker implements Runnable {
 
-    public ThreadBaker(Baker baker, QueueThreadSafe<Order> cookingOrders,
-                       QueueThreadSafe<Order> deliveryOrders, Stockpile stockpile) {
+    public ThreadBaker(Baker baker, QueueThreadSafe<Order> cookingOrders, 
+            QueueThreadSafe<Order> deliveryOrders, Stockpile stockpile) {
         this.baker = baker;
         this.cookingOrders = cookingOrders;
         this.deliveryOrders = deliveryOrders;
         this.stockpile = stockpile;
     }
+
     @Override
     public void run() {
         while (true) {
@@ -27,6 +28,9 @@ public class ThreadBaker implements Runnable {
                 throw new RuntimeException(e);
             }
         }
+    }
+
+    public void stop() {
     }
 
     private final Baker baker;

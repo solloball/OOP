@@ -1,9 +1,9 @@
 package ru.nsu.romanov.pizzeria;
 
 import org.junit.jupiter.api.Test;
-import ru.nsu.romanov.pizzeria.components.bakery.Baker;
-import ru.nsu.romanov.pizzeria.components.delivery.DeliveryMan;
-import ru.nsu.romanov.pizzeria.components.order.Order;
+import ru.nsu.romanov.pizzeria.bakery.Baker;
+import ru.nsu.romanov.pizzeria.delivery.DeliveryMan;
+import ru.nsu.romanov.pizzeria.order.Order;
 
 public class PizzeriaTest {
 

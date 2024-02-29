@@ -1,6 +1,6 @@
-package ru.nsu.romanov.pizzeria.components.bakery;
+package ru.nsu.romanov.pizzeria.bakery;
 
-import ru.nsu.romanov.pizzeria.components.order.Order;
+import ru.nsu.romanov.pizzeria.order.Order;
 import ru.nsu.romanov.pizzeria.components.stockpile.Stockpile;
 import ru.nsu.romanov.pizzeria.components.thread_safe_queue.QueueThreadSafe;
 
@@ -9,7 +9,8 @@ import java.util.List;
 
 public class Bakery {
 
-    public Bakery(QueueThreadSafe<Order> cookingOrders, QueueThreadSafe<Order> deliveryOrders, Stockpile stockpile) {
+    public Bakery(QueueThreadSafe<Order> cookingOrders,
+            QueueThreadSafe<Order> deliveryOrders, Stockpile stockpile) {
         this.cookingOrders = cookingOrders;
         this.deliveryOrders = deliveryOrders;
         this.stockpile = stockpile;
@@ -31,7 +32,8 @@ public class Bakery {
     }
 
     public void addBaker(Baker baker) {
-        threads.add(new Thread(new ThreadBaker(baker, cookingOrders, deliveryOrders, stockpile)));
+        threads.add(new Thread(
+            new ThreadBaker(baker, cookingOrders, deliveryOrders, stockpile)));
     }
 
     private final List<Thread> threads = new ArrayList<>();
