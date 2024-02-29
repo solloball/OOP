@@ -12,20 +12,24 @@ public class CompositeCheckerThread implements Runnable {
     public final Thread thr = new Thread(this);
     private final List<Integer> list;
     private boolean res;
+    private final List<CompositeCheckerThread> otherThreads;
 
     /**
      * Constructor for CompositeCheckerThread.
      *
      * @param list list to check.
      */
-    public CompositeCheckerThread(List<Integer> list) {
+    public CompositeCheckerThread(List<Integer> list,
+            List<CompositeCheckerThread> otherThreads) {
+        this.otherThreads = otherThreads;
         this.list = list;
     }
 
     /**
      * return result of calculating.
      *
-     * @return true if thread found at least one composite number, otherwise false.
+     * @return true if thread found at least one composite number,
+     *      otherwise false.
      */
     public boolean result() {
         return res;
@@ -40,7 +44,7 @@ public class CompositeCheckerThread implements Runnable {
 
         res = solver.solve(list);
         if (res) {
-            thr.interrupt();
+            otherThreads.forEach(d -> d.thr.interrupt());
         }
     }
 }

@@ -1,6 +1,6 @@
 package ru.nsu.romanov.prime.solver;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.List;
 import ru.nsu.romanov.prime.CompositeCheckerThread;
 
@@ -30,28 +30,27 @@ public class SolverThread implements Solver {
                     "threads count must be more than zero");
         }
 
-        CompositeCheckerThread[] threads =
-                new CompositeCheckerThread[countThreads];
+        List<CompositeCheckerThread> threads = new ArrayList<>();
 
         int butchSize = Math.max(arr.size() / countThreads + 1, 1);
 
         for (int i = 0; i < countThreads; i++) {
-            threads[i] = new CompositeCheckerThread(arr.subList(
+            threads.add(new CompositeCheckerThread(arr.subList(
                     Math.min(i * butchSize, arr.size() - 1),
                     Math.min((i + 1) * butchSize, arr.size())
-            ));
-            threads[i].thr.start();
+            ), threads));
+            threads.get(i).thr.start();
         }
 
-        Arrays.stream(threads).forEach(d -> {
-            try {
-                d.thr.join();
-            } catch (InterruptedException e) {
-                System.out.println("Thread was interrupted");
+        try {
+            for (var t : threads) {
+                t.thr.join();
             }
-        });
+        } catch (InterruptedException e) {
+            System.err.println("Thread was interrupted");
+        }
 
-        return Arrays.stream(threads)
+        return threads.stream()
                 .anyMatch(CompositeCheckerThread::result);
     }
 
