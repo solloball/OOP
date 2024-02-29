@@ -21,6 +21,7 @@ public class Bakery {
     }
 
     public void stop() {
+        threads.forEach(Thread::interrupt);
     }
 
     public boolean removeBaker(int id) {

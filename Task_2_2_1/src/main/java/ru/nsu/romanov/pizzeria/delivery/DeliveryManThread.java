@@ -9,8 +9,9 @@ import java.util.concurrent.TimeUnit;
 import static java.lang.Math.min;
 
 public class DeliveryManThread implements Runnable {
-    public DeliveryManThread(DeliveryMan deliveryMan,
-                             QueueThreadSafe<Order> deliveryOrders, QueueThreadSafe<Order> doneOrders, Stockpile stockpile) {
+    public DeliveryManThread(DeliveryMan deliveryMan, 
+            QueueThreadSafe<Order> deliveryOrders, 
+            QueueThreadSafe<Order> doneOrders, Stockpile stockpile) {
         this.deliveryMan = deliveryMan;
         this.deliveryOrders = deliveryOrders;
         this.doneOrders = doneOrders;
@@ -30,7 +31,7 @@ public class DeliveryManThread implements Runnable {
                 }
                 doneOrders.push(order);
             } catch (InterruptedException e) {
-                throw new RuntimeException(e);
+                return;
             }
         }
     }

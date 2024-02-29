@@ -21,7 +21,7 @@ public class Delivery {
     }
 
     public void stop() {
-
+        threads.forEach(Thread::interrupt);    
     }
 
     public void addDeliveryMan(DeliveryMan deliveryMan) {

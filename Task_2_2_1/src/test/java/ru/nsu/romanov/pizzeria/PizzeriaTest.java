@@ -1,5 +1,8 @@
 package ru.nsu.romanov.pizzeria;
 
+import java.util.List;
+import java.util.concurrent.TimeUnit;
+import java.util.Queue;
 import org.junit.jupiter.api.Test;
 import ru.nsu.romanov.pizzeria.bakery.Baker;
 import ru.nsu.romanov.pizzeria.delivery.DeliveryMan;
@@ -17,18 +20,22 @@ public class PizzeriaTest {
         pizzeria.addDeliveryMan(new DeliveryMan(3));
         pizzeria.addDeliveryMan(new DeliveryMan(5));
         pizzeria.addDeliveryMan(new DeliveryMan(8));
-        pizzeria.addOrder(new Order(0, 1, 1));
-        pizzeria.addOrder(new Order(1, 1, 1));
-        pizzeria.addOrder(new Order(2, 1, 1));
-        pizzeria.addOrder(new Order(3, 1, 1));
-        pizzeria.addOrder(new Order(4, 1, 1));
-        pizzeria.addOrder(new Order(5, 1, 1));
-        pizzeria.addOrder(new Order(6, 1, 1));
-        pizzeria.addOrder(new Order(7, 1, 1));
-        try {
-            pizzeria.run();
-        } catch (InterruptedException e) {
-            throw new InterruptedException(e.toString());
+        pizzeria.run();
+
+        int i = 0;
+        while (true) {
+            pizzeria.addOrder(new Order(i++, 1, 22));
+            List<Queue<Order>> list =
+                pizzeria.getStatus();
+            printState(list);
+            TimeUnit.SECONDS.sleep(1);
         }
+    }
+
+    private void printState(List<Queue<Order>> list) {
+        System.out.println("State: ");
+        list.forEach(elem -> {
+            System.out.println(elem.toString());
+        });
     }
 }

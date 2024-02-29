@@ -1,5 +1,8 @@
 package ru.nsu.romanov.pizzeria;
 
+import java.util.ArrayList;
+import java.util.Queue;
+import java.util.List;
 import ru.nsu.romanov.pizzeria.bakery.Baker;
 import ru.nsu.romanov.pizzeria.bakery.Bakery;
 import ru.nsu.romanov.pizzeria.delivery.Delivery;
@@ -8,11 +11,6 @@ import ru.nsu.romanov.pizzeria.order.Order;
 import ru.nsu.romanov.pizzeria.components.stockpile.Stockpile;
 import ru.nsu.romanov.pizzeria.components.thread_safe_queue.QueueThreadSafe;
 
-import java.util.ArrayList;
-import java.util.Queue;
-import java.util.List;
-import java.util.concurrent.TimeUnit;
-
 public class Pizzeria {
 
     public Pizzeria() {
@@ -20,7 +18,7 @@ public class Pizzeria {
         delivery = new Delivery(deliveryOrders, doneOrders, stockpile);
     }
 
-    public void run() throws InterruptedException {
+    public void run() {
         bakery.run();
         delivery.run();
     }

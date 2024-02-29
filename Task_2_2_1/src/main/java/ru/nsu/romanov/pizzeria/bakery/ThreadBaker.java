@@ -25,7 +25,7 @@ public class ThreadBaker implements Runnable {
                 deliveryOrders.push(order);
                 stockpile.push(order.countPizzas());
             } catch (InterruptedException e) {
-                throw new RuntimeException(e);
+                return;
             }
         }
     }
