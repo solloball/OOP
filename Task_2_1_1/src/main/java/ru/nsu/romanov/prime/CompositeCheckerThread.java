@@ -47,7 +47,6 @@ public class CompositeCheckerThread implements Runnable {
             }
             if (solver.isComposite(elem)) {
                 res = true;
-                //otherThreads.forEach(d -> d.thr.interrupt());
                 for (var d : otherThreads) {
                     d.thr.interrupt();
                 }
