@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import ru.nsu.romanov.prime.CompositeCheckerThread;
 
+import static java.lang.Math.min;
+
 /**
  * Solver which uses threads to find composite number.
  */
@@ -30,14 +32,16 @@ public class SolverThread implements Solver {
                     "threads count must be more than zero");
         }
 
+        int count = min(countThreads, arr.size());
+
         List<CompositeCheckerThread> threads = new ArrayList<>();
 
-        int butchSize = Math.max(arr.size() / countThreads + 1, 1);
+        int butchSize = Math.max(arr.size() / count + 1, 1);
 
-        for (int i = 0; i < countThreads; i++) {
+        for (int i = 0; i < count; i++) {
             threads.add(new CompositeCheckerThread(arr.subList(
-                    Math.min(i * butchSize, arr.size() - 1),
-                    Math.min((i + 1) * butchSize, arr.size())
+                    min(i * butchSize, arr.size() - 1),
+                    min((i + 1) * butchSize, arr.size())
             ), threads));
             threads.get(i).thr.start();
         }
@@ -47,7 +51,7 @@ public class SolverThread implements Solver {
                 t.thr.join();
             }
         } catch (InterruptedException e) {
-            System.err.println("Thread was interrupted");
+            System.out.println("Thread was interrupted");
         }
 
         return threads.stream()

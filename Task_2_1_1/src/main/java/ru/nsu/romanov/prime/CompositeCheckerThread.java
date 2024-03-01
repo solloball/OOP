@@ -41,10 +41,18 @@ public class CompositeCheckerThread implements Runnable {
     @Override
     public void run() {
         Solver solver = new SolverSeq();
-
-        res = solver.solve(list);
-        if (res) {
-            otherThreads.forEach(d -> d.thr.interrupt());
+        for (var elem : list) {
+            if (thr.isInterrupted()) {
+                return;
+            }
+            if (solver.isComposite(elem)) {
+                res = true;
+                //otherThreads.forEach(d -> d.thr.interrupt());
+                for (var d : otherThreads) {
+                    d.thr.interrupt();
+                }
+                return;
+            }
         }
     }
 }
