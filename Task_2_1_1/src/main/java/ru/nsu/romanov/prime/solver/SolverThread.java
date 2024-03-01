@@ -1,10 +1,10 @@
 package ru.nsu.romanov.prime.solver;
 
+import static java.lang.Math.min;
+
 import java.util.ArrayList;
 import java.util.List;
 import ru.nsu.romanov.prime.CompositeCheckerThread;
-
-import static java.lang.Math.min;
 
 /**
  * Solver which uses threads to find composite number.
