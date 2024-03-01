@@ -40,6 +40,16 @@ public class Pizzeria {
         return res;
     }
 
+    public void setStatus(List<Queue<Order>> list) {
+        if (list.size() != 3) {
+            throw new IllegalArgumentException(
+                    "list should have 3 elements");
+        }
+        cookingOrders.SetQueue(list.get(0));  
+        deliveryOrders.SetQueue(list.get(1));  
+        doneOrders.SetQueue(list.get(2));  
+    }
+
     public void addDeliveryMan(DeliveryMan deliveryMan) {
         delivery.addDeliveryMan(deliveryMan);
     }

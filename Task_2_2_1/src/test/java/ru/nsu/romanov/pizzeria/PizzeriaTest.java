@@ -24,7 +24,7 @@ public class PizzeriaTest {
 
         int i = 0;
         while (true) {
-            pizzeria.addOrder(new Order(i++, 1, 22));
+            pizzeria.addOrder(new Order(i++, 1, 1));
             List<Queue<Order>> list =
                 pizzeria.getStatus();
             printState(list);

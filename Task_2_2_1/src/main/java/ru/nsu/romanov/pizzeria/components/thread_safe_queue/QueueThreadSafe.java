@@ -20,6 +20,10 @@ public class QueueThreadSafe<T> {
     synchronized public Queue<T> getQueue() {
         return new LinkedList<>(queue);
     }
+    
+    synchronized public void SetQueue(Queue<T> queue) {
+        this.queue = queue; 
+    }
 
-    private final Queue<T> queue = new LinkedList<T>();
+    private volatile Queue<T> queue = new LinkedList<T>();
 }
