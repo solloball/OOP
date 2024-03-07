@@ -6,7 +6,7 @@ public class Stockpile {
 
     synchronized public void push(int countToPush) throws InterruptedException {
         while (countToPush > 0) {
-            if (count == capacity) {
+            while (count == capacity) {
                 wait();
             }
             int toAdd = min(countToPush, capacity - count);
@@ -18,7 +18,7 @@ public class Stockpile {
 
     synchronized public void pop(int countToPop) throws InterruptedException {
         while (countToPop > 0) {
-            if (count == 0) {
+            while (count == 0) {
                 wait();
             }
             int toRemove = min(countToPop, count);
@@ -41,5 +41,5 @@ public class Stockpile {
     }
 
     private int capacity = 0;
-    volatile private int count = 0;
+    private int count = 0;
 }
