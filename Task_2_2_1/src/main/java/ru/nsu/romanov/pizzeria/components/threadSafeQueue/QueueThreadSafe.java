@@ -1,4 +1,4 @@
-package ru.nsu.romanov.pizzeria.components.thread_safe_queue;
+package ru.nsu.romanov.pizzeria.components.threadSafeQueue;
 
 import java.util.LinkedList;
 import java.util.Queue;
@@ -15,7 +15,7 @@ public class QueueThreadSafe<T> implements MyQueue<T> {
      *
      * @param obj obj to push.
      */
-    synchronized public void push(T obj) {
+    public synchronized void push(T obj) {
         queue.add(obj);
         notify();
     }
@@ -26,7 +26,7 @@ public class QueueThreadSafe<T> implements MyQueue<T> {
      * @return elements.
      * @throws InterruptedException can throw InterruptedException.
      */
-    synchronized public T pop() throws InterruptedException {
+    public synchronized T pop() throws InterruptedException {
         while (queue.isEmpty()) {
             wait();
         }
@@ -39,7 +39,7 @@ public class QueueThreadSafe<T> implements MyQueue<T> {
      *
      * @return queue.
      */
-    synchronized public Queue<T> getQueue() {
+    public synchronized Queue<T> getQueue() {
         return queue;
     }
 
@@ -48,7 +48,7 @@ public class QueueThreadSafe<T> implements MyQueue<T> {
      *
      * @param queue queue to set.
      */
-    synchronized public void setQueue(Queue<T> queue) {
+    public synchronized void setQueue(Queue<T> queue) {
         this.queue = queue; 
     }
 

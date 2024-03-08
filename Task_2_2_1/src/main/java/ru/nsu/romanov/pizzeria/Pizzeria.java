@@ -5,11 +5,11 @@ import java.util.List;
 import java.util.Queue;
 import ru.nsu.romanov.pizzeria.bakery.Baker;
 import ru.nsu.romanov.pizzeria.bakery.Bakery;
-import ru.nsu.romanov.pizzeria.components.thread_safe_queue.MyQueue;
+import ru.nsu.romanov.pizzeria.components.stockpile.Stockpile;
+import ru.nsu.romanov.pizzeria.components.threadSafeQueue.MyQueue;
+import ru.nsu.romanov.pizzeria.components.threadSafeQueue.QueueThreadSafe;
 import ru.nsu.romanov.pizzeria.delivery.Delivery;
 import ru.nsu.romanov.pizzeria.delivery.DeliveryMan;
-import ru.nsu.romanov.pizzeria.components.stockpile.Stockpile;
-import ru.nsu.romanov.pizzeria.components.thread_safe_queue.QueueThreadSafe;
 import ru.nsu.romanov.pizzeria.order.Order;
 
 /**

@@ -1,4 +1,4 @@
-package ru.nsu.romanov.pizzeria.components.thread_safe_queue;
+package ru.nsu.romanov.pizzeria.components.threadSafeQueue;
 
 /**
  * interface for queue.

@@ -14,7 +14,7 @@ public class Stockpile {
      * @param countToPush count to push.
      * @throws InterruptedException can throw InterruptedException.
      */
-    synchronized public void push(int countToPush) throws InterruptedException {
+    public synchronized void push(int countToPush) throws InterruptedException {
         while (countToPush > 0) {
             while (count == capacity) {
                 wait();
@@ -33,7 +33,7 @@ public class Stockpile {
      * @param countToPop count to pop.
      * @throws InterruptedException can throw InterruptedException.
      */
-    synchronized public void pop(int countToPop) throws InterruptedException {
+    public synchronized void pop(int countToPop) throws InterruptedException {
         while (countToPop > 0) {
             while (count == 0) {
                 wait();
@@ -68,7 +68,7 @@ public class Stockpile {
      *
      * @param capacity capacity to set.
      */
-    synchronized public void setCapacity(int capacity) {
+    public synchronized void setCapacity(int capacity) {
         this.capacity = capacity;
         this.count = 0;
     }
