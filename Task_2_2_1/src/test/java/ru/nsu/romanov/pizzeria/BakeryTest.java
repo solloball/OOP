@@ -5,8 +5,8 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import ru.nsu.romanov.pizzeria.bakery.Baker;
 import ru.nsu.romanov.pizzeria.bakery.Bakery;
-import ru.nsu.romanov.pizzeria.components.stockpile.Stockpile;
 import ru.nsu.romanov.pizzeria.components.queue.QueueThreadSafe;
+import ru.nsu.romanov.pizzeria.components.stockpile.Stockpile;
 import ru.nsu.romanov.pizzeria.order.Order;
 
 /**

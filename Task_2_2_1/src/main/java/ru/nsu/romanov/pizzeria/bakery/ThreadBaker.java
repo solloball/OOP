@@ -1,8 +1,8 @@
 package ru.nsu.romanov.pizzeria.bakery;
 
 import java.util.concurrent.TimeUnit;
-import ru.nsu.romanov.pizzeria.components.stockpile.Stockpile;
 import ru.nsu.romanov.pizzeria.components.queue.MyQueue;
+import ru.nsu.romanov.pizzeria.components.stockpile.Stockpile;
 import ru.nsu.romanov.pizzeria.order.Order;
 
 /**
