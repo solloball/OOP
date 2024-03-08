@@ -5,7 +5,7 @@
 <title>QueueThreadSafe (Task_2_2_1 1.0-SNAPSHOT API)</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<meta name="description" content="declaration: package: ru.nsu.romanov.pizzeria.components.thread_safe_queue, class: QueueThreadSafe">
+<meta name="description" content="declaration: package: ru.nsu.romanov.pizzeria.components.threadSafeQueue, class: QueueThreadSafe">
 <meta name="generator" content="javadoc/ClassWriterImpl">
 <link rel="stylesheet" type="text/css" href="../../../../../../stylesheet.css" title="Style">
 <link rel="stylesheet" type="text/css" href="../../../../../../script-dir/jquery-ui.min.css" title="Style">
@@ -81,11 +81,11 @@ loadScripts(document, 'script');</script>
 <main role="main">
 <!-- ======== START OF CLASS DATA ======== -->
 <div class="header">
-<div class="sub-title"><span class="package-label-in-type">Package</span>&nbsp;<a href="package-summary.html">ru.nsu.romanov.pizzeria.components.thread_safe_queue</a></div>
+<div class="sub-title"><span class="package-label-in-type">Package</span>&nbsp;<a href="package-summary.html">ru.nsu.romanov.pizzeria.components.threadSafeQueue</a></div>
 <h1 title="Class QueueThreadSafe" class="title">Class QueueThreadSafe&lt;T&gt;</h1>
 </div>
 <div class="inheritance" title="Inheritance Tree"><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">java.lang.Object</a>
-<div class="inheritance">ru.nsu.romanov.pizzeria.components.thread_safe_queue.QueueThreadSafe&lt;T&gt;</div>
+<div class="inheritance">ru.nsu.romanov.pizzeria.components.threadSafeQueue.QueueThreadSafe&lt;T&gt;</div>
 </div>
 <section class="class-description" id="class-description">
 <dl class="notes">
@@ -94,12 +94,12 @@ loadScripts(document, 'script');</script>
 </dl>
 <dl class="notes">
 <dt>All Implemented Interfaces:</dt>
-<dd><code><a href="MyQueue.html" title="interface in ru.nsu.romanov.pizzeria.components.thread_safe_queue">MyQueue</a>&lt;T&gt;</code></dd>
+<dd><code><a href="MyQueue.html" title="interface in ru.nsu.romanov.pizzeria.components.threadSafeQueue">MyQueue</a>&lt;T&gt;</code></dd>
 </dl>
 <hr>
 <div class="type-signature"><span class="modifiers">public class </span><span class="element-name type-name-label">QueueThreadSafe&lt;T&gt;</span>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a>
-implements <a href="MyQueue.html" title="interface in ru.nsu.romanov.pizzeria.components.thread_safe_queue">MyQueue</a>&lt;T&gt;</span></div>
+implements <a href="MyQueue.html" title="interface in ru.nsu.romanov.pizzeria.components.threadSafeQueue">MyQueue</a>&lt;T&gt;</span></div>
 <div class="block">Realization of blocking queue.</div>
 </section>
 <section class="summary">
@@ -186,7 +186,7 @@ implements <a href="MyQueue.html" title="interface in ru.nsu.romanov.pizzeria.co
 <div class="block">Push obj into queue.</div>
 <dl class="notes">
 <dt>Specified by:</dt>
-<dd><code><a href="MyQueue.html#push(T)">push</a></code>&nbsp;in interface&nbsp;<code><a href="MyQueue.html" title="interface in ru.nsu.romanov.pizzeria.components.thread_safe_queue">MyQueue</a>&lt;<a href="QueueThreadSafe.html" title="type parameter in QueueThreadSafe">T</a>&gt;</code></dd>
+<dd><code><a href="MyQueue.html#push(T)">push</a></code>&nbsp;in interface&nbsp;<code><a href="MyQueue.html" title="interface in ru.nsu.romanov.pizzeria.components.threadSafeQueue">MyQueue</a>&lt;<a href="QueueThreadSafe.html" title="type parameter in QueueThreadSafe">T</a>&gt;</code></dd>
 <dt>Parameters:</dt>
 <dd><code>obj</code> - obj to push.</dd>
 </dl>
@@ -200,7 +200,7 @@ implements <a href="MyQueue.html" title="interface in ru.nsu.romanov.pizzeria.co
 <div class="block">Pop from queue.</div>
 <dl class="notes">
 <dt>Specified by:</dt>
-<dd><code><a href="MyQueue.html#pop()">pop</a></code>&nbsp;in interface&nbsp;<code><a href="MyQueue.html" title="interface in ru.nsu.romanov.pizzeria.components.thread_safe_queue">MyQueue</a>&lt;<a href="QueueThreadSafe.html" title="type parameter in QueueThreadSafe">T</a>&gt;</code></dd>
+<dd><code><a href="MyQueue.html#pop()">pop</a></code>&nbsp;in interface&nbsp;<code><a href="MyQueue.html" title="interface in ru.nsu.romanov.pizzeria.components.threadSafeQueue">MyQueue</a>&lt;<a href="QueueThreadSafe.html" title="type parameter in QueueThreadSafe">T</a>&gt;</code></dd>
 <dt>Returns:</dt>
 <dd>elements.</dd>
 <dt>Throws:</dt>
@@ -216,7 +216,7 @@ implements <a href="MyQueue.html" title="interface in ru.nsu.romanov.pizzeria.co
  If other threads call method, can return illegal state.</div>
 <dl class="notes">
 <dt>Specified by:</dt>
-<dd><code><a href="MyQueue.html#getQueue()">getQueue</a></code>&nbsp;in interface&nbsp;<code><a href="MyQueue.html" title="interface in ru.nsu.romanov.pizzeria.components.thread_safe_queue">MyQueue</a>&lt;<a href="QueueThreadSafe.html" title="type parameter in QueueThreadSafe">T</a>&gt;</code></dd>
+<dd><code><a href="MyQueue.html#getQueue()">getQueue</a></code>&nbsp;in interface&nbsp;<code><a href="MyQueue.html" title="interface in ru.nsu.romanov.pizzeria.components.threadSafeQueue">MyQueue</a>&lt;<a href="QueueThreadSafe.html" title="type parameter in QueueThreadSafe">T</a>&gt;</code></dd>
 <dt>Returns:</dt>
 <dd>queue.</dd>
 </dl>
@@ -229,7 +229,7 @@ implements <a href="MyQueue.html" title="interface in ru.nsu.romanov.pizzeria.co
 <div class="block">Set queue.</div>
 <dl class="notes">
 <dt>Specified by:</dt>
-<dd><code><a href="MyQueue.html#setQueue(java.util.Queue)">setQueue</a></code>&nbsp;in interface&nbsp;<code><a href="MyQueue.html" title="interface in ru.nsu.romanov.pizzeria.components.thread_safe_queue">MyQueue</a>&lt;<a href="QueueThreadSafe.html" title="type parameter in QueueThreadSafe">T</a>&gt;</code></dd>
+<dd><code><a href="MyQueue.html#setQueue(java.util.Queue)">setQueue</a></code>&nbsp;in interface&nbsp;<code><a href="MyQueue.html" title="interface in ru.nsu.romanov.pizzeria.components.threadSafeQueue">MyQueue</a>&lt;<a href="QueueThreadSafe.html" title="type parameter in QueueThreadSafe">T</a>&gt;</code></dd>
 <dt>Parameters:</dt>
 <dd><code>queue</code> - queue to set.</dd>
 </dl>
