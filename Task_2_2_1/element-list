@@ -1,6 +1,6 @@
 ru.nsu.romanov.pizzeria
 ru.nsu.romanov.pizzeria.bakery
+ru.nsu.romanov.pizzeria.components.queue
 ru.nsu.romanov.pizzeria.components.stockpile
-ru.nsu.romanov.pizzeria.components.threadSafeQueue
 ru.nsu.romanov.pizzeria.delivery
 ru.nsu.romanov.pizzeria.order
