@@ -1,4 +1,4 @@
-package ru.nsu.romanov.pizzeria.components.threadSafeQueue;
+package ru.nsu.romanov.pizzeria.components.queue;
 
 import java.util.LinkedList;
 import java.util.Queue;

@@ -2,8 +2,8 @@ package ru.nsu.romanov.pizzeria.components;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import ru.nsu.romanov.pizzeria.components.threadSafeQueue.MyQueue;
-import ru.nsu.romanov.pizzeria.components.threadSafeQueue.QueueThreadSafe;
+import ru.nsu.romanov.pizzeria.components.queue.MyQueue;
+import ru.nsu.romanov.pizzeria.components.queue.QueueThreadSafe;
 
 /**
  * Tests for queue thread safe.

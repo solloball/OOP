@@ -4,7 +4,7 @@ import java.util.concurrent.TimeUnit;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import ru.nsu.romanov.pizzeria.components.stockpile.Stockpile;
-import ru.nsu.romanov.pizzeria.components.threadSafeQueue.QueueThreadSafe;
+import ru.nsu.romanov.pizzeria.components.queue.QueueThreadSafe;
 import ru.nsu.romanov.pizzeria.delivery.Delivery;
 import ru.nsu.romanov.pizzeria.delivery.DeliveryMan;
 import ru.nsu.romanov.pizzeria.order.Order;
