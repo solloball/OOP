@@ -1,44 +1,84 @@
 package ru.nsu.romanov.pizzeria.delivery;
 
-import ru.nsu.romanov.pizzeria.order.Order;
-import ru.nsu.romanov.pizzeria.components.stockpile.Stockpile;
-import ru.nsu.romanov.pizzeria.components.thread_safe_queue.QueueThreadSafe;
-
 import java.util.ArrayList;
 import java.util.List;
+import ru.nsu.romanov.pizzeria.components.thread_safe_queue.MyQueue;
+import ru.nsu.romanov.pizzeria.order.Order;
+import ru.nsu.romanov.pizzeria.components.stockpile.Stockpile;
 
+/**
+ * Class which simulated delivery.
+ */
 public class Delivery {
 
-    public Delivery(QueueThreadSafe<Order> deliveryOrders, 
-            QueueThreadSafe<Order> doneOrders, Stockpile stockpile) {
+    /**
+     * Default constructor.
+     *
+     * @param deliveryOrders queue of delivery orders.
+     * @param doneOrders queue of done orders.
+     * @param stockpile stockpile of pizzas.
+     */
+    public Delivery(MyQueue<Order> deliveryOrders,
+                    MyQueue<Order> doneOrders, Stockpile stockpile) {
         this.deliveryOrders = deliveryOrders;
         this.doneOrders = doneOrders;
         this.stockpile = stockpile;
     }
 
+    /**
+     * Start simulation of delivery.
+     */
     public void run() {
-        threads.forEach(Thread::start);
+        deliveryManThreads.forEach(DeliveryManThread::start);
     }
 
+    /**
+     * Stop simulation of delivery.
+     */
     public void stop() {
-        threads.forEach(Thread::interrupt);    
+        deliveryManThreads.forEach(DeliveryManThread::stop);
     }
 
+    /**
+     * Add new delivery man.
+     *
+     * @param deliveryMan delivery man to add.
+     */
     public void addDeliveryMan(DeliveryMan deliveryMan) {
-        threads.add(new Thread(new DeliveryManThread(deliveryMan,
-                        deliveryOrders, doneOrders, stockpile)));
+        deliveryManThreads.add(new DeliveryManThread(deliveryMan,
+                        deliveryOrders, doneOrders, stockpile));
     }
 
+    /**
+     * remove delivery man.
+     *
+     * @param id id of delivery man.
+     * @return true if delivery man was removed, false otherwise.
+     */
     public boolean removeDeliveryMan(int id) {
-        if (id < 0 || id >= threads.size()) {
+        if (id < 0 || id >= deliveryManThreads.size()) {
             return false;
         }
-        threads.remove(id);
+        deliveryManThreads.get(id).stop();
+        deliveryManThreads.remove(id);
         return true;
     }
 
-    private final List<Thread> threads = new ArrayList<>();
-    private final QueueThreadSafe<Order> deliveryOrders;
-    private final QueueThreadSafe<Order> doneOrders;
+    /**
+     * Get delivery man.
+     *
+     * @param id id of delivery man.
+     * @return delivery man if exists, null otherwise.
+     */
+    public DeliveryMan getDeliveryMan(int id) {
+        if (id < 0 || id >= deliveryManThreads.size()) {
+            return null;
+        }
+        return deliveryManThreads.get(id).getDeliveryMan();
+    }
+
+    private final List<DeliveryManThread> deliveryManThreads = new ArrayList<>();
+    private final MyQueue<Order> deliveryOrders;
+    private final MyQueue<Order> doneOrders;
     private final Stockpile stockpile;
 }

@@ -1,44 +1,83 @@
 package ru.nsu.romanov.pizzeria.bakery;
 
-import ru.nsu.romanov.pizzeria.order.Order;
-import ru.nsu.romanov.pizzeria.components.stockpile.Stockpile;
-import ru.nsu.romanov.pizzeria.components.thread_safe_queue.QueueThreadSafe;
-
 import java.util.ArrayList;
 import java.util.List;
+import ru.nsu.romanov.pizzeria.components.thread_safe_queue.MyQueue;
+import ru.nsu.romanov.pizzeria.order.Order;
+import ru.nsu.romanov.pizzeria.components.stockpile.Stockpile;
 
+/**
+ * Class which simulates bakery.
+ */
 public class Bakery {
 
-    public Bakery(QueueThreadSafe<Order> cookingOrders,
-            QueueThreadSafe<Order> deliveryOrders, Stockpile stockpile) {
+    /**
+     * Default constructor.
+     *
+     * @param cookingOrders cooking orders.
+     * @param deliveryOrders delivery orders.
+     * @param stockpile stockpile.
+     */
+    public Bakery(MyQueue<Order> cookingOrders,
+                  MyQueue<Order> deliveryOrders, Stockpile stockpile) {
         this.cookingOrders = cookingOrders;
         this.deliveryOrders = deliveryOrders;
         this.stockpile = stockpile;
     }
 
+    /**
+     * Run simulation of bakery.
+     */
     public void run() {
-        threads.forEach(Thread::start);
+        bakerThreads.forEach(ThreadBaker::start);
     }
 
+    /**
+     * Stop simulation of bakery.
+     */
     public void stop() {
-        threads.forEach(Thread::interrupt);
+        bakerThreads.forEach(ThreadBaker::stop);
     }
 
+    /**
+     * Remove baker from bakery.
+     *
+     * @param id baker's id.
+     * @return true if baker was removed, false otherwise.
+     */
     public boolean removeBaker(int id) {
-        if (id < 0 || id >= threads.size()) {
+        if (id < 0 || id >= bakerThreads.size()) {
             return false;
         }
-        threads.remove(id);
+        bakerThreads.get(id).stop();
+        bakerThreads.remove(id);
         return true;
     }
 
+    /**
+     * Add new baker to bakery.
+     *
+     * @param baker baker to add.
+     */
     public void addBaker(Baker baker) {
-        threads.add(new Thread(
-            new ThreadBaker(baker, cookingOrders, deliveryOrders, stockpile)));
+        bakerThreads.add(new ThreadBaker(baker, cookingOrders, deliveryOrders, stockpile));
     }
 
-    private final List<Thread> threads = new ArrayList<>();
-    private final QueueThreadSafe<Order> cookingOrders;
-    private final QueueThreadSafe<Order> deliveryOrders;
+    /**
+     * get baker from bakery.
+     *
+     * @param id id of baker.
+     * @return baker if exists, null otherwise.
+     */
+    public Baker getBaker(int id) {
+        if (id < 0 || id >= bakerThreads.size()) {
+            return null;
+        }
+        return bakerThreads.get(id).getBaker();
+    }
+
+    private final List<ThreadBaker> bakerThreads = new ArrayList<>();
+    private final MyQueue<Order> cookingOrders;
+    private final MyQueue<Order> deliveryOrders;
     private final Stockpile stockpile;
 }

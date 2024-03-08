@@ -1,22 +1,38 @@
 package ru.nsu.romanov.pizzeria.delivery;
 
-import ru.nsu.romanov.pizzeria.order.Order;
-import ru.nsu.romanov.pizzeria.components.stockpile.Stockpile;
-import ru.nsu.romanov.pizzeria.components.thread_safe_queue.QueueThreadSafe;
-
-import java.util.concurrent.TimeUnit;
-
 import static java.lang.Math.min;
 
+import java.util.concurrent.TimeUnit;
+import ru.nsu.romanov.pizzeria.components.thread_safe_queue.MyQueue;
+import ru.nsu.romanov.pizzeria.order.Order;
+import ru.nsu.romanov.pizzeria.components.stockpile.Stockpile;
+
+/**
+ * Class for simulation delivery man.
+ */
 public class DeliveryManThread implements Runnable {
-    public DeliveryManThread(DeliveryMan deliveryMan, 
-            QueueThreadSafe<Order> deliveryOrders, 
-            QueueThreadSafe<Order> doneOrders, Stockpile stockpile) {
+    /**
+     * Default constructor.
+     *
+     * @param deliveryMan delivery man.
+     * @param deliveryOrders queue of delivery orders.
+     * @param doneOrders queue of done orders.
+     * @param stockpile stockpile.
+     */
+    public DeliveryManThread(
+            DeliveryMan deliveryMan,
+            MyQueue<Order> deliveryOrders,
+            MyQueue<Order> doneOrders,
+            Stockpile stockpile) {
         this.deliveryMan = deliveryMan;
         this.deliveryOrders = deliveryOrders;
         this.doneOrders = doneOrders;
         this.stockpile = stockpile;
     }
+
+    /**
+     * Start of simulation.
+     */
     @Override
     public void run() {
         while (true) {
@@ -36,8 +52,32 @@ public class DeliveryManThread implements Runnable {
         }
     }
 
+    /**
+     * Start simulation externally.
+     */
+    public void start() {
+        thread.start();
+    }
+
+    /**
+     * Stop simulation.
+     */
+    public void stop() {
+        thread.interrupt();
+    }
+
+    /**
+     * get delivery man record.
+     *
+     * @return delivery man.
+     */
+    public DeliveryMan getDeliveryMan() {
+        return deliveryMan;
+    }
+
+    private final Thread thread = new Thread(this);
     private final DeliveryMan deliveryMan;
-    private final QueueThreadSafe<Order> deliveryOrders;
-    private final QueueThreadSafe<Order> doneOrders;
+    private final MyQueue<Order> deliveryOrders;
+    private final MyQueue<Order> doneOrders;
     private final Stockpile stockpile;
 }

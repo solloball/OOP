@@ -1,21 +1,34 @@
 package ru.nsu.romanov.pizzeria.bakery;
 
+import java.util.concurrent.TimeUnit;
+import ru.nsu.romanov.pizzeria.components.thread_safe_queue.MyQueue;
 import ru.nsu.romanov.pizzeria.order.Order;
 import ru.nsu.romanov.pizzeria.components.stockpile.Stockpile;
-import ru.nsu.romanov.pizzeria.components.thread_safe_queue.QueueThreadSafe;
 
-import java.util.concurrent.TimeUnit;
-
+/**
+ * Class which simulates one baker.
+ */
 public class ThreadBaker implements Runnable {
 
-    public ThreadBaker(Baker baker, QueueThreadSafe<Order> cookingOrders, 
-            QueueThreadSafe<Order> deliveryOrders, Stockpile stockpile) {
+    /**
+     * Default constructor.
+     *
+     * @param baker baker.
+     * @param cookingOrders cooking orders.
+     * @param deliveryOrders delivery orders.
+     * @param stockpile stockpile.
+     */
+    public ThreadBaker(Baker baker, MyQueue<Order> cookingOrders,
+                       MyQueue<Order> deliveryOrders, Stockpile stockpile) {
         this.baker = baker;
         this.cookingOrders = cookingOrders;
         this.deliveryOrders = deliveryOrders;
         this.stockpile = stockpile;
     }
 
+    /**
+     * Main simulation of baker.
+     */
     @Override
     public void run() {
         while (true) {
@@ -30,11 +43,33 @@ public class ThreadBaker implements Runnable {
         }
     }
 
-    public void stop() {
+    /**
+     * Start simulation externally.
+     */
+    public void start() {
+        thread.start();
     }
 
+    /**
+     * Stop simulation.
+     */
+    public void stop() {
+        thread.interrupt();
+    }
+
+    /**
+     * Get baker record.
+     *
+     * @return baker.
+     */
+    public Baker getBaker() {
+        return baker;
+    }
+
+
+    private final Thread thread = new Thread(this);
     private final Baker baker;
-    private final QueueThreadSafe<Order> cookingOrders;
-    private final QueueThreadSafe<Order> deliveryOrders;
+    private final MyQueue<Order> cookingOrders;
+    private final MyQueue<Order> deliveryOrders;
     private final Stockpile stockpile;
 }

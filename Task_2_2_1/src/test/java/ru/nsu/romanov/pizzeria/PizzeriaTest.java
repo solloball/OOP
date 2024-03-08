@@ -1,17 +1,95 @@
 package ru.nsu.romanov.pizzeria;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.LinkedList;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 import java.util.Queue;
+import java.util.concurrent.TimeUnit;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import ru.nsu.romanov.pizzeria.bakery.Baker;
 import ru.nsu.romanov.pizzeria.delivery.DeliveryMan;
 import ru.nsu.romanov.pizzeria.order.Order;
 
+/**
+ * Tests for pizzeria.
+ */
 public class PizzeriaTest {
 
     @Test
-    void simpleTest() throws InterruptedException {
+    public void addRemoveBakerTest() {
+        Pizzeria pizzeria = new Pizzeria();
+        pizzeria.addBaker(new Baker(10));
+        Assertions.assertTrue(pizzeria.removeBaker(0));
+    }
+
+    @Test
+    public void addRemoveEmptyBakerTest() {
+        Pizzeria pizzeria = new Pizzeria();
+        Assertions.assertFalse(pizzeria.removeBaker(0));
+    }
+
+    @Test
+    public void addRemoveDeliveryManTest() {
+        Pizzeria pizzeria = new Pizzeria();
+        pizzeria.addDeliveryMan(new DeliveryMan(10));
+        Assertions.assertTrue(pizzeria.removeDeliveryMan(0));
+    }
+
+    @Test
+    public void addRemoveEmptyDeliveryManTest() {
+        Pizzeria pizzeria = new Pizzeria();
+        Assertions.assertFalse(pizzeria.removeDeliveryMan(0));
+    }
+
+    @Test
+    public void setStatusTest() {
+        Pizzeria pizzeria = new Pizzeria();
+        List<Queue<Order>> list = new ArrayList<>();
+        list.add(new LinkedList<>(
+                Collections.singletonList(new Order(1, 1, 1))));
+        list.add(new LinkedList<>(
+                Collections.singletonList(new Order(2, 2, 2))));
+        list.add(new LinkedList<>(
+                Collections.singletonList(new Order(3, 3, 3))));
+        pizzeria.setState(list);
+        var state = pizzeria.getState();
+        Assertions.assertEquals(
+                new LinkedList<>(
+                        Collections.singletonList(new Order(1, 1, 1))),
+                state.getFirst());
+        Assertions.assertEquals(
+                new LinkedList<>(
+                        Collections.singletonList(new Order(2, 2, 2))),
+                state.get(1));
+        Assertions.assertEquals(
+                new LinkedList<>(
+                        Collections.singletonList(new Order(3, 3, 3))),
+                state.get(2));
+    }
+
+    @Test
+    public void setStatusIncorrectlyTest() {
+        Pizzeria pizzeria = new Pizzeria();
+        Assertions.assertThrows(IllegalArgumentException.class, () ->
+                pizzeria.setState(new ArrayList<>()));
+    }
+
+    @Test
+    public void setStatusIncorrectlyTest2() {
+        Pizzeria pizzeria = new Pizzeria();
+        List<Queue<Order>> toSet = new ArrayList<>();
+        toSet.add(new LinkedList<>());
+        toSet.add(new LinkedList<>());
+        toSet.add(new LinkedList<>());
+        toSet.add(new LinkedList<>());
+        Assertions.assertThrows(IllegalArgumentException.class, () ->
+                pizzeria.setState(toSet));
+    }
+
+    @Test
+    public void simpleSimulationTest() throws InterruptedException {
         Pizzeria pizzeria = new Pizzeria();
         pizzeria.addBaker(new Baker(1));
         pizzeria.addBaker(new Baker(1));
@@ -22,20 +100,15 @@ public class PizzeriaTest {
         pizzeria.addDeliveryMan(new DeliveryMan(8));
         pizzeria.run();
 
-        int i = 0;
-        while (true) {
-            pizzeria.addOrder(new Order(i++, 1, 1));
-            List<Queue<Order>> list =
-                pizzeria.getStatus();
-            printState(list);
-            TimeUnit.SECONDS.sleep(1);
+        for (int i = 0; i < 10; i++){
+            pizzeria.addOrder(new Order(i, 1, 1));
         }
+        TimeUnit.SECONDS.sleep(10);
+        pizzeria.stop();
+        var state = pizzeria.getState();
+        Assertions.assertEquals(0, state.getFirst().size());
+        Assertions.assertEquals(0, state.get(1).size());
+        Assertions.assertEquals(10, state.get(2).size());
     }
 
-    private void printState(List<Queue<Order>> list) {
-        System.out.println("State: ");
-        list.forEach(elem -> {
-            System.out.println(elem.toString());
-        });
-    }
 }
