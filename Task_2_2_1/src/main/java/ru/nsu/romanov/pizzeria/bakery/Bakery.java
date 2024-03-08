@@ -3,8 +3,8 @@ package ru.nsu.romanov.pizzeria.bakery;
 import java.util.ArrayList;
 import java.util.List;
 import ru.nsu.romanov.pizzeria.components.thread_safe_queue.MyQueue;
-import ru.nsu.romanov.pizzeria.order.Order;
 import ru.nsu.romanov.pizzeria.components.stockpile.Stockpile;
+import ru.nsu.romanov.pizzeria.order.Order;
 
 /**
  * Class which simulates bakery.

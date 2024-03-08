@@ -8,9 +8,9 @@ import ru.nsu.romanov.pizzeria.bakery.Bakery;
 import ru.nsu.romanov.pizzeria.components.thread_safe_queue.MyQueue;
 import ru.nsu.romanov.pizzeria.delivery.Delivery;
 import ru.nsu.romanov.pizzeria.delivery.DeliveryMan;
-import ru.nsu.romanov.pizzeria.order.Order;
 import ru.nsu.romanov.pizzeria.components.stockpile.Stockpile;
 import ru.nsu.romanov.pizzeria.components.thread_safe_queue.QueueThreadSafe;
+import ru.nsu.romanov.pizzeria.order.Order;
 
 /**
  * Class pizzeria, which simulated a real pizzeria.

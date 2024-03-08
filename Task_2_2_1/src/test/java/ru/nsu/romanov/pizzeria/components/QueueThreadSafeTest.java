@@ -17,7 +17,7 @@ public class QueueThreadSafeTest {
     }
 
     @Test
-    void MultiPushPopTest() throws InterruptedException {
+    void multiPushPopTest() throws InterruptedException {
         MyQueue<Integer> queue = new QueueThreadSafe<Integer>();
         queue.push(1);
         queue.push(2);

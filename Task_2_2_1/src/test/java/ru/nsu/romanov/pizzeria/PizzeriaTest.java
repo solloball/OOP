@@ -45,7 +45,6 @@ public class PizzeriaTest {
 
     @Test
     public void setStatusTest() {
-        Pizzeria pizzeria = new Pizzeria();
         List<Queue<Order>> list = new ArrayList<>();
         list.add(new LinkedList<>(
                 Collections.singletonList(new Order(1, 1, 1))));
@@ -53,6 +52,7 @@ public class PizzeriaTest {
                 Collections.singletonList(new Order(2, 2, 2))));
         list.add(new LinkedList<>(
                 Collections.singletonList(new Order(3, 3, 3))));
+        Pizzeria pizzeria = new Pizzeria();
         pizzeria.setState(list);
         var state = pizzeria.getState();
         Assertions.assertEquals(
@@ -78,12 +78,12 @@ public class PizzeriaTest {
 
     @Test
     public void setStatusIncorrectlyTest2() {
-        Pizzeria pizzeria = new Pizzeria();
         List<Queue<Order>> toSet = new ArrayList<>();
         toSet.add(new LinkedList<>());
         toSet.add(new LinkedList<>());
         toSet.add(new LinkedList<>());
         toSet.add(new LinkedList<>());
+        Pizzeria pizzeria = new Pizzeria();
         Assertions.assertThrows(IllegalArgumentException.class, () ->
                 pizzeria.setState(toSet));
     }
@@ -100,7 +100,7 @@ public class PizzeriaTest {
         pizzeria.addDeliveryMan(new DeliveryMan(8));
         pizzeria.run();
 
-        for (int i = 0; i < 10; i++){
+        for (int i = 0; i < 10; i++) {
             pizzeria.addOrder(new Order(i, 1, 1));
         }
         TimeUnit.SECONDS.sleep(10);
