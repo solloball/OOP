@@ -1,5 +1,8 @@
 package ru.nsu.romanov.pizzeria;
 
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Queue;
@@ -11,6 +14,7 @@ import ru.nsu.romanov.pizzeria.components.stockpile.Stockpile;
 import ru.nsu.romanov.pizzeria.delivery.Delivery;
 import ru.nsu.romanov.pizzeria.delivery.DeliveryMan;
 import ru.nsu.romanov.pizzeria.order.Order;
+import ru.nsu.romanov.pizzeria.state.StateManger;
 
 /**
  * Class pizzeria, which simulated a real pizzeria.
@@ -129,6 +133,35 @@ public class Pizzeria {
         return bakery.removeBaker(index);
     }
 
+    /**
+     * Set state manager in pizzeria, by default null.
+     *
+     * @param stateManger state manager to set.
+     */
+    public void setStateManager(StateManger stateManger) {
+        this.stateManger = stateManger;
+    }
+
+    /**
+     * Set state using state manager.
+     *
+     * @param inputStreamReader input stream from which read.
+     * @throws IOException can throw IOException.
+     */
+    public void setStateManager(InputStreamReader inputStreamReader) throws IOException {
+       stateManger.readState(inputStreamReader);
+    }
+
+    /**
+     * Get state using state manager.
+     *
+     * @param outputStreamWriter stream in which write state.
+     */
+    public void getStateManager(OutputStreamWriter outputStreamWriter) {
+        stateManger.writeState(outputStreamWriter);
+    }
+
+    private StateManger stateManger = null;
     private final Delivery delivery;
     private final Stockpile stockpile = new Stockpile();
     private final Bakery bakery;
