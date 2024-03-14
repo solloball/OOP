@@ -4,3 +4,4 @@ ru.nsu.romanov.pizzeria.components.queue
 ru.nsu.romanov.pizzeria.components.stockpile
 ru.nsu.romanov.pizzeria.delivery
 ru.nsu.romanov.pizzeria.order
+ru.nsu.romanov.pizzeria.state

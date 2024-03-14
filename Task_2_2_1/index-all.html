@@ -49,7 +49,7 @@ loadScripts(document, 'script');</script>
 <div class="header">
 <h1>Index</h1>
 </div>
-<a href="#I:A">A</a>&nbsp;<a href="#I:B">B</a>&nbsp;<a href="#I:C">C</a>&nbsp;<a href="#I:D">D</a>&nbsp;<a href="#I:E">E</a>&nbsp;<a href="#I:G">G</a>&nbsp;<a href="#I:H">H</a>&nbsp;<a href="#I:I">I</a>&nbsp;<a href="#I:L">L</a>&nbsp;<a href="#I:M">M</a>&nbsp;<a href="#I:O">O</a>&nbsp;<a href="#I:P">P</a>&nbsp;<a href="#I:Q">Q</a>&nbsp;<a href="#I:R">R</a>&nbsp;<a href="#I:S">S</a>&nbsp;<a href="#I:T">T</a>&nbsp;<br><a href="allclasses-index.html">All&nbsp;Classes&nbsp;and&nbsp;Interfaces</a><span class="vertical-separator">|</span><a href="allpackages-index.html">All&nbsp;Packages</a>
+<a href="#I:A">A</a>&nbsp;<a href="#I:B">B</a>&nbsp;<a href="#I:C">C</a>&nbsp;<a href="#I:D">D</a>&nbsp;<a href="#I:E">E</a>&nbsp;<a href="#I:G">G</a>&nbsp;<a href="#I:H">H</a>&nbsp;<a href="#I:I">I</a>&nbsp;<a href="#I:J">J</a>&nbsp;<a href="#I:L">L</a>&nbsp;<a href="#I:M">M</a>&nbsp;<a href="#I:O">O</a>&nbsp;<a href="#I:P">P</a>&nbsp;<a href="#I:Q">Q</a>&nbsp;<a href="#I:R">R</a>&nbsp;<a href="#I:S">S</a>&nbsp;<a href="#I:T">T</a>&nbsp;<a href="#I:W">W</a>&nbsp;<br><a href="allclasses-index.html">All&nbsp;Classes&nbsp;and&nbsp;Interfaces</a><span class="vertical-separator">|</span><a href="allpackages-index.html">All&nbsp;Packages</a>
 <h2 class="title" id="I:A">A</h2>
 <dl class="index">
 <dt><a href="ru/nsu/romanov/pizzeria/bakery/Bakery.html#addBaker(ru.nsu.romanov.pizzeria.bakery.Baker)" class="member-name-link">addBaker(Baker)</a> - Method in class ru.nsu.romanov.pizzeria.bakery.<a href="ru/nsu/romanov/pizzeria/bakery/Bakery.html" title="class in ru.nsu.romanov.pizzeria.bakery">Bakery</a></dt>
@@ -183,6 +183,10 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">return state of pizzeria.</div>
 </dd>
+<dt><a href="ru/nsu/romanov/pizzeria/Pizzeria.html#getStateManager(java.io.OutputStreamWriter)" class="member-name-link">getStateManager(OutputStreamWriter)</a> - Method in class ru.nsu.romanov.pizzeria.<a href="ru/nsu/romanov/pizzeria/Pizzeria.html" title="class in ru.nsu.romanov.pizzeria">Pizzeria</a></dt>
+<dd>
+<div class="block">Get state using state manager.</div>
+</dd>
 </dl>
 <h2 class="title" id="I:H">H</h2>
 <dl class="index">
@@ -204,6 +208,17 @@ loadScripts(document, 'script');</script>
 <dt><a href="ru/nsu/romanov/pizzeria/order/Order.html#id()" class="member-name-link">id()</a> - Method in record class ru.nsu.romanov.pizzeria.order.<a href="ru/nsu/romanov/pizzeria/order/Order.html" title="class in ru.nsu.romanov.pizzeria.order">Order</a></dt>
 <dd>
 <div class="block">Returns the value of the <a href="./ru/nsu/romanov/pizzeria/order/Order.html#param-id"><code>id</code></a> record component.</div>
+</dd>
+</dl>
+<h2 class="title" id="I:J">J</h2>
+<dl class="index">
+<dt><a href="ru/nsu/romanov/pizzeria/state/JsonStateManager.html" class="type-name-link" title="class in ru.nsu.romanov.pizzeria.state">JsonStateManager</a> - Class in <a href="ru/nsu/romanov/pizzeria/state/package-summary.html">ru.nsu.romanov.pizzeria.state</a></dt>
+<dd>
+<div class="block">Read and write to json.</div>
+</dd>
+<dt><a href="ru/nsu/romanov/pizzeria/state/JsonStateManager.html#%3Cinit%3E(ru.nsu.romanov.pizzeria.components.queue.MyQueue,ru.nsu.romanov.pizzeria.components.queue.MyQueue,ru.nsu.romanov.pizzeria.components.queue.MyQueue)" class="member-name-link">JsonStateManager(MyQueue&lt;Order&gt;, MyQueue&lt;Order&gt;, MyQueue&lt;Order&gt;)</a> - Constructor for class ru.nsu.romanov.pizzeria.state.<a href="ru/nsu/romanov/pizzeria/state/JsonStateManager.html" title="class in ru.nsu.romanov.pizzeria.state">JsonStateManager</a></dt>
+<dd>
+<div class="block">Constructor for json state manager.</div>
 </dd>
 </dl>
 <h2 class="title" id="I:L">L</h2>
@@ -277,6 +292,14 @@ loadScripts(document, 'script');</script>
 </dl>
 <h2 class="title" id="I:R">R</h2>
 <dl class="index">
+<dt><a href="ru/nsu/romanov/pizzeria/state/JsonStateManager.html#readState(java.io.InputStreamReader)" class="member-name-link">readState(InputStreamReader)</a> - Method in class ru.nsu.romanov.pizzeria.state.<a href="ru/nsu/romanov/pizzeria/state/JsonStateManager.html" title="class in ru.nsu.romanov.pizzeria.state">JsonStateManager</a></dt>
+<dd>
+<div class="block">read state from json.</div>
+</dd>
+<dt><a href="ru/nsu/romanov/pizzeria/state/StateManger.html#readState(java.io.InputStreamReader)" class="member-name-link">readState(InputStreamReader)</a> - Method in interface ru.nsu.romanov.pizzeria.state.<a href="ru/nsu/romanov/pizzeria/state/StateManger.html" title="interface in ru.nsu.romanov.pizzeria.state">StateManger</a></dt>
+<dd>
+<div class="block">Read state from stream.</div>
+</dd>
 <dt><a href="ru/nsu/romanov/pizzeria/bakery/Bakery.html#removeBaker(int)" class="member-name-link">removeBaker(int)</a> - Method in class ru.nsu.romanov.pizzeria.bakery.<a href="ru/nsu/romanov/pizzeria/bakery/Bakery.html" title="class in ru.nsu.romanov.pizzeria.bakery">Bakery</a></dt>
 <dd>
 <div class="block">Remove baker from bakery.</div>
@@ -304,6 +327,8 @@ loadScripts(document, 'script');</script>
 <dt><a href="ru/nsu/romanov/pizzeria/delivery/package-summary.html">ru.nsu.romanov.pizzeria.delivery</a> - package ru.nsu.romanov.pizzeria.delivery</dt>
 <dd>&nbsp;</dd>
 <dt><a href="ru/nsu/romanov/pizzeria/order/package-summary.html">ru.nsu.romanov.pizzeria.order</a> - package ru.nsu.romanov.pizzeria.order</dt>
+<dd>&nbsp;</dd>
+<dt><a href="ru/nsu/romanov/pizzeria/state/package-summary.html">ru.nsu.romanov.pizzeria.state</a> - package ru.nsu.romanov.pizzeria.state</dt>
 <dd>&nbsp;</dd>
 <dt><a href="ru/nsu/romanov/pizzeria/bakery/Bakery.html#run()" class="member-name-link">run()</a> - Method in class ru.nsu.romanov.pizzeria.bakery.<a href="ru/nsu/romanov/pizzeria/bakery/Bakery.html" title="class in ru.nsu.romanov.pizzeria.bakery">Bakery</a></dt>
 <dd>
@@ -344,6 +369,14 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Set state to pizzeria.</div>
 </dd>
+<dt><a href="ru/nsu/romanov/pizzeria/Pizzeria.html#setStateManager(java.io.InputStreamReader)" class="member-name-link">setStateManager(InputStreamReader)</a> - Method in class ru.nsu.romanov.pizzeria.<a href="ru/nsu/romanov/pizzeria/Pizzeria.html" title="class in ru.nsu.romanov.pizzeria">Pizzeria</a></dt>
+<dd>
+<div class="block">Set state using state manager.</div>
+</dd>
+<dt><a href="ru/nsu/romanov/pizzeria/Pizzeria.html#setStateManager(ru.nsu.romanov.pizzeria.state.StateManger)" class="member-name-link">setStateManager(StateManger)</a> - Method in class ru.nsu.romanov.pizzeria.<a href="ru/nsu/romanov/pizzeria/Pizzeria.html" title="class in ru.nsu.romanov.pizzeria">Pizzeria</a></dt>
+<dd>
+<div class="block">Set state manager in pizzeria, by default null.</div>
+</dd>
 <dt><a href="ru/nsu/romanov/pizzeria/Pizzeria.html#setStockpileCapacity(int)" class="member-name-link">setStockpileCapacity(int)</a> - Method in class ru.nsu.romanov.pizzeria.<a href="ru/nsu/romanov/pizzeria/Pizzeria.html" title="class in ru.nsu.romanov.pizzeria">Pizzeria</a></dt>
 <dd>
 <div class="block">Set capacity to stockpile.</div>
@@ -359,6 +392,10 @@ loadScripts(document, 'script');</script>
 <dt><a href="ru/nsu/romanov/pizzeria/delivery/DeliveryManThread.html#start()" class="member-name-link">start()</a> - Method in class ru.nsu.romanov.pizzeria.delivery.<a href="ru/nsu/romanov/pizzeria/delivery/DeliveryManThread.html" title="class in ru.nsu.romanov.pizzeria.delivery">DeliveryManThread</a></dt>
 <dd>
 <div class="block">Start simulation externally.</div>
+</dd>
+<dt><a href="ru/nsu/romanov/pizzeria/state/StateManger.html" class="type-name-link" title="interface in ru.nsu.romanov.pizzeria.state">StateManger</a> - Interface in <a href="ru/nsu/romanov/pizzeria/state/package-summary.html">ru.nsu.romanov.pizzeria.state</a></dt>
+<dd>
+<div class="block">Response for reading and writing state.</div>
 </dd>
 <dt><a href="ru/nsu/romanov/pizzeria/components/stockpile/Stockpile.html" class="type-name-link" title="class in ru.nsu.romanov.pizzeria.components.stockpile">Stockpile</a> - Class in <a href="ru/nsu/romanov/pizzeria/components/stockpile/package-summary.html">ru.nsu.romanov.pizzeria.components.stockpile</a></dt>
 <dd>
@@ -410,7 +447,18 @@ loadScripts(document, 'script');</script>
 <div class="block">Returns a string representation of this record class.</div>
 </dd>
 </dl>
-<a href="#I:A">A</a>&nbsp;<a href="#I:B">B</a>&nbsp;<a href="#I:C">C</a>&nbsp;<a href="#I:D">D</a>&nbsp;<a href="#I:E">E</a>&nbsp;<a href="#I:G">G</a>&nbsp;<a href="#I:H">H</a>&nbsp;<a href="#I:I">I</a>&nbsp;<a href="#I:L">L</a>&nbsp;<a href="#I:M">M</a>&nbsp;<a href="#I:O">O</a>&nbsp;<a href="#I:P">P</a>&nbsp;<a href="#I:Q">Q</a>&nbsp;<a href="#I:R">R</a>&nbsp;<a href="#I:S">S</a>&nbsp;<a href="#I:T">T</a>&nbsp;<br><a href="allclasses-index.html">All&nbsp;Classes&nbsp;and&nbsp;Interfaces</a><span class="vertical-separator">|</span><a href="allpackages-index.html">All&nbsp;Packages</a></main>
+<h2 class="title" id="I:W">W</h2>
+<dl class="index">
+<dt><a href="ru/nsu/romanov/pizzeria/state/JsonStateManager.html#writeState(java.io.OutputStreamWriter)" class="member-name-link">writeState(OutputStreamWriter)</a> - Method in class ru.nsu.romanov.pizzeria.state.<a href="ru/nsu/romanov/pizzeria/state/JsonStateManager.html" title="class in ru.nsu.romanov.pizzeria.state">JsonStateManager</a></dt>
+<dd>
+<div class="block">Write state into state.</div>
+</dd>
+<dt><a href="ru/nsu/romanov/pizzeria/state/StateManger.html#writeState(java.io.OutputStreamWriter)" class="member-name-link">writeState(OutputStreamWriter)</a> - Method in interface ru.nsu.romanov.pizzeria.state.<a href="ru/nsu/romanov/pizzeria/state/StateManger.html" title="interface in ru.nsu.romanov.pizzeria.state">StateManger</a></dt>
+<dd>
+<div class="block">Write state into stream.</div>
+</dd>
+</dl>
+<a href="#I:A">A</a>&nbsp;<a href="#I:B">B</a>&nbsp;<a href="#I:C">C</a>&nbsp;<a href="#I:D">D</a>&nbsp;<a href="#I:E">E</a>&nbsp;<a href="#I:G">G</a>&nbsp;<a href="#I:H">H</a>&nbsp;<a href="#I:I">I</a>&nbsp;<a href="#I:J">J</a>&nbsp;<a href="#I:L">L</a>&nbsp;<a href="#I:M">M</a>&nbsp;<a href="#I:O">O</a>&nbsp;<a href="#I:P">P</a>&nbsp;<a href="#I:Q">Q</a>&nbsp;<a href="#I:R">R</a>&nbsp;<a href="#I:S">S</a>&nbsp;<a href="#I:T">T</a>&nbsp;<a href="#I:W">W</a>&nbsp;<br><a href="allclasses-index.html">All&nbsp;Classes&nbsp;and&nbsp;Interfaces</a><span class="vertical-separator">|</span><a href="allpackages-index.html">All&nbsp;Packages</a></main>
 </div>
 </div>
 </body>
