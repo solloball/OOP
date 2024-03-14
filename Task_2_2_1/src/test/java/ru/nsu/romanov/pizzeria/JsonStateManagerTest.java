@@ -27,9 +27,9 @@ public class JsonStateManagerTest {
     @Test
     void simpleReadTest() throws InterruptedException, IOException {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        baos.write(("[[{\"id\":1,\"countPizzas\":1,\"deliveryTime\":1}]," +
-                "[{\"id\":2,\"countPizzas\":2,\"deliveryTime\":2}]," +
-                "[{\"id\":3,\"countPizzas\":3,\"deliveryTime\":3}]]").getBytes());
+        baos.write(("[[{\"id\":1,\"countPizzas\":1,\"deliveryTime\":1}],"
+                + "[{\"id\":2,\"countPizzas\":2,\"deliveryTime\":2}],"
+                + "[{\"id\":3,\"countPizzas\":3,\"deliveryTime\":3}]]").getBytes());
         MyQueue<Order> cookingOrders = new QueueThreadSafe<>();
         MyQueue<Order> deliveryOrders = new QueueThreadSafe<>();
         MyQueue<Order> doneOrders = new QueueThreadSafe<>();
@@ -77,9 +77,9 @@ public class JsonStateManagerTest {
         }
         try (Scanner scanner = new Scanner(file)) {
             Assertions.assertEquals(
-                    "[[{\"id\":1,\"countPizzas\":1,\"deliveryTime\":1}]," +
-                            "[{\"id\":2,\"countPizzas\":2,\"deliveryTime\":2}]," +
-                            "[{\"id\":3,\"countPizzas\":3,\"deliveryTime\":3}]]",
+                    "[[{\"id\":1,\"countPizzas\":1,\"deliveryTime\":1}],"
+                            + "[{\"id\":2,\"countPizzas\":2,\"deliveryTime\":2}],"
+                            + "[{\"id\":3,\"countPizzas\":3,\"deliveryTime\":3}]]",
                     scanner.next());
         }
         if (!file.delete()) {

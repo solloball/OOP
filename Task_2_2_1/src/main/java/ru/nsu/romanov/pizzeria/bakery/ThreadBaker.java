@@ -31,7 +31,7 @@ public class ThreadBaker implements Runnable {
      */
     @Override
     public void run() {
-        while (true) {
+        while (!thread.isInterrupted()) {
             try {
                 var order = cookingOrders.pop();
                 TimeUnit.SECONDS.sleep(order.countPizzas() / baker.speed());

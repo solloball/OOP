@@ -35,7 +35,7 @@ public class DeliveryManThread implements Runnable {
      */
     @Override
     public void run() {
-        while (true) {
+        while (!thread.isInterrupted()) {
             try {
                 var order = deliveryOrders.pop();
                 int count = order.countPizzas();
