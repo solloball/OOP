@@ -25,7 +25,7 @@ public class JsonStateManager implements StateManger {
     public JsonStateManager(
             MyQueue<Order> cookingOrders,
             MyQueue<Order> deliveryOrders,
-            MyQueue<Order> doneOrders){
+            MyQueue<Order> doneOrders) {
         this.cookingOrders = cookingOrders;
         this.deliveryOrders = deliveryOrders;
         this.doneOrders = doneOrders;
@@ -71,7 +71,7 @@ public class JsonStateManager implements StateManger {
         }
     }
 
-    final private MyQueue<Order> cookingOrders;
-    final private MyQueue<Order> deliveryOrders;
-    final private MyQueue<Order> doneOrders;
+    private final MyQueue<Order> cookingOrders;
+    private final MyQueue<Order> deliveryOrders;
+    private final MyQueue<Order> doneOrders;
 }

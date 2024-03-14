@@ -149,7 +149,7 @@ public class Pizzeria {
      * @throws IOException can throw IOException.
      */
     public void setStateManager(InputStreamReader inputStreamReader) throws IOException {
-       stateManger.readState(inputStreamReader);
+        stateManger.readState(inputStreamReader);
     }
 
     /**
