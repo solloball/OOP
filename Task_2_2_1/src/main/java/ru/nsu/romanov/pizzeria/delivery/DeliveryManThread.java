@@ -46,6 +46,7 @@ public class DeliveryManThread implements Runnable {
                     count -= toDelivery;
                 }
                 doneOrders.push(order);
+                printState(order);
             } catch (InterruptedException e) {
                 return;
             }
@@ -65,6 +66,13 @@ public class DeliveryManThread implements Runnable {
     public void stop() {
         thread.interrupt();
     }
+
+    private void printState(Order order) {
+        System.out.println("id " + order.id()
+                + "\ndelivery order " + deliveryOrders.getQueue()
+                + "\ndone order " + doneOrders.getQueue());
+    }
+
 
     /**
      * get delivery man record.

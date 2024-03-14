@@ -37,6 +37,7 @@ public class ThreadBaker implements Runnable {
                 TimeUnit.SECONDS.sleep(order.countPizzas() / baker.speed());
                 deliveryOrders.push(order);
                 stockpile.push(order.countPizzas());
+                printState(order);
             } catch (InterruptedException e) {
                 return;
             }
@@ -66,6 +67,11 @@ public class ThreadBaker implements Runnable {
         return baker;
     }
 
+    private void printState(Order order) {
+        System.out.println("id " + order.id()
+            + "\ncooking order " + cookingOrders.getQueue()
+            + "\ndelivery order " + deliveryOrders.getQueue());
+    }
 
     private final Thread thread = new Thread(this);
     private final Baker baker;

@@ -39,8 +39,8 @@ public class QueueThreadSafe<T> implements MyQueue<T> {
      *
      * @return queue.
      */
-    public synchronized Queue<T> getQueue() {
-        return queue;
+    public Queue<T> getQueue() {
+        return new LinkedList<>(queue);
     }
 
     /**
@@ -52,5 +52,5 @@ public class QueueThreadSafe<T> implements MyQueue<T> {
         this.queue = queue; 
     }
 
-    private java.util.Queue<T> queue = new LinkedList<T>();
+    private java.util.Queue<T> queue = new LinkedList<>();
 }

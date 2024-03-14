@@ -1,5 +1,7 @@
 package ru.nsu.romanov.pizzeria.components.queue;
 
+import java.util.Queue;
+
 /**
  * interface for queue.
  *
@@ -11,7 +13,7 @@ public interface MyQueue<T> {
      *
      * @return queue.
      */
-    java.util.Queue<T> getQueue();
+    Queue<T> getQueue();
 
     /**
      * Set queue.

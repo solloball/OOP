@@ -45,9 +45,8 @@ public class Pizzeria {
      * Add new order to pizzeria.
      *
      * @param order order to add.
-     * @throws InterruptedException can throw InterruptedException.
      */
-    public void addOrder(Order order) throws InterruptedException {
+    public void addOrder(Order order) {
         cookingOrders.push(order);
     }
 
