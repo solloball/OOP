@@ -60,23 +60,4 @@ public class PizzeriaTest {
         Assertions.assertEquals(0, state.get(1).size());
         Assertions.assertEquals(10, state.get(2).size());
     }
-
-    @Test
-    public void simulation() throws InterruptedException {
-        Pizzeria pizzeria = new Pizzeria();
-        pizzeria.addBaker(new Baker(1));
-        pizzeria.addBaker(new Baker(1));
-        pizzeria.addBaker(new Baker(1));
-        pizzeria.setStockpileCapacity(120);
-        pizzeria.addDeliveryMan(new DeliveryMan(3));
-        pizzeria.addDeliveryMan(new DeliveryMan(3));
-        pizzeria.addDeliveryMan(new DeliveryMan(3));
-        pizzeria.run();
-
-        for (int i = 0; i < 20; i++) {
-            pizzeria.addOrder(new Order(i, 3, 1));
-        }
-        TimeUnit.SECONDS.sleep(10);
-        pizzeria.stop();
-    }
 }

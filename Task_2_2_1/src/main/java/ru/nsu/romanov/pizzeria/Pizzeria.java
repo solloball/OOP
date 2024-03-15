@@ -174,8 +174,8 @@ public class Pizzeria {
     /**
      * return pizzeria from file.
      *
-     * @param file
-     * @return
+     * @param file file from which read.
+     * @return pizzeria.
      */
     @NotNull
     private static Pizzeria getPizzeria(
