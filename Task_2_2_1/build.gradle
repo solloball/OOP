@@ -34,3 +34,15 @@ java {
         languageVersion.set(JavaLanguageVersion.of(21))
     }
 }
+
+
+jar {
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+    manifest {
+        attributes 'Main-Class': 'ru.nsu.romanov.pizzeria.Pizzeria'
+    }
+    archiveBaseName = 'Pizzeria'
+    from {
+        configurations.runtimeClasspath.findAll { it.name.endsWith('jar') }.collect { zipTree(it) }
+    }
+}

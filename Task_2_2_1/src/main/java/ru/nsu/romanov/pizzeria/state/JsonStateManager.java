@@ -37,7 +37,8 @@ public class JsonStateManager implements StateManger {
      * @param inputStreamReader stream from which read.
      */
     @Override
-    public void readState(InputStreamReader inputStreamReader) {
+    public void readState(
+            InputStreamReader inputStreamReader) {
         try {
             ObjectMapper mapper = new ObjectMapper();
             List<Queue<Order>> json = mapper.readValue(inputStreamReader, new TypeReference<>(){});

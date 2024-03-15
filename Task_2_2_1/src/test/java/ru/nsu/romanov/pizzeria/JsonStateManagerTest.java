@@ -67,7 +67,7 @@ public class JsonStateManagerTest {
                 cookingOrders,
                 deliveryOrders,
                 doneOrders);
-        File file = new File("test.json");
+        File file = new File("test1.json");
 
         try (OutputStreamWriter outputStreamWriter = new OutputStreamWriter(
                 new FileOutputStream(file))) {

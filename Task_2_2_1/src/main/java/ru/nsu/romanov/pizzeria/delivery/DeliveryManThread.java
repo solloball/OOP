@@ -68,7 +68,9 @@ public class DeliveryManThread implements Runnable {
     }
 
     private void printState(Order order) {
-        System.out.println("id " + order.id()
+        System.out.println(
+                "delivery man"
+                + "\nid " + order.id()
                 + "\ndelivery order " + deliveryOrders.getQueue()
                 + "\ndone order " + doneOrders.getQueue());
     }

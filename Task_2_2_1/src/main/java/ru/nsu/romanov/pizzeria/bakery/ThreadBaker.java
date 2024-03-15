@@ -68,7 +68,9 @@ public class ThreadBaker implements Runnable {
     }
 
     private void printState(Order order) {
-        System.out.println("id " + order.id()
+        System.out.println(
+            "baker"
+            + "\nid " + order.id()
             + "\ncooking order " + cookingOrders.getQueue()
             + "\ndelivery order " + deliveryOrders.getQueue());
     }

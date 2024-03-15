@@ -1,10 +1,5 @@
 package ru.nsu.romanov.pizzeria;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Queue;
 import java.util.concurrent.TimeUnit;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -39,53 +34,8 @@ public class PizzeriaTest {
 
     @Test
     public void addRemoveEmptyDeliveryManTest() {
-        Pizzeria pizzeria = new Pizzeria();
+        Pizzeria pizzeria = new Pizzeria(null, null, null);
         Assertions.assertFalse(pizzeria.removeDeliveryMan(0));
-    }
-
-    @Test
-    public void setStatusTest() {
-        List<Queue<Order>> list = new ArrayList<>();
-        list.add(new LinkedList<>(
-                Collections.singletonList(new Order(1, 1, 1))));
-        list.add(new LinkedList<>(
-                Collections.singletonList(new Order(2, 2, 2))));
-        list.add(new LinkedList<>(
-                Collections.singletonList(new Order(3, 3, 3))));
-        Pizzeria pizzeria = new Pizzeria();
-        pizzeria.setState(list);
-        var state = pizzeria.getState();
-        Assertions.assertEquals(
-                new LinkedList<>(
-                        Collections.singletonList(new Order(1, 1, 1))),
-                state.getFirst());
-        Assertions.assertEquals(
-                new LinkedList<>(
-                        Collections.singletonList(new Order(2, 2, 2))),
-                state.get(1));
-        Assertions.assertEquals(
-                new LinkedList<>(
-                        Collections.singletonList(new Order(3, 3, 3))),
-                state.get(2));
-    }
-
-    @Test
-    public void setStatusIncorrectlyTest() {
-        Pizzeria pizzeria = new Pizzeria();
-        Assertions.assertThrows(IllegalArgumentException.class, () ->
-                pizzeria.setState(new ArrayList<>()));
-    }
-
-    @Test
-    public void setStatusIncorrectlyTest2() {
-        List<Queue<Order>> toSet = new ArrayList<>();
-        toSet.add(new LinkedList<>());
-        toSet.add(new LinkedList<>());
-        toSet.add(new LinkedList<>());
-        toSet.add(new LinkedList<>());
-        Pizzeria pizzeria = new Pizzeria();
-        Assertions.assertThrows(IllegalArgumentException.class, () ->
-                pizzeria.setState(toSet));
     }
 
     @Test
@@ -111,4 +61,22 @@ public class PizzeriaTest {
         Assertions.assertEquals(10, state.get(2).size());
     }
 
+    @Test
+    public void simulation() throws InterruptedException {
+        Pizzeria pizzeria = new Pizzeria();
+        pizzeria.addBaker(new Baker(1));
+        pizzeria.addBaker(new Baker(1));
+        pizzeria.addBaker(new Baker(1));
+        pizzeria.setStockpileCapacity(120);
+        pizzeria.addDeliveryMan(new DeliveryMan(3));
+        pizzeria.addDeliveryMan(new DeliveryMan(3));
+        pizzeria.addDeliveryMan(new DeliveryMan(3));
+        pizzeria.run();
+
+        for (int i = 0; i < 20; i++) {
+            pizzeria.addOrder(new Order(i, 3, 1));
+        }
+        TimeUnit.SECONDS.sleep(10);
+        pizzeria.stop();
+    }
 }
