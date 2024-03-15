@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Queue;
 import java.util.concurrent.TimeUnit;
-
 import org.jetbrains.annotations.NotNull;
 import ru.nsu.romanov.pizzeria.bakery.Baker;
 import ru.nsu.romanov.pizzeria.bakery.Bakery;
@@ -151,6 +150,12 @@ public class Pizzeria {
     private final MyQueue<Order> doneOrders;
 
 
+    /**
+     * Testing simulation.
+     *
+     * @param args unused.
+     * @throws InterruptedException can throw InterruptedException.
+     */
     public static void main(String[] args) throws InterruptedException {
         File file = new File("test.json");
         Pizzeria pizzeria = getPizzeria(file);
@@ -166,6 +171,12 @@ public class Pizzeria {
         pizzeria.stop();
     }
 
+    /**
+     * return pizzeria from file.
+     *
+     * @param file
+     * @return
+     */
     @NotNull
     private static Pizzeria getPizzeria(
             File file) {
