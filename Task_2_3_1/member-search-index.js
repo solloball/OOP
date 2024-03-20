@@ -1,0 +1,1 @@
+memberSearchIndex = [{"p":"ru.nsu.romanov.snake","c":"Snake","l":"Snake()","u":"%3Cinit%3E()"}];updateSearchResults();
