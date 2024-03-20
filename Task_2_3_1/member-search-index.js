@@ -1,1 +1,1 @@
-memberSearchIndex = [{"p":"ru.nsu.romanov.snake","c":"Snake","l":"Snake()","u":"%3Cinit%3E()"}];updateSearchResults();
+memberSearchIndex = [{"p":"ru.nsu.romanov.snake","c":"Controller","l":"Controller()","u":"%3Cinit%3E()"},{"p":"ru.nsu.romanov.snake","c":"Game","l":"Game()","u":"%3Cinit%3E()"},{"p":"ru.nsu.romanov.snake","c":"Game","l":"main(String[])","u":"main(java.lang.String[])"},{"p":"ru.nsu.romanov.snake","c":"Controller","l":"onHelloButtonClick()"},{"p":"ru.nsu.romanov.snake","c":"Game","l":"start(Stage)","u":"start(javafx.stage.Stage)"}];updateSearchResults();
