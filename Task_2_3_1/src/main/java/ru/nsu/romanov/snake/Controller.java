@@ -1,14 +1,14 @@
-package ru.nsu.romanov.task_2_3_1;
+package ru.nsu.romanov.snake;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 
-public class HelloController {
+public class Controller {
     @FXML
     private Label welcomeText;
 
     @FXML
     protected void onHelloButtonClick() {
-        welcomeText.setText("Welcome to JavaFX Application!");
+        welcomeText.setText("Welcome to snake");
     }
 }

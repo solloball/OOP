@@ -1,4 +1,4 @@
-module ru.nsu.romanov.task {
+module ru.nsu.romanov.snake {
     requires javafx.controls;
     requires javafx.fxml;
     requires javafx.web;
@@ -11,6 +11,6 @@ module ru.nsu.romanov.task {
     requires eu.hansolo.tilesfx;
     requires com.almasb.fxgl.all;
 
-    opens ru.nsu.romanov.task_2_3_1 to javafx.fxml;
-    exports ru.nsu.romanov.task_2_3_1;
+    opens ru.nsu.romanov.snake to javafx.fxml;
+    exports ru.nsu.romanov.snake;
 }

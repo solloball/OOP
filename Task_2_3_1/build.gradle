@@ -25,8 +25,8 @@ tasks.withType(JavaCompile) {
 }
 
 application {
-  mainModule = 'ru.nsu.romanov.task_2_3_1'
-  mainClass = 'ru.nsu.romanov.task_2_3_1.HelloApplication'
+  mainModule = 'ru.nsu.romanov.snake'
+  mainClass = 'ru.nsu.romanov.snake.HelloApplication'
 }
 
 javafx {
@@ -76,5 +76,11 @@ configurations.all {
     if (details.requested.group == 'org.ow2.asm') {
       details.useVersion "9.5"
     }
+  }
+}
+
+java {
+  toolchain {
+    languageVersion.set(JavaLanguageVersion.of(21))
   }
 }
