@@ -1,5 +1,6 @@
 plugins {
   id 'java'
+  id 'jacoco'
   id 'application'
   id 'org.javamodularity.moduleplugin' version '1.8.12'
   id 'org.openjfx.javafxplugin' version '0.0.13'
@@ -8,6 +9,16 @@ plugins {
 
 group 'ru.nsu.romanov'
 version '1.0-SNAPSHOT'
+
+test {
+  useJUnitPlatform()
+}
+
+jacocoTestReport {
+  reports {
+    xml.required = true
+  }
+}
 
 repositories {
   mavenCentral()
@@ -35,6 +46,9 @@ javafx {
 }
 
 dependencies {
+  implementation 'org.jetbrains:annotations:24.0.0'
+  testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.1'
+  testImplementation 'org.junit.jupiter:junit-jupiter-engine:5.7.1'
   implementation('org.controlsfx:controlsfx:11.1.2')
   implementation('com.dlsc.formsfx:formsfx-core:11.6.0') {
     exclude(group: 'org.openjfx')
