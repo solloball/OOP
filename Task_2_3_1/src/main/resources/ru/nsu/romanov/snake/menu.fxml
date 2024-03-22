@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Scene?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.control.Button?>
+
+<Scene>
+    <Pane prefWidth="1920" prefHeight="1080">
+        <!-- Button Positioned Using layoutX and layoutY -->
+        <Button text="Game" layoutX="960" layoutY="500" scaleY="10" scaleX="10"/>
+    </Pane>
+</Scene>
