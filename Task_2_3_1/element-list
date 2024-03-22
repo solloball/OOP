@@ -1,2 +1,4 @@
 module:ru.nsu.romanov.snake
 ru.nsu.romanov.snake
+ru.nsu.romanov.snake.components
+ru.nsu.romanov.snake.components.playersnake
