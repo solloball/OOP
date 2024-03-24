@@ -1,79 +1,74 @@
 package ru.nsu.romanov.snake;
 
-import javafx.fxml.FXML;
+import javafx.event.Event;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
+import javafx.scene.transform.Scale;
 import javafx.stage.Stage;
-import ru.nsu.romanov.snake.components.Direction;
-import ru.nsu.romanov.snake.components.Snake;
+import javafx.stage.Window;
+import ru.nsu.romanov.snake.components.*;
 
 import java.io.IOException;
-import java.util.Objects;
 import java.util.stream.IntStream;
 
-public class Display {
-    public Display(Stage stage, int widthWindow, int heightWindow,
-                   int heightGame, int widthGame, Snake snake) throws IOException {
+public class Display<T extends Event> {
 
+    public Display(Stage stage, Game<T> game) {
         this.stage = stage;
-        this.heightGame = heightGame;
-        this.widthGame = widthGame;
 
-        for (int y = 0; y < heightGame; y++){
-            for (int x = 0; x < widthGame; x++) {
-                Rectangle shape = new Rectangle(20, 20, 70, 70);
-                shape.setFill(background);
-                shape.setStroke(Color.BLACK);
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("game.fxml"));
+            gameZone = new Scene(loader.load());
+            controller = loader.getController();
+            controller.init(background, this, game);
 
-                // Iterate the Index using the loops
-                GridPane.setRowIndex(shape, y);
-                GridPane.setColumnIndex(shape,x);
-
-                layoutGame.getChildren().add(shape);
-            }
+            loader = new FXMLLoader(getClass().getResource("menu.fxml"));
+            menu = new Scene(loader.load());
+            ControllerMenu<T> controllerMenu = loader.getController();
+            controllerMenu.init(this, game);
+        } catch (RuntimeException | IOException e) {
+            throw new RuntimeException(e.getCause());
         }
-
-        gameZone = new Scene(layoutGame, widthWindow, heightWindow);
         gameZone.setFill(background);
+        Snake snake = game.getMainSnake();
         gameZone.setOnKeyPressed(e -> {
             switch (e.getCode()) {
-                case UP -> {
+                case W -> {
                     if (snake.getDirection() != Direction.UP
                             || snake.getBody().size() == 1) {
                         snake.setDirection(Direction.DOWN);
                     }
                 }
-                case DOWN -> {
+                case S -> {
                     if (snake.getDirection() != Direction.DOWN
                             || snake.getBody().size() == 1) {
                         snake.setDirection(Direction.UP);
                     }
                 }
-                case LEFT -> {
+                case A -> {
                     if (snake.getDirection() != Direction.RIGHT
                             || snake.getBody().size() == 1) {
                         snake.setDirection(Direction.LEFT);
                     }
                 }
-                case RIGHT -> {
+                case D -> {
                     if (snake.getDirection() != Direction.LEFT
                             || snake.getBody().size() == 1) {
                         snake.setDirection(Direction.RIGHT);
                     }
                 }
+                case P -> {
+                    if (game.getState() == StateGame.PAUSED) {
+                        game.setState(StateGame.ACTIVE);
+                    } else {
+                        game.setState(StateGame.PAUSED);
+                    }
+                }
             }
         });
-
-        menu = FXMLLoader.load(
-                Objects.requireNonNull(
-                        getClass().getResource("menu.fxml")));
-        menu.setFill(background);
 
         stage.setTitle("Snake");
         stage.setScene(menu);
@@ -81,44 +76,51 @@ public class Display {
         stage.show();
     }
 
-    public void draw(int x, int y, Color color) {
-        if (x < 0 || x >= widthGame || y < 0 || y >= heightGame) {
-            return;
-        }
-        Rectangle node = (Rectangle) layoutGame.getChildren().get(y * widthGame + x);
-        node.setFill(color);
+    public void draw(Position position, Color color) {
+        controller.draw(position, color);
     }
 
-    public void clear(int x, int y) {
-        if (x < 0 || x >= widthGame || y < 0 || y >= heightGame) {
-            return;
-        }
-        Rectangle node = (Rectangle) layoutGame.getChildren().get(y * widthGame + x);
-        node.setFill(background);
+    public void clear(Position position) {
+        controller.draw(position, background);
     }
 
     public void clear() {
-        IntStream.range(0, widthGame).forEach(x ->
-            IntStream.range(0, heightGame).forEach(y -> {
-                Rectangle node = (Rectangle) layoutGame
-                        .getChildren()
-                        .get(y * widthGame + x);
-                node.setFill(background);
-            }));
+        IntStream.range(0, sizeGame)
+                .forEach(x -> IntStream.range(0, sizeGame)
+                        .forEach(y ->
+                                controller
+                                        .draw(new Position(x, y), background)));
     }
 
-    public void switchScene() {
-        //stage.setScene(menu);
+    public void setScore(int score) {
+        controller.setScore(score);
     }
 
+    public void setMaxScore(int score) {
+        controller.setMaxScore(score);
+    }
+
+    public void switchGame() {
+        stage.setScene(gameZone);
+    }
+
+    public void switchMenu() {
+        stage.setScene(menu);
+    }
+
+    public void setScale(WindowSize windowSize) {
+        var scale = new Scale(
+                windowSize.getScale(), windowSize.getScale(), 0, 0);
+        menu.getRoot().getTransforms().setAll(scale);
+        gameZone.getRoot().getTransforms().setAll(scale);
+        stage.setHeight(windowSize.getHeight());
+        stage.setWidth(windowSize.getWidth());
+    }
+
+    private final Controller<T> controller;
     private final Color background = Color.WHITESMOKE;
-    private final GridPane layoutGame = new GridPane();
     private final Stage stage;
-    private final int heightGame;
-    private final int widthGame;
     private final Scene gameZone;
     private final Scene menu;
-
-    @FXML
-    private Button button;
+    private final int sizeGame = 10;
 }

@@ -1,19 +1,71 @@
 package ru.nsu.romanov.snake.components;
 
+import ru.nsu.romanov.snake.components.Direction;
+import ru.nsu.romanov.snake.components.Position;
+
+import java.util.LinkedList;
 import java.util.List;
 
-public interface Snake {
-    void grow();
+public class Snake {
 
-    void move();
+    public Snake (Position initalPosition) {
+        defaultPosition = initalPosition;
+        body.add(initalPosition);
+    }
 
-    List<Position> getBody();
+    public void grow() {
+        body.addLast(removedTail);
+    }
 
-    Position getHead();
+    public void move() {
+        Position current = body.getFirst();
+        switch (direction) {
+            case UP ->
+                    body.addFirst(new Position(current.x(), current.y() + 1));
+            case DOWN ->
+                    body.addFirst(new Position(current.x(), current.y() - 1));
+            case RIGHT ->
+                    body.addFirst(new Position(current.x() + 1, current.y()));
+            case LEFT ->
+                    body.addFirst(new Position(current.x() - 1, current.y()));
+            default -> {
+                throw new IllegalStateException("there is no direction");
+            }
+        }
+        removedTail = body.removeLast();
+        lastDirection = direction;
+    }
 
-    Position getTail();
+    public List<Position> getBody() {
+        return body;
+    }
 
-    void setDirection(Direction direction);
+    public Position getHead() {
+        return body.getFirst();
+    }
 
-    Direction getDirection();
+    public Position getTail() {
+        return body.getLast();
+    }
+
+    public void setDirection(Direction direction) {
+        this.direction = direction;
+    }
+
+    public Direction getDirection() {
+        return lastDirection;
+    }
+
+    public void init() {
+        direction = Direction.UP;
+        lastDirection = direction;
+        body.clear();
+        body.add(defaultPosition);
+    }
+
+    private final Position defaultPosition;
+    private Direction lastDirection;
+    private Position removedTail;
+    private Direction direction = Direction.RIGHT;
+    private final List<Position> body = new LinkedList<>();
 }

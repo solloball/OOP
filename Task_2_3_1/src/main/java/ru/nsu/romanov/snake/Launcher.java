@@ -1,18 +1,21 @@
 package ru.nsu.romanov.snake;
 
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.application.Application;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 import java.io.IOException;
 
-public class Launcher extends Application {
-    @Override
+public class Launcher extends Application{
     public void start(Stage primaryStage) throws IOException {
-        Thread thr = new Thread(
-                new Game(primaryStage, widthWindow, heightWindow, 10, 10));
-        thr.start();
-    }
 
-    private static final int widthWindow = 1920;
-    private static final int heightWindow = 1080;
+        final Timeline timeline = new Timeline();
+        timeline.setCycleCount(Timeline.INDEFINITE);
+        timeline.setAutoReverse(false);
+        timeline.getKeyFrames().add(new KeyFrame(Duration.millis(100),
+                new Game<>(primaryStage)));
+        timeline.play();
+    }
 }
