@@ -1,1 +1,1 @@
-packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"m":"ru.nsu.romanov.snake","l":"ru.nsu.romanov.snake"},{"m":"ru.nsu.romanov.snake","l":"ru.nsu.romanov.snake.components"},{"m":"ru.nsu.romanov.snake","l":"ru.nsu.romanov.snake.components.playersnake"}];updateSearchResults();
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"m":"ru.nsu.romanov.snake","l":"ru.nsu.romanov.snake"},{"m":"ru.nsu.romanov.snake","l":"ru.nsu.romanov.snake.components"}];updateSearchResults();
