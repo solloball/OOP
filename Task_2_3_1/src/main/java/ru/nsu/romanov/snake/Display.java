@@ -78,7 +78,8 @@ public class Display<T extends ActionEvent> {
                         game.setState(StateGame.PAUSED);
                     }
                 }
-                default -> {}
+                default -> {
+                }
             }
         });
 
