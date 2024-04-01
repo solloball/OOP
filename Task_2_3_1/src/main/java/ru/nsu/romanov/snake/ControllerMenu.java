@@ -1,18 +1,17 @@
 package ru.nsu.romanov.snake;
 
+import java.util.EnumSet;
 import javafx.collections.FXCollections;
+import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
-import javafx.scene.input.MouseEvent;
 import javafx.util.StringConverter;
 import ru.nsu.romanov.snake.components.Level;
 import ru.nsu.romanov.snake.components.WindowSize;
 
-import java.util.EnumSet;
-
-public class ControllerMenu<T extends Event> {
+public class ControllerMenu<T extends ActionEvent> {
     public void init(Display<T> display, Game<T> game) {
         this.display = display;
         level.setItems(
@@ -25,8 +24,8 @@ public class ControllerMenu<T extends Event> {
                 (a, b, newValue) -> {
                     game.setLevel(
                             Level.values()[newValue.intValue()]);
-                    setStatus("Set level: " +
-                            Level.values()[newValue.intValue()]);
+                    setStatus("Set level: "
+                            + Level.values()[newValue.intValue()]);
                 });
 
         windowSize.setItems(
@@ -57,9 +56,10 @@ public class ControllerMenu<T extends Event> {
                             .toString().substring(5));
                 }
         );
+        windowSize.setSelectionModel(windowSize.getSelectionModel());
     }
 
-    public void switchGame(MouseEvent mouseEvent) {
+    public void switchGame() {
         display.switchGame();
     }
 

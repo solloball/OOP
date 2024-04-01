@@ -1,21 +1,18 @@
 package ru.nsu.romanov.snake;
 
-import javafx.event.Event;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Pane;
-import javafx.scene.paint.Color;
-import javafx.scene.transform.Scale;
-import javafx.stage.Stage;
-import javafx.stage.Window;
-import ru.nsu.romanov.snake.components.*;
-
 import java.io.IOException;
 import java.util.stream.IntStream;
 
-public class Display<T extends Event> {
+import javafx.event.ActionEvent;
+import javafx.event.Event;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.scene.paint.Color;
+import javafx.scene.transform.Scale;
+import javafx.stage.Stage;
+import ru.nsu.romanov.snake.components.*;
 
+public class Display<T extends ActionEvent> {
     public Display(Stage stage, Game<T> game) {
         this.stage = stage;
 
@@ -72,7 +69,7 @@ public class Display<T extends Event> {
 
         stage.setTitle("Snake");
         stage.setScene(menu);
-        stage.setResizable(true);
+        stage.setResizable(false);
         stage.show();
     }
 

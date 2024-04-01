@@ -1,7 +1,5 @@
 package ru.nsu.romanov.snake.components;
 
-import javafx.fxml.FXML;
-
 public enum WindowSize {
     SIZE_1280X720(0) {
         @Override

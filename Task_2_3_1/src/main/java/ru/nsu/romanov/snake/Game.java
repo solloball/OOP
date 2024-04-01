@@ -1,25 +1,27 @@
 package ru.nsu.romanov.snake;
 
-import javafx.event.Event;
-import javafx.event.EventHandler;
-import javafx.scene.paint.Color;
-import javafx.stage.Stage;
-import ru.nsu.romanov.snake.components.*;
-
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.scene.paint.Color;
+import ru.nsu.romanov.snake.components.*;
+
 import static java.lang.Math.max;
 
-public class Game<T extends Event> implements EventHandler<T> {
-    public Game(Stage primaryStage) {
+public class Game<T extends ActionEvent> implements EventHandler<T> {
+    public Game() {
         Position defaultPos = new Position(5, 5);
         Snake snake = new Snake(defaultPos);
         snakes.add(snake);
-        display = new Display<>(primaryStage, this);
-        init();
+        initGame();
+    }
+
+    public void attachDisplay(Display<T> display) {
+        this.display = display;
+        initDisplay();
     }
 
     public void setLevel(Level level) {
@@ -37,15 +39,18 @@ public class Game<T extends Event> implements EventHandler<T> {
     public StateGame getState() {
         return stateGame;
     }
+
     public Snake getMainSnake() {
         return snakes.getFirst();
     }
+
     @Override
     public void handle(T event) {
         if (stateGame == StateGame.FINISHED) {
             display.clear();
             snakes.forEach(Snake::init);
-            init();
+            initGame();
+            initDisplay();
             stateGame = StateGame.PAUSED;
             return;
         }
@@ -82,18 +87,17 @@ public class Game<T extends Event> implements EventHandler<T> {
                 stateGame = StateGame.PAUSED;
                 display.clear();
                 snakes.forEach(Snake::init);
-                init();
+                initGame();
+                initDisplay();
         }
 
         fillField();
+        initDisplay();
     }
 
-    private void init() {
+    private void initGame() {
         obstacles.clear();
         foodList.clear();
-
-        snakes.forEach(snake -> display.draw(
-                snake.getHead(), snakeColor));
 
         switch (level) {
             case EASY -> {
@@ -107,9 +111,21 @@ public class Game<T extends Event> implements EventHandler<T> {
             default -> throw new IllegalStateException("there is no this level");
         }
         fillField();
-        display.setMaxScore(maxScore);
         score = 0;
+    }
+
+    private void initDisplay() {
+        assert display != null;
+        //display.clear();
+        snakes.forEach(snake -> display.draw(
+                snake.getHead(), snakeColor));
+        display.setMaxScore(maxScore);
         display.setScore(score);
+        obstacles.forEach(obstacle -> display.draw(
+                obstacle.position(), obstacleColor));
+        foodList.forEach(food -> display.draw(
+                food.position(), foodColor));
+
     }
 
     private void fillField() {
@@ -119,7 +135,6 @@ public class Game<T extends Event> implements EventHandler<T> {
                 throw new IllegalStateException("there is no empty cell");
             }
             foodList.add(new Food(pos));
-            display.draw(pos, foodColor);
         }
         while (obstacles.size() != countObstacles) {
             Position pos = getEmptyCell();
@@ -127,7 +142,6 @@ public class Game<T extends Event> implements EventHandler<T> {
                 throw new IllegalStateException("there is no empty cell");
             }
             obstacles.add(new Obstacle(pos));
-            display.draw(pos, obstacleColor);
         }
     }
 
@@ -162,19 +176,23 @@ public class Game<T extends Event> implements EventHandler<T> {
     }
 
     private boolean isCollidePosVsSnakes(Position position) {
-        return snakes.stream().anyMatch(snake -> snake.getBody().stream().anyMatch(pos -> pos.equals(position)));
+        return snakes.stream().anyMatch(snake ->
+                snake.getBody().stream().anyMatch(pos ->
+                        pos.equals(position)));
     }
 
     private boolean isCollidePosVsObstacles(Position position) {
-        return obstacles.stream().anyMatch(obstacle -> obstacle.position().equals(position));
+        return obstacles.stream().anyMatch(obstacle ->
+                obstacle.position().equals(position));
     }
 
     private boolean isCollidePosVsFood(Position position) {
-        return foodList.stream().anyMatch(food -> food.position().equals(position));
+        return foodList.stream().anyMatch(food ->
+                food.position().equals(position));
     }
 
 
-    private final Display<T> display;
+    private Display<T> display;
 
     private Level level = Level.EASY;
     private StateGame stateGame = StateGame.PAUSED;

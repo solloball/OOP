@@ -1,8 +1,5 @@
 package ru.nsu.romanov.snake.components;
 
-import ru.nsu.romanov.snake.components.Direction;
-import ru.nsu.romanov.snake.components.Position;
-
 import java.util.LinkedList;
 import java.util.List;
 
@@ -14,6 +11,9 @@ public class Snake {
     }
 
     public void grow() {
+        if (removedTail == null) {
+            move();
+        }
         body.addLast(removedTail);
     }
 

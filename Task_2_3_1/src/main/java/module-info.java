@@ -4,4 +4,5 @@ module ru.nsu.romanov.snake {
 
     opens ru.nsu.romanov.snake to javafx.fxml;
     exports ru.nsu.romanov.snake;
+    exports ru.nsu.romanov.snake.components;
 }
