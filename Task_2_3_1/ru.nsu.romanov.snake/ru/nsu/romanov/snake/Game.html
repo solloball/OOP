@@ -83,20 +83,25 @@ loadScripts(document, 'script');</script>
 <div class="header">
 <div class="sub-title"><span class="module-label-in-type">Module</span>&nbsp;<a href="../../../../module-summary.html">ru.nsu.romanov.snake</a></div>
 <div class="sub-title"><span class="package-label-in-type">Package</span>&nbsp;<a href="package-summary.html">ru.nsu.romanov.snake</a></div>
-<h1 title="Class Game" class="title">Class Game&lt;T extends javafx.event.Event&gt;</h1>
+<h1 title="Class Game" class="title">Class Game&lt;T extends javafx.event.ActionEvent&gt;</h1>
 </div>
 <div class="inheritance" title="Inheritance Tree"><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">java.lang.Object</a>
 <div class="inheritance">ru.nsu.romanov.snake.Game&lt;T&gt;</div>
 </div>
 <section class="class-description" id="class-description">
 <dl class="notes">
+<dt>Type Parameters:</dt>
+<dd><code>T</code> - type of event.</dd>
+</dl>
+<dl class="notes">
 <dt>All Implemented Interfaces:</dt>
 <dd><code><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/EventListener.html" title="class or interface in java.util" class="external-link">EventListener</a></code>, <code>javafx.event.EventHandler&lt;T&gt;</code></dd>
 </dl>
 <hr>
-<div class="type-signature"><span class="modifiers">public class </span><span class="element-name type-name-label">Game&lt;T extends javafx.event.Event&gt;</span>
+<div class="type-signature"><span class="modifiers">public class </span><span class="element-name type-name-label">Game&lt;T extends javafx.event.ActionEvent&gt;</span>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a>
 implements javafx.event.EventHandler&lt;T&gt;</span></div>
+<div class="block">Game class.</div>
 </section>
 <section class="summary">
 <ul class="summary-list">
@@ -108,8 +113,10 @@ implements javafx.event.EventHandler&lt;T&gt;</span></div>
 <div class="summary-table two-column-summary">
 <div class="table-header col-first">Constructor</div>
 <div class="table-header col-last">Description</div>
-<div class="col-constructor-name even-row-color"><code><a href="#%3Cinit%3E(javafx.stage.Stage)" class="member-name-link">Game</a><wbr>(javafx.stage.Stage&nbsp;primaryStage)</code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-constructor-name even-row-color"><code><a href="#%3Cinit%3E()" class="member-name-link">Game</a>()</code></div>
+<div class="col-last even-row-color">
+<div class="block">Constructor, init game logic.</div>
+</div>
 </div>
 </section>
 </li>
@@ -124,21 +131,41 @@ implements javafx.event.EventHandler&lt;T&gt;</span></div>
 <div class="table-header col-first">Modifier and Type</div>
 <div class="table-header col-second">Method</div>
 <div class="table-header col-last">Description</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#attachDisplay(ru.nsu.romanov.snake.Display)" class="member-name-link">attachDisplay</a><wbr>(<a href="Display.html" title="class in ru.nsu.romanov.snake">Display</a>&lt;<a href="Game.html" title="type parameter in Game">T</a>&gt;&nbsp;display)</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Attach display and init it.</div>
+</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a><wbr>&lt;<a href="components/Food.html" title="class in ru.nsu.romanov.snake.components">Food</a>&gt;</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getFoodList()" class="member-name-link">getFoodList</a>()</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Get food list.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="components/Snake.html" title="class in ru.nsu.romanov.snake.components">Snake</a></code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getMainSnake()" class="member-name-link">getMainSnake</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">get main (is controlled by user) snake.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="components/StateGame.html" title="enum class in ru.nsu.romanov.snake.components">StateGame</a></code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getState()" class="member-name-link">getState</a>()</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Get state.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#handle(T)" class="member-name-link">handle</a><wbr>(<a href="Game.html" title="type parameter in Game">T</a>&nbsp;event)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Iteration of game.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setLevel(ru.nsu.romanov.snake.components.Level)" class="member-name-link">setLevel</a><wbr>(<a href="components/Level.html" title="enum class in ru.nsu.romanov.snake.components">Level</a>&nbsp;level)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Set level of game.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setState(ru.nsu.romanov.snake.components.StateGame)" class="member-name-link">setState</a><wbr>(<a href="components/StateGame.html" title="enum class in ru.nsu.romanov.snake.components">StateGame</a>&nbsp;stateGame)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Set state.</div>
+</div>
 </div>
 </div>
 </div>
@@ -157,9 +184,10 @@ implements javafx.event.EventHandler&lt;T&gt;</span></div>
 <h2>Constructor Details</h2>
 <ul class="member-list">
 <li>
-<section class="detail" id="&lt;init&gt;(javafx.stage.Stage)">
+<section class="detail" id="&lt;init&gt;()">
 <h3>Game</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name">Game</span><wbr><span class="parameters">(javafx.stage.Stage&nbsp;primaryStage)</span></div>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name">Game</span>()</div>
+<div class="block">Constructor, init game logic.</div>
 </section>
 </li>
 </ul>
@@ -171,36 +199,81 @@ implements javafx.event.EventHandler&lt;T&gt;</span></div>
 <h2>Method Details</h2>
 <ul class="member-list">
 <li>
+<section class="detail" id="attachDisplay(ru.nsu.romanov.snake.Display)">
+<h3>attachDisplay</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">attachDisplay</span><wbr><span class="parameters">(<a href="Display.html" title="class in ru.nsu.romanov.snake">Display</a>&lt;<a href="Game.html" title="type parameter in Game">T</a>&gt;&nbsp;display)</span></div>
+<div class="block">Attach display and init it.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>display</code> - display to attach.</dd>
+</dl>
+</section>
+</li>
+<li>
 <section class="detail" id="setLevel(ru.nsu.romanov.snake.components.Level)">
 <h3>setLevel</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">setLevel</span><wbr><span class="parameters">(<a href="components/Level.html" title="enum class in ru.nsu.romanov.snake.components">Level</a>&nbsp;level)</span></div>
+<div class="block">Set level of game.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>level</code> - level to set.</dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="setState(ru.nsu.romanov.snake.components.StateGame)">
 <h3>setState</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">setState</span><wbr><span class="parameters">(<a href="components/StateGame.html" title="enum class in ru.nsu.romanov.snake.components">StateGame</a>&nbsp;stateGame)</span></div>
+<div class="block">Set state.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>stateGame</code> - state to set.</dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="getState()">
 <h3>getState</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="components/StateGame.html" title="enum class in ru.nsu.romanov.snake.components">StateGame</a></span>&nbsp;<span class="element-name">getState</span>()</div>
+<div class="block">Get state.</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd>state.</dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="getMainSnake()">
 <h3>getMainSnake</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="components/Snake.html" title="class in ru.nsu.romanov.snake.components">Snake</a></span>&nbsp;<span class="element-name">getMainSnake</span>()</div>
+<div class="block">get main (is controlled by user) snake.</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd>snake.</dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="handle(T)">
-<h3 id="handle(javafx.event.Event)">handle</h3>
+<h3 id="handle(javafx.event.ActionEvent)">handle</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">handle</span><wbr><span class="parameters">(<a href="Game.html" title="type parameter in Game">T</a>&nbsp;event)</span></div>
+<div class="block">Iteration of game.</div>
 <dl class="notes">
 <dt>Specified by:</dt>
-<dd><code>handle</code>&nbsp;in interface&nbsp;<code>javafx.event.EventHandler&lt;<a href="Game.html" title="type parameter in Game">T</a> extends javafx.event.Event&gt;</code></dd>
+<dd><code>handle</code>&nbsp;in interface&nbsp;<code>javafx.event.EventHandler&lt;<a href="Game.html" title="type parameter in Game">T</a> extends javafx.event.ActionEvent&gt;</code></dd>
+<dt>Parameters:</dt>
+<dd><code>event</code> - event.</dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="getFoodList()">
+<h3>getFoodList</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="components/Food.html" title="class in ru.nsu.romanov.snake.components">Food</a>&gt;</span>&nbsp;<span class="element-name">getFoodList</span>()</div>
+<div class="block">Get food list.</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd>list of food.</dd>
 </dl>
 </section>
 </li>

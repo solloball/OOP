@@ -83,15 +83,20 @@ loadScripts(document, 'script');</script>
 <div class="header">
 <div class="sub-title"><span class="module-label-in-type">Module</span>&nbsp;<a href="../../../../module-summary.html">ru.nsu.romanov.snake</a></div>
 <div class="sub-title"><span class="package-label-in-type">Package</span>&nbsp;<a href="package-summary.html">ru.nsu.romanov.snake</a></div>
-<h1 title="Class Display" class="title">Class Display&lt;T extends javafx.event.Event&gt;</h1>
+<h1 title="Class Display" class="title">Class Display&lt;T extends javafx.event.ActionEvent&gt;</h1>
 </div>
 <div class="inheritance" title="Inheritance Tree"><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">java.lang.Object</a>
 <div class="inheritance">ru.nsu.romanov.snake.Display&lt;T&gt;</div>
 </div>
 <section class="class-description" id="class-description">
+<dl class="notes">
+<dt>Type Parameters:</dt>
+<dd><code>T</code> - event.</dd>
+</dl>
 <hr>
-<div class="type-signature"><span class="modifiers">public class </span><span class="element-name type-name-label">Display&lt;T extends javafx.event.Event&gt;</span>
+<div class="type-signature"><span class="modifiers">public class </span><span class="element-name type-name-label">Display&lt;T extends javafx.event.ActionEvent&gt;</span>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a></span></div>
+<div class="block">Class which respond for ui.</div>
 </section>
 <section class="summary">
 <ul class="summary-list">
@@ -105,7 +110,9 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-last">Description</div>
 <div class="col-constructor-name even-row-color"><code><a href="#%3Cinit%3E(javafx.stage.Stage,ru.nsu.romanov.snake.Game)" class="member-name-link">Display</a><wbr>(javafx.stage.Stage&nbsp;stage,
  <a href="Game.html" title="class in ru.nsu.romanov.snake">Game</a>&lt;<a href="Display.html" title="type parameter in Display">T</a>&gt;&nbsp;game)</code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">Constructor.</div>
+</div>
 </div>
 </section>
 </li>
@@ -122,29 +129,40 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#clear()" class="member-name-link">clear</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Clear all display.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#clear(ru.nsu.romanov.snake.components.Position)" class="member-name-link">clear</a><wbr>(<a href="components/Position.html" title="class in ru.nsu.romanov.snake.components">Position</a>&nbsp;position)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#draw(ru.nsu.romanov.snake.components.Position,javafx.scene.paint.Color)" class="member-name-link">draw</a><wbr>(<a href="components/Position.html" title="class in ru.nsu.romanov.snake.components">Position</a>&nbsp;position,
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#draw(ru.nsu.romanov.snake.components.Position,javafx.scene.paint.Color)" class="member-name-link">draw</a><wbr>(<a href="components/Position.html" title="class in ru.nsu.romanov.snake.components">Position</a>&nbsp;position,
  javafx.scene.paint.Color&nbsp;color)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setMaxScore(int)" class="member-name-link">setMaxScore</a><wbr>(int&nbsp;score)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Draw in x, y position.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setScale(ru.nsu.romanov.snake.components.WindowSize)" class="member-name-link">setScale</a><wbr>(<a href="components/WindowSize.html" title="enum class in ru.nsu.romanov.snake.components">WindowSize</a>&nbsp;windowSize)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setMaxScore(int)" class="member-name-link">setMaxScore</a><wbr>(int&nbsp;score)</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">set max score.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setScore(int)" class="member-name-link">setScore</a><wbr>(int&nbsp;score)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setScale(ru.nsu.romanov.snake.components.WindowSize)" class="member-name-link">setScale</a><wbr>(<a href="components/WindowSize.html" title="enum class in ru.nsu.romanov.snake.components">WindowSize</a>&nbsp;windowSize)</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Set scale of windowSize.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#switchGame()" class="member-name-link">switchGame</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setScore(int)" class="member-name-link">setScore</a><wbr>(int&nbsp;score)</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Set score.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#switchMenu()" class="member-name-link">switchMenu</a>()</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#switchGame()" class="member-name-link">switchGame</a>()</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Switch scene to game.</div>
+</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#switchMenu()" class="member-name-link">switchMenu</a>()</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Switch scene to menu.</div>
+</div>
 </div>
 </div>
 </div>
@@ -167,6 +185,12 @@ loadScripts(document, 'script');</script>
 <h3>Display</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name">Display</span><wbr><span class="parameters">(javafx.stage.Stage&nbsp;stage,
  <a href="Game.html" title="class in ru.nsu.romanov.snake">Game</a>&lt;<a href="Display.html" title="type parameter in Display">T</a>&gt;&nbsp;game)</span></div>
+<div class="block">Constructor.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>stage</code> - stage to set.</dd>
+<dd><code>game</code> - game to attach.</dd>
+</dl>
 </section>
 </li>
 </ul>
@@ -182,48 +206,66 @@ loadScripts(document, 'script');</script>
 <h3>draw</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">draw</span><wbr><span class="parameters">(<a href="components/Position.html" title="class in ru.nsu.romanov.snake.components">Position</a>&nbsp;position,
  javafx.scene.paint.Color&nbsp;color)</span></div>
-</section>
-</li>
-<li>
-<section class="detail" id="clear(ru.nsu.romanov.snake.components.Position)">
-<h3>clear</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">clear</span><wbr><span class="parameters">(<a href="components/Position.html" title="class in ru.nsu.romanov.snake.components">Position</a>&nbsp;position)</span></div>
+<div class="block">Draw in x, y position.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>position</code> - position to draw.</dd>
+<dd><code>color</code> - color to draw.</dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="clear()">
 <h3>clear</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">clear</span>()</div>
+<div class="block">Clear all display.</div>
 </section>
 </li>
 <li>
 <section class="detail" id="setScore(int)">
 <h3>setScore</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">setScore</span><wbr><span class="parameters">(int&nbsp;score)</span></div>
+<div class="block">Set score.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>score</code> - score to set.</dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="setMaxScore(int)">
 <h3>setMaxScore</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">setMaxScore</span><wbr><span class="parameters">(int&nbsp;score)</span></div>
+<div class="block">set max score.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>score</code> - set to set.</dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="switchGame()">
 <h3>switchGame</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">switchGame</span>()</div>
+<div class="block">Switch scene to game.</div>
 </section>
 </li>
 <li>
 <section class="detail" id="switchMenu()">
 <h3>switchMenu</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">switchMenu</span>()</div>
+<div class="block">Switch scene to menu.</div>
 </section>
 </li>
 <li>
 <section class="detail" id="setScale(ru.nsu.romanov.snake.components.WindowSize)">
 <h3>setScale</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">setScale</span><wbr><span class="parameters">(<a href="components/WindowSize.html" title="enum class in ru.nsu.romanov.snake.components">WindowSize</a>&nbsp;windowSize)</span></div>
+<div class="block">Set scale of windowSize.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>windowSize</code> - used for finding scale.</dd>
+</dl>
 </section>
 </li>
 </ul>
