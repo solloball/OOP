@@ -10,8 +10,8 @@
 
 <BorderPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.nsu.romanov.snake.ControllerMenu">
    <center>
-      <Pane fx:id="pane" prefHeight="720.0" prefWidth="1280.0">
-          <Button fx:id="play" alignment="CENTER" contentDisplay="CENTER" layoutX="466.0" layoutY="63.0" mnemonicParsing="false" onMouseClicked="#switchGame" prefHeight="155.0" prefWidth="349.0" text="Play" textAlignment="CENTER">
+      <Pane prefHeight="720.0" prefWidth="1280.0">
+          <Button alignment="CENTER" contentDisplay="CENTER" layoutX="466.0" layoutY="63.0" mnemonicParsing="false" onMouseClicked="#switchGame" prefHeight="155.0" prefWidth="349.0" text="Play" textAlignment="CENTER">
               <font>
                 <Font size="30.0" />
               </font>

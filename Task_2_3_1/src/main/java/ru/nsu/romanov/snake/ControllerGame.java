@@ -9,7 +9,20 @@ import javafx.scene.shape.Rectangle;
 import ru.nsu.romanov.snake.components.Position;
 import ru.nsu.romanov.snake.components.StateGame;
 
-public class Controller <T extends ActionEvent> {
+/**
+ * Controller of game.
+ *
+ * @param <T> event.
+ */
+public class ControllerGame<T extends ActionEvent> {
+
+    /**
+     * Init controller.
+     *
+     * @param background color of background.
+     * @param display display to attach.
+     * @param game game to attach.
+     */
     public void init(Color background, Display<T> display, Game<T> game) {
         this.display = display;
         this.game = game;
@@ -31,11 +44,20 @@ public class Controller <T extends ActionEvent> {
         }
     }
 
+    /**
+     * Switch scene to menu.
+     */
     public void switchMenu() {
         game.setState(StateGame.PAUSED);
         display.switchMenu();
     }
 
+    /**
+     * draw x, y components.
+     *
+     * @param position position to draw.
+     * @param color color to draw.
+     */
     public void draw(Position position, Color color) {
         int sizeGame = 10;
         if (position.x() < 0|| position.x() >= sizeGame || position.y() < 0 || position.y() >= sizeGame) {
@@ -45,10 +67,20 @@ public class Controller <T extends ActionEvent> {
         node.setFill(color);
     }
 
+    /**
+     * Set score.
+     *
+     * @param scoreCount score to set.
+     */
     public void setScore(int scoreCount) {
         score.setText("Score " + scoreCount);
     }
 
+    /**
+     * Set max score.
+     *
+     * @param score socre to set.
+     */
     public void setMaxScore(int score) {
         maxScore.setText("Max score " + score);
     }

@@ -1,17 +1,30 @@
 package ru.nsu.romanov.snake;
 
+import static java.lang.Math.max;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.paint.Color;
-import ru.nsu.romanov.snake.components.*;
+import ru.nsu.romanov.snake.components.Food;
+import ru.nsu.romanov.snake.components.Level;
+import ru.nsu.romanov.snake.components.Obstacle;
+import ru.nsu.romanov.snake.components.Position;
+import ru.nsu.romanov.snake.components.Snake;
+import ru.nsu.romanov.snake.components.StateGame;
 
-import static java.lang.Math.max;
-
+/**
+ * Game class.
+ *
+ * @param <T> type of event.
+ */
 public class Game<T extends ActionEvent> implements EventHandler<T> {
+
+    /**
+     * Constructor, init game logic.
+     */
     public Game() {
         Position defaultPos = new Position(5, 5);
         Snake snake = new Snake(defaultPos);
@@ -19,11 +32,21 @@ public class Game<T extends ActionEvent> implements EventHandler<T> {
         initGame();
     }
 
+    /**
+     * Attach display and init it.
+     *
+     * @param display display to attach.
+     */
     public void attachDisplay(Display<T> display) {
         this.display = display;
         initDisplay();
     }
 
+    /**
+     * Set level of game.
+     *
+     * @param level level to set.
+     */
     public void setLevel(Level level) {
         if (level == null) {
             return;
@@ -32,25 +55,46 @@ public class Game<T extends ActionEvent> implements EventHandler<T> {
         stateGame = StateGame.FINISHED;
     }
 
+    /**
+     * Set state.
+     *
+     * @param stateGame state to set.
+     */
     public void setState(StateGame stateGame) {
         this.stateGame = stateGame;
     }
 
+    /**
+     * Get state.
+     *
+     * @return state.
+     */
     public StateGame getState() {
         return stateGame;
     }
 
+    /**
+     * get main (is controlled by user) snake.
+     *
+     * @return snake.
+     */
     public Snake getMainSnake() {
         return snakes.getFirst();
     }
 
+    /**
+     * Iteration of game.
+     *
+     * @param event event.
+     */
     @Override
     public void handle(T event) {
         if (stateGame == StateGame.FINISHED) {
-            display.clear();
             snakes.forEach(Snake::init);
             initGame();
-            initDisplay();
+            if (display != null) {
+                initDisplay();
+            }
             stateGame = StateGame.PAUSED;
             return;
         }
@@ -59,21 +103,15 @@ public class Game<T extends ActionEvent> implements EventHandler<T> {
             return;
         }
 
-        snakes.forEach(snake -> {
-            display.clear(snake.getTail());
-            snake.move();
-            display.draw(snake.getHead(), snakeColor);
-        });
+        snakes.forEach(Snake::move);
 
         snakes.forEach(snake -> {
             Position head = snake.getHead();
             if (isCollidePosVsFood(head)) {
                 foodList.remove(new Food(head));
                 snake.grow();
-                display.draw(snake.getTail(), snakeColor);
-                display.setScore(++score);
+                score++;
                 maxScore = max(maxScore, score);
-                display.setMaxScore(maxScore);
             }
         });
 
@@ -85,16 +123,31 @@ public class Game<T extends ActionEvent> implements EventHandler<T> {
                     || snake.getHead().y() < 0
                     || snake.getHead().y() >= sizeGame)) {
                 stateGame = StateGame.PAUSED;
-                display.clear();
                 snakes.forEach(Snake::init);
                 initGame();
-                initDisplay();
+                if (display != null) {
+                    initDisplay();
+                }
         }
 
         fillField();
-        initDisplay();
+        if (display != null) {
+            initDisplay();
+        }
     }
 
+    /**
+     * Get food list.
+     *
+     * @return list of food.
+     */
+    public List<Food> getFoodList() {
+        return foodList;
+    }
+
+    /**
+     * Init game logic.
+     */
     private void initGame() {
         obstacles.clear();
         foodList.clear();
@@ -114,11 +167,14 @@ public class Game<T extends ActionEvent> implements EventHandler<T> {
         score = 0;
     }
 
+    /**
+     * Init ui and display.
+     */
     private void initDisplay() {
         assert display != null;
-        //display.clear();
-        snakes.forEach(snake -> display.draw(
-                snake.getHead(), snakeColor));
+        display.clear();
+        snakes.forEach(snake -> snake.getBody().forEach(node ->
+                display.draw(node, snakeColor)));
         display.setMaxScore(maxScore);
         display.setScore(score);
         obstacles.forEach(obstacle -> display.draw(
@@ -128,6 +184,9 @@ public class Game<T extends ActionEvent> implements EventHandler<T> {
 
     }
 
+    /**
+     * Fill obstacles and food.
+     */
     private void fillField() {
         while (foodList.size() != countFood) {
             Position pos = getEmptyCell();
@@ -145,6 +204,11 @@ public class Game<T extends ActionEvent> implements EventHandler<T> {
         }
     }
 
+    /**
+     * Used for finding empty cell for food and obstacles.
+     *
+     * @return empty obstacle.
+     */
     private Position getEmptyCell() {
         Random random = new Random();
         Position res = new Position(random.nextInt(sizeGame),
@@ -158,6 +222,12 @@ public class Game<T extends ActionEvent> implements EventHandler<T> {
         return res;
     }
 
+    /**
+     * Collide test snake vs snakes.
+     *
+     * @param snake snake to check.
+     * @return true of collide, false otherwise.
+     */
     private boolean isCollideSnakeVsSnakes(Snake snake) {
         if (snake.getBody()
                 .subList(1, snake.getBody().size())
@@ -175,35 +245,49 @@ public class Game<T extends ActionEvent> implements EventHandler<T> {
         return false;
     }
 
+    /**
+     * Collide test position vs snakes.
+     *
+     * @param position position to check.
+     * @return true if collides, false otherwise.
+     */
     private boolean isCollidePosVsSnakes(Position position) {
         return snakes.stream().anyMatch(snake ->
                 snake.getBody().stream().anyMatch(pos ->
                         pos.equals(position)));
     }
 
+    /**
+     * Collide test position vs obstacles.
+     *
+     * @param position position to check.
+     * @return true if collides, false otherwise.
+     */
     private boolean isCollidePosVsObstacles(Position position) {
         return obstacles.stream().anyMatch(obstacle ->
                 obstacle.position().equals(position));
     }
 
+    /**
+     * Collide test position vs food.
+     *
+     * @param position position to check.
+     * @return true if collides, false otherwise.
+     */
     private boolean isCollidePosVsFood(Position position) {
         return foodList.stream().anyMatch(food ->
                 food.position().equals(position));
     }
 
-
     private Display<T> display;
-
     private Level level = Level.EASY;
     private StateGame stateGame = StateGame.PAUSED;
     private int countFood;
     private int countObstacles;
-
     private final Color foodColor = Color.RED;
     private final Color snakeColor = Color.DARKGREEN;
     private final Color obstacleColor = Color.GRAY;
     private final int sizeGame = 10;
-
     private final List<Food> foodList = new ArrayList<>();
     private final List<Snake> snakes = new ArrayList<>();
     private final List<Obstacle> obstacles = new ArrayList<>();

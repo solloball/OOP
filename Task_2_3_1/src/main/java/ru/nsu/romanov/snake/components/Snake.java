@@ -3,13 +3,24 @@ package ru.nsu.romanov.snake.components;
 import java.util.LinkedList;
 import java.util.List;
 
+/**
+ * Snake realization.
+ */
 public class Snake {
 
-    public Snake (Position initalPosition) {
-        defaultPosition = initalPosition;
-        body.add(initalPosition);
+    /**
+     * Constructor.
+     *
+     * @param initialPosition default position of snake.
+     */
+    public Snake (Position initialPosition) {
+        defaultPosition = initialPosition;
+        body.add(initialPosition);
     }
 
+    /**
+     * Grow snake.
+     */
     public void grow() {
         if (removedTail == null) {
             move();
@@ -17,6 +28,9 @@ public class Snake {
         body.addLast(removedTail);
     }
 
+    /**
+     * Move ahead direction.
+     */
     public void move() {
         Position current = body.getFirst();
         switch (direction) {
@@ -36,26 +50,45 @@ public class Snake {
         lastDirection = direction;
     }
 
+    /**
+     * Get body.
+     *
+     * @return body of snake.
+     */
     public List<Position> getBody() {
         return body;
     }
 
+    /**
+     * Get head of snake.
+     *
+     * @return head of snake.
+     */
     public Position getHead() {
         return body.getFirst();
     }
 
-    public Position getTail() {
-        return body.getLast();
-    }
-
+    /**
+     * Set direction of snake.
+     *
+     * @param direction direction to set.
+     */
     public void setDirection(Direction direction) {
         this.direction = direction;
     }
 
+    /**
+     * Get direction of snake.
+     *
+     * @return direction.
+     */
     public Direction getDirection() {
         return lastDirection;
     }
 
+    /**
+     * Init snake.
+     */
     public void init() {
         direction = Direction.UP;
         lastDirection = direction;

@@ -6,6 +6,9 @@ import ru.nsu.romanov.snake.components.Direction;
 import ru.nsu.romanov.snake.components.Position;
 import ru.nsu.romanov.snake.components.Snake;
 
+/**
+ * Tests for snake.
+ */
 public class SnakeTest {
     @Test
     public void constructorTest() {

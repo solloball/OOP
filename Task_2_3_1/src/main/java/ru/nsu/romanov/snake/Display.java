@@ -2,25 +2,39 @@ package ru.nsu.romanov.snake;
 
 import java.io.IOException;
 import java.util.stream.IntStream;
-
 import javafx.event.ActionEvent;
-import javafx.event.Event;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.paint.Color;
 import javafx.scene.transform.Scale;
 import javafx.stage.Stage;
-import ru.nsu.romanov.snake.components.*;
+import ru.nsu.romanov.snake.components.Direction;
+import ru.nsu.romanov.snake.components.Position;
+import ru.nsu.romanov.snake.components.Snake;
+import ru.nsu.romanov.snake.components.StateGame;
+import ru.nsu.romanov.snake.components.WindowSize;
 
+/**
+ * Class which respond for ui.
+ *
+ * @param <T> event.
+ */
 public class Display<T extends ActionEvent> {
+
+    /**
+     * Constructor.
+     *
+     * @param stage stage to set.
+     * @param game game to attach.
+     */
     public Display(Stage stage, Game<T> game) {
         this.stage = stage;
 
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("game.fxml"));
             gameZone = new Scene(loader.load());
-            controller = loader.getController();
-            controller.init(background, this, game);
+            controllerGame = loader.getController();
+            controllerGame.init(background, this, game);
 
             loader = new FXMLLoader(getClass().getResource("menu.fxml"));
             menu = new Scene(loader.load());
@@ -73,38 +87,64 @@ public class Display<T extends ActionEvent> {
         stage.show();
     }
 
+    /**
+     * Draw in x, y position.
+     *
+     * @param position position to draw.
+     * @param color color to draw.
+     */
     public void draw(Position position, Color color) {
-        controller.draw(position, color);
+        controllerGame.draw(position, color);
     }
 
-    public void clear(Position position) {
-        controller.draw(position, background);
-    }
-
+    /**
+     * Clear all display.
+     */
     public void clear() {
         IntStream.range(0, sizeGame)
                 .forEach(x -> IntStream.range(0, sizeGame)
                         .forEach(y ->
-                                controller
+                                controllerGame
                                         .draw(new Position(x, y), background)));
     }
 
+    /**
+     * Set score.
+     *
+     * @param score score to set.
+     */
     public void setScore(int score) {
-        controller.setScore(score);
+        controllerGame.setScore(score);
     }
 
+    /**
+     * set max score.
+     *
+     * @param score set to set.
+     */
     public void setMaxScore(int score) {
-        controller.setMaxScore(score);
+        controllerGame.setMaxScore(score);
     }
 
+    /**
+     * Switch scene to game.
+     */
     public void switchGame() {
         stage.setScene(gameZone);
     }
 
+    /**
+     * Switch scene to menu.
+     */
     public void switchMenu() {
         stage.setScene(menu);
     }
 
+    /**
+     * Set scale of windowSize.
+     *
+     * @param windowSize used for finding scale.
+     */
     public void setScale(WindowSize windowSize) {
         var scale = new Scale(
                 windowSize.getScale(), windowSize.getScale(), 0, 0);
@@ -114,7 +154,7 @@ public class Display<T extends ActionEvent> {
         stage.setWidth(windowSize.getWidth());
     }
 
-    private final Controller<T> controller;
+    private final ControllerGame<T> controllerGame;
     private final Color background = Color.WHITESMOKE;
     private final Stage stage;
     private final Scene gameZone;

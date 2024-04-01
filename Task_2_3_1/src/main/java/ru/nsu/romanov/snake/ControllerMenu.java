@@ -3,7 +3,6 @@ package ru.nsu.romanov.snake;
 import java.util.EnumSet;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
-import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
@@ -11,7 +10,18 @@ import javafx.util.StringConverter;
 import ru.nsu.romanov.snake.components.Level;
 import ru.nsu.romanov.snake.components.WindowSize;
 
+/**
+ * Controller of menu.
+ *
+ * @param <T> event.
+ */
 public class ControllerMenu<T extends ActionEvent> {
+    /**
+     * Init controller.
+     *
+     * @param display display to attach.
+     * @param game game to attach.
+     */
     public void init(Display<T> display, Game<T> game) {
         this.display = display;
         level.setItems(
@@ -59,10 +69,18 @@ public class ControllerMenu<T extends ActionEvent> {
         windowSize.setSelectionModel(windowSize.getSelectionModel());
     }
 
+    /**
+     * Switch scene to game.
+     */
     public void switchGame() {
         display.switchGame();
     }
 
+    /**
+     * Set status in status bar.
+     *
+     * @param text text to set.
+     */
     private void setStatus(String text) {
         statusBar.setText("Status bar:\n" + text);
     }

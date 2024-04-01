@@ -1,5 +1,8 @@
 package ru.nsu.romanov.snake.components;
 
+/**
+ * Window state.
+ */
 public enum WindowSize {
     SIZE_1280X720(0) {
         @Override
@@ -30,15 +33,37 @@ public enum WindowSize {
         }
     };
 
+    /**
+     * Default constructor.
+     *
+     * @param i i to set.
+     */
     WindowSize(int i) {
     }
 
+    /**
+     * Get scale.
+     *
+     * @return scale.
+     */
     public float getScale() {
         return -1;
     }
+
+    /**
+     * get width of window size.
+     *
+     * @return width of window size.
+     */
     public float getWidth() {
         return -1;
     }
+
+    /**
+     * Get height of window size.
+     *
+     * @return height of window.
+     */
     public float getHeight() {
         return -1;
     }
