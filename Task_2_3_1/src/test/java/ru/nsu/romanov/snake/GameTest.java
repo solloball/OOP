@@ -28,7 +28,7 @@ public class GameTest {
         game.handle(null);
         game.handle(null);
         game.handle(null);
-        Assertions.assertEquals(4,snake.getHead().x(), 4);
+        Assertions.assertEquals(4, snake.getHead().x(), 4);
         Assertions.assertEquals(8, snake.getHead().y());
     }
 
@@ -54,7 +54,7 @@ public class GameTest {
         for (int i = 0; i < 100; i++) {
             game.handle(null);
         }
-        Assertions.assertEquals(new Position(5,5), snake.getHead());
+        Assertions.assertEquals(new Position(5, 5), snake.getHead());
     }
 
     @Test
@@ -65,7 +65,7 @@ public class GameTest {
         game.setLevel(Level.EASY);
         game.setState(StateGame.ACTIVE);
         game.getFoodList().removeLast();
-        game.getFoodList().add(new Food(new Position(5,6)));
+        game.getFoodList().add(new Food(new Position(5, 6)));
         game.handle(null);
         Assertions.assertEquals(2, snake.getBody().size());
     }

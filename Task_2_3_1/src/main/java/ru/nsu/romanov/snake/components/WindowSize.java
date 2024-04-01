@@ -30,7 +30,7 @@ public enum WindowSize {
         public float getHeight() {
             return 900;
         }
-        
+
         @Override
         public float getWidth() {
             return 1600;

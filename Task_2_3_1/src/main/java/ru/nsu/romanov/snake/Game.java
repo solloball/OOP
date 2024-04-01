@@ -122,12 +122,12 @@ public class Game<T extends ActionEvent> implements EventHandler<T> {
                     || snake.getHead().x() >= sizeGame
                     || snake.getHead().y() < 0
                     || snake.getHead().y() >= sizeGame)) {
-                stateGame = StateGame.PAUSED;
-                snakes.forEach(Snake::init);
-                initGame();
-                if (display != null) {
-                    initDisplay();
-                }
+            stateGame = StateGame.PAUSED;
+            snakes.forEach(Snake::init);
+            initGame();
+            if (display != null) {
+                initDisplay();
+            }
         }
 
         fillField();
