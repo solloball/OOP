@@ -13,7 +13,7 @@ public class Snake {
      *
      * @param initialPosition default position of snake.
      */
-    public Snake (Position initialPosition) {
+    public Snake(Position initialPosition) {
         defaultPosition = initialPosition;
         body.add(initialPosition);
     }

@@ -29,7 +29,7 @@ public class ControllerGame<T extends ActionEvent> {
         matrix.getChildren().clear();
         int heightWindow = 720;
         final int size = (heightWindow - 70) / 10;
-        for (int y = 0; y < 10; y++){
+        for (int y = 0; y < 10; y++) {
             for (int x = 0; x < 10; x++) {
                 Rectangle shape = new Rectangle(size, size);
                 shape.setFill(background);
@@ -60,10 +60,12 @@ public class ControllerGame<T extends ActionEvent> {
      */
     public void draw(Position position, Color color) {
         int sizeGame = 10;
-        if (position.x() < 0|| position.x() >= sizeGame || position.y() < 0 || position.y() >= sizeGame) {
+        if (position.x() < 0 || position.x() >= sizeGame
+                || position.y() < 0 || position.y() >= sizeGame) {
             return;
         }
-        Rectangle node = (Rectangle) matrix.getChildren().get(position.y() * sizeGame + position.x());
+        Rectangle node = (Rectangle) matrix.getChildren().get(
+                position.y() * sizeGame + position.x());
         node.setFill(color);
     }
 

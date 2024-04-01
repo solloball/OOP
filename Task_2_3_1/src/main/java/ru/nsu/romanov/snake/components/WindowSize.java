@@ -9,10 +9,12 @@ public enum WindowSize {
         public float getScale() {
             return 1;
         }
+
         @Override
         public float getHeight() {
             return 723;
         }
+
         @Override
         public float getWidth() {
             return 1280;
@@ -23,10 +25,12 @@ public enum WindowSize {
         public float getScale() {
             return 1.25f;
         }
+
         @Override
         public float getHeight() {
             return 900;
         }
+        
         @Override
         public float getWidth() {
             return 1600;

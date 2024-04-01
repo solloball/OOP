@@ -10,7 +10,7 @@ import javafx.util.Duration;
 /**
  * Launcher of game.
  */
-public class Launcher extends Application{
+public class Launcher extends Application {
 
     /**
      * Init display, game, attach it, start rendering.
