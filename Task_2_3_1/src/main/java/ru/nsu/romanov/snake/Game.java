@@ -26,10 +26,21 @@ public class Game<T extends ActionEvent> implements EventHandler<T> {
      * Constructor, init game logic.
      */
     public Game() {
-        Position defaultPos = new Position(5, 5);
+        Position defaultPos = new Position(sizeGame / 2, sizeGame / 2);
         Snake snake = new Snake(defaultPos);
         snakes.add(snake);
         initGame();
+    }
+
+    /**
+     * Set game size.
+     *
+     * @param sizeGame size game to set.
+     */
+    public void setGameSize(int sizeGame) {
+        this.sizeGame = sizeGame;
+        initGame();
+        initDisplay();
     }
 
     /**
@@ -287,7 +298,7 @@ public class Game<T extends ActionEvent> implements EventHandler<T> {
     private final Color foodColor = Color.RED;
     private final Color snakeColor = Color.DARKGREEN;
     private final Color obstacleColor = Color.GRAY;
-    private final int sizeGame = 10;
+    private int sizeGame = 10;
     private final List<Food> foodList = new ArrayList<>();
     private final List<Snake> snakes = new ArrayList<>();
     private final List<Obstacle> obstacles = new ArrayList<>();

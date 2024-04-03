@@ -8,6 +8,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import ru.nsu.romanov.snake.components.Position;
 import ru.nsu.romanov.snake.components.StateGame;
+import ru.nsu.romanov.snake.components.WindowSize;
 
 /**
  * Controller of game.
@@ -23,23 +24,21 @@ public class ControllerGame<T extends ActionEvent> {
      * @param display display to attach.
      * @param game game to attach.
      */
-    public void init(Color background, Display<T> display, Game<T> game) {
+    public void init(Color background, Display<T> display, Game<T> game, int sizeGame) {
         this.display = display;
         this.game = game;
+        this.sizeGame = sizeGame;
         matrix.getChildren().clear();
-        int heightWindow = 720;
-        final int size = (heightWindow - 70) / 10;
-        for (int y = 0; y < 10; y++) {
-            for (int x = 0; x < 10; x++) {
+        int heightWindow = (int) WindowSize.SIZE_1280X720.getHeight();
+        final int size = (heightWindow - 75) / sizeGame;
+        for (int y = 0; y < sizeGame; y++) {
+            for (int x = 0; x < sizeGame; x++) {
                 Rectangle shape = new Rectangle(size, size);
                 shape.setFill(background);
                 shape.setStroke(Color.BLACK);
 
                 // Iterate the Index using the loops
-                GridPane.setRowIndex(shape, y);
-                GridPane.setColumnIndex(shape, x);
-
-                matrix.getChildren().add(shape);
+                matrix.add(shape, x, y);
             }
         }
     }
@@ -59,7 +58,6 @@ public class ControllerGame<T extends ActionEvent> {
      * @param color color to draw.
      */
     public void draw(Position position, Color color) {
-        int sizeGame = 10;
         if (position.x() < 0 || position.x() >= sizeGame
                 || position.y() < 0 || position.y() >= sizeGame) {
             return;
@@ -81,7 +79,7 @@ public class ControllerGame<T extends ActionEvent> {
     /**
      * Set max score.
      *
-     * @param score socre to set.
+     * @param score score to set.
      */
     public void setMaxScore(int score) {
         maxScore.setText("Max score " + score);
@@ -95,4 +93,5 @@ public class ControllerGame<T extends ActionEvent> {
     private Label maxScore;
     private Display<T> display;
     private Game<T> game;
+    private int sizeGame = 10;
 }

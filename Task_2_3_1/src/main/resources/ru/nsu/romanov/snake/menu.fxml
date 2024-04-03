@@ -16,12 +16,12 @@
                 <Font size="30.0" />
               </font>
           </Button>
-         <ChoiceBox fx:id="level" accessibleRole="IMAGE_VIEW" layoutX="678.0" layoutY="244.0" prefHeight="35.0" prefWidth="137.0">
+         <ChoiceBox fx:id="level" accessibleRole="IMAGE_VIEW" layoutX="680.0" layoutY="260.0" prefHeight="34.0" prefWidth="138.0">
             <cursor>
                <Cursor fx:constant="DEFAULT" />
             </cursor>
          </ChoiceBox>
-         <ChoiceBox fx:id="windowSize" layoutX="678.0" layoutY="279.0" prefHeight="34.0" prefWidth="138.0">
+         <ChoiceBox fx:id="windowSize" layoutX="680.0" layoutY="300.0" prefHeight="34.0" prefWidth="138.0">
             <cursor>
                <Cursor fx:constant="DEFAULT" />
             </cursor>
@@ -31,12 +31,22 @@
                <Font size="25.0" />
             </font>
          </Label>
-         <Label alignment="CENTER" layoutX="466.0" layoutY="244.0" prefHeight="29.0" prefWidth="212.0" text="level" textAlignment="CENTER" textOverrun="CENTER_WORD_ELLIPSIS">
+         <Label alignment="CENTER" layoutX="468.0" layoutY="259.0" prefHeight="29.0" prefWidth="212.0" text="level" textAlignment="CENTER" textOverrun="CENTER_WORD_ELLIPSIS">
             <font>
                <Font size="25.0" />
             </font>
          </Label>
-         <Label alignment="CENTER" layoutX="466.0" layoutY="278.0" prefHeight="29.0" prefWidth="212.0" text="size" textAlignment="CENTER" textOverrun="CENTER_WORD_ELLIPSIS">
+         <Label alignment="CENTER" layoutX="468.0" layoutY="299.0" prefHeight="29.0" prefWidth="212.0" text="window size" textAlignment="CENTER" textOverrun="CENTER_WORD_ELLIPSIS">
+            <font>
+               <Font size="25.0" />
+            </font>
+         </Label>
+         <ChoiceBox fx:id="gameSize" layoutX="680.0" layoutY="340.0" prefHeight="34.0" prefWidth="138.0">
+            <cursor>
+               <Cursor fx:constant="DEFAULT" />
+            </cursor>
+         </ChoiceBox>
+         <Label alignment="CENTER" layoutX="468.0" layoutY="339.0" prefHeight="29.0" prefWidth="212.0" text="game size" textAlignment="CENTER" textOverrun="CENTER_WORD_ELLIPSIS">
             <font>
                <Font size="25.0" />
             </font>

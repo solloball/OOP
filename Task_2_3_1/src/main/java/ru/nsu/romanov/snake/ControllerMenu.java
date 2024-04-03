@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.util.StringConverter;
+import ru.nsu.romanov.snake.components.GameSize;
 import ru.nsu.romanov.snake.components.Level;
 import ru.nsu.romanov.snake.components.WindowSize;
 
@@ -32,10 +33,9 @@ public class ControllerMenu<T extends ActionEvent> {
                         .toList()));
         level.getSelectionModel().selectedIndexProperty().addListener(
                 (a, b, newValue) -> {
-                    game.setLevel(
-                            Level.values()[newValue.intValue()]);
-                    setStatus("Set level: "
-                            + Level.values()[newValue.intValue()]);
+                    var level = Level.values()[newValue.intValue()];
+                    game.setLevel(level);
+                    setStatus("Set level: " + level);
                 });
 
         windowSize.setItems(
@@ -66,7 +66,37 @@ public class ControllerMenu<T extends ActionEvent> {
                             .toString().substring(5));
                 }
         );
-        windowSize.setSelectionModel(windowSize.getSelectionModel());
+        //windowSize.setSelectionModel(windowSize.getSelectionModel());
+
+        gameSize.setItems(
+                FXCollections.observableList(
+                        EnumSet
+                                .allOf(GameSize.class)
+                                .stream()
+                                .toList()));
+        gameSize.setConverter(new StringConverter<>() {
+            @Override
+            public String toString(GameSize gameSize) {
+                if (gameSize == null) {
+                    return null;
+                }
+                return gameSize.toString().substring(5);
+            }
+
+            @Override
+            public GameSize fromString(String s) {
+                return null;
+            }
+        });
+        gameSize.getSelectionModel().selectedIndexProperty().addListener(
+                (a, b, newValue) -> {
+                    var size = GameSize.values()[newValue.intValue()];
+                    display.setGameSize(size.getSize());
+                    setStatus("Set game size: "
+                            + size.toString().substring(5));
+                }
+        );
+
     }
 
     /**
@@ -92,4 +122,6 @@ public class ControllerMenu<T extends ActionEvent> {
     private ChoiceBox<WindowSize> windowSize;
     @FXML
     private Label statusBar;
+    @FXML
+    private ChoiceBox<GameSize> gameSize;
 }

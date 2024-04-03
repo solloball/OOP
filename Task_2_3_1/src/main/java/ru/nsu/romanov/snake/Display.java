@@ -29,12 +29,13 @@ public class Display<T extends ActionEvent> {
      */
     public Display(Stage stage, Game<T> game) {
         this.stage = stage;
+        this.game = game;
 
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("game.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("game_test.fxml"));
             gameZone = new Scene(loader.load());
             controllerGame = loader.getController();
-            controllerGame.init(background, this, game);
+            controllerGame.init(background, this, game, sizeGame);
 
             loader = new FXMLLoader(getClass().getResource("menu.fxml"));
             menu = new Scene(loader.load());
@@ -87,6 +88,17 @@ public class Display<T extends ActionEvent> {
         stage.setScene(menu);
         stage.setResizable(false);
         stage.show();
+    }
+
+    /**
+     * Set game size in game and in controller.
+     *
+     * @param sizeGame game size to set.
+     */
+    public void setGameSize(int sizeGame) {
+        this.sizeGame = sizeGame;
+        controllerGame.init(background, this, game, sizeGame);
+        game.setGameSize(sizeGame);
     }
 
     /**
@@ -161,5 +173,6 @@ public class Display<T extends ActionEvent> {
     private final Stage stage;
     private final Scene gameZone;
     private final Scene menu;
-    private final int sizeGame = 10;
+    private final Game<T> game;
+    private int sizeGame = 10;
 }
