@@ -1,6 +1,7 @@
 package ru.nsu.romanov.snake;
 
 import static java.lang.Math.max;
+import static java.lang.Math.min;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -169,8 +170,8 @@ public class Game<T extends ActionEvent> implements EventHandler<T> {
                 countFood = 1;
             }
             case HARD -> {
-                countObstacles = 10;
-                countFood = 3;
+                countObstacles = sizeGame * 3 / 10;
+                countFood = max(sizeGame / 10, 1);
             }
             default -> throw new IllegalStateException("there is no this level");
         }
