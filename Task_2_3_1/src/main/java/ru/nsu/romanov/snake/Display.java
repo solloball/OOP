@@ -32,7 +32,7 @@ public class Display<T extends ActionEvent> {
         this.game = game;
 
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("game_test.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("game.fxml"));
             gameZone = new Scene(loader.load());
             controllerGame = loader.getController();
             controllerGame.init(background, this, game, sizeGame);
