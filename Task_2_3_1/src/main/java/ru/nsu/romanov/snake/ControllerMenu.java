@@ -66,7 +66,6 @@ public class ControllerMenu<T extends ActionEvent> {
                             .toString().substring(5));
                 }
         );
-        //windowSize.setSelectionModel(windowSize.getSelectionModel());
 
         gameSize.setItems(
                 FXCollections.observableList(

@@ -4,45 +4,21 @@ package ru.nsu.romanov.snake.components;
  * Window state.
  */
 public enum WindowSize {
-    SIZE_1280X720(0) {
-        @Override
-        public float getScale() {
-            return 1;
-        }
+    SIZE_1280X720(720, 1280, 1),
+    SIZE_1600X900(900, 1600, 1.25f);
 
-        @Override
-        public float getHeight() {
-            return 723;
-        }
-
-        @Override
-        public float getWidth() {
-            return 1280;
-        }
-    },
-    SIZE_1600X900(1) {
-        @Override
-        public float getScale() {
-            return 1.25f;
-        }
-
-        @Override
-        public float getHeight() {
-            return 900;
-        }
-
-        @Override
-        public float getWidth() {
-            return 1600;
-        }
-    };
 
     /**
-     * Default constructor.
+     * Constructor.
      *
-     * @param i i to set.
+     * @param height height to set.
+     * @param width width to set.
+     * @param scale scale to set.
      */
-    WindowSize(int i) {
+    WindowSize(int height, int width, float scale) {
+        this.height = height;
+        this.width = width;
+        this.scale = scale;
     }
 
     /**
@@ -51,7 +27,7 @@ public enum WindowSize {
      * @return scale.
      */
     public float getScale() {
-        return -1;
+        return scale;
     }
 
     /**
@@ -60,7 +36,7 @@ public enum WindowSize {
      * @return width of window size.
      */
     public float getWidth() {
-        return -1;
+        return width;
     }
 
     /**
@@ -69,6 +45,11 @@ public enum WindowSize {
      * @return height of window.
      */
     public float getHeight() {
-        return -1;
+        return height;
     }
+
+    private final int height;
+    private final int width;
+    private final float scale;
+
 }
