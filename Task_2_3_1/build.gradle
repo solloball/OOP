@@ -1,0 +1,43 @@
+plugins {
+  id 'java'
+  id 'jacoco'
+  id 'application'
+  id 'org.openjfx.javafxplugin' version '0.1.0'
+}
+
+group 'ru.nsu.romanov'
+version '1.0-SNAPSHOT'
+
+javafx {
+  version = "21"
+  modules = [ 'javafx.controls', 'javafx.fxml']
+}
+
+dependencies {
+  implementation 'org.jetbrains:annotations:24.0.0'
+  testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.1'
+  testImplementation 'org.junit.jupiter:junit-jupiter-engine:5.7.1'
+}
+
+test {
+  useJUnitPlatform()
+}
+
+jacocoTestReport {
+  reports {
+    xml.required = true
+  }
+}
+
+repositories {
+  mavenCentral()
+}
+
+test {
+useJUnitPlatform()}
+
+java {
+  toolchain {
+    languageVersion.set(JavaLanguageVersion.of(21))
+  }
+}
