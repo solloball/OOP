@@ -1,6 +1,8 @@
 plugins {
     id 'java'
     id 'jacoco'
+    id 'groovy'
+    id 'application'
 }
 
 group = 'ru.nsu.romanov.checker'
@@ -11,9 +13,17 @@ repositories {
 }
 
 dependencies {
-    implementation 'org.jetbrains:annotations:24.0.0'
-    testImplementation platform('org.junit:junit-bom:5.10.0')
+    testImplementation platform('org.junit:junit-bom:5.9.1')
     testImplementation 'org.junit.jupiter:junit-jupiter'
+    implementation group: 'org.codehaus.groovy', name: 'groovy-all', version: '3.0.9'
+
+    compileOnly 'org.projectlombok:lombok:1.18.22'
+    annotationProcessor 'org.projectlombok:lombok:1.18.22'
+
+    implementation 'org.codehaus.groovy:groovy-all:3.0.9'
+    implementation 'org.gradle:gradle-tooling-api:7.3-20210825160000+0000'
+    runtimeOnly 'org.slf4j:slf4j-simple:1.7.10'
+    implementation 'org.freemarker:freemarker:2.3.30'
 }
 
 test {
@@ -28,7 +38,7 @@ jacocoTestReport {
 
 java {
     toolchain {
-        languageVersion.set(JavaLanguageVersion.of(21))
+        languageVersion.set(JavaLanguageVersion.of(17))
     }
 }
 
@@ -41,4 +51,13 @@ jar {
     from {
         configurations.runtimeClasspath.findAll { it.name.endsWith('jar') }.collect { zipTree(it) }
     }
+}
+
+
+ext {
+    javaMainClass = "ru.nsu.romanov.checker.Checker"
+}
+
+application {
+    mainClassName = javaMainClass
 }

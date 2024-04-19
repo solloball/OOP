@@ -1,0 +1,23 @@
+// можно так для удобства
+tasks = [
+    task {
+        name "Task_1_1_1"
+    },
+    task {
+        name "Task_1_2_1"
+        score 3
+    }
+]
+// можно так
+task {
+    score 500
+    name "Task_1_4_1"
+}
+
+// с студентами также
+student {
+    name "Kirill Romanov"
+    repo "https://github.com/solloball/OOP"
+    nickname "solloball"
+    group "22213"
+}
