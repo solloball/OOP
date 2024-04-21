@@ -8,7 +8,9 @@ public class GitManager {
     public void gitClone(Config config) {
         System.out.println("Start cloning...");
         config.getStudents().forEach(student -> {
-            System.out.println(student.name
+            System.out.println(
+                    "Student: "
+                    + student.name
                     + " "
                     + student.repo
                     + " "
@@ -39,4 +41,6 @@ public class GitManager {
         });
         System.out.println("Successfully finished!");
     }
+
+
 }

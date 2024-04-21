@@ -7,7 +7,10 @@ import ru.nsu.romanov.checker.config.Config;
 
 import java.io.File;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.*;
+
+import static java.time.ZoneId.systemDefault;
 
 
 public class Checker {
@@ -18,7 +21,13 @@ public class Checker {
         String typeOperation = args[0];
         switch (typeOperation) {
             case "clone" -> {
-                new GitManager().gitClone(config);
+                SimpleDateFormat isoFormat =
+                        new SimpleDateFormat("dd/MM/yyyy:HH/mm/ss");
+                isoFormat.setTimeZone(TimeZone.getTimeZone(systemDefault()));
+                //new GitManager().gitClone(config);
+                config.getTasks().forEach(task -> {
+                    System.out.println(isoFormat.format(task.hardDeadline));
+                });
             }
             case "build" -> {
 
