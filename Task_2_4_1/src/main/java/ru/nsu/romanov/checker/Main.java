@@ -73,6 +73,6 @@ public class Main {
 
     private static Config config;
     private static final String path =
-            "./src/main/java/ru/nsu/"
+            "./src/main/groovy/ru/nsu/"
             + "romanov/checker/config/proccess.groovy";
 }
