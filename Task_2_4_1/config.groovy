@@ -11,6 +11,12 @@ task {
     hard "12/01/2024"
 }
 
+task {
+    name "Task_1_5_1"
+    soft "11/06/2023"
+    hard "12/01/2024"
+}
+
 // с студентами также
 student {
     name "Kirill Romanov"
@@ -34,7 +40,26 @@ extra {
     comment "Should fix main class"
 }
 
+
+
 check {
     studentName "Kirill Romanov"
     taskName "Task_1_1_1"
+}
+
+check {
+    studentName "Maksim Kotenkov"
+    taskName "Task_1_1_1"
+}
+check {
+    studentName "Maksim Kotenkov"
+    taskName "Task_1_2_1"
+}
+check {
+    studentName "Kirill Romanov"
+    taskName "Task_1_5_1"
+}
+check {
+    studentName "Maksim Kotenkov"
+    taskName "Task_1_5_1"
 }

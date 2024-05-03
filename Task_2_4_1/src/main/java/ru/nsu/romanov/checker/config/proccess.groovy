@@ -6,8 +6,8 @@ Binding binding = new Binding([
 
 def load() {
     new GroovyShell(binding).evaluate(
-            new File("./src/main/java/ru/nsu/romanov/checker/config/parse.groovy").text
-            + new File("config").text)
+            new File("src/main/java/ru/nsu/romanov/checker/config/parse.groovy").text
+            + new File("config.groovy").text)
 }
 
 load()

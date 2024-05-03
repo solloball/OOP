@@ -18,6 +18,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Properties;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import org.gradle.tooling.GradleConnector;
 import org.gradle.tooling.ProjectConnection;
@@ -325,7 +327,7 @@ public class Checker {
             checker.process(stream.filter(file -> !Files.isDirectory(file)
                     && getFileExtension(file.toFile()).equals(".java"))
                     .map(Path::toFile)
-                    .toList());
+                    .collect(Collectors.toList()));
             checker.destroy();
         } catch (CheckstyleException | IOException e) {
             return e.getMessage();
