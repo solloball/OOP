@@ -1,1 +1,1 @@
-packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"ru.nsu.romanov.checker"},{"l":"ru.nsu.romanov.checker.config"}];updateSearchResults();
+packageSearchIndex = [{"l":"All Packages","url":"allpackages-index.html"},{"l":"ru.nsu.romanov.checker"},{"l":"ru.nsu.romanov.checker.config"},{"l":"ru.nsu.romanov.checker.html"},{"l":"ru.nsu.romanov.checker.kernel"}]
