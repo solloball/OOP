@@ -19,11 +19,16 @@ dependencies {
 
     compileOnly 'org.projectlombok:lombok:1.18.22'
     annotationProcessor 'org.projectlombok:lombok:1.18.22'
-
-    implementation 'org.codehaus.groovy:groovy-all:3.0.9'
-    implementation 'org.gradle:gradle-tooling-api:7.3-20210825160000+0000'
+    implementation 'org.codehaus.groovy:groovy-all:3.0.21'
+    implementation "org.gradle:gradle-tooling-api:7.3-20210825160000+0000"
+    runtimeOnly 'org.slf4j:slf4j-simple:1.7.10'
     runtimeOnly 'org.slf4j:slf4j-simple:1.7.10'
     implementation 'org.freemarker:freemarker:2.3.30'
+
+    implementation 'org.jsoup:jsoup:1.17.2'
+    implementation 'commons-io:commons-io:2.16.1'
+
+    implementation group: 'com.puppycrawl.tools', name: 'checkstyle', version: '10.16.0'
 }
 
 test {
@@ -36,28 +41,14 @@ jacocoTestReport {
     }
 }
 
-java {
-    toolchain {
-        languageVersion.set(JavaLanguageVersion.of(17))
-    }
-}
+mainClassName = 'ru.nsu.romanov.checker.Main'
 
-jar {
+task fatJar(type: Jar) {
     duplicatesStrategy = DuplicatesStrategy.EXCLUDE
     manifest {
-        attributes 'Main-Class': 'ru.nsu.romanov.checker.Checker'
+        attributes 'Main-Class': "${mainClassName}"
     }
-    archiveBaseName = 'Checker'
-    from {
-        configurations.runtimeClasspath.findAll { it.name.endsWith('jar') }.collect { zipTree(it) }
-    }
-}
-
-
-ext {
-    javaMainClass = "ru.nsu.romanov.checker.Checker"
-}
-
-application {
-    mainClassName = javaMainClass
+    archiveBaseName = "${rootProject.name}"
+    from { configurations.compileClasspath.collect { it.isDirectory() ? it : zipTree(it) } }
+    with jar
 }

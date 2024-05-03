@@ -3,34 +3,42 @@ package ru.nsu.romanov.checker;
 import groovy.lang.Binding;
 import groovy.lang.GroovyCodeSource;
 import groovy.lang.GroovyShell;
-import ru.nsu.romanov.checker.config.Config;
-
 import java.io.File;
 import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.*;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
+import ru.nsu.romanov.checker.config.Config;
+import ru.nsu.romanov.checker.html.HtmlBuilder;
+import ru.nsu.romanov.checker.kernel.Checker;
+import ru.nsu.romanov.checker.kernel.StudentInfo;
 
-import static java.time.ZoneId.systemDefault;
-
-
-public class Checker {
-    public static void run(String[] args) {
+/**
+ * Main class, read config, run checking and run html builder.
+ */
+public class Main {
+    /**
+     * Main function for running main.
+     *
+     * @param args should have size one.
+     * @throws IOException if args size will be not equal to one.
+     */
+    public static void run(String[] args) throws IOException {
         if (args.length != 1) {
             throw new IllegalArgumentException("count parameters should be 2");
         }
         String typeOperation = args[0];
         switch (typeOperation) {
             case "clone" -> {
-                SimpleDateFormat isoFormat =
-                        new SimpleDateFormat("dd/MM/yyyy:HH/mm/ss");
-                isoFormat.setTimeZone(TimeZone.getTimeZone(systemDefault()));
-                //new GitManager().gitClone(config);
-                config.getTasks().forEach(task -> {
-                    System.out.println(isoFormat.format(task.hardDeadline));
-                });
+                new Checker().gitClone(config);
             }
             case "build" -> {
-
+                Map<String, StudentInfo> res = new Checker().build(config);
+                new HtmlBuilder().build(res, config);
+            }
+            case "all" -> {
+                Map<String, StudentInfo> res = new Checker().full(config);
+                new HtmlBuilder().build(res, config);
             }
             default -> {
                 throw new IllegalArgumentException("unknown type operation: " + typeOperation);
@@ -38,6 +46,12 @@ public class Checker {
         }
     }
 
+    /**
+     * Main method.
+     *
+     * @param args args should have size one/
+     * @throws IOException throw if args size will not equal to one.
+     */
     public static void main(String[] args) throws IOException {
         readConfig();
         run(args);
@@ -58,5 +72,7 @@ public class Checker {
     }
 
     private static Config config;
-    private static final String path = "./src/main/java/ru/nsu/romanov/checker/process.groovy";
+    private static final String path =
+            "./src/main/java/ru/nsu/"
+            + "romanov/checker/config/process.groovy";
 }
