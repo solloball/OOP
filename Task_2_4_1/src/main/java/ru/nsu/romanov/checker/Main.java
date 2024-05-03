@@ -28,21 +28,21 @@ public class Main {
             throw new IllegalArgumentException("count parameters should be 2");
         }
         String typeOperation = args[0];
+        Map<String, StudentInfo> res;
         switch (typeOperation) {
-            case "clone" -> {
+            case "clone":
                 new Checker().gitClone(config);
-            }
-            case "build" -> {
-                Map<String, StudentInfo> res = new Checker().build(config);
+                break;
+            case "build":
+                res = new Checker().build(config);
                 new HtmlBuilder().build(res, config);
-            }
-            case "all" -> {
-                Map<String, StudentInfo> res = new Checker().full(config);
+                break;
+            case "all":
+                res = new Checker().full(config);
                 new HtmlBuilder().build(res, config);
-            }
-            default -> {
+                break;
+            default:
                 throw new IllegalArgumentException("unknown type operation: " + typeOperation);
-            }
         }
     }
 
