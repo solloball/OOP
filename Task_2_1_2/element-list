@@ -1,0 +1,9 @@
+ru.nsu.romanov.checker.client
+ru.nsu.romanov.checker.client.bytes
+ru.nsu.romanov.checker.client.net
+ru.nsu.romanov.checker.client.solver
+ru.nsu.romanov.checker.server
+ru.nsu.romanov.checker.server.config
+ru.nsu.romanov.checker.server.net
+ru.nsu.romanov.checker.server.net.client
+ru.nsu.romanov.checker.server.net.task
