@@ -1,6 +1,7 @@
 plugins {
     id 'java'
     id 'jacoco'
+    id 'application'
 }
 
 group = 'ru.nsu.romanov.checker'
@@ -22,6 +23,8 @@ dependencies {
 
     testCompileOnly 'org.projectlombok:lombok:1.18.32'
     testAnnotationProcessor 'org.projectlombok:lombok:1.18.32'
+
+    implementation("com.google.guava:guava:33.2.0-jre")
 }
 
 test {
@@ -31,5 +34,16 @@ test {
 jacocoTestReport {
     reports {
         xml.required = true
+    }
+}
+
+application {
+    // Define the main class for the application.
+    mainClass = 'ru.nsu.romanov.checker.client.Client'
+}
+
+jar {
+    manifest {
+        attributes 'Main-Class': application.mainClass
     }
 }

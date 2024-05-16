@@ -1,15 +1,17 @@
 {
-  "port":288,
-  "responseTime": 10,
+  "responseTime": 100,
   "addresses":[
     {
-      "ip":"192.168.18.19",
-      "port":8888
+      "ip": "localhost",
+      "port": 8889
     },
     {
-      "ip":"192.168.12.10",
-      "port":6666
+      "ip": "localhost",
+      "port": 8887
+    },
+    {
+      "ip": "localhost",
+      "port": 8888
     }
-  ],
-  "type":"SEQ"
+  ]
 }

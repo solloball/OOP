@@ -1,4 +1,4 @@
-package ru.nsu.romanov.checker.client.logic;
+package ru.nsu.romanov.checker.client.solver;
 
 import java.util.List;
 
