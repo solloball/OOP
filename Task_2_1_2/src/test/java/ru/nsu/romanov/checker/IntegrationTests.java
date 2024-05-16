@@ -1,5 +1,7 @@
 package ru.nsu.romanov.checker;
 
+import java.io.IOException;
+import java.util.List;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import ru.nsu.romanov.checker.client.Client;
@@ -7,11 +9,9 @@ import ru.nsu.romanov.checker.server.Server;
 import ru.nsu.romanov.checker.server.config.Address;
 import ru.nsu.romanov.checker.server.config.Config;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.List;
-
+/**
+ * Integration tests.
+ */
 public class IntegrationTests {
     @Test
     void twoClientsOneServerTest() throws InterruptedException {

@@ -1,8 +1,5 @@
 package ru.nsu.romanov.checker.client.net;
 
-import ru.nsu.romanov.checker.client.bytes.ReaderWithTimer;
-import ru.nsu.romanov.checker.client.solver.SolverSeq;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -10,8 +7,19 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
 import java.util.List;
+import ru.nsu.romanov.checker.client.bytes.ReaderWithTimer;
+import ru.nsu.romanov.checker.client.solver.SolverSeq;
 
+/**
+ * Class which response for accept connection, run echo and write answer.
+ */
 public class Nod {
+    /**
+     * Run worker.
+     *
+     * @param port port to set.
+     * @throws IOException can throw IOException.
+     */
     public void start(int port) throws IOException {
         try (ServerSocket socket = new ServerSocket(port)) {
             socket.setSoTimeout(delay);
@@ -50,6 +58,13 @@ public class Nod {
         }
     }
 
+    /**
+     * Read array from stream with delay.
+     *
+     * @param in stream.
+     * @return list.
+     * @throws IOException can throw IOException.
+     */
     private List<Integer> readArray(InputStream in) throws IOException {
         ReaderWithTimer reader = new ReaderWithTimer();
         int length = reader.readInt(in, delay);
@@ -60,6 +75,13 @@ public class Nod {
         return list;
     }
 
+    /**
+     * Echo worker, take bytes from input stream and write it to output stream.
+     *
+     * @param in input stream.
+     * @param out output stream.
+     * @return thread to run.
+     */
     private Thread echo(InputStream in, OutputStream out) {
         return new Thread(() -> {
             while (true) {

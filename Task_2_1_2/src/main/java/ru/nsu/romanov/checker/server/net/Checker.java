@@ -1,5 +1,16 @@
 package ru.nsu.romanov.checker.server.net;
 
+import java.io.IOException;
+import java.net.InetSocketAddress;
+import java.net.UnknownHostException;
+import java.nio.ByteBuffer;
+import java.nio.channels.SelectionKey;
+import java.nio.channels.Selector;
+import java.nio.channels.SocketChannel;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import ru.nsu.romanov.checker.server.config.Address;
 import ru.nsu.romanov.checker.server.config.Config;
 import ru.nsu.romanov.checker.server.net.client.ClientsManager;
@@ -7,16 +18,16 @@ import ru.nsu.romanov.checker.server.net.task.Task;
 import ru.nsu.romanov.checker.server.net.task.TaskId;
 import ru.nsu.romanov.checker.server.net.task.TaskManager;
 
-import java.io.IOException;
-import java.net.*;
-import java.nio.ByteBuffer;
-import java.nio.channels.SelectionKey;
-import java.nio.channels.Selector;
-import java.nio.channels.SocketChannel;
-import java.util.*;
-
-
+/**
+ * Main logic of server, connect to clients, send data and check result.
+ */
 public class Checker {
+    /**
+     * Default constructor.
+     *
+     * @param config config to set.
+     * @param array array of number.
+     */
     public Checker(Config config, List<Integer> array) {
         this.delay = config.getResponseTime();
 
@@ -26,6 +37,12 @@ public class Checker {
         clientsManager = new ClientsManager(addresses);
     }
 
+    /**
+     * Run server.
+     *
+     * @return true if in array there is composite number, otherwise false.
+     * @throws IOException can throw IOException.
+     */
     public boolean Check() throws IOException {
         selector = Selector.open();
         updateConnections();
@@ -39,7 +56,8 @@ public class Checker {
 
             for (var key : selector.keys()) {
                 SocketChannel socket = (SocketChannel) key.channel();
-                var adr = (InetSocketAddress) socket.socket().getRemoteSocketAddress();
+                var adr = (InetSocketAddress) socket.socket()
+                        .getRemoteSocketAddress();
                 var id = adrToId.get(adr);
 
                 if (!key.isReadable() && !checkTimer(socket, id)) {
@@ -75,16 +93,29 @@ public class Checker {
         }
     }
 
+    /**
+     * Successfully finish task.
+     *
+     * @param id id of task.
+     */
     private void finish(TaskId id) {
         taskManager.finishTask(id);
         clientsManager.finishClient(idToAdr.get(id));
     }
 
+    /**
+     * Cancel running task.
+     *
+     * @param id id of task.
+     */
     private void cancel(TaskId id) {
         taskManager.rejectTask(id);
         clientsManager.rejectClient(idToAdr.get(id));
     }
 
+    /**
+     * Update all connections.
+     */
     private void updateConnections() {
         var clients = clientsManager.getClients();
 
@@ -105,6 +136,13 @@ public class Checker {
         }
     }
 
+    /**
+     * Connect client.
+     *
+     * @param adr address of client.
+     * @param task task for client.
+     * @return true if finished successfully, otherwise false.
+     */
     private boolean connectClient(InetSocketAddress adr, Task task) {
         SocketChannel socketChannel = null;
         try {
@@ -133,9 +171,19 @@ public class Checker {
         return true;
     }
 
+    /**
+     * Send data to client.
+     *
+     * @param socketChannel socket of client.
+     * @param array array to send.
+     * @return true if finished successfully, false otherwise.
+     */
     private boolean sendData(SocketChannel socketChannel, List<Integer> array) {
         try {
-            ByteBuffer byteBuffer = ByteBuffer.allocate(4).putInt(array.size()).flip();
+            ByteBuffer byteBuffer = ByteBuffer
+                    .allocate(4)
+                    .putInt(array.size())
+                    .flip();
             socketChannel.write(byteBuffer);
             for (var num : array) {
                 ByteBuffer buf = ByteBuffer.allocate(4).putInt(num).flip();
@@ -148,6 +196,12 @@ public class Checker {
         return true;
     }
 
+    /**
+     * Parse internal class  address into InetSocketAddress.
+     *
+     * @param list list to parse.
+     * @return list of InetSocketAddress elements.
+     */
     private List<InetSocketAddress> parseAddresses(List<Address> list) {
         List<InetSocketAddress> res = new ArrayList<>();
 
@@ -166,10 +220,23 @@ public class Checker {
         return res;
     }
 
+    /**
+     * Parse internal class address into InetSocketAddress.
+     *
+     * @param address address to parse.
+     * @return InetSocketAddress element.
+     */
     private InetSocketAddress parseAddress(Address address) throws UnknownHostException {
         return new InetSocketAddress(address.getIp(), address.getPort());
     }
 
+    /**
+     * Check running time, if running time more than delay, send remindMsg.
+     *
+     * @param socket socket to read and write.
+     * @param id if of task.
+     * @return if running time more than 2 * delay return false, otherwise true.
+     */
     private boolean checkTimer(SocketChannel socket, TaskId id) {
         var duration = System.currentTimeMillis() - runningTime.get(id);
         if (duration > delay * 2L) {
@@ -184,6 +251,12 @@ public class Checker {
         return true;
     }
 
+    /**
+     * Send remindMsg to socket.
+     *
+     * @param socket socket to write.
+     * @throws IOException can throw IOException.
+     */
     private void remind(SocketChannel socket) throws IOException {
         socket.write(ByteBuffer.wrap(new byte[]{reminderMsg}));
     }

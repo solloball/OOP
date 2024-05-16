@@ -1,15 +1,25 @@
 package ru.nsu.romanov.checker.server;
 
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
 import ru.nsu.romanov.checker.server.config.Config;
 import ru.nsu.romanov.checker.server.config.JsonReader;
 import ru.nsu.romanov.checker.server.net.Checker;
 
-import java.io.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
-
+/**
+ * Main class of realization of server.
+ */
 public class Server {
+    /**
+     * Method for cli using, read config from file config.json, arr from array.txt.
+     *
+     * @param args unused.
+     * @throws IOException can throw IOException.
+     */
     public static void main(String[] args) throws IOException {
         final String confName = "config.json";
         final String arrayFile = "array.txt";
@@ -21,6 +31,14 @@ public class Server {
         System.out.println("Res : " + Main(config, arr));
     }
 
+    /**
+     * Used for using inside java.
+     *
+     * @param config config.
+     * @param arr array of number.
+     * @return true if there is a composite number.
+     * @throws IOException can throw IOException.
+     */
     public static boolean Main(Config config, List<Integer> arr) throws IOException {
         return new Checker(config, arr).Check();
     }
