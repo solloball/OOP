@@ -14,15 +14,14 @@ public class Server {
         final String confName = "config.json";
         final String arrayFile = "array.txt";
 
-        System.out.println("Res : " +
-                Main(new FileReader(confName), new FileReader(arrayFile)));
+        Config config = new JsonReader().read(new FileReader(confName));
+
+        List<Integer> arr = readInput(new FileReader(arrayFile));
+
+        System.out.println("Res : " + Main(config, arr));
     }
 
-    public static boolean Main(InputStreamReader configReader, InputStreamReader arrayReader) throws IOException {
-        Config config = new JsonReader().read(configReader);
-
-        List<Integer> arr = readInput(arrayReader);
-
+    public static boolean Main(Config config, List<Integer> arr) throws IOException {
         return new Checker(config, arr).Check();
     }
 
