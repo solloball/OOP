@@ -1,7 +1,7 @@
 package ru.nsu.romanov.checker.server.net.task;
 
 /**
- * Id of task
+ * Id of task.
  *
  * @param id id.
  */

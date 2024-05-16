@@ -36,7 +36,7 @@ public class TaskManager {
 
     /**
      * Make task runnable and give it.
-     * 
+     *
      * @return task.
      */
     public Task runTask() {
