@@ -1,8 +1,7 @@
 package ru.nsu.romanov.checker.server.config;
 
-import lombok.Data;
-
 import java.util.List;
+import lombok.Data;
 
 /**
  * Class for storing config.

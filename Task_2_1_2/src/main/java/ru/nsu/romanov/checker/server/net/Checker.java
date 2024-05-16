@@ -43,7 +43,7 @@ public class Checker {
      * @return true if in array there is composite number, otherwise false.
      * @throws IOException can throw IOException.
      */
-    public boolean Check() throws IOException {
+    public boolean check() throws IOException {
         selector = Selector.open();
         updateConnections();
 

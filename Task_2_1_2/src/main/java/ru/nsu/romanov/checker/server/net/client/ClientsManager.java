@@ -56,6 +56,7 @@ public class ClientsManager {
                         lowerTimer(adr);
                     }
                 }
+                default -> throw new RuntimeException("Unknown type");
             }
         });
 

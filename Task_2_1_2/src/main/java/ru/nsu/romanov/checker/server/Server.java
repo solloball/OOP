@@ -28,7 +28,7 @@ public class Server {
 
         List<Integer> arr = readInput(new FileReader(arrayFile));
 
-        System.out.println("Res : " + Main(config, arr));
+        System.out.println("Res : " + javaMain(config, arr));
     }
 
     /**
@@ -39,15 +39,21 @@ public class Server {
      * @return true if there is a composite number.
      * @throws IOException can throw IOException.
      */
-    public static boolean Main(Config config, List<Integer> arr) throws IOException {
-        return new Checker(config, arr).Check();
+    public static boolean javaMain(Config config, List<Integer> arr) throws IOException {
+        return new Checker(config, arr).check();
     }
 
+    /**
+     * Read array from stream.
+     *
+     * @param reader stream with array.
+     * @return return array in list.
+     */
     public static List<Integer> readInput(InputStreamReader reader) {
         List<Integer> res = new ArrayList<>();
 
         try (Scanner scanner = new Scanner(reader)) {
-            while(scanner.hasNext()) {
+            while (scanner.hasNext()) {
                 res.add(scanner.nextInt());
             }
         }

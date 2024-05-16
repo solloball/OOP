@@ -48,7 +48,7 @@ public class IntegrationTests {
 
         new Thread(() -> {
             try {
-                Assertions.assertFalse(Server.Main(config, primeNumbers));
+                Assertions.assertFalse(Server.javaMain(config, primeNumbers));
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
@@ -84,7 +84,7 @@ public class IntegrationTests {
 
         new Thread(() -> {
             try {
-                Assertions.assertFalse(Server.Main(config, primeNumbers));
+                Assertions.assertFalse(Server.javaMain(config, primeNumbers));
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
