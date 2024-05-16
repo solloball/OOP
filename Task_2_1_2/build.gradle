@@ -47,3 +47,10 @@ jar {
         attributes 'Main-Class': application.mainClass
     }
 }
+
+
+java {
+    toolchain {
+        languageVersion.set(JavaLanguageVersion.of(21))
+    }
+}
