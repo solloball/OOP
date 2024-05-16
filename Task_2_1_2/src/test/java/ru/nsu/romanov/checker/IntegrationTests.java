@@ -32,7 +32,7 @@ public class IntegrationTests {
 
         new Thread(() -> {
             try {
-                Client.Main(8888);
+                Client.javaMain(8888);
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
@@ -40,7 +40,7 @@ public class IntegrationTests {
 
         new Thread(() -> {
             try {
-                Client.Main(8889);
+                Client.javaMain(8889);
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
@@ -76,7 +76,7 @@ public class IntegrationTests {
 
         new Thread(() -> {
             try {
-                Client.Main(8888);
+                Client.javaMain(8888);
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }

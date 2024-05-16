@@ -1,7 +1,7 @@
 package ru.nsu.romanov.checker.client;
 
-import ru.nsu.romanov.checker.client.net.Nod;
 import java.io.IOException;
+import ru.nsu.romanov.checker.client.net.Nod;
 
 /**
  * Main class of client.
@@ -16,7 +16,7 @@ public class Client {
     public static void main(String[] args) throws IOException {
         int port = args.length == 0 ? 8888 : Integer.parseInt(args[0]);
         System.out.println("Start working on port " + port);
-        Main(port);
+        javaMain(port);
     }
 
     /**
@@ -25,7 +25,7 @@ public class Client {
      * @param port port to set.
      * @throws IOException can throw IOException.
      */
-    public static void Main(int port) throws IOException {
+    public static void javaMain(int port) throws IOException {
         new Nod().start(port);
     }
 }
